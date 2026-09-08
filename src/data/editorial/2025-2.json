@@ -1,0 +1,778 @@
+{
+  "2025-2-01": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "색인, Index",
+    "concept": "값과 레코드 주소를 연결하는 색인 파일",
+    "rules": [
+      "색인은 `<키 값, 레코드 주소>` 항목을 이용해 원하는 레코드 위치를 빠르게 찾습니다."
+    ],
+    "steps": [
+      "파일 구조의 세 분류가 순차·색인·해싱이라는 기본 구성을 떠올립니다.",
+      "검색 키 값과 실제 레코드 주소의 쌍을 별도 구조로 두어 접근한다는 설명을 색인과 연결합니다."
+    ],
+    "distinctions": [
+      "순차 파일은 물리적 순서로 읽고, 해싱은 해시 함수로 주소를 계산하며, 색인은 별도 인덱스를 탐색합니다."
+    ],
+    "pitfalls": [
+      "데이터 레코드 자체와 레코드를 가리키는 색인 항목을 같은 것으로 보지 않습니다."
+    ],
+    "takeaway": "값과 주소의 쌍으로 접근하는 구조는 색인(Index) 파일입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-02": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "SSH",
+    "concept": "암호화된 원격 접속 프로토콜 SSH",
+    "rules": [
+      "SSH는 암호화된 채널에서 원격 셸과 터널링·파일 전송 기능을 제공합니다."
+    ],
+    "steps": [
+      "원격 로그인·명령 실행·파일 복사를 한 보안 프로토콜이 지원하는지 확인합니다.",
+      "공개키 인증과 기본 22번 포트라는 결정적 단서를 SSH와 연결합니다."
+    ],
+    "distinctions": [
+      "Telnet도 원격 로그인이지만 기본 통신이 평문이고 일반적으로 23번 포트를 씁니다."
+    ],
+    "pitfalls": [
+      "파일 복사 기능만 보고 FTP로 답하지 말고 22번 포트와 원격 셸을 함께 봅니다."
+    ],
+    "takeaway": "22번 포트·공개키 인증·안전한 원격 명령이면 SSH입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-03": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "㉢",
+    "concept": "릴레이션의 열이자 개체 특성인 Attribute",
+    "rules": [
+      "Attribute는 릴레이션의 열이며 파일 관점에서는 데이터 필드에 대응합니다."
+    ],
+    "steps": [
+      "데이터베이스의 가장 작은 논리 단위가 릴레이션에서 열에 해당하는지 확인합니다.",
+      "개체의 특성을 기술하는 항목이라는 설명을 Attribute와 연결합니다."
+    ],
+    "distinctions": [
+      "Tuple은 한 행, Entity는 표현 대상 개체, Domain은 속성이 가질 수 있는 값의 집합입니다."
+    ],
+    "pitfalls": [
+      "속성의 개수인 Degree와 개별 속성 Attribute를 구분합니다."
+    ],
+    "takeaway": "열·필드·개체 특성을 뜻하는 용어는 Attribute ㉢입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-04": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "BB",
+    "concept": "배열 원소 변경과 문자열 참조의 값 전달",
+    "rules": [
+      "Java는 참조도 값으로 전달합니다. 같은 객체의 내부 변경은 보이지만 매개변수 재대입은 호출자 변수를 바꾸지 않습니다."
+    ],
+    "steps": [
+      "data 매개변수는 호출자와 같은 배열 객체를 가리키므로 data[0]을 B로 바꾸면 main에서도 보입니다.",
+      "s 매개변수에는 문자열 참조값이 복사됩니다.",
+      "함수 안에서 s를 Z로 다시 대입해도 main의 s는 여전히 B를 가리킵니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "호출 전",
+          "data[0]=A, s=B",
+          "-"
+        ],
+        [
+          "data[0]=s",
+          "배열 원소=B",
+          "main에도 반영"
+        ],
+        [
+          "s=\"Z\"",
+          "지역 매개변수만 변경",
+          "main s=B"
+        ],
+        [
+          "출력",
+          "B+B",
+          "BB"
+        ]
+      ]
+    },
+    "outputMoment": "main이 변경된 data[0]과 그대로인 s를 이어 출력합니다.",
+    "calculation": "data[0]=\"B\", s=\"B\" → \"BB\"",
+    "objectFlow": [
+      "main data ─┬→ String[] {\"B\"}",
+      "change data ─┘",
+      "main s→\"B\", change s→\"Z\"(지역)"
+    ],
+    "pitfalls": [
+      "s=\"Z\"가 main의 s까지 Z로 바꾼다고 생각하지 않습니다."
+    ],
+    "takeaway": "배열은 수정되지만 지역 참조 재대입은 전달되지 않아 BB입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-05": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "3 1 2",
+    "concept": "재설정된 단일 연결 리스트 따라가기",
+    "rules": [
+      "포인터 대입은 앞에서 만든 연결을 덮어쓸 수 있으므로 마지막 상태만 그립니다."
+    ],
+    "steps": [
+      "처음 a→b→c로 만들지만 뒤의 대입이 최종 연결을 다시 정합니다.",
+      "최종적으로 c.next=a, a.next=b, b.next=NULL이고 head는 c입니다.",
+      "head에서 data를 읽으며 두 번 next를 따라갑니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "최종 head",
+          "c",
+          "3"
+        ],
+        [
+          "head->n",
+          "a",
+          "1"
+        ],
+        [
+          "head->n->n",
+          "b",
+          "2"
+        ],
+        [
+          "출력",
+          "3 1 2",
+          "3 1 2"
+        ]
+      ]
+    },
+    "outputMoment": "printf가 c, a, b의 p 값을 공백 사이에 출력합니다.",
+    "calculation": "c.p=3, a.p=1, b.p=2",
+    "objectFlow": [
+      "head → c(3) → a(1) → b(2) → NULL"
+    ],
+    "pitfalls": [
+      "초기 a→b→c만 보고 1 2 3이라고 답하지 말고 뒤의 재연결을 반영합니다."
+    ],
+    "takeaway": "최종 연결은 c→a→b라서 3 1 2입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-06": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① SJF, Shortest Job First\n② SRT, Shortest Remaining Time",
+    "concept": "비선점 SJF와 선점 SRT",
+    "rules": [
+      "SJF는 Shortest Job First, SRT는 Shortest Remaining Time입니다."
+    ],
+    "steps": [
+      "대기 중 실행시간이 가장 짧은 작업을 골라 끝까지 수행하면 SJF입니다.",
+      "새 프로세스가 올 때마다 현재 남은 시간과 비교해 더 짧은 쪽으로 바꾸면 SRT입니다."
+    ],
+    "distinctions": [
+      "SJF는 일반적으로 비선점이고 SRT는 SJF의 선점형으로 볼 수 있습니다."
+    ],
+    "pitfalls": [
+      "둘 다 짧은 작업을 우선하지만 비교 대상이 전체 실행시간인지 남은 시간인지 구분합니다."
+    ],
+    "takeaway": "① SJF, ② SRT입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-07": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① TTL       ② 부장    ③ 대리       ④ 과장      ⑤ 차장",
+    "concept": "프로젝션이 남기는 열과 중복 제거",
+    "rules": [
+      "프로젝션 π는 지정한 열만 남기며 관계대수 결과에서는 중복 튜플을 제거합니다."
+    ],
+    "steps": [
+      "관계대수 πTTL은 EMPLOYEE에서 TTL 속성 하나만 선택합니다.",
+      "프로젝션 결과의 열 이름은 TTL입니다.",
+      "원본 TTL 값 부장·대리·과장·차장을 뽑고 관계이므로 중복 값은 하나로 정리합니다."
+    ],
+    "distinctions": [
+      "셀렉션 σ는 조건에 맞는 행을 고르고 프로젝션 π는 열을 고릅니다."
+    ],
+    "pitfalls": [
+      "INDEX나 AGE 값을 결과에 함께 적지 않습니다."
+    ],
+    "takeaway": "① TTL, 이어지는 값은 ② 부장 ③ 대리 ④ 과장 ⑤ 차장입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-08": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 128       ② 62",
+    "concept": "/26 네트워크 주소와 사용 가능한 호스트 수",
+    "rules": [
+      "/26의 한 서브넷은 64개 주소를 가지며 사용 가능한 호스트는 2^6-2입니다."
+    ],
+    "steps": [
+      "255.255.255.192는 /26이고 마지막 옥텟 블록 크기는 256-192=64입니다.",
+      "132가 속한 블록은 128~191이므로 네트워크 주소 마지막 값은 128입니다.",
+      "호스트 비트 6개에서 네트워크·브로드캐스트 2개를 빼면 62개입니다."
+    ],
+    "distinctions": [
+      "128은 네트워크 주소, 191은 브로드캐스트 주소, 129~190이 호스트 범위입니다."
+    ],
+    "pitfalls": [
+      "주소 총수 64와 사용 가능한 호스트 수 62를 구분합니다."
+    ],
+    "takeaway": "네트워크는 223.13.234.128이고 사용 가능한 호스트는 62개입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-09": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "19",
+    "concept": "람다 예외를 run이 반환값으로 바꾸는 과정",
+    "rules": [
+      "람다가 던진 Exception은 run 내부 try-catch에서 처리되어 7이라는 정상 반환값으로 바뀝니다."
+    ],
+    "steps": [
+      "첫 람다는 x=3에서 x>2가 참이므로 예외를 던지고 run의 catch가 7을 반환합니다.",
+      "두 번째 람다는 n+9를 정상 반환하므로 3+9=12입니다.",
+      "main은 두 run 결과를 더합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "run(f)",
+          "3>2 → 예외",
+          "catch 반환 7"
+        ],
+        [
+          "run(n→n+9)",
+          "3+9",
+          "12"
+        ],
+        [
+          "합",
+          "7+12",
+          "19"
+        ]
+      ]
+    },
+    "outputMoment": "두 run 호출이 각각 7과 12를 반환한 뒤 덧셈합니다.",
+    "calculation": "7 + 12 = 19",
+    "objectFlow": [],
+    "pitfalls": [
+      "첫 람다의 원래 `x*2`는 예외 뒤에는 실행되지 않습니다."
+    ],
+    "takeaway": "예외 경로 7과 정상 경로 12를 더해 19입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-10": {
+    "status": "needs-review",
+    "kind": "code",
+    "answerSummary": "2 그리고 3",
+    "concept": "원형 큐 상태와 C 인수 평가 순서의 함정",
+    "rules": [
+      "C 함수 인수의 평가 순서는 지정되어 있지 않으므로 두 인수가 같은 큐 상태를 바꾸면 결과가 구현에 따라 달라질 수 있습니다."
+    ],
+    "steps": [
+      "enq 1, enq 2, deq 뒤 큐의 논리적 내용은 2입니다.",
+      "enq 3 뒤 논리적 제거 순서는 2 다음 3입니다.",
+      "하지만 한 printf 호출의 두 deq 인수 중 어느 것을 먼저 평가할지는 C 표준이 정하지 않습니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기 연산 후",
+          "front=1, rear=0",
+          "큐: 2,3"
+        ],
+        [
+          "왼쪽 인수 먼저라면",
+          "deq→2, 다음→3",
+          "2 그리고 3"
+        ],
+        [
+          "오른쪽 인수 먼저라면",
+          "오른쪽→2, 왼쪽→3",
+          "3 그리고 2"
+        ],
+        [
+          "PDF 자료 내부",
+          "답안 3 그리고 2 / 해설 결과 2 그리고 3",
+          "서로 불일치"
+        ],
+        [
+          "GCC 실행",
+          "C17, 최적화 O0·O2",
+          "3 그리고 2"
+        ]
+      ]
+    },
+    "outputMoment": "두 deq의 평가 순서가 출력 위치에 들어갈 값을 결정합니다.",
+    "calculation": "논리적 dequeue 순서는 2→3이지만 인수 평가 위치 때문에 2·3 또는 3·2가 가능합니다.",
+    "objectFlow": [],
+    "pitfalls": [
+      "deq의 논리적 반환 순서가 2→3이라고 해서 함수 인수도 항상 왼쪽부터 평가된다고 단정하면 안 됩니다."
+    ],
+    "takeaway": "대표 답은 2 그리고 3이며, 표준 C에서는 평가 순서가 미지정이므로 3 그리고 2도 가능한 답으로 함께 인정합니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "큐를 손으로 추적하고 GCC(C17, O0·O2)에서 3 그리고 2가 출력됨을 확인했습니다. PDF의 답안은 3 그리고 2, 해설 결과는 2 그리고 3으로 서로 다르며, C 표준의 미지정 인수 평가 순서 때문에 두 결과를 모두 인정합니다."
+    }
+  },
+  "2025-2-11": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "AJAX, Asynchronous JavaScript and XML",
+    "concept": "페이지 일부만 비동기로 갱신하는 AJAX",
+    "rules": [
+      "AJAX는 Asynchronous JavaScript and XML의 약자이며 XML 외에 JSON도 흔히 사용합니다."
+    ],
+    "steps": [
+      "브라우저의 JavaScript가 서버와 비동기로 통신한다는 점을 확인합니다.",
+      "전체 페이지 새로고침 없이 일부 영역만 바꾼다는 사용자 경험을 AJAX와 연결합니다."
+    ],
+    "distinctions": [
+      "AJAX는 특정 프로그래밍 언어가 아니라 비동기 웹 통신 기법의 묶음입니다."
+    ],
+    "pitfalls": [
+      "이름에 XML이 있어도 데이터 형식을 XML로만 제한하는 기술은 아닙니다."
+    ],
+    "takeaway": "비동기 요청으로 페이지 일부만 갱신하면 AJAX입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-12": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "Proxy",
+    "concept": "실제 객체 대신 접근을 중개하는 Proxy",
+    "rules": [
+      "Proxy는 실제 객체와 같은 인터페이스를 제공하며 접근 제어·지연 생성·원격 접근 등을 중개합니다."
+    ],
+    "steps": [
+      "클라이언트가 실제 객체에 직접 접근하지 않고 대리 객체를 거치는지 확인합니다.",
+      "복잡한 내부 관계나 세부 구현을 숨기면서 접근을 제어한다는 설명을 Proxy와 연결합니다."
+    ],
+    "distinctions": [
+      "Facade는 하위 시스템 전체에 단순 창구를 제공하고 Proxy는 특정 실제 객체를 대신합니다."
+    ],
+    "pitfalls": [
+      "‘숨긴다’는 말만 보고 Facade로 고르지 말고 대리자라는 직접 단서를 봅니다."
+    ],
+    "takeaway": "실제 객체를 대신하는 대리자는 Proxy입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-13": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "SYN Flooding",
+    "concept": "반쪽 연결을 쌓아 대기열을 고갈시키는 SYN Flooding",
+    "rules": [
+      "SYN Flooding은 다수의 half-open connection으로 서버의 연결 자원을 소모시키는 DoS입니다."
+    ],
+    "steps": [
+      "TCP 3-way handshake의 시작 SYN을 대량으로 보내는 상황을 떠올립니다.",
+      "마지막 ACK를 완료하지 않아 서버가 연결 대기 상태를 계속 보관하게 만드는 공격을 찾습니다."
+    ],
+    "distinctions": [
+      "Smurf는 ICMP 증폭, SYN Flooding은 TCP 연결 설정 절차를 악용합니다."
+    ],
+    "pitfalls": [
+      "3-way handshake에 끼어 세션을 탈취하는 세션 하이재킹과, 완료하지 않아 자원을 고갈시키는 공격을 구분합니다."
+    ],
+    "takeaway": "TCP 연결을 반쯤 열어 대기열을 채우면 SYN Flooding입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-14": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "( 1 ) → ( 2 ) → ( 3 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 7 )\n( 1 ) → ( 2 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 1 )\n또는\n( 1 ) → ( 2 ) → ( 3 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 1 )\n( 1 ) → ( 2 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 7 )",
+    "concept": "각 결정의 참·거짓을 모두 지나는 분기 커버리지",
+    "rules": [
+      "분기 커버리지는 모든 결정 결과 True와 False를 최소 한 번 수행해야 합니다."
+    ],
+    "steps": [
+      "순서도의 각 조건 노드에서 참 경로와 거짓 경로가 적어도 한 번씩 포함되는지 확인합니다.",
+      "한 경로로 모든 결과를 덮을 수 없으면 여러 경로를 한 테스트 묶음으로 작성합니다.",
+      "제시 답의 두 경로 조합이 반복 진입·탈출과 내부 분기의 양쪽을 모두 통과합니다."
+    ],
+    "distinctions": [
+      "문장 커버리지는 모든 문장 실행, 경로 커버리지는 가능한 모든 경로 실행을 목표로 합니다."
+    ],
+    "pitfalls": [
+      "긴 경로 하나만 썼다고 자동으로 분기 커버리지가 되지 않으며 각 조건의 양쪽을 표시해야 합니다."
+    ],
+    "takeaway": "제시된 두 경로 중 하나의 조합으로 모든 분기의 참·거짓을 덮습니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-15": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "11.75",
+    "concept": "시간 할당량 4인 Round Robin 대기시간",
+    "rules": [
+      "RR 대기시간은 완료시간-도착시간-실행시간이며, time slice 만료 시 미완료 프로세스는 큐 뒤로 갑니다."
+    ],
+    "steps": [
+      "도착한 프로세스를 준비 큐 뒤에 넣고 한 번에 최대 4초만 실행하는 간트 차트를 만듭니다.",
+      "프로세스가 끝나지 않으면 남은 실행시간과 함께 큐 뒤로 보냅니다.",
+      "각 완료시간에서 도착시간과 총 실행시간을 빼고 네 대기시간의 평균을 계산합니다."
+    ],
+    "distinctions": [
+      "FCFS는 한 번 잡은 CPU를 끝까지 쓰지만 RR은 정해진 시간만큼 순환합니다."
+    ],
+    "pitfalls": [
+      "같은 시각의 새 도착과 재큐잉 순서는 문제에서 전제한 일반적인 큐 규칙을 일관되게 적용합니다."
+    ],
+    "takeaway": "Time Slice 4로 간트 차트를 완성하면 평균 대기시간은 11.75초입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-16": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "5 그리고 6",
+    "concept": "구조체 배열 원소 전체 복사",
+    "rules": [
+      "같은 구조체 타입끼리 대입하면 모든 멤버 값이 복사됩니다."
+    ],
+    "steps": [
+      "ptr은 구조체 배열 a의 첫 원소를 가리키고 pptr은 ptr의 주소입니다.",
+      "`(*pptr)[2]`는 a[2]인 {5,6}입니다.",
+      "이를 `(*pptr)[1]`, 즉 a[1] 전체에 대입해 x와 y가 함께 복사됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "매핑",
+          "*pptr = ptr = &a[0]",
+          "-"
+        ],
+        [
+          "오른쪽",
+          "(*pptr)[2]",
+          "{5,6}"
+        ],
+        [
+          "대입",
+          "a[1]={5,6}",
+          "-"
+        ],
+        [
+          "출력",
+          "a[1].x, a[1].y",
+          "5 그리고 6"
+        ]
+      ]
+    },
+    "outputMoment": "변경된 a[1]의 두 필드를 printf가 읽습니다.",
+    "calculation": "{3,4} ← {5,6}",
+    "objectFlow": [
+      "pptr → ptr → a[0]",
+      "(*pptr)[1] ↔ a[1], (*pptr)[2] ↔ a[2]"
+    ],
+    "pitfalls": [
+      "pptr의 별표 수에 겁먹지 말고 `(*pptr)[index]`를 `a[index]`로 바꿔 읽습니다."
+    ],
+    "takeaway": "세 번째 구조체가 두 번째 자리에 복사되어 5 그리고 6입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-17": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "2",
+    "concept": "딕셔너리 값 집합과 교집합",
+    "rules": [
+      "집합 생성 시 딕셔너리 값이 복사되므로 이후 딕셔너리 변경이 기존 집합에 자동 반영되지 않습니다."
+    ],
+    "steps": [
+      "초기 dst 값은 {2,4,6}이고 이를 복사해 집합 s={2,4,6}을 만듭니다.",
+      "lst[0]=99는 이미 만들어진 dst에 영향을 주지 않습니다.",
+      "dst[2]=7로 dst 값 집합은 {2,7,6}, s.add(99)로 s는 {2,4,6,99}가 됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "dst values={2,4,6}",
+          "s={2,4,6}"
+        ],
+        [
+          "변경 후",
+          "dst values={2,7,6}",
+          "s={2,4,6,99}"
+        ],
+        [
+          "교집합",
+          "{2,6}",
+          "길이 2"
+        ]
+      ]
+    },
+    "outputMoment": "교집합 {2,6}의 len을 출력합니다.",
+    "calculation": "|{2,4,6,99} ∩ {2,7,6}| = |{2,6}| = 2",
+    "objectFlow": [
+      "dst.values() --생성 시 복사→ s",
+      "이후 dst와 s는 별도로 변경"
+    ],
+    "pitfalls": [
+      "s가 dst.values의 실시간 뷰라고 생각하면 안 됩니다."
+    ],
+    "takeaway": "최종 두 값 집합의 공통 원소가 2와 6이라 결과는 2입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-18": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "5P",
+    "concept": "인스턴스 메서드 오버라이딩과 static 메서드 숨김",
+    "rules": [
+      "인스턴스 메서드는 실제 객체형으로 동적 바인딩됩니다.",
+      "static 메서드는 숨김이며 참조 변수의 선언형으로 선택됩니다."
+    ],
+    "steps": [
+      "ref의 선언형은 Parent지만 실제 객체는 Child입니다.",
+      "인스턴스 메서드 x(int)는 오버라이딩되어 Child.x가 실행되므로 2+3=5입니다.",
+      "static id는 동적 호출되지 않고 참조형 Parent 기준으로 Parent.id가 선택되어 P입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "ref.x(2)",
+          "Child.x(int)",
+          "5"
+        ],
+        [
+          "ref.id()",
+          "Parent.id() static",
+          "P"
+        ],
+        [
+          "결합",
+          "5 + \"P\"",
+          "5P"
+        ]
+      ]
+    },
+    "outputMoment": "정수 5가 문자열 P와 결합될 때 5P가 됩니다.",
+    "calculation": "(2+3) + \"P\" = \"5P\"",
+    "objectFlow": [
+      "Parent ref → Child 객체",
+      "x: Child / id: Parent(static)"
+    ],
+    "pitfalls": [
+      "둘 다 Child 기준으로 보아 5C라고 답하지 않습니다."
+    ],
+    "takeaway": "인스턴스 메서드는 Child, static 메서드는 Parent가 선택되어 5P입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-19": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "1a3b3",
+    "concept": "배열 참조 교환과 공유 객체 필드 변경",
+    "rules": [
+      "배열 칸에는 객체 자체가 아니라 참조가 들어 있으며 참조 교환은 객체 필드를 바꾸지 않습니다."
+    ],
+    "steps": [
+      "arr[0]과 arr[2]의 참조를 바꾸면 배열은 c,b,a 순서지만 변수 a,b,c 자체는 그대로 각 객체를 가리킵니다.",
+      "arr[1]은 b 객체, arr[0]은 c 객체입니다.",
+      "`arr[1].v = arr[0].v`로 b.v가 c.v와 같은 3이 됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "arr=[a(1),b(2),c(3)]",
+          "-"
+        ],
+        [
+          "교환",
+          "arr=[c(3),b(2),a(1)]",
+          "-"
+        ],
+        [
+          "필드 대입",
+          "b.v=c.v",
+          "b.v=3"
+        ],
+        [
+          "출력 변수",
+          "a.v=1,b.v=3,c.v=3",
+          "1a3b3"
+        ]
+      ]
+    },
+    "outputMoment": "원래 변수 a,b,c의 현재 필드를 문자열 사이에 이어 출력합니다.",
+    "calculation": "1 + \"a\" + 3 + \"b\" + 3 = 1a3b3",
+    "objectFlow": [
+      "a→BO#1(v=1)",
+      "b→BO#2(v=3)",
+      "c→BO#3(v=3)",
+      "arr=[BO#3, BO#2, BO#1]"
+    ],
+    "pitfalls": [
+      "배열 순서가 c,b,a가 되었다고 변수 a와 c의 정체까지 바뀌는 것은 아닙니다."
+    ],
+    "takeaway": "참조는 교환되고 b의 값만 3으로 바뀌어 1a3b3입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2025-2-20": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "TSEB",
+    "concept": "머리 삽입으로 문자열을 뒤집는 연결 리스트",
+    "rules": [
+      "단일 연결 리스트의 머리 삽입은 입력 순서를 역순으로 만듭니다."
+    ],
+    "steps": [
+      "문자열 BEST를 왼쪽부터 읽지만 새 노드를 매번 현재 head 앞에 붙입니다.",
+      "B 뒤 E를 앞에, S를 다시 앞에, T를 다시 앞에 붙여 리스트가 T→S→E→B가 됩니다.",
+      "head부터 순회하며 문자를 출력하고 노드를 해제합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "B",
+          "B",
+          "B"
+        ],
+        [
+          "E",
+          "E→B",
+          "EB"
+        ],
+        [
+          "S",
+          "S→E→B",
+          "SEB"
+        ],
+        [
+          "T",
+          "T→S→E→B",
+          "TSEB"
+        ]
+      ]
+    },
+    "outputMoment": "완성된 리스트 head에서 next를 따라 T,S,E,B를 출력합니다.",
+    "calculation": "BEST의 머리 삽입 결과 = TSEB",
+    "objectFlow": [
+      "head → T → S → E → B → NULL"
+    ],
+    "pitfalls": [
+      "입력 포인터 s의 진행 방향과 리스트의 연결 방향이 반대가 된다는 점을 기억합니다."
+    ],
+    "takeaway": "BEST를 머리에 차례로 삽입하면 TSEB로 뒤집힙니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  }
+}

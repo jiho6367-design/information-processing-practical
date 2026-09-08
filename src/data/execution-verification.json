@@ -1,0 +1,260 @@
+{
+  "2024-1-05": {
+    "passed": true,
+    "language": "Java",
+    "expected": "4",
+    "actual": "4"
+  },
+  "2024-1-08": {
+    "passed": true,
+    "language": "Python",
+    "expected": "Seynaau",
+    "actual": "Seynaau"
+  },
+  "2024-1-18": {
+    "passed": true,
+    "language": "Java",
+    "expected": "9",
+    "actual": "9"
+  },
+  "2024-2-01": {
+    "passed": true,
+    "language": "Java",
+    "expected": "S",
+    "actual": "S"
+  },
+  "2024-2-02": {
+    "passed": true,
+    "language": "Java",
+    "expected": "NNN",
+    "actual": "NNN"
+  },
+  "2024-2-03": {
+    "passed": true,
+    "language": "Python",
+    "expected": "ab3 ca3",
+    "actual": "ab3 ca3"
+  },
+  "2024-2-07": {
+    "passed": true,
+    "language": "Java",
+    "expected": "25, 20",
+    "actual": "25, 20"
+  },
+  "2024-2-08": {
+    "passed": true,
+    "language": "Java",
+    "expected": "dcba",
+    "actual": "dcba"
+  },
+  "2024-3-01": {
+    "passed": true,
+    "language": "Java",
+    "expected": "OOAAA",
+    "actual": "OOAAA"
+  },
+  "2024-3-02": {
+    "passed": true,
+    "language": "Python",
+    "expected": "3",
+    "actual": "3"
+  },
+  "2024-3-12": {
+    "passed": true,
+    "language": "Python",
+    "expected": "45",
+    "actual": "45"
+  },
+  "2024-3-14": {
+    "passed": true,
+    "language": "Java",
+    "expected": "52",
+    "actual": "52"
+  },
+  "2024-3-17": {
+    "passed": true,
+    "language": "Java",
+    "expected": "101",
+    "actual": "101"
+  },
+  "2024-3-18": {
+    "passed": true,
+    "language": "Java",
+    "expected": "B0",
+    "actual": "B0"
+  },
+  "2025-1-05": {
+    "passed": true,
+    "language": "Java",
+    "expected": "출력1출력5",
+    "actual": "출력1출력5"
+  },
+  "2025-1-11": {
+    "passed": true,
+    "language": "Java",
+    "expected": "54",
+    "actual": "54"
+  },
+  "2025-1-16": {
+    "passed": true,
+    "language": "Java",
+    "expected": "4",
+    "actual": "4"
+  },
+  "2025-1-18": {
+    "passed": true,
+    "language": "Java",
+    "expected": "20",
+    "actual": "20"
+  },
+  "2025-1-19": {
+    "passed": true,
+    "language": "Python",
+    "expected": "13",
+    "actual": "13"
+  },
+  "2025-2-04": {
+    "passed": true,
+    "language": "Java",
+    "expected": "BB",
+    "actual": "BB"
+  },
+  "2025-2-09": {
+    "passed": true,
+    "language": "Java",
+    "expected": "19",
+    "actual": "19"
+  },
+  "2025-2-17": {
+    "passed": true,
+    "language": "Python",
+    "expected": "2",
+    "actual": "2"
+  },
+  "2025-2-18": {
+    "passed": true,
+    "language": "Java",
+    "expected": "5P",
+    "actual": "5P"
+  },
+  "2025-2-19": {
+    "passed": true,
+    "language": "Java",
+    "expected": "1a3b3",
+    "actual": "1a3b3"
+  },
+  "2025-3-06": {
+    "passed": true,
+    "language": "Java",
+    "expected": "AB",
+    "actual": "AB"
+  },
+  "2025-3-10": {
+    "passed": true,
+    "language": "Java",
+    "expected": "100",
+    "actual": "100"
+  },
+  "2025-3-11": {
+    "passed": true,
+    "language": "Python",
+    "expected": "{0: (15, 5), 1: (10, 3), 2: (18, 5), 3: (9, 2)}",
+    "actual": "{0: (15, 5), 1: (10, 3), 2: (18, 5), 3: (9, 2)}"
+  },
+  "2025-3-18": {
+    "passed": true,
+    "language": "Java",
+    "expected": "100",
+    "actual": "100"
+  },
+  "2026-1-05": {
+    "passed": true,
+    "language": "Python",
+    "expected": "9A7A5A3A1A",
+    "actual": "9A7A5A3A1A"
+  },
+  "2026-1-06": {
+    "passed": true,
+    "language": "Java",
+    "expected": "2",
+    "actual": "2"
+  },
+  "2026-1-16": {
+    "passed": true,
+    "language": "Python",
+    "expected": "veDamuH",
+    "actual": "veDamuH"
+  },
+  "2026-1-19": {
+    "passed": true,
+    "language": "Java",
+    "expected": "1123",
+    "actual": "1123"
+  },
+  "2026-1-20": {
+    "passed": true,
+    "language": "Python",
+    "expected": "10",
+    "actual": "10"
+  },
+  "2024-1-12": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "B\na\nb",
+    "actual": "[('a',), ('b',)]"
+  },
+  "2024-1-17": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "1",
+    "actual": "1"
+  },
+  "2024-2-10": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "① VALUES\n② SELECT\n③ FROM\n④ SET",
+    "actual": "휴학"
+  },
+  "2024-3-03": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "1",
+    "actual": "1"
+  },
+  "2025-1-06": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "name         incentive\n이순신            1000",
+    "actual": "[('이순신', 1000)]"
+  },
+  "2025-3-07": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "4",
+    "actual": "4"
+  },
+  "2025-3-20": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "4",
+    "actual": "4"
+  },
+  "2026-1-04": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "① CONSTRAINT         ② FOREIGN      ③ TEAM_ID    ④ REFERENCES    ⑤ TEAM_ID2",
+    "actual": "CREATE TABLE accepted"
+  },
+  "2026-1-11": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "2",
+    "actual": "2"
+  },
+  "2026-1-18": {
+    "passed": true,
+    "language": "SQL",
+    "expected": "① 200        ② 3   ③ 1",
+    "actual": "(200, 3, 1)"
+  }
+}

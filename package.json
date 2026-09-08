@@ -1,0 +1,39 @@
+{
+  "name": "information-processing-practical-practice",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5174 --strictPort",
+    "extract-data": "python scripts/extract_practical_exams.py",
+    "verify-executions": "python scripts/verify_executable_questions.py",
+    "audit-pdf": "python scripts/audit_pdf_source_coverage.py",
+    "build-editorial": "python scripts/build_editorial_explanations.py",
+    "refresh-data": "npm run extract-data && npm run verify-executions && npm run build-editorial && npm run extract-data && npm run validate-data && npm run audit-pdf",
+    "validate-data": "python scripts/validate_exam_data.py",
+    "test": "vitest run",
+    "build": "npm run validate-data && tsc -b && node scripts/run-vite-build.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4174 --strictPort",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "rollup": "npm:@rollup/wasm-node@4.62.2",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5",
+    "vitest": "^2.1.8"
+  }
+}

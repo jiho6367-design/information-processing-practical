@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.vite/
+tmp/
+*.tsbuildinfo
+
+.env
+.env.*
+*.pdf
+__pycache__/
+*.pyc
+tmp/
+output/

@@ -1,0 +1,792 @@
+{
+  "2026-1-01": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① Bridge     ② Observer",
+    "concept": "추상과 구현을 분리하는 Bridge, 상태 변화를 알리는 Observer",
+    "rules": [
+      "Bridge는 구조 패턴, Observer는 발행·구독 관계를 만드는 행위 패턴입니다."
+    ],
+    "steps": [
+      "기능의 추상층과 구현부를 별도 계층으로 나누어 각각 확장한다는 설명은 Bridge입니다.",
+      "한 객체 상태가 바뀔 때 의존하는 여러 객체에 알리는 일대다 구조는 Observer입니다."
+    ],
+    "distinctions": [
+      "Adapter는 이미 맞지 않는 인터페이스를 변환하고, Bridge는 처음부터 추상과 구현을 분리해 확장합니다."
+    ],
+    "pitfalls": [
+      "Observer 설명의 ‘상속된 객체’라는 표현보다 일대다 상태 알림과 Publish/Subscribe 단서를 우선합니다."
+    ],
+    "takeaway": "① Bridge, ② Observer입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-02": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 운영요구사항          ② 자원요구사항         ③ 성능요구사항",
+    "concept": "비기능 요구사항의 운영·자원·성능 분류",
+    "rules": [
+      "비기능 요구사항은 무엇을 하는가보다 어떤 품질·환경·제약 아래 동작하는가를 정의합니다."
+    ],
+    "steps": [
+      "여러 운영체제에서 동작해야 한다는 환경 제약은 운영요구사항입니다.",
+      "메모리 사용량을 제한하는 것은 자원요구사항입니다.",
+      "1초 이내 응답처럼 측정 가능한 속도 기준은 성능요구사항입니다."
+    ],
+    "distinctions": [
+      "자원은 CPU·메모리·저장공간 사용량, 성능은 응답시간·처리량 같은 결과 지표입니다."
+    ],
+    "pitfalls": [
+      "‘시스템이 동작해야 한다’는 공통 문구보다 OS·메모리·1초라는 측정 대상을 봅니다."
+    ],
+    "takeaway": "① 운영, ② 자원, ③ 성능요구사항입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-03": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "106.00",
+    "concept": "배열 표기와 포인터 표기의 같은 평균 계산",
+    "rules": [
+      "배열 매개변수 `int p[]`와 포인터 매개변수 `int *p`는 이 사용에서 같은 원소열을 가리킵니다."
+    ],
+    "steps": [
+      "arr1의 p[i]와 arr2의 *(p+i)는 같은 배열 원소를 읽는 두 표기입니다.",
+      "열 값의 합은 530이고 길이 10이므로 각 함수의 평균은 53.0입니다.",
+      "두 평균을 더한 106을 소수 둘째 자리 형식으로 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "배열 합",
+          "70+50+…+25",
+          "530"
+        ],
+        [
+          "arr1",
+          "530/10",
+          "53.0"
+        ],
+        [
+          "arr2",
+          "530/10",
+          "53.0"
+        ],
+        [
+          "합과 형식",
+          "106.0, %.2f",
+          "106.00"
+        ]
+      ]
+    },
+    "outputMoment": "두 double 평균을 더한 뒤 `%.2f`가 소수 둘째 자리까지 표시합니다.",
+    "calculation": "53.00 + 53.00 = 106.00",
+    "objectFlow": [],
+    "pitfalls": [
+      "두 함수가 서로 다른 배열을 계산한다고 생각하거나 출력 형식의 .00을 빼먹지 않습니다."
+    ],
+    "takeaway": "두 표기는 같은 평균 53을 계산하므로 합은 106.00입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-04": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "① CONSTRAINT         ② FOREIGN      ③ TEAM_ID    ④ REFERENCES    ⑤ TEAM_ID2",
+    "concept": "이름 있는 외래키 제약조건 CREATE 문법",
+    "rules": [
+      "외래키 구문은 `CONSTRAINT 이름 FOREIGN KEY (자식열) REFERENCES 부모테이블 (부모열)` 순서입니다."
+    ],
+    "steps": [
+      "제약조건에 TEAM_TF라는 이름을 붙이므로 `CONSTRAINT TEAM_TF`로 시작합니다.",
+      "PLAYER에서 외래키가 될 열은 `FOREIGN KEY (TEAM_ID)`로 지정합니다.",
+      "참조 대상은 `REFERENCES TEAM (TEAM_ID2)`로 씁니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "제약 이름",
+          "CONSTRAINT TEAM_TF",
+          "① CONSTRAINT"
+        ],
+        [
+          "외래키",
+          "FOREIGN KEY (TEAM_ID)",
+          "② FOREIGN / ③ TEAM_ID"
+        ],
+        [
+          "참조",
+          "REFERENCES TEAM (TEAM_ID2)",
+          "④ REFERENCES / ⑤ TEAM_ID2"
+        ]
+      ]
+    },
+    "outputMoment": "문법 골격과 문제에 지정된 열 이름을 대응하면 다섯 빈칸이 완성됩니다.",
+    "calculation": "CONSTRAINT → FOREIGN → TEAM_ID → REFERENCES → TEAM_ID2",
+    "objectFlow": [],
+    "pitfalls": [
+      "자식 테이블 열 TEAM_ID와 부모 테이블 참조 열 TEAM_ID2의 위치를 바꾸지 않습니다."
+    ],
+    "takeaway": "완성 구문은 `CONSTRAINT TEAM_TF FOREIGN KEY (TEAM_ID) REFERENCES TEAM (TEAM_ID2)`입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-05": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "9A7A5A3A1A",
+    "concept": "역방향 슬라이스에서 두 칸씩 선택",
+    "rules": [
+      "슬라이스 step이 음수면 오른쪽에서 왼쪽으로 이동하며 시작·끝을 생략하면 끝 원소부터 시작합니다."
+    ],
+    "steps": [
+      "`range(10)`은 0부터 9까지의 리스트를 만듭니다.",
+      "`lst[::-2]`는 끝 9에서 시작해 왼쪽으로 두 칸씩 이동하여 9,7,5,3,1을 만듭니다.",
+      "각 숫자 뒤에 A를 붙이고 줄바꿈 없이 출력한 뒤 마지막 print가 줄을 바꿉니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "원본",
+          "0,1,2,3,4,5,6,7,8,9",
+          "-"
+        ],
+        [
+          "슬라이스",
+          "9,7,5,3,1",
+          "-"
+        ],
+        [
+          "반복 출력",
+          "각 값 + A",
+          "9A7A5A3A1A"
+        ]
+      ]
+    },
+    "outputMoment": "for문의 다섯 print가 같은 줄에 이어진 뒤 빈 print가 줄바꿈합니다.",
+    "calculation": "9A + 7A + 5A + 3A + 1A",
+    "objectFlow": [],
+    "pitfalls": [
+      "range(10)에 10이 포함된다고 생각하거나 step -2를 값에서 2를 빼는 별도 연산으로 보지 않습니다."
+    ],
+    "takeaway": "9부터 홀수만 역순으로 골라 9A7A5A3A1A가 됩니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-06": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "2",
+    "concept": "오버로딩은 컴파일 시, 오버라이딩은 실행 시",
+    "rules": [
+      "오버로딩 후보 선택은 컴파일 시 선언된 타입 범위에서 이뤄집니다.",
+      "선택된 시그니처의 오버라이딩 구현은 실제 객체형으로 결정됩니다."
+    ],
+    "steps": [
+      "a.g()는 A에 정의된 g를 실행하고 그 안에서 `f(\"a\")`를 호출합니다.",
+      "A.g를 컴파일할 때 보이는 후보는 A.f(Object)이므로 호출 시그니처는 f(Object)로 고정됩니다.",
+      "실제 객체 B가 이 시그니처를 오버라이딩했으므로 B.f(Object)가 실행되어 2를 반환합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "a.g()",
+          "A.g 실행",
+          "f(\"a\") 호출"
+        ],
+        [
+          "오버로딩 선택",
+          "A에서 f(Object)",
+          "시그니처 고정"
+        ],
+        [
+          "동적 바인딩",
+          "B.f(Object)",
+          "\"2\""
+        ],
+        [
+          "출력",
+          "반환 문자열",
+          "2"
+        ]
+      ]
+    },
+    "outputMoment": "B.f(Object)가 문자열 2를 g에 반환하고 println이 출력합니다.",
+    "calculation": "A.g → 선택 f(Object) → 실제 B.f(Object) → \"2\"",
+    "objectFlow": [
+      "A a → B 객체",
+      "A.g() → f(Object) → B.f(Object)"
+    ],
+    "pitfalls": [
+      "인수가 문자열이라는 이유로 B.f(String)이 나중에 선택된다고 생각하면 안 됩니다."
+    ],
+    "takeaway": "시그니처는 A의 f(Object), 구현은 B의 f(Object)라서 2입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-07": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "ISMS",
+    "concept": "조직의 정보보호를 통합 관리하는 ISMS",
+    "rules": [
+      "ISMS는 Information Security Management System의 약자로 관리적·기술적·물리적 보호조치를 체계화합니다."
+    ],
+    "steps": [
+      "개별 보안 제품이 아니라 정책·위험·대책을 조직 차원에서 지속 관리하는 체계인지 확인합니다.",
+      "KISA가 평가·인증하는 정보보호 관리 체계라는 표현을 ISMS와 연결합니다."
+    ],
+    "distinctions": [
+      "ISO 27001도 정보보호 경영시스템 국제표준이지만 문제의 KISA 인증 명칭은 ISMS입니다."
+    ],
+    "pitfalls": [
+      "보안 시스템 한 종류가 아니라 조직 전체의 관리 체계라는 범위를 놓치지 않습니다."
+    ],
+    "takeaway": "KISA가 인증하는 정보보호 관리 체계는 ISMS입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-08": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 192.168.10.0/23    ② 192.168.12.0/23",
+    "concept": "/23 네트워크 주소의 2단위 블록",
+    "rules": [
+      "/23은 세 번째 옥텟이 짝수부터 두 개씩 한 네트워크를 이룹니다."
+    ],
+    "steps": [
+      "255.255.254.0은 /23이며 세 번째 옥텟의 블록 크기는 256-254=2입니다.",
+      "A의 11은 10~11 블록에 있어 네트워크가 192.168.10.0/23입니다.",
+      "B의 12는 12~13 블록에 있어 네트워크가 192.168.12.0/23입니다."
+    ],
+    "distinctions": [
+      "호스트 IP를 그대로 /23로 적는 것이 아니라 호스트 비트를 모두 0으로 만든 네트워크 주소를 적습니다."
+    ],
+    "pitfalls": [
+      "11을 단순히 1 빼고 12는 그대로 두는 암기 대신 2단위 블록 경계를 계산합니다."
+    ],
+    "takeaway": "A는 192.168.10.0/23, B는 192.168.12.0/23입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-09": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "Watering Hole",
+    "concept": "표적이 자주 가는 사이트를 미리 감염시키는 Watering Hole",
+    "rules": [
+      "Watering Hole은 먹잇감이 모이는 물웅덩이를 기다리듯 표적 집단의 방문 사이트를 감염시키는 공격입니다."
+    ],
+    "steps": [
+      "공격자가 피해자에게 직접 링크를 보내는 대신 목표 조직의 방문 습관을 조사하는지 확인합니다.",
+      "자주 방문하는 정상 사이트를 먼저 감염시켜 방문자를 노리는 방식을 Watering Hole과 연결합니다."
+    ],
+    "distinctions": [
+      "Drive-by Download는 방문만으로 감염되는 전달 방식이고, Watering Hole은 특정 표적이 자주 찾는 사이트를 골라 함정을 놓는 전략입니다."
+    ],
+    "pitfalls": [
+      "웹 방문 감염이라는 공통점만 보지 말고 사전 표적 조사 여부를 확인합니다."
+    ],
+    "takeaway": "목표 조직이 자주 가는 사이트를 선감염하면 Watering Hole입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-10": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 요구 조건 분석          ② 개념적 설계       ③ 논리적 설계       ④ 물리적 설계       ⑤ 데이터베이스 구현",
+    "concept": "요구 분석에서 구현까지의 데이터베이스 설계 단계",
+    "rules": [
+      "일반 순서는 요구 조건 분석→개념적 설계→논리적 설계→물리적 설계→구현입니다."
+    ],
+    "steps": [
+      "먼저 사용자의 데이터·처리 요구를 수집하고 분석합니다.",
+      "현실 세계를 개념 모델로 만들고, DBMS에 맞는 논리 구조로 바꾼 뒤 저장 구조를 물리적으로 정합니다.",
+      "정해진 스키마를 실제 DBMS에 생성하고 데이터를 적재하는 구현으로 마칩니다."
+    ],
+    "distinctions": [
+      "개념적 설계는 DBMS 독립적, 논리적 설계는 데이터 모델·DBMS 관점, 물리적 설계는 저장·접근 경로 관점입니다."
+    ],
+    "pitfalls": [
+      "논리 스키마 설계는 논리적 설계의 세부 활동이며 보기의 전체 단계명과 혼동하지 않습니다."
+    ],
+    "takeaway": "① 요구 조건 분석, ② 개념적, ③ 논리적, ④ 물리적 설계, ⑤ 데이터베이스 구현입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-11": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "2",
+    "concept": "평균보다 큰 부서 예산으로 조인 행 거르기",
+    "rules": [
+      "스칼라 부질의 AVG 결과를 먼저 한 값으로 계산한 뒤 바깥 WHERE의 각 조인 행과 비교합니다."
+    ],
+    "steps": [
+      "DEPT 예산 평균은 (3000+5000+7000+9000)/4=6000입니다.",
+      "평균보다 큰 부서는 D03의 7000과 D04의 9000입니다.",
+      "EMPLOYEE에서 이 부서와 조인되는 직원 E03과 E04 두 명을 셉니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "AVG",
+          "총 24000 / 4",
+          "6000"
+        ],
+        [
+          "부서 필터",
+          "D03=7000, D04=9000",
+          "2개"
+        ],
+        [
+          "직원 조인",
+          "E03, E04",
+          "2행"
+        ],
+        [
+          "COUNT",
+          "2행",
+          "2"
+        ]
+      ]
+    },
+    "outputMoment": "예산 6000 초과 부서의 직원 두 행을 COUNT(*)가 셉니다.",
+    "calculation": "AVG=6000, 조건 만족 7000·9000 → 2",
+    "objectFlow": [],
+    "pitfalls": [
+      "평균 이상(>=)이 아니라 평균 초과(>)이므로 같은 값이 있다면 제외해야 합니다."
+    ],
+    "takeaway": "평균 예산 6000보다 큰 부서 직원은 두 명이라 결과는 2입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-12": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① ㉣        ② ㉢    ③ ㉠",
+    "concept": "절차적·교환적·기능적 응집도의 단서",
+    "rules": [
+      "절차적=실행 순서, 교환적=공통 데이터, 기능적=하나의 목적입니다."
+    ],
+    "steps": [
+      "기능 관련성은 약하지만 정해진 순서로 실행되면 절차적 응집도입니다.",
+      "서로 다른 기능이 같은 입력·출력 데이터를 사용하면 교환적 응집도입니다.",
+      "모든 요소가 하나의 기능에 밀접하면 기능적 응집도입니다."
+    ],
+    "distinctions": [
+      "순차적 응집도는 앞 출력이 다음 입력이 되는 데이터 흐름까지 필요합니다."
+    ],
+    "pitfalls": [
+      "‘순차적으로 실행’이라는 표현을 순차적 응집도로 바로 고르지 말고 출력→입력 연결이 있는지 봅니다."
+    ],
+    "takeaway": "① 절차적 ㉣, ② 교환적 ㉢, ③ 기능적 ㉠입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-13": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 스텁, Stub\n② 드라이버, Driver",
+    "concept": "통합 테스트에서 없는 모듈을 대신하는 스텁과 드라이버",
+    "rules": [
+      "스텁은 호출받는 가짜 하위 모듈, 드라이버는 테스트 대상을 호출하는 가짜 상위 모듈입니다."
+    ],
+    "steps": [
+      "하향식에서는 아직 붙지 않은 하위 모듈의 반환 동작을 스텁이 대신합니다.",
+      "상향식에서는 아직 없는 상위 모듈처럼 하위 클러스터를 호출하는 드라이버를 만듭니다."
+    ],
+    "distinctions": [
+      "Top-down=Stub, Bottom-up=Driver로 방향과 역할을 함께 외웁니다."
+    ],
+    "pitfalls": [
+      "자동차의 위·아래 이미지보다 ‘누가 누구를 호출하는가’로 구분하면 덜 헷갈립니다."
+    ],
+    "takeaway": "① 스텁, ② 드라이버입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-14": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "심볼릭 링크, Symbolic Link",
+    "concept": "경로를 저장하는 심볼릭 링크와 링크 교체 공격",
+    "rules": [
+      "심볼릭 링크는 대상 경로를 저장하며 대상이 없어지면 끊어진 링크가 될 수 있습니다."
+    ],
+    "steps": [
+      "원본 파일 내용·inode를 공유하는 것이 아니라 대상 경로 정보를 담는 별도 링크 파일인지 확인합니다.",
+      "공격자가 임시 파일 자리에 같은 이름의 링크를 만들어 중요 파일을 가리키게 하는 레이스 조건을 따라갑니다."
+    ],
+    "distinctions": [
+      "하드 링크는 같은 inode를 가리키고 심볼릭 링크는 다른 파일의 경로를 가리킵니다."
+    ],
+    "pitfalls": [
+      "임시 파일은 이름만 믿지 말고 생성·검사·열기를 원자적으로 처리해 링크 교체 시간을 주지 않아야 합니다."
+    ],
+    "takeaway": "경로를 가리키며 임시 파일 레이스 공격에 악용될 수 있는 것은 심볼릭 링크입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-15": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "20",
+    "concept": "함수 포인터 반환 주소와 16진수 출력",
+    "rules": [
+      "포인터에 1을 더하면 다음 배열 원소 주소로 이동합니다.",
+      "`%x`는 정수를 16진수 소문자로 표시합니다."
+    ],
+    "steps": [
+      "mine.fn은 int 포인터를 받아 int 포인터를 돌려주는 dummy를 가리킵니다.",
+      "dummy(n)은 `n+1`을 반환하므로 배열의 두 번째 원소 32의 주소입니다.",
+      "역참조 값 32를 `%x`로 출력하면 16진수 20입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "함수 포인터",
+          "mine.fn=dummy",
+          "-"
+        ],
+        [
+          "dummy(n)",
+          "n+1",
+          "&n[1]"
+        ],
+        [
+          "역참조",
+          "*(&n[1])",
+          "32"
+        ],
+        [
+          "형식 변환",
+          "32 decimal → hex",
+          "20"
+        ]
+      ]
+    },
+    "outputMoment": "32라는 값이 printf의 %x 형식으로 변환될 때 화면에는 20이 나옵니다.",
+    "calculation": "n[1]=32₁₀=20₁₆",
+    "objectFlow": [],
+    "pitfalls": [
+      "배열 값 32를 그대로 쓰거나 0x20처럼 접두사를 붙이지 않습니다."
+    ],
+    "takeaway": "두 번째 값 32를 16진수로 출력하므로 20입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-16": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "veDamuH",
+    "concept": "문자열 역순 뒤 특정 문자 제거",
+    "rules": [
+      "조건 `c not in 'ong'`는 부분 문자열 ong를 지우는 것이 아니라 문자 o·n·g 각각을 제외합니다."
+    ],
+    "steps": [
+      "입력 HumanDev에는 공백이 없어 split과 join 뒤에도 HumanDev입니다.",
+      "역순은 veDnamuH입니다.",
+      "역순 문자 중 o, n, g에 속하는 문자를 버리므로 n 하나가 제거됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "입력 정리",
+          "HumanDev",
+          "HumanDev"
+        ],
+        [
+          "역순",
+          "veDnamuH",
+          "-"
+        ],
+        [
+          "o/n/g 제거",
+          "n 제거",
+          "veDamuH"
+        ]
+      ]
+    },
+    "outputMoment": "제너레이터가 남긴 문자를 join한 z를 출력합니다.",
+    "calculation": "reverse(HumanDev)=veDnamuH → n 제거 = veDamuH",
+    "objectFlow": [],
+    "pitfalls": [
+      "대소문자를 구분하므로 대문자 G가 있었다면 소문자 g와 같지 않습니다."
+    ],
+    "takeaway": "뒤집은 뒤 n을 빼서 veDamuH가 됩니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-17": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 정보         ② 감독       ③ 비번호       ④ 비동기 균형 모드         ⑤ 비동기 응답 모드",
+    "concept": "HDLC 프레임 종류와 두 비동기 동작 모드",
+    "rules": [
+      "HDLC 프레임은 I(Information), S(Supervisory), U(Unnumbered)로 구분합니다."
+    ],
+    "steps": [
+      "사용자 데이터를 전달하는 I 프레임은 정보 프레임입니다.",
+      "흐름·오류 제어를 담당하는 S 프레임은 감독 프레임, 링크 관리를 담당하는 U 프레임은 비번호 프레임입니다.",
+      "복합국끼리 대등하게 통신하면 비동기 균형 모드, 종국이 주국 허락 없이 전송하면 비동기 응답 모드입니다."
+    ],
+    "distinctions": [
+      "ABM은 복합국 간 대등 구조, ARM은 주국·종국 구조에서 종국이 허락 없이 전송 가능한 모드입니다."
+    ],
+    "pitfalls": [
+      "S를 ‘동기’가 아니라 Supervisory의 감독으로, U를 Unnumbered의 비번호로 풉니다."
+    ],
+    "takeaway": "① 정보, ② 감독, ③ 비번호, ④ 비동기 균형, ⑤ 비동기 응답 모드입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-18": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "① 200        ② 3   ③ 1",
+    "concept": "DISTINCT와 COUNT(DISTINCT)의 결과 행 수",
+    "rules": [
+      "DISTINCT는 중복 행을 제거하고 COUNT(DISTINCT 열)은 서로 다른 비NULL 값의 수를 반환합니다."
+    ],
+    "steps": [
+      "DISTINCT 없는 첫 SELECT는 학생 200명의 DEPT 값을 모두 반환하므로 200행입니다.",
+      "DISTINCT DEPT는 세 학과 이름만 남겨 3행입니다.",
+      "전산과로 제한한 뒤 COUNT(DISTINCT DEPT)는 서로 다른 학과 값 하나를 셉니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "① SELECT DEPT",
+          "50+100+50명",
+          "200행"
+        ],
+        [
+          "② DISTINCT DEPT",
+          "전기/전산/전자",
+          "3행"
+        ],
+        [
+          "③ WHERE 전산과",
+          "서로 다른 DEPT={전산과}",
+          "1"
+        ]
+      ]
+    },
+    "outputMoment": "각 질의가 반환하는 튜플 수를 따로 세면 200,3,1입니다.",
+    "calculation": "①200 ②3 ③1",
+    "objectFlow": [],
+    "pitfalls": [
+      "세 번째 질의가 전산과 학생 100명을 세는 것이 아니라 서로 다른 DEPT 값의 개수를 셉니다."
+    ],
+    "takeaway": "중복 제거 범위에 따라 결과 튜플 수는 200, 3, 1입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-19": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "1123",
+    "concept": "오버로딩 선택과 문자열 결합 시작점",
+    "rules": [
+      "Java `+`는 문자열을 만나기 전까지 숫자 덧셈을 하고, 문자열을 만난 뒤에는 왼쪽부터 문자열 결합을 합니다."
+    ],
+    "steps": [
+      "cc(5,4)는 int 버전으로 9를 반환합니다.",
+      "cc('c','a')는 char 두 개 버전으로 문자 코드 차 2를 반환하고 cc('3')은 문자 3을 반환합니다.",
+      "a+b는 문자열을 만나기 전이라 정수 덧셈 11이고, 그 뒤 \"2\"와 문자 3이 차례로 붙습니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "a",
+          "5+4",
+          "9"
+        ],
+        [
+          "b",
+          "'c'-'a'",
+          "2"
+        ],
+        [
+          "c",
+          "cc('3')",
+          "'3'"
+        ],
+        [
+          "표현식",
+          "9+2+\"2\"+'3'",
+          "1123"
+        ]
+      ]
+    },
+    "outputMoment": "정수 합 11이 문자열 \"2\"를 만나는 순간 \"112\"가 되고 문자 3이 붙습니다.",
+    "calculation": "9+2=11 → \"11\"+\"2\"+\"3\" = \"1123\"",
+    "objectFlow": [],
+    "pitfalls": [
+      "9,2를 처음부터 각각 문자열로 붙여 9223이라고 계산하지 않습니다."
+    ],
+    "takeaway": "숫자 합 11 뒤에 2와 3이 문자열로 붙어 1123입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2026-1-20": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "10",
+    "concept": "얕은 복사된 바깥 리스트와 공유되는 안쪽 리스트",
+    "rules": [
+      "`m[:]`는 바깥 리스트의 얕은 복사입니다.",
+      "리스트의 `+=`는 새 리스트 대입이 아니라 기존 리스트를 제자리 확장합니다."
+    ],
+    "steps": [
+      "m은 `[1] [2] [3] [4]`라는 네 개의 안쪽 리스트를 만들고, `b=m[:]`는 바깥 리스트만 복사합니다.",
+      "b의 각 칸은 m과 같은 안쪽 리스트를 가리키므로 `+=`가 그 리스트를 제자리에서 늘리면 m에도 보입니다.",
+      "안쪽 리스트 길이는 차례로 1,2,3,4가 되어 합이 10입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "m 길이 [1,1,1,1]",
+          "-"
+        ],
+        [
+          "i=0",
+          "b[1]+=[1]",
+          "길이 [1,2,1,1]"
+        ],
+        [
+          "i=1",
+          "b[2]+=[2,1]",
+          "길이 [1,2,3,1]"
+        ],
+        [
+          "i=2",
+          "b[3]+=[3,2,1]",
+          "길이 [1,2,3,4]"
+        ],
+        [
+          "합",
+          "1+2+3+4",
+          "10"
+        ]
+      ]
+    },
+    "outputMoment": "공유된 안쪽 리스트들의 최종 길이를 sum할 때 10이 됩니다.",
+    "calculation": "1 + 2 + 3 + 4 = 10",
+    "objectFlow": [
+      "m[0] ─┬→ [1] ←┬─ b[0]",
+      "m[1] ─┬→ [2,1] ←┬─ b[1]",
+      "나머지 칸도 같은 안쪽 객체 공유"
+    ],
+    "pitfalls": [
+      "b를 완전한 깊은 복사로 생각하면 m의 길이가 모두 1이라 잘못 계산합니다."
+    ],
+    "takeaway": "바깥만 복사되어 안쪽 변경을 공유하므로 최종 길이 합은 10입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  }
+}

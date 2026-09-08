@@ -1,0 +1,101 @@
+{
+  "2024-1-03": {
+    "답": ["3NF", "Third Normal Form"]
+  },
+  "2024-1-06": {
+    "답": ["추상 팩토리", "추상 팩토리 패턴", "Abstract Factory Pattern"]
+  },
+  "2024-1-09": {
+    "①": ["Theta Join", "Theta-Join"],
+    "②": ["Equi Join", "Equijoin", "Equi-Join"],
+    "③": ["Natural Join"]
+  },
+  "2024-1-14": {
+    "답": ["Modified Condition/Decision Coverage", "변경 조건/결정 커버리지"]
+  },
+  "2024-1-15": {
+    "답": ["루트킷"]
+  },
+  "2024-1-16": {
+    "답": ["Advanced Persistent Threat", "지능형 지속 위협"]
+  },
+  "2024-2-17": {
+    "답": ["Iterator Pattern", "이터레이터", "이터레이터 패턴", "반복자 패턴"]
+  },
+  "2024-3-08": {
+    "답": ["행위 패턴", "행동", "행동 패턴", "Behavioral Pattern"]
+  },
+  "2024-3-16": {
+    "답": ["엔터티", "엔티티", "개체 무결성", "Entity Integrity"]
+  },
+  "2024-3-07": {
+    "답": ["Virtual Private Network", "가상 사설망"]
+  },
+  "2025-1-02": {
+    "①": ["도메인 무결성", "Domain", "Domain Integrity"],
+    "②": ["개체 무결성", "Entity", "Entity Integrity"],
+    "③": ["참조 무결성", "Referential Integrity"]
+  },
+  "2025-1-04": {
+    "답": ["Cyclic Redundancy Check", "순환 중복 검사"]
+  },
+  "2025-1-08": {
+    "답": ["Scareware"]
+  },
+  "2025-1-13": {
+    "답": ["Adapter Pattern", "어댑터", "어댑터 패턴"]
+  },
+  "2025-2-02": {
+    "답": ["Secure Shell"]
+  },
+  "2025-2-10": {
+    "답": ["3 그리고 2"]
+  },
+  "2025-2-01": {
+    "답": ["인덱스", "색인 파일", "인덱스 파일", "Index File"]
+  },
+  "2025-2-11": {
+    "답": ["에이잭스", "아약스"]
+  },
+  "2025-2-12": {
+    "답": ["Proxy Pattern", "프록시", "프록시 패턴"]
+  },
+  "2025-2-13": {
+    "답": ["SYN Flood", "SYN 플러딩", "SYN 플러드", "SYN Flooding Attack"]
+  },
+  "2025-3-01": {
+    "답": ["Package", "Package Diagram", "패키지 다이어그램"]
+  },
+  "2025-3-03": {
+    "답": ["Condition Coverage"]
+  },
+  "2025-3-08": {
+    "답": ["Open Authorization"]
+  },
+  "2025-3-09": {
+    "답": ["One-Time Password", "One Time Password", "일회용 비밀번호"]
+  },
+  "2025-3-13": {
+    "①": ["Mandatory Access Control", "강제적 접근 통제"],
+    "②": ["Role-Based Access Control", "역할 기반 접근 통제"],
+    "③": ["Discretionary Access Control", "임의적 접근 통제"]
+  },
+  "2025-3-15": {
+    "①": ["Tuple"],
+    "②": ["Relation Instance"],
+    "③": ["Cardinality"]
+  },
+  "2026-1-01": {
+    "①": ["Bridge Pattern", "브리지", "브리지 패턴"],
+    "②": ["Observer Pattern", "옵서버", "옵서버 패턴"]
+  },
+  "2026-1-07": {
+    "답": ["Information Security Management System", "정보보호 관리체계"]
+  },
+  "2026-1-09": {
+    "답": ["Watering Hole Attack", "워터링 홀", "워터링홀 공격"]
+  },
+  "2026-1-14": {
+    "답": ["소프트 링크", "Soft Link"]
+  }
+}

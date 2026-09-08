@@ -1,0 +1,776 @@
+{
+  "2024-2-01": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "S",
+    "concept": "split 결과 배열의 인덱스",
+    "rules": [
+      "Java 배열 인덱스는 0부터 시작하며 split의 구분 문자는 결과에서 빠집니다."
+    ],
+    "steps": [
+      "문자열을 T 기준으로 나누면 T 자체는 결과에 포함되지 않습니다.",
+      "`ITISTESTSTRING`의 조각을 차례로 쓰면 I, IS, ES, S, RING입니다.",
+      "인덱스 3은 네 번째 조각 S입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "원문",
+          "ITISTESTSTRING",
+          "-"
+        ],
+        [
+          "split(\"T\")",
+          "[I, IS, ES, S, RING]",
+          "-"
+        ],
+        [
+          "result[3]",
+          "네 번째 조각",
+          "S"
+        ]
+      ]
+    },
+    "outputMoment": "System.out.print(result[3])가 네 번째 조각을 출력합니다.",
+    "calculation": "result[3] = \"S\"",
+    "objectFlow": [],
+    "pitfalls": [
+      "사람이 세는 ‘3번째’가 아니라 인덱스 3인 ‘4번째’를 골라야 합니다."
+    ],
+    "takeaway": "T로 나눈 배열의 네 번째 원소는 S입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-02": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "NNN",
+    "concept": "배열 내용이 아닌 참조 동일성 비교",
+    "rules": [
+      "Java 배열의 `==`는 참조 동일성을 비교하며 내용 비교에는 Arrays.equals가 필요합니다."
+    ],
+    "steps": [
+      "a, b, c는 각각 별도의 new 배열로 만들어집니다.",
+      "`x == y`는 배열 요소가 같은지가 아니라 두 변수가 같은 배열 객체를 가리키는지 비교합니다.",
+      "세 쌍 모두 서로 다른 객체이므로 매번 N을 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "check(a,b)",
+          "객체 A ≠ 객체 B",
+          "N"
+        ],
+        [
+          "check(b,c)",
+          "객체 B ≠ 객체 C",
+          "N"
+        ],
+        [
+          "check(a,c)",
+          "객체 A ≠ 객체 C",
+          "N"
+        ]
+      ]
+    },
+    "outputMoment": "각 check 호출의 else에서 N이 하나씩 이어서 출력됩니다.",
+    "calculation": "N + N + N = NNN",
+    "objectFlow": [
+      "a → int[]#1",
+      "b → int[]#2",
+      "c → int[]#3"
+    ],
+    "pitfalls": [
+      "a와 b의 요소가 같다는 이유로 O라고 판단하면 안 됩니다."
+    ],
+    "takeaway": "세 배열은 내용과 무관하게 서로 다른 객체이므로 NNN입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-03": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "ab3 ca3",
+    "concept": "슬라이딩 부분 문자열의 등장 횟수",
+    "rules": [
+      "슬라이스 `str[i:i+len(p)]`는 i에서 시작하는 p 길이의 부분 문자열입니다."
+    ],
+    "steps": [
+      "cnt는 시작 위치를 한 칸씩 옮기며 p 길이만큼 잘라 비교합니다.",
+      "문자열에서 `ca`는 3번, `ab`도 3번 발견됩니다.",
+      "f-string의 고정 글자 `ab`, `ca` 뒤에 서로 반대 패턴의 개수가 들어갑니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "cnt(str,\"ca\")",
+          "ca 등장 3회",
+          "첫 자리 ab3"
+        ],
+        [
+          "cnt(str,\"ab\")",
+          "ab 등장 3회",
+          "둘째 자리 ca3"
+        ],
+        [
+          "print",
+          "공백 포함",
+          "ab3 ca3"
+        ]
+      ]
+    },
+    "outputMoment": "f-string이 두 호출 결과를 각각 고정 글자 뒤에 끼워 넣습니다.",
+    "calculation": "`ab`+3+공백+`ca`+3 = `ab3 ca3`",
+    "objectFlow": [],
+    "pitfalls": [
+      "표시되는 ab 뒤에는 ab의 횟수가 아니라 p1인 ca의 횟수가 들어갑니다."
+    ],
+    "takeaway": "두 패턴이 각각 3회라서 출력은 ab3 ca3입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-04": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "반정규화, Denormalization, 비정규화, 역정규화",
+    "concept": "성능을 위해 정규화 구조를 의도적으로 되돌리는 반정규화",
+    "rules": [
+      "반정규화는 성능 목적 등으로 정규화 원칙을 의도적으로 위배하는 설계입니다."
+    ],
+    "steps": [
+      "이미 정규화된 모델에 통합·중복·분리를 의도적으로 적용한다는 점을 확인합니다.",
+      "조회 성능과 운영 편의는 좋아질 수 있지만 일관성과 정합성 위험이 생긴다는 양면성을 연결합니다."
+    ],
+    "distinctions": [
+      "비정규화는 정규화되지 않은 상태를 넓게 말할 수 있고, 반정규화는 정규화된 모델을 의도적으로 조정하는 행위에 초점이 있습니다."
+    ],
+    "pitfalls": [
+      "정규화와 반대로 보인다고 무조건 좋은 최적화는 아니며 중복 갱신 비용을 함께 봐야 합니다."
+    ],
+    "takeaway": "성능을 위해 통합·중복·분리를 의도적으로 적용하면 반정규화입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-05": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "-13",
+    "concept": "값 전달 함수와 switch의 fall-through",
+    "rules": [
+      "C의 일반 매개변수는 값 전달입니다.",
+      "case에 break가 없으면 다음 문장으로 계속 실행됩니다."
+    ],
+    "steps": [
+      "swap은 a와 b의 복사본만 바꾸므로 main의 a=11, b=19는 그대로입니다.",
+      "switch(11)은 case 11부터 시작해 b에 2를 더합니다.",
+      "break 전까지 다음 문장에도 내려가 3을 더한 뒤 a-b를 계산합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "swap 후",
+          "a=11, b=19",
+          "변화 없음"
+        ],
+        [
+          "case 11",
+          "b += 2",
+          "b=21"
+        ],
+        [
+          "다음 문장",
+          "b += 3",
+          "b=24"
+        ],
+        [
+          "출력",
+          "11-24",
+          "-13"
+        ]
+      ]
+    },
+    "outputMoment": "printf가 바뀌지 않은 a와 누적된 b의 차를 계산합니다.",
+    "calculation": "11 - (19+2+3) = -13",
+    "objectFlow": [],
+    "pitfalls": [
+      "swap이 main 변수를 바꾼다고 생각하거나 case 11 뒤에서 자동으로 멈춘다고 생각하기 쉽습니다."
+    ],
+    "takeaway": "값 전달과 fall-through를 함께 적용하면 -13입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-06": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "10",
+    "concept": "포인터로 문자열 복사 후 인덱스 합산",
+    "rules": [
+      "C 문자열은 널 문자 전까지가 내용이며, 포인터 증가로 다음 문자를 가리킵니다."
+    ],
+    "steps": [
+      "func는 str1의 `first`를 str2 배열에 문자별로 복사하고 끝에 널 문자를 넣습니다.",
+      "str2의 유효 길이는 5가 되어 반복 인덱스는 0부터 4까지입니다.",
+      "result에 이 인덱스들을 모두 더합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "복사",
+          "str2=\"first\"",
+          "길이 5"
+        ],
+        [
+          "i=0,1,2",
+          "인덱스 누적",
+          "3"
+        ],
+        [
+          "i=3,4",
+          "인덱스 누적",
+          "10"
+        ]
+      ]
+    },
+    "outputMoment": "for문 종료 후 result를 출력합니다.",
+    "calculation": "0+1+2+3+4 = 10",
+    "objectFlow": [],
+    "pitfalls": [
+      "기존 `teststring` 뒤쪽 문자는 새 널 문자 때문에 문자열로 읽히지 않습니다."
+    ],
+    "takeaway": "복사된 first의 인덱스 합은 10입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-07": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "25, 20",
+    "concept": "논리 조건으로 홀수와 짝수를 나눠 합산",
+    "rules": [
+      "`&&`가 `||`보다 먼저 계산되므로 두 괄호가 홀수 선택과 짝수 선택을 각각 담당합니다."
+    ],
+    "steps": [
+      "odd가 true이면 첫 조건이 켜져 홀수만 result에 더합니다.",
+      "odd가 false이면 두 번째 조건이 켜져 짝수만 더합니다.",
+      "1~9의 홀수 합과 짝수 합을 쉼표·공백 형식으로 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "odd=true",
+          "1+3+5+7+9",
+          "25"
+        ],
+        [
+          "odd=false",
+          "2+4+6+8",
+          "20"
+        ],
+        [
+          "출력",
+          "25 + \", \" + 20",
+          "25, 20"
+        ]
+      ]
+    },
+    "outputMoment": "두 sum 반환값을 문자열 `, ` 사이에 이어 출력합니다.",
+    "calculation": "홀수합 25, 짝수합 20",
+    "objectFlow": [],
+    "pitfalls": [
+      "odd라는 boolean 값 자체를 더하는 것이 아니라 조건에 맞는 배열 원소를 더합니다."
+    ],
+    "takeaway": "true는 홀수합 25, false는 짝수합 20을 돌려줍니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-08": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "dcba",
+    "concept": "재귀 복귀 과정에서 중복 문자를 제거하는 순서",
+    "rules": [
+      "재귀 호출 뒤의 코드는 가장 깊은 호출부터 역순으로 복귀합니다.",
+      "seen[c]는 해당 문자를 이미 사용했는지 저장합니다."
+    ],
+    "steps": [
+      "호출은 문자열 끝에서 시작하지만 먼저 index-1 재귀를 끝까지 내려갑니다.",
+      "복귀는 왼쪽 문자부터 처리되며 seen에 처음 나온 문자만 기록합니다.",
+      "새 문자를 앞에 붙이는 `c + result` 때문에 최종 고유 문자 순서는 거꾸로 쌓입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "왼쪽부터 복귀",
+          "a 처음",
+          "a"
+        ],
+        [
+          "b 처음",
+          "b + a",
+          "ba"
+        ],
+        [
+          "a 중복, c 처음",
+          "c + ba",
+          "cba"
+        ],
+        [
+          "마지막 d 처음",
+          "d + cba",
+          "dcba"
+        ]
+      ]
+    },
+    "outputMoment": "마지막 d가 아직 보이지 않았으므로 기존 cba 앞에 붙어 dcba가 됩니다.",
+    "calculation": "고유 문자 발견 a→b→c→d, 앞붙이기 결과 a→ba→cba→dcba",
+    "objectFlow": [],
+    "pitfalls": [
+      "끝에서 호출을 시작했다는 사실만 보고 즉시 d부터 처리한다고 생각하면 안 됩니다. 재귀 호출이 먼저입니다."
+    ],
+    "takeaway": "왼쪽부터 고유 문자를 확인하되 앞에 붙이므로 결과는 dcba입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-09": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "21",
+    "concept": "2차원 배열 행 포인터의 역참조",
+    "rules": [
+      "2차원 배열에서 한 행의 이름은 그 행 첫 원소를 가리키는 포인터처럼 사용됩니다."
+    ],
+    "steps": [
+      "parr[0]은 arr[1] 즉 두 번째 행, parr[1]은 arr[2] 즉 세 번째 행을 가리킵니다.",
+      "parr[1][1]은 8, *(parr[1]+2)는 9입니다.",
+      "**parr는 parr[0]이 가리키는 행의 첫 값 4입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "parr[1][1]",
+          "arr[2][1]",
+          "8"
+        ],
+        [
+          "*(parr[1]+2)",
+          "arr[2][2]",
+          "9"
+        ],
+        [
+          "**parr",
+          "arr[1][0]",
+          "4"
+        ],
+        [
+          "합",
+          "8+9+4",
+          "21"
+        ]
+      ]
+    },
+    "outputMoment": "printf의 세 피연산자를 모두 읽어 더할 때 21이 됩니다.",
+    "calculation": "8 + 9 + 4 = 21",
+    "objectFlow": [
+      "parr[0] → arr[1] = {4,5,6}",
+      "parr[1] → arr[2] = {7,8,9}"
+    ],
+    "pitfalls": [
+      "parr의 길이가 2여도 parr[1]이 원본 배열의 세 번째 행을 가리킨다는 매핑을 놓치지 않습니다."
+    ],
+    "takeaway": "포인터 식을 arr[행][열]로 바꾸면 8+9+4=21입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-10": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "① VALUES\n② SELECT\n③ FROM\n④ SET",
+    "concept": "INSERT·SELECT·UPDATE의 기본 SQL 문형",
+    "rules": [
+      "INSERT는 VALUES 또는 SELECT 결과를 받을 수 있습니다.",
+      "UPDATE에서 변경식은 SET 뒤에 씁니다."
+    ],
+    "steps": [
+      "직접 나열한 한 행을 INSERT할 때 열 목록 뒤에 VALUES를 둡니다.",
+      "조회 결과를 INSERT하려면 VALUES 대신 SELECT를 이어 씁니다.",
+      "전체 조회는 SELECT * FROM, 값 변경은 UPDATE 테이블 SET 열=값 문형을 사용합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "SQL 1",
+          "직접 값 추가",
+          "VALUES"
+        ],
+        [
+          "SQL 2",
+          "조회 결과 추가",
+          "SELECT"
+        ],
+        [
+          "SQL 3",
+          "조회 대상 테이블",
+          "FROM"
+        ],
+        [
+          "SQL 4",
+          "변경할 열 지정",
+          "SET"
+        ]
+      ]
+    },
+    "outputMoment": "각 요구사항에 맞는 SQL 골격을 완성하면 네 빈칸이 결정됩니다.",
+    "calculation": "① VALUES, ② SELECT, ③ FROM, ④ SET",
+    "objectFlow": [],
+    "pitfalls": [
+      "INSERT ... SELECT에는 VALUES를 함께 쓰지 않습니다."
+    ],
+    "takeaway": "추가값·조회·대상·변경의 키워드는 VALUES, SELECT, FROM, SET입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-11": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 5\n② 4",
+    "concept": "튜플 수인 카디널리티와 속성 수인 디그리",
+    "rules": [
+      "카디널리티는 튜플(행)의 수, 디그리는 속성(열)의 수입니다."
+    ],
+    "steps": [
+      "회원 테이블의 데이터 행을 세면 5개이므로 카디널리티는 5입니다.",
+      "ID·이름·거주지·신청강의 열을 세면 4개이므로 디그리는 4입니다."
+    ],
+    "distinctions": [
+      "행은 가로 한 건, 열은 세로 항목이라는 방향으로 구분하면 헷갈리지 않습니다."
+    ],
+    "pitfalls": [
+      "표 머리글을 튜플 수에 포함하거나 카디널리티와 디그리를 반대로 쓰지 않습니다."
+    ],
+    "takeaway": "5행 4열이므로 카디널리티 5, 디그리 4입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-12": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "IPsec, IP Security",
+    "concept": "IP 계층에서 패킷을 보호하는 IPsec",
+    "rules": [
+      "IPsec은 인증·무결성·기밀성·재전송 방지를 IP 계층에서 제공합니다."
+    ],
+    "steps": [
+      "보호 대상이 IP 패킷이며 네트워크 계층에서 동작한다는 단서를 확인합니다.",
+      "AH·ESP·SA·IKE 구성 요소를 IPsec과 연결합니다."
+    ],
+    "distinctions": [
+      "SSL/TLS는 주로 전송 계층 위에서 응용 통신을 보호하고, IPsec은 IP 패킷 자체를 보호합니다."
+    ],
+    "pitfalls": [
+      "구성 요소 AH와 ESP가 함께 나오면 VPN이라는 넓은 용어보다 IPsec을 답해야 합니다."
+    ],
+    "takeaway": "AH·ESP·SA·IKE가 보이면 IPsec입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-13": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "AES, Advanced Encryption Standard",
+    "concept": "128비트 블록의 대칭키 표준 AES",
+    "rules": [
+      "AES는 같은 키로 암호화·복호화하는 대칭키 블록 암호입니다."
+    ],
+    "steps": [
+      "NIST가 DES의 대체 표준으로 2001년에 발표했다는 단서를 찾습니다.",
+      "128비트 블록과 128·192·256비트 키 길이를 AES와 연결합니다."
+    ],
+    "distinctions": [
+      "DES는 64비트 블록과 짧은 키 때문에 한계가 있고, AES는 128비트 블록을 사용합니다."
+    ],
+    "pitfalls": [
+      "키 길이 128이라는 말과 블록 크기 128을 섞지 말고, AES는 키가 128·192·256 세 종류임을 기억합니다."
+    ],
+    "takeaway": "NIST·DES 대체·128비트 블록이면 AES입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-14": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 가상 회선, 가상 회선 방식, VC, Virtual Circuit\n② 데이터그램, 데이터그램 방식, Datagram",
+    "concept": "연결형 가상 회선과 비연결형 데이터그램",
+    "rules": [
+      "가상 회선은 연결 설정 후 같은 논리 경로를 쓰고, 데이터그램은 패킷마다 독립적으로 전달됩니다."
+    ],
+    "steps": [
+      "통신 전에 경로를 미리 정하고 논리적으로 고정하면 가상 회선 방식입니다.",
+      "접속 절차 없이 각 패킷이 충분한 경로 정보를 가지고 독립적으로 이동하면 데이터그램 방식입니다."
+    ],
+    "distinctions": [
+      "가상 회선은 순서 보장이 쉬운 반면, 데이터그램은 패킷마다 경로가 달라질 수 있습니다."
+    ],
+    "pitfalls": [
+      "물리 회선을 실제로 독점한다는 뜻이 아니라 ‘논리적으로’ 연결된 경로라는 점을 기억합니다."
+    ],
+    "takeaway": "경로 사전 설정은 가상 회선, 개별 패킷 전달은 데이터그램입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-15": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "㉡",
+    "concept": "앞 활동의 출력이 뒤 활동 입력이 되는 순차적 응집도",
+    "rules": [
+      "순차적 응집도는 한 기능의 출력이 다음 기능의 입력으로 연결됩니다."
+    ],
+    "steps": [
+      "모듈 내부 활동들이 단순히 같은 순서로 실행되는지만 보지 않습니다.",
+      "앞 활동의 출력 데이터가 다음 활동의 입력으로 직접 이어진다는 단서 때문에 순차적 응집도입니다."
+    ],
+    "distinctions": [
+      "절차적 응집도는 실행 순서만 관련되고, 순차적 응집도는 데이터 흐름까지 이어집니다."
+    ],
+    "pitfalls": [
+      "‘다음 활동’이라는 말만 보고 절차적으로 고르지 말고 출력→입력 연결을 확인합니다."
+    ],
+    "takeaway": "출력이 다음 입력이 되면 순차적 응집도 ㉡입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-16": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "6.5",
+    "concept": "남은 시간이 가장 짧은 작업을 선점하는 SRT",
+    "rules": [
+      "대기시간 = 완료시간 - 도착시간 - 실행시간이며 SRT는 새 작업 도착 시 선점할 수 있습니다."
+    ],
+    "steps": [
+      "도착할 때마다 현재 작업의 남은 시간과 새 프로세스 실행 시간을 비교해 간트 차트를 만듭니다.",
+      "각 프로세스의 완료시간에서 도착시간과 실행시간을 빼 대기시간을 구합니다.",
+      "완료시간은 B=5, D=10, A=17, C=26이고 대기시간은 A=9, B=0, C=15, D=2입니다."
+    ],
+    "distinctions": [
+      "SJF는 비선점, SRT는 남은 시간을 비교하는 선점 방식입니다."
+    ],
+    "pitfalls": [
+      "실행 중인 프로세스의 원래 실행시간이 아니라 현재 남은 시간을 비교해야 합니다."
+    ],
+    "takeaway": "간트 차트로 구한 총 대기시간 26을 4로 나누면 평균 6.5입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-17": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "Iterator",
+    "concept": "내부 구조를 숨기고 순차 접근을 제공하는 Iterator",
+    "rules": [
+      "Iterator는 집합 객체의 요소에 순차 접근하는 방법을 별도 객체로 캡슐화하는 행위 패턴입니다."
+    ],
+    "steps": [
+      "컬렉션의 내부 표현을 공개하지 않는다는 조건을 확인합니다.",
+      "서로 다른 자료 구조도 같은 인터페이스로 차례대로 방문하게 한다는 설명을 Iterator와 연결합니다."
+    ],
+    "distinctions": [
+      "Observer는 상태 변화 알림, Iterator는 원소 방문 순서를 담당합니다."
+    ],
+    "pitfalls": [
+      "자료 구조 자체를 만드는 패턴이 아니라 기존 구조를 순회하는 방법을 제공하는 패턴입니다."
+    ],
+    "takeaway": "내부 표현을 숨긴 채 동일한 순회 인터페이스를 제공하면 Iterator입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-18": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "㉢",
+    "concept": "제어 정보를 넘기는 제어 결합도",
+    "rules": [
+      "제어 결합도는 플래그·스위치 같은 제어 요소를 매개변수로 전달합니다."
+    ],
+    "steps": [
+      "모듈이 단순 데이터가 아니라 다른 모듈의 처리 방향을 정하는 신호를 넘기는지 확인합니다.",
+      "하위 모듈이 상위 모듈에 처리 명령을 내리는 권리 전도까지 언급되므로 제어 결합도입니다."
+    ],
+    "distinctions": [
+      "자료 결합은 필요한 단순 데이터만 전달하고, 제어 결합은 상대 모듈의 흐름을 결정합니다."
+    ],
+    "pitfalls": [
+      "전역 데이터를 함께 쓰는 공통 결합과 제어 신호를 전달하는 제어 결합을 구분합니다."
+    ],
+    "takeaway": "처리 방향을 지시하는 신호를 넘기면 제어 결합도 ㉢입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-19": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "20",
+    "concept": "연결 리스트의 next 포인터 따라가기",
+    "rules": [
+      "`p->field`는 포인터 p가 가리키는 구조체의 field에 접근합니다."
+    ],
+    "steps": [
+      "head는 a의 주소를 가리킵니다.",
+      "a.Next는 b를 가리키므로 `head->Next`는 b입니다.",
+      "그 노드의 data를 읽으면 20입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "head",
+          "&a",
+          "data=10"
+        ],
+        [
+          "head->Next",
+          "&b",
+          "data=20"
+        ],
+        [
+          "출력",
+          "b.data",
+          "20"
+        ]
+      ]
+    },
+    "outputMoment": "printf가 head의 다음 노드 data를 읽습니다.",
+    "calculation": "head → a → b, b.data=20",
+    "objectFlow": [
+      "head → a(10) → b(20) → c(30)"
+    ],
+    "pitfalls": [
+      "두 번 다음으로 가는 식이 아니라 Next는 한 번, 그 뒤 data를 읽는 식입니다."
+    ],
+    "takeaway": "head의 바로 다음 노드는 b이므로 출력은 20입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-2-20": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "A → D → C → F",
+    "concept": "RIP의 링크 가중치 합으로 찾는 최단 경로",
+    "rules": [
+      "문제에서 링크 숫자를 비용으로 제시했으므로 경로별 비용 합을 비교합니다."
+    ],
+    "steps": [
+      "그림에서 A에서 F로 갈 수 있는 각 후보 경로를 나열합니다.",
+      "각 경로의 링크 가중치를 모두 더해 비교하고 가장 작은 합의 경로를 고릅니다.",
+      "그림의 가중치를 합산하면 A→D→C→F가 최소입니다."
+    ],
+    "distinctions": [
+      "실제 RIP는 홉 수를 메트릭으로 쓰지만, 이 문항은 그림에 제시한 가중치 기준을 따릅니다."
+    ],
+    "pitfalls": [
+      "중간 링크 하나가 작다는 이유로 고르지 말고 출발부터 도착까지 전체 합을 비교합니다."
+    ],
+    "takeaway": "전체 비용이 가장 작은 경로는 A→D→C→F입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  }
+}

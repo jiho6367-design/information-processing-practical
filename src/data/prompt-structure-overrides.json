@@ -1,0 +1,544 @@
+{
+  "2024-1-03": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음의 정규화(Normalization) 과정은 어떤 단계의 정규화 과정인지 <보기>에서 찾아 쓰시오. (5점)"
+      },
+      {
+        "type": "table",
+        "caption": "<주문> - 정규화 전",
+        "headers": ["주문번호", "고객번호", "주소"],
+        "rows": [["A345", "100", "서울"], ["D347", "200", "부산"], ["A210", "300", "광주"], ["B230", "200", "부산"]]
+      },
+      {
+        "type": "prose",
+        "text": "아래와 같이 <주문>과 <고객> 릴레이션으로 분해한다."
+      },
+      {
+        "type": "table",
+        "caption": "<주문> - 정규화 후",
+        "headers": ["주문번호", "고객번호"],
+        "rows": [["A345", "100"], ["D347", "200"], ["A210", "300"], ["B230", "200"]]
+      },
+      {
+        "type": "table",
+        "caption": "<고객> - 정규화 후",
+        "headers": ["고객번호", "주소"],
+        "rows": [["100", "서울"], ["200", "부산"], ["300", "광주"]]
+      },
+      {"type": "prose", "text": "<보기>"},
+      {
+        "type": "choice-grid",
+        "columns": 3,
+        "items": ["제1정규형", "제2정규형", "제3정규형", "보이스/코드 정규형", "제4정규형", "제5정규형"]
+      }
+    ]
+  },
+  "2024-1-07": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "3개의 페이지를 수용할 수 있는 주기억장치가 있으며, 초기에는 모두 비어 있다고 가정한다. 다음 순서로 페이지 참조가 발생할 때 LRU와 LFU 페이지 교체 알고리즘을 사용하면 각각 발생하는 페이지 결함의 횟수를 쓰시오. (5점)"
+      },
+      {
+        "type": "table",
+        "headers": ["알고리즘", "페이지 참조 순서"],
+        "rows": [
+          ["LRU", "1, 2, 3, 1, 2, 4, 5, 1"],
+          ["LFU", "1, 2, 3, 1, 2, 4, 1, 2, 3, 4"]
+        ],
+        "rowHeaderColumn": true
+      }
+    ]
+  },
+  "2024-1-06": [[{
+    "type": "table",
+    "caption": "<보기> - 디자인 패턴",
+    "headers": ["생성 패턴", "구조 패턴", "행위 패턴"],
+    "rows": [
+      ["Abstract Factory", "Adapter", "Command"],
+      ["Builder", "Bridge", "Interpreter"],
+      ["Factory Method", "Composite", "Iterator"],
+      ["Prototype", "Decorator", "Mediator"],
+      ["Singleton", "Proxy", "Observer"]
+    ]
+  }]],
+  "2024-1-12": [[
+    {
+      "type": "table",
+      "caption": "<R1>",
+      "headers": ["A", "B", "C"],
+      "rows": [["1", "a", "x"], ["2", "b", "y"], ["3", "c", "t"]]
+    },
+    {
+      "type": "table",
+      "caption": "<R2>",
+      "headers": ["C", "D", "E"],
+      "rows": [["x", "k", "k"], ["y", "k", "t"], ["z", "p", "k"]]
+    }
+  ]],
+  "2024-1-17": [[{
+    "type": "table",
+    "caption": "<EMP_TBL>",
+    "headers": ["EMPNO", "SAL"],
+    "rows": [["100", "1500"], ["200", "3000"], ["300", "2000"]]
+  }]],
+  "2024-2-10": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음에 제시된 <학생>과 <학부> 테이블의 릴레이션 스키마를 참고하여 각 SQL문의 요구사항에 맞도록 괄호(①~④)에 알맞은 답을 적어 SQL문을 완성하시오. (5점)"
+      },
+      {
+        "type": "table",
+        "caption": "<학생> 릴레이션 스키마",
+        "headers": ["학번(PK)", "이름", "나이", "학과"],
+        "rows": []
+      },
+      {
+        "type": "table",
+        "caption": "<학부> 릴레이션 스키마",
+        "headers": ["학번(PK)", "이름", "주소", "나이"],
+        "rows": []
+      },
+      {"type": "prose", "text": "<SQL 1> 요구사항: 신입생 정보가 확인되어 <학부> 테이블에 신입생 정보를 추가한다."},
+      {"type": "code", "language": "SQL", "text": "INSERT INTO 학부(학번, 이름, 주소, 나이)\n( ① ) (240912, ‘최재균’, ‘서울’, 20);"},
+      {"type": "prose", "text": "<SQL 2> 요구사항: <SQL 1>에서 추가한 학생을 <학부> 테이블에서 검색한 후 검색된 자료를 <학생> 테이블에 추가한다."},
+      {"type": "code", "language": "SQL", "text": "INSERT INTO 학생(학번, 이름, 나이, 학과)\n( ② ) 학번, 이름, 나이, ‘컴퓨터공학’\nFROM 학부\nWHERE 이름 = ‘최재균’;"},
+      {"type": "prose", "text": "<SQL 3> 요구사항: <학생> 테이블의 모든 자료를 조회한다."},
+      {"type": "code", "language": "SQL", "text": "SELECT *\n( ③ ) 학생;"},
+      {"type": "prose", "text": "<SQL 4> 요구사항: 학생이 휴학을 신청했으므로 해당 학생의 ‘학과’ 필드 값을 ‘휴학’으로 변경한다."},
+      {"type": "code", "language": "SQL", "text": "UPDATE 학생\n( ④ ) 학과 = ‘휴학’\nWHERE 학번 = 240912;"}
+    ]
+  },
+  "2024-2-11": [[{
+    "type": "table",
+    "caption": "<회원>",
+    "headers": ["ID", "이름", "거주지", "신청강의"],
+    "rows": [
+      ["191-SR05", "강순동", "마포구", "E01"],
+      ["024-RU09", "김은경", "관악구", "S03"],
+      ["181-SQ03", "이지연", "서대문구", "E02"],
+      ["059-RL08", "윤경", "광진구", "S03"],
+      ["029-SX07", "김민재", "서대문구", "E02"]
+    ]
+  }]],
+  "2024-2-15": [[{
+    "type": "choice-grid",
+    "columns": 4,
+    "items": ["㉠ 기능적 응집도", "㉡ 순차적 응집도", "㉢ 교환적 응집도", "㉣ 절차적 응집도", "㉤ 시간적 응집도", "㉥ 논리적 응집도", "㉦ 우연적 응집도"]
+  }]],
+  "2024-2-16": [[{
+    "type": "table",
+    "headers": ["프로세스", "도착 시간", "실행 시간"],
+    "rows": [["A", "0", "8"], ["B", "1", "4"], ["C", "2", "9"], ["D", "3", "5"]],
+    "rowHeaderColumn": true
+  }]],
+  "2024-2-17": [[{
+    "type": "table",
+    "caption": "<보기> - 디자인 패턴",
+    "headers": ["생성 패턴", "구조 패턴", "행위 패턴"],
+    "rows": [
+      ["Abstract Factory", "Adapter", "Command"],
+      ["Builder", "Bridge", "Interpreter"],
+      ["Factory Method", "Composite", "Iterator"],
+      ["Prototype", "Decorator", "Mediator"],
+      ["Singleton", "Proxy", "Observer"]
+    ]
+  }]],
+  "2024-2-18": [[{
+    "type": "choice-grid",
+    "columns": 3,
+    "items": ["㉠ 자료 결합도", "㉡ 스탬프 결합도", "㉢ 제어 결합도", "㉣ 공통 결합도", "㉤ 내용 결합도", "㉥ 외부 결합도"]
+  }]],
+  "2024-2-20": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음 그림에서 Ⓐ~Ⓕ는 라우터이고, 각 링크 상의 숫자는 가중치 값을 나타낼 때 RIP(Routing Information Protocol)을 이용한 A에서 F까지의 최적 경로를 쓰시오. (5점)"
+      },
+      {
+        "type": "source-figure",
+        "src": "/page-images/2024-2/page-12.webp",
+        "alt": "라우터 A부터 F까지의 연결과 링크 가중치를 나타낸 네트워크 그림",
+        "caption": "라우터 연결도와 링크 가중치",
+        "sourceSize": [864, 1221],
+        "crop": [80, 642, 515, 165]
+      }
+    ]
+  },
+  "2024-3-03": {
+    "full": [
+      {"type": "prose", "text": "다음 <employee>와 <project> 테이블을 참조하여 <SQL문>을 실행했을 때 출력되는 결과를 쓰시오. (5점)"},
+      {
+        "type": "table",
+        "caption": "<employee>",
+        "headers": ["no", "first_name", "last_name", "project_id"],
+        "rows": [["1", "John", "Doe", "10"], ["2", "Jim", "Carry", "20"], ["3", "Rachel", "Redmond", "10"]]
+      },
+      {
+        "type": "table",
+        "caption": "<project>",
+        "headers": ["project_id", "name"],
+        "rows": [["10", "Alpha"], ["20", "Beta"], ["10", "Gamma"]]
+      },
+      {"type": "prose", "text": "<SQL문>"},
+      {
+        "type": "code",
+        "language": "SQL",
+        "text": "SELECT count(*)\nFROM employee AS e\nJOIN project AS p ON e.project_id = p.project_id\nWHERE p.name IN (\n    SELECT name\n    FROM project p\n    WHERE p.project_id IN (\n        SELECT project_id\n        FROM employee\n        GROUP BY project_id\n        HAVING count(*) < 2\n    )\n);"
+      }
+    ]
+  },
+  "2024-3-11": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음에 제시된 URL 구조에서 <보기>의 순서대로 URL에 해당하는 번호(1~5)를 쓰시오. (5점)"
+      },
+      {"type": "prose", "text": "<보기>"},
+      {
+        "type": "list",
+        "items": [
+          "① query: 서버에 전달할 추가 데이터",
+          "② path: 서버 내의 특정 자원을 가리키는 경로",
+          "③ scheme: 리소스에 접근하는 방법이나 프로토콜",
+          "④ authority: 사용자 정보, 호스트명, 포트 번호",
+          "⑤ fragment: 특정 문서 내의 위치"
+        ]
+      },
+      {
+        "type": "source-figure",
+        "src": "/question-images/2024-3/2024-3-11-url-components.png",
+        "alt": "foo://example.com:8042/over/there?name=ferret#nose URL을 1번부터 5번까지 구분한 그림",
+        "caption": "URL 구성 요소 1~5",
+        "sourceSize": [550, 101],
+        "crop": [0, 0, 550, 101]
+      }
+    ]
+  },
+  "2024-3-13": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음 UML 모델에서 각 번호(①~③)에 해당하는 관계를 <보기>에서 찾아 기호(㉠~㉥)로 쓰시오. (5점)"
+      },
+      {
+        "type": "source-figure",
+        "src": "/page-images/2024-3/page-8.webp",
+        "alt": "차와 타이어·바퀴·엔진, 버스·택시·승용차, 텔레비전과 리모콘 사이의 UML 관계 그림",
+        "caption": "①~③ UML 관계",
+        "sourceSize": [864, 1221],
+        "crop": [78, 132, 565, 265]
+      },
+      {"type": "prose", "text": "<보기>"},
+      {
+        "type": "choice-grid",
+        "columns": 3,
+        "items": ["㉠ 의존", "㉡ 연관", "㉢ 일반화", "㉣ 집합", "㉤ 포함", "㉥ 실체화"]
+      }
+    ]
+  },
+  "2024-3-15": [[{
+    "type": "choice-grid",
+    "columns": 3,
+    "items": ["㉠ 슈퍼키", "㉡ 외래키", "㉢ 대체키", "㉣ 후보키", "㉤ 기본키", "㉥ 필드키"]
+  }]],
+  "2024-3-20": [[{
+    "type": "choice-grid",
+    "columns": 3,
+    "items": ["㉠ Mesh Network", "㉡ Peer-to-Peer Network", "㉢ Virtual Private Network", "㉣ Ad-hoc Network", "㉤ Sensor Network", "㉥ Infrastructure Network"]
+  }]],
+  "2025-1-02": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음은 무결성 제약 조건에 대한 설명이다. 괄호(①~③)에 들어갈 알맞은 용어를 <보기>에서 찾아 쓰시오. (5점)"
+      },
+      {
+        "type": "table",
+        "headers": ["구분", "( ① ) 무결성 제약 조건", "( ② ) 무결성 제약 조건", "( ③ ) 무결성 제약 조건"],
+        "rows": [
+          ["제약 대상", "속성", "튜플", "속성, 튜플"],
+          ["NULL 값", "", "기본키", "외래키"],
+          ["릴레이션 내 제약 조건 개수", "속성의 개수와 동일", "1개", "0~여러 개"]
+        ],
+        "rowHeaderColumn": true
+      },
+      {"type": "prose", "text": "<보기>"},
+      {
+        "type": "choice-grid",
+        "columns": 4,
+        "items": ["데이터", "사용자 정의", "도메인", "키", "속성", "개체", "범위", "참조"]
+      }
+    ]
+  },
+  "2025-1-06": [[
+    {
+      "type": "table",
+      "caption": "<emp>",
+      "headers": ["id", "name"],
+      "rows": [["1002", "홍길동"], ["1004", "강감찬"], ["1006", "김유신"], ["1008", "이순신"]]
+    },
+    {
+      "type": "table",
+      "caption": "<sal>",
+      "headers": ["id", "incentive"],
+      "rows": [["1002", "300"], ["1004", "400"], ["1008", "1000"], ["1009", "500"]]
+    }
+  ]],
+  "2025-1-07": [[{
+    "type": "choice-grid",
+    "columns": 3,
+    "items": ["㉠ 외부 결합도", "㉡ 스탬프 결합도", "㉢ 제어 결합도", "㉣ 자료 결합도", "㉤ 내용 결합도", "㉥ 공통 결합도"]
+  }]],
+  "2025-1-10": [[{
+    "type": "prose",
+    "text": "(①)는 호스트의 IP 주소를 호스트와 연결된 네트워크 접속 장치의 물리적 주소(MAC Address)로 변환하는 프로토콜이고, (②)는 (①)와 반대로 물리적 주소를 IP 주소로 변환하는 프로토콜이다."
+  }]],
+  "2025-1-13": [[{
+    "type": "table",
+    "caption": "<보기> - 디자인 패턴",
+    "headers": ["생성 패턴", "구조 패턴", "행위 패턴"],
+    "rows": [
+      ["Abstract Factory", "Adapter", "Command"],
+      ["Builder", "Bridge", "Interpreter"],
+      ["Factory Method", "Composite", "Iterator"],
+      ["Prototype", "Decorator", "Mediator"],
+      ["Singleton", "Proxy", "Observer"]
+    ]
+  }]],
+  "2025-1-14": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음에 제시된 코드를 이용하여 순서도의 번호(①~⑥)에 들어갈 알맞은 코드를 작성하고, 문장 커버리지로 구성할 테스트 케이스를 작성하시오. (5점)"
+      },
+      {
+        "type": "code",
+        "language": "C",
+        "text": "int Main(int b[], int m, int x) {\n    int a = 0;\n\n    while (a < m || b[a] < x) {\n        if (b[a] < 0)\n            b[a] = -b[a];\n        a++;\n    }\n\n    return 1;\n}"
+      },
+      {
+        "type": "source-figure",
+        "src": "/page-images/2025-1/page-10.webp",
+        "alt": "①부터 ⑥까지 빈칸이 표시된 프로그램 순서도",
+        "caption": "코드와 대응하는 ①~⑥ 순서도",
+        "sourceSize": [864, 1221],
+        "crop": [78, 418, 470, 300]
+      }
+    ]
+  },
+  "2025-1-15": [[{
+    "type": "choice-grid",
+    "columns": 4,
+    "items": ["㉠ Domain", "㉡ Attribute", "㉢ Degree", "㉣ Candidate", "㉤ Cardinality", "㉥ Tuple", "㉦ Foreign", "㉨ Alternate"]
+  }]],
+  "2025-2-03": [[{
+    "type": "choice-grid",
+    "columns": 4,
+    "items": ["㉠ Domain", "㉡ Tuple", "㉢ Attribute", "㉣ Integrity", "㉤ Degree", "㉥ Relationship", "㉦ Cardinality", "㉧ Entity"]
+  }]],
+  "2025-2-07": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음은 <EMPLOYEE> 릴레이션에 대해 <관계 대수식>을 수행했을 때 출력되는 <결과>이다. <결과>의 각 괄호(①~⑤)에 들어갈 알맞은 답을 쓰시오. (5점)"
+      },
+      {"type": "prose", "text": "<관계 대수식>: πTTL(EMPLOYEE)"},
+      {
+        "type": "table",
+        "caption": "<EMPLOYEE>",
+        "headers": ["INDEX", "AGE", "TTL"],
+        "rows": [["1", "48", "부장"], ["2", "25", "대리"], ["3", "41", "과장"], ["4", "36", "차장"]]
+      },
+      {
+        "type": "table",
+        "caption": "<결과>",
+        "headers": ["①"],
+        "rows": [["②"], ["③"], ["④"], ["⑤"]]
+      }
+    ]
+  },
+  "2025-2-12": [[{
+    "type": "table",
+    "caption": "디자인 패턴 분류",
+    "headers": ["생성 패턴", "구조 패턴", "행위 패턴"],
+    "rows": [
+      ["Abstract Factory", "Adapter", "Chain of Responsibility"],
+      ["Builder", "Bridge", "Command"],
+      ["Factory Method", "Composite", "Interpreter"],
+      ["Prototype", "Decorator", "Iterator"],
+      ["Singleton", "Facade", "Mediator"],
+      ["", "Proxy", "Memento"],
+      ["", "", "Observer"],
+      ["", "", "Strategy"],
+      ["", "", "Template Method"]
+    ]
+  }]],
+  "2025-2-14": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음은 화이트박스 테스트의 프로그램 제어흐름이다. 다음의 순서도를 참고하여 분기 커버리지로 구성할 테스트 케이스를 작성하시오. (5점)"
+      },
+      {
+        "type": "source-figure",
+        "src": "/page-images/2025-2/page-8.webp",
+        "alt": "1번부터 7번까지 실행문과 조건 분기가 표시된 프로그램 제어 흐름 순서도",
+        "caption": "분기 커버리지 판정을 위한 제어 흐름",
+        "sourceSize": [864, 1221],
+        "crop": [70, 175, 515, 355]
+      },
+      {"type": "prose", "text": "<작성예시> ( 1 ) → ( 2 ) → ( 4 )"}
+    ]
+  },
+  "2025-2-15": [[{
+    "type": "table",
+    "headers": ["프로세스", "도착 시간", "실행 시간"],
+    "rows": [["A", "0", "8"], ["B", "1", "4"], ["C", "2", "9"], ["D", "3", "5"]],
+    "rowHeaderColumn": true
+  }]],
+  "2025-3-04": [[{
+    "type": "choice-grid",
+    "columns": 4,
+    "items": ["㉠ CRC", "㉡ FEC", "㉢ BEC", "㉣ NAK", "㉤ Parity", "㉥ MD5", "㉦ BCD", "㉧ Hamming"]
+  }]],
+  "2025-3-01": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "UML 다이어그램에 대한 다음 설명에서 괄호에 공통으로 들어갈 알맞은 용어를 쓰시오. (5점)"
+      },
+      {
+        "type": "source-figure",
+        "src": "/page-images/2025-3/page-2.webp",
+        "alt": "Order 패키지가 Security 패키지를 가져오는 UML 다이어그램",
+        "caption": "Order와 Security 사이의 UML 의존 관계",
+        "sourceSize": [864, 1221],
+        "crop": [265, 165, 355, 125]
+      },
+      {
+        "type": "prose",
+        "text": "( )은(는) UML 정적 모델링의 하나로, 관련있는 객체들을 하나로 묶어 상위 개념으로 추상화한 것이다. 위의 그림과 같이 유스케이스나 클래스 등의 요소들을 그룹화하여 의존 관계를 표현하며, 대규모 시스템에서 주요 요소 간의 종속성을 파악하는 데 사용한다. 시스템의 구조를 간략하게 표현할 수 있고 의존 관계를 명확하게 파악할 수 있어, 불필요한 의존 관계를 제거하거나 간략화함으로써 시스템의 복잡도를 낮추는 곳에도 사용한다."
+      }
+    ]
+  },
+  "2025-3-07": [[
+    {
+      "type": "table",
+      "caption": "<A>",
+      "headers": ["NAME"],
+      "rows": [["Smith"], ["Allen"], ["Scott"]]
+    },
+    {
+      "type": "table",
+      "caption": "<B>",
+      "headers": ["RULE"],
+      "rows": [["S%"], ["%T%"]]
+    }
+  ]],
+  "2025-3-11": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음 Python으로 구현된 프로그램을 분석하여 출력값(①~⑧)에 들어갈 알맞은 값을 쓰시오. (5점)"
+      },
+      {
+        "type": "code",
+        "language": "Python",
+        "text": "data = [\n    [3, 5, 2, 4, 1],\n    [4, 5, 1],\n    [4, 4, 1, 5, 4],\n    [4, 5]\n]\nresult = { }\nfor index, lis in enumerate(data):\n    list_sum = sum(lis)\n    list_len = len(lis)\n    result[index] = (list_sum, list_len)\nprint(result)"
+      },
+      {
+        "type": "prose",
+        "text": "<출력값> {0: (①, ②), 1: (③, ④), 2: (⑤, ⑥), 3: (⑦, ⑧)}"
+      }
+    ]
+  },
+  "2025-3-12": [[
+    {
+      "type": "table",
+      "caption": "<R>",
+      "headers": ["A", "B"],
+      "rows": [["a1", "b1"], ["a2", "b2"], ["a1", "b3"]]
+    },
+    {
+      "type": "table",
+      "caption": "<S>",
+      "headers": ["B"],
+      "rows": [["b1"], ["b3"]]
+    }
+  ]],
+  "2025-3-13": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "접근 통제(Access Control)에 대한 다음 설명에서 괄호(①~③)에 들어갈 알맞은 용어를 <보기>에서 찾아 쓰시오. (5점)"
+      },
+      {
+        "type": "table",
+        "headers": ["번호", "설명"],
+        "rows": [
+          ["①", "주체와 객체의 등급을 비교하여 접근 권한을 부여하는 방식이다.\n시스템이 접근통제 권한을 지정한다.\n데이터베이스 객체별로 보안 등급을 부여할 수 있다.\n사용자별로 인가 등급을 부여할 수 있다."],
+          ["②", "사용자의 역할에 따라 접근 권한을 부여하는 방식이다.\n중앙관리자가 접근통제 권한을 지정한다.\n임의 접근통제와 강제 접근통제의 단점을 보완하였다.\n다중 프로그래밍 환경에 최적화된 방식이다."],
+          ["③", "데이터에 접근하는 사용자의 신원에 따라 접근 권한을 부여하는 방식이다.\n데이터 소유자가 접근통제 권한을 지정하고 제어한다.\n객체를 생성한 사용자가 생성된 객체에 대한 모든 권한을 부여받고, 부여된 권한을 다른 사용자에게 허가할 수도 있다."]
+        ],
+        "rowHeaderColumn": true
+      },
+      {"type": "prose", "text": "<보기>"},
+      {
+        "type": "choice-grid",
+        "columns": 3,
+        "items": ["DAC(Discretionary Access Control)", "MAC(Mandatory Access Control)", "RBAC(Role Based Access Control)"]
+      }
+    ]
+  },
+  "2025-3-14": [[{
+    "type": "table",
+    "headers": ["식별자_ID", "테스트 항목", "( ① )", "( ② )", "( ③ )"],
+    "rows": [
+      ["LS_W10_35", "로그인 기능", "사용자 초기 화면", "아이디(test_a01)\n비밀번호(203a!d5%ffa1)", "로그인 성공"],
+      ["LS_W10_36", "로그인 기능", "사용자 초기 화면", "아이디(test_a01)\n비밀번호(1234)", "로그인 실패(1)\n- 비밀번호 비일치"],
+      ["LS_W10_37", "로그인 기능", "사용자 초기 화면", "아이디(“ ”)\n비밀번호(“ ”)", "로그인 실패(2)\n- 미입력"]
+    ]
+  }]],
+  "2025-3-20": [[{
+    "type": "table",
+    "caption": "<A>",
+    "headers": ["COL1", "COL2"],
+    "rows": [["2", "NULL"], ["3", "6"], ["2", "3"], ["NULL", "3"], ["4", "5"]]
+  }]],
+  "2026-1-04": {
+    "full": [
+      {
+        "type": "prose",
+        "text": "다음은 CREATE 문을 이용해 <PLAYER> 테이블을 생성하는 <SQL>문이다. <TEAM> 테이블의 TEAM_ID2 컬럼을 참조하여 외래키를 설정하려고 한다. 괄호(①~⑤)에 알맞은 구문을 넣어 <SQL문>을 완성하시오. (단, 외래키 제약조건의 명칭은 TEAM_TF로 정의한다.) (5점)"
+      },
+      {"type": "prose", "text": "<SQL문>"},
+      {
+        "type": "code",
+        "language": "SQL",
+        "text": "CREATE TABLE PLAYER (\n    PLAYER_ID CHAR(7) NOT NULL,\n    PLAYER_NAME VARCHAR2(20) NOT NULL,\n    TEAM_ID CHAR(3) NOT NULL,\n    PRIMARY KEY (PLAYER_ID),\n    ( ① ) TEAM_TF ( ② ) KEY ( ③ ) ( ④ ) TEAM ( ⑤ )"
+      }
+    ]
+  },
+  "2026-1-11": [[
+    {
+      "type": "table",
+      "caption": "<EMPLOYEE>",
+      "headers": ["emp_id", "emp_name", "dep_id"],
+      "rows": [["E01", "김은소", "D01"], ["E02", "강동준", "D02"], ["E03", "고회식", "D03"], ["E04", "황진주", "D04"]]
+    },
+    {
+      "type": "table",
+      "caption": "<DEPT>",
+      "headers": ["dep_id", "dep_name", "budget"],
+      "rows": [["D01", "총무부", "3,000"], ["D02", "인사부", "5,000"], ["D03", "개발부", "7,000"], ["D04", "영업부", "9,000"]]
+    }
+  ]],
+  "2026-1-14": [[{
+    "type": "prose",
+    "text": "( )는 파일이나 디렉터리를 가리키는 링크 파일이다. Windows의 바로 가기 아이콘과 비슷한 개념으로, 다른 위치에 있는 파일이나 디렉터리의 경로 정보를 저장하여 해당 대상에 접근할 수 있게 한다. 레이스 컨디션 공격의 한 종류인 ( ) 공격은 root 권한을 가진 프로세스가 임시 파일을 생성하는 과정에서 발생한다. 공격자는 임시 파일이 생성된 직후 이를 삭제하고, 같은 이름의 ( )를 만들어 중요한 파일을 가리키도록 설정한다. 이를 방지하기 위해 프로그램은 임시 파일을 사용하기 전에 해당 파일이 ( )인지 확인하고, ( )가 아닌 경우에만 사용하거나 필요 시 삭제한다."
+  }]]
+}

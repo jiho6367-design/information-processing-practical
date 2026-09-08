@@ -1,0 +1,732 @@
+{
+  "2024-1-01": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "151",
+    "concept": "삼항 연산자의 조건값과 왼쪽 시프트",
+    "rules": [
+      "C에서 0은 거짓, 0이 아닌 값은 참입니다.",
+      "`x << 2`는 x에 4를 곱한 것과 같습니다."
+    ],
+    "steps": [
+      "삼항식 `v1 > v2 ? v2 : v1`의 조건은 `0 > 35`이므로 거짓이고, 식 전체의 값은 v1인 0입니다.",
+      "if가 받은 값 0은 거짓이므로 else가 실행되어 v3만 왼쪽으로 2비트 이동합니다.",
+      "마지막에 그대로인 v2와 바뀐 v3를 더합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "v1=0, v2=35, v3=29",
+          "-"
+        ],
+        [
+          "삼항식",
+          "조건 거짓 → 값 0",
+          "else 선택"
+        ],
+        [
+          "시프트",
+          "v3 = 29 << 2",
+          "v3=116"
+        ],
+        [
+          "출력",
+          "35 + 116",
+          "151"
+        ]
+      ]
+    },
+    "outputMoment": "printf가 v2+v3을 계산할 때 결과가 확정됩니다.",
+    "calculation": "35 + (29×4) = 151",
+    "objectFlow": [],
+    "pitfalls": [
+      "삼항식이 v1에 값을 대입하는 문장이 아니라, if의 조건값을 만드는 식이라는 점을 놓치기 쉽습니다."
+    ],
+    "takeaway": "삼항식의 결과가 0이어서 v3만 116으로 바뀌고 최종 출력은 151입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-02": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "OSPF, Open Shortest Path First protocol",
+    "concept": "링크 상태 라우팅 프로토콜 OSPF",
+    "rules": [
+      "OSPF는 링크 상태 정보를 공유하고 SPF(Dijkstra) 알고리즘으로 최단 경로를 계산합니다."
+    ],
+    "steps": [
+      "‘Dijkstra 최단 경로’와 ‘링크 상태를 실시간 반영’이라는 단서를 먼저 잡습니다.",
+      "거리 벡터 방식인 RIP가 아니라 링크 상태 방식이며 대규모망에 적합한 OSPF로 연결합니다."
+    ],
+    "distinctions": [
+      "RIP는 홉 수를 기준으로 하는 거리 벡터 방식이고, OSPF는 링크 비용을 사용하는 링크 상태 방식입니다."
+    ],
+    "pitfalls": [
+      "‘최단 경로’라는 말만 보고 모든 라우팅 프로토콜을 답하지 말고 Dijkstra 단서를 확인해야 합니다."
+    ],
+    "takeaway": "Dijkstra·링크 상태·대규모 네트워크가 함께 나오면 OSPF입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-03": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "제3정규형",
+    "concept": "이행적 함수 종속을 제거하는 제3정규형",
+    "rules": [
+      "제3정규형은 제2정규형을 만족하면서 기본키가 아닌 속성 사이의 이행적 함수 종속을 제거합니다."
+    ],
+    "steps": [
+      "그림에서 기본키가 아닌 속성이 다른 일반 속성을 결정하는지 확인합니다.",
+      "기본키 → 일반 속성 → 또 다른 일반 속성처럼 이어지는 이행적 종속을 분해하는 단계는 제3정규형입니다."
+    ],
+    "distinctions": [
+      "부분 함수 종속 제거는 제2정규형, 결정자가 모두 후보키가 되게 하는 것은 BCNF입니다."
+    ],
+    "pitfalls": [
+      "부분 종속과 이행 종속을 바꾸어 외우지 않도록 ‘2NF=부분, 3NF=이행’으로 구분합니다."
+    ],
+    "takeaway": "일반 속성이 다른 일반 속성을 결정하는 연결을 끊으면 제3정규형입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-04": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "㉠, ㉡, ㉣, ㉢",
+    "concept": "모듈 응집도의 강한 순서",
+    "rules": [
+      "응집도는 모듈 내부 요소가 한 목적에 얼마나 밀접한지를 나타내며 높을수록 좋습니다."
+    ],
+    "steps": [
+      "한 가지 기능만 수행하는 기능적 응집도를 가장 높게 둡니다.",
+      "같은 데이터를 다루는 교환적, 같은 시점에 수행되는 시간적, 우연히 모인 우연적 순으로 내려갑니다."
+    ],
+    "distinctions": [
+      "교환적은 ‘같은 입출력 데이터’, 시간적은 ‘같은 실행 시점’, 우연적은 ‘관련 없음’이 핵심입니다."
+    ],
+    "pitfalls": [
+      "결합도는 낮을수록 좋지만 응집도는 높을수록 좋다는 방향을 뒤집지 않아야 합니다."
+    ],
+    "takeaway": "기능적 > 교환적 > 시간적 > 우연적, 즉 ㉠→㉡→㉣→㉢입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-05": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "4",
+    "concept": "싱글턴 객체가 공유하는 인스턴스 필드",
+    "rules": [
+      "static `_inst`는 클래스 전체에서 하나만 공유됩니다.",
+      "참조 변수가 달라도 같은 객체를 가리킬 수 있습니다."
+    ],
+    "steps": [
+      "첫 get()에서 Connection 객체를 한 번 만들고 `_inst`에 보관합니다.",
+      "이후 conn1, conn2, conn3은 새 객체가 아니라 모두 같은 `_inst`를 가리킵니다.",
+      "count()가 총 네 번 호출되므로 그 하나의 객체 안 count가 4가 됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "객체 생성",
+          "conn1 → Connection#1",
+          "count=0"
+        ],
+        [
+          "conn1.count",
+          "Connection#1",
+          "count=1"
+        ],
+        [
+          "conn2·conn3",
+          "둘 다 Connection#1",
+          "count=3"
+        ],
+        [
+          "마지막 conn1.count",
+          "Connection#1",
+          "count=4"
+        ]
+      ]
+    },
+    "outputMoment": "conn1.getCount()는 세 참조가 함께 바꾼 단 하나의 count를 읽습니다.",
+    "calculation": "1 + 1 + 1 + 1 = 4회 증가",
+    "objectFlow": [
+      "conn1 ─┐",
+      "conn2 ─┼→ Connection#1 { count: 4 }",
+      "conn3 ─┘"
+    ],
+    "pitfalls": [
+      "conn1·conn2·conn3마다 count가 따로 있다고 생각하면 안 됩니다."
+    ],
+    "takeaway": "싱글턴의 세 참조는 한 객체를 공유하므로 출력은 4입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-06": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "Abstract Factory",
+    "concept": "연관 객체군을 함께 만드는 Abstract Factory",
+    "rules": [
+      "Abstract Factory는 관련된 객체들의 생성 인터페이스를 제공하는 생성 패턴이며 Kit 패턴이라고도 합니다."
+    ],
+    "steps": [
+      "‘구체 클래스에 의존하지 않는다’는 생성 인터페이스 단서를 찾습니다.",
+      "서로 연관된 여러 객체를 제품군 단위로 만들고 통째로 교체한다는 설명을 Abstract Factory와 연결합니다."
+    ],
+    "distinctions": [
+      "Factory Method는 한 제품 생성을 하위 클래스에 맡기고, Abstract Factory는 여러 관련 제품군을 함께 만듭니다."
+    ],
+    "pitfalls": [
+      "이름에 Factory가 들어간 두 패턴을 ‘한 객체’와 ‘제품군’ 기준으로 구분해야 합니다."
+    ],
+    "takeaway": "연관된 객체들을 한 묶음으로 생성·교체하면 Abstract Factory입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-07": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 6\n② 6",
+    "concept": "LRU와 LFU의 페이지 교체 기준",
+    "rules": [
+      "LRU는 최근 사용 시점, LFU는 사용 빈도를 기준으로 합니다.",
+      "적중(hit)은 페이지 결함에 포함하지 않습니다."
+    ],
+    "steps": [
+      "빈 프레임은 처음 등장한 페이지로 채우고, 이미 들어 있는 페이지는 결함 수를 늘리지 않습니다.",
+      "LRU는 가장 오래 사용하지 않은 페이지를, LFU는 참조 횟수가 가장 적은 페이지를 내보내며 각 참조를 순서대로 표에 기록합니다.",
+      "두 참조열을 각각 끝까지 추적하면 페이지 결함이 모두 6회입니다."
+    ],
+    "distinctions": [
+      "LRU는 ‘언제 마지막으로 썼나’, LFU는 ‘몇 번 썼나’를 본다는 차이가 있습니다."
+    ],
+    "pitfalls": [
+      "교체가 일어난 횟수만 세지 말고 비어 있는 프레임에 처음 적재한 경우도 페이지 결함으로 셉니다."
+    ],
+    "takeaway": "주어진 두 참조열의 LRU와 LFU 페이지 결함은 각각 6회입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-08": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "Seynaau",
+    "concept": "문자열의 두 번째 글자를 이어 붙이는 반복문",
+    "rules": [
+      "Python 문자열 인덱스는 0부터 시작하므로 `i[1]`은 두 번째 문자입니다."
+    ],
+    "steps": [
+      "str01은 먼저 `S`로 시작합니다.",
+      "목록의 각 도시 이름에서 인덱스 1, 즉 두 번째 글자만 꺼내 차례로 덧붙입니다.",
+      "모든 문자열을 처리한 뒤 완성된 한 문자열을 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "str01='S'",
+          "S"
+        ],
+        [
+          "Seoul, Kyeonggi",
+          "e, y",
+          "Sey"
+        ],
+        [
+          "Incheon, Daejeon",
+          "n, a",
+          "Seyna"
+        ],
+        [
+          "Daegu, Pusan",
+          "a, u",
+          "Seynaau"
+        ]
+      ]
+    },
+    "outputMoment": "for문이 끝난 뒤 print(str01)에서 누적 문자열 전체를 출력합니다.",
+    "calculation": "'S'+'e'+'y'+'n'+'a'+'a'+'u' = 'Seynaau'",
+    "objectFlow": [],
+    "pitfalls": [
+      "i를 숫자 인덱스로 착각하지 말고, 반복할 때마다 i가 도시 이름 문자열이라는 점을 확인합니다."
+    ],
+    "takeaway": "각 도시의 두 번째 문자만 이어 붙여 Seynaau가 됩니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-09": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 세타 조인\n② 동등 조인\n③ 자연 조인",
+    "concept": "세타 조인에서 자연 조인까지의 포함 관계",
+    "rules": [
+      "세타 조인 ⊃ 동등 조인이며, 자연 조인은 동등 조인의 중복 공통 속성을 제거한 형태입니다."
+    ],
+    "steps": [
+      "비교 연산자로 조건을 만족하는 튜플을 고르는 가장 넓은 개념은 세타 조인입니다.",
+      "그중 비교 연산자가 `=`인 경우가 동등 조인입니다.",
+      "동등 조인 결과에서 중복된 공통 속성 하나를 제거하면 자연 조인입니다."
+    ],
+    "distinctions": [
+      "동등 조인은 같은 이름의 속성이 결과에 두 번 남을 수 있지만 자연 조인은 하나만 남깁니다."
+    ],
+    "pitfalls": [
+      "자연 조인과 동등 조인을 모두 등호 조건으로만 기억하면 중복 속성 제거 여부를 놓칩니다."
+    ],
+    "takeaway": "① 세타 조인, ② 동등 조인, ③ 자연 조인입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-10": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "GECA",
+    "concept": "문자열 뒤집기 후 홀수 인덱스 선택",
+    "rules": [
+      "문자열 인덱스는 0부터 시작합니다.",
+      "`i += 2`이므로 선택 위치는 1,3,5,7입니다."
+    ],
+    "steps": [
+      "inverse가 양끝 문자를 서로 바꾸며 `ABCDEFGH`를 `HGFEDCBA`로 뒤집습니다.",
+      "출력 반복문은 i=1부터 2씩 증가하므로 인덱스 1, 3, 5, 7만 방문합니다.",
+      "해당 위치의 G, E, C, A를 붙여 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "뒤집기 전",
+          "ABCDEFGH",
+          "-"
+        ],
+        [
+          "뒤집기 후",
+          "HGFEDCBA",
+          "-"
+        ],
+        [
+          "i=1,3",
+          "G, E",
+          "GE"
+        ],
+        [
+          "i=5,7",
+          "C, A",
+          "GECA"
+        ]
+      ]
+    },
+    "outputMoment": "뒤집힌 배열에서 홀수 인덱스 문자만 printf가 순서대로 내보냅니다.",
+    "calculation": "H[G]F[E]D[C]B[A] → GECA",
+    "objectFlow": [],
+    "pitfalls": [
+      "원본 문자열의 홀수 인덱스를 뽑는 것이 아니라 먼저 전체 문자열을 뒤집는다는 순서를 지켜야 합니다."
+    ],
+    "takeaway": "뒤집기와 인덱스 선택을 분리하면 출력 GECA를 쉽게 확인할 수 있습니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-11": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "⑤, ⑥, ③, ①, ⑦, ②",
+    "concept": "상속 객체 생성과 오버로딩된 메서드 선택",
+    "rules": [
+      "자식 생성자는 부모 생성자를 먼저 실행합니다.",
+      "매개변수가 다른 getX(int)는 오버라이딩이 아니라 오버로딩입니다."
+    ],
+    "steps": [
+      "main의 ⑤에서 시작해 ⑥의 `new Child(10)`을 평가합니다.",
+      "자식 생성자 ③에 들어가지만 첫 문장 `super(...)` 때문에 부모 생성자 ①을 먼저 실행합니다.",
+      "객체 생성 뒤 ⑦의 `parent.getX()`는 선언형 Parent에 정의된 매개변수 없는 getX ②를 호출합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "시작",
+          "main",
+          "⑤"
+        ],
+        [
+          "객체 생성 문장",
+          "new Child(10)",
+          "⑥→③"
+        ],
+        [
+          "부모 초기화",
+          "super(11,10)",
+          "①"
+        ],
+        [
+          "호출",
+          "parent.getX()",
+          "⑦→②"
+        ]
+      ]
+    },
+    "outputMoment": "⑦에서 매개변수 없는 getX를 호출하므로 부모의 ②가 마지막으로 실행됩니다.",
+    "calculation": "중복 번호 없이 실행 진입 순서를 적으면 ⑤,⑥,③,①,⑦,②",
+    "objectFlow": [
+      "Parent parent → 실제 객체 Child",
+      "Child.getX(int) ≠ Parent.getX()"
+    ],
+    "pitfalls": [
+      "③보다 ①이 먼저 ‘완료’되지만, 실행 흐름은 먼저 ③에 진입한 뒤 super로 ①에 들어간다는 문제의 번호 기준을 따라야 합니다."
+    ],
+    "takeaway": "생성자 진입과 super 호출, 메서드 시그니처를 구분하면 순서는 ⑤→⑥→③→①→⑦→②입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-12": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "B\na\nb",
+    "concept": "IN 부질의로 R1 행을 거르는 과정",
+    "rules": [
+      "IN은 왼쪽 값이 부질의 결과 집합 중 하나와 같으면 참입니다."
+    ],
+    "steps": [
+      "안쪽 질의에서 R2의 D가 k인 행만 고르면 C 집합은 x와 y입니다.",
+      "바깥 질의는 R1.C가 그 집합에 포함된 행, 즉 C가 x 또는 y인 행을 남깁니다.",
+      "남은 두 행의 B 값 a와 b를 B 열 아래에 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "부질의",
+          "R2.D='k'",
+          "C={x,y}"
+        ],
+        [
+          "R1 첫 행",
+          "C=x",
+          "포함 → B=a"
+        ],
+        [
+          "R1 둘째 행",
+          "C=y",
+          "포함 → B=b"
+        ],
+        [
+          "R1 셋째 행",
+          "C=t",
+          "제외"
+        ]
+      ]
+    },
+    "outputMoment": "SELECT B가 통과한 두 행에서 B 열만 투영합니다.",
+    "calculation": "결과 열 이름 B, 결과 값 a와 b",
+    "objectFlow": [],
+    "pitfalls": [
+      "부질의가 반환하는 것은 D가 아니라 C 열이라는 점을 확인해야 합니다."
+    ],
+    "takeaway": "먼저 부질의 집합 {x,y}를 만든 뒤 R1을 대조하면 B/a/b가 나옵니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-13": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "변환된 문자열 : Nd sc 1",
+    "concept": "문자 종류별 순환 이동",
+    "rules": [
+      "문자 코드를 A 또는 a 또는 0 기준의 0부터 시작하는 값으로 바꾼 뒤 이동합니다.",
+      "공백은 어느 문자 분류에도 속하지 않아 그대로 복사됩니다."
+    ],
+    "steps": [
+      "각 문자를 대문자, 소문자, 숫자, 그 외 문자로 분류합니다.",
+      "I는 대문자 규칙 +5로 N, 소문자 t·i·s는 +10으로 d·s·c가 됩니다.",
+      "숫자 8은 +3 후 10으로 나눈 나머지 1이 되고 공백은 그대로 복사됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "I",
+          "대문자 +5",
+          "N"
+        ],
+        [
+          "t / i / s",
+          "소문자 +10",
+          "d / s / c"
+        ],
+        [
+          "공백",
+          "그 외",
+          "공백 유지"
+        ],
+        [
+          "8",
+          "숫자 (8+3)%10",
+          "1"
+        ]
+      ]
+    },
+    "outputMoment": "변환 배열 끝에 널 문자를 넣은 뒤 고정 문구와 문자열을 함께 출력합니다.",
+    "calculation": "`It is 8` → `Nd sc 1`",
+    "objectFlow": [],
+    "pitfalls": [
+      "대문자 식만 `% 25`인 원문을 임의로 `% 26`으로 고치지 않습니다.",
+      "출력 앞의 `변환된 문자열 : `과 공백까지 포함해야 합니다."
+    ],
+    "takeaway": "문자별 규칙을 따로 적용한 전체 출력은 `변환된 문자열 : Nd sc 1`입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-14": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "MC/DC",
+    "concept": "개별 조건의 독립 효과를 확인하는 MC/DC",
+    "rules": [
+      "MC/DC는 각 개별 조건이 다른 조건의 영향과 독립적으로 전체 결정 결과에 영향을 줌을 보여야 합니다."
+    ],
+    "steps": [
+      "모든 결정 결과가 참·거짓이 되는지와 모든 개별 조건이 참·거짓이 되는지 확인합니다.",
+      "추가로 한 조건만 바꿨을 때 전체 결정 결과가 바뀌는 독립적 영향까지 요구하므로 MC/DC입니다."
+    ],
+    "distinctions": [
+      "조건/결정 커버리지는 각 조건과 결정의 참·거짓만 요구하지만 독립 영향까지 보장하지는 않습니다."
+    ],
+    "pitfalls": [
+      "‘모든 조건 조합’인 다중 조건 커버리지와 ‘각 조건의 독립 영향’인 MC/DC를 구분합니다."
+    ],
+    "takeaway": "개별 조건의 독립적인 영향이라는 문장이 나오면 MC/DC입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-15": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "Rootkit",
+    "concept": "침입 흔적과 도구를 숨기는 Rootkit",
+    "rules": [
+      "Rootkit은 공격자가 관리자 수준 접근을 유지하면서 파일·프로세스·명령 흔적을 은폐하도록 돕는 도구 모음입니다."
+    ],
+    "steps": [
+      "침입 뒤 백도어·권한 획득·흔적 삭제 기능을 묶어 제공한다는 점을 확인합니다.",
+      "자신과 공격자의 활동을 시스템에서 보이지 않게 숨긴다는 핵심 단서를 Rootkit과 연결합니다."
+    ],
+    "distinctions": [
+      "백도어는 우회 접속 통로 하나를 뜻하고, Rootkit은 백도어를 포함한 여러 은폐·유지 기능의 모음입니다."
+    ],
+    "pitfalls": [
+      "원격 제어 기능만 보고 트로이목마로 답하지 말고 ‘침입 사실 은폐’에 주목합니다."
+    ],
+    "takeaway": "권한 유지와 흔적 은폐를 함께 제공하는 도구 모음은 Rootkit입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-16": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "APT",
+    "concept": "장기간 표적을 추적하는 APT",
+    "rules": [
+      "APT는 Advanced Persistent Threat의 약자로, 표적형·지속형·조직적 공격입니다."
+    ],
+    "steps": [
+      "불특정 다수가 아니라 특정 기업·조직을 목표로 삼는지 확인합니다.",
+      "침투 후 오래 숨어 검색·수집·유출을 단계적으로 수행한다는 특성을 APT와 연결합니다."
+    ],
+    "distinctions": [
+      "일회성 악성코드 감염과 달리 APT는 거점을 확보하고 장기간 목표 정보를 빼냅니다."
+    ],
+    "pitfalls": [
+      "공격 단계 중 하나만 보고 피싱이나 악성코드로 좁히지 말고 전체 작전의 지속성을 봅니다."
+    ],
+    "takeaway": "특정 조직에 오래 잠복해 침투→검색→수집→유출하면 APT입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-17": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "1",
+    "concept": "AND 우선 계산 후 OR 결합",
+    "rules": [
+      "SQL 논리 연산 우선순위는 일반적으로 AND가 OR보다 높습니다."
+    ],
+    "steps": [
+      "SQL에서 AND를 OR보다 먼저 묶어 각 행에 적용합니다.",
+      "EMPNO가 200인 행은 왼쪽 AND 묶음도 참이고 오른쪽 `EMPNO=200`도 참이어서 포함됩니다.",
+      "나머지 두 행은 두 조건 묶음 모두 거짓이므로 제외됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "100,1500",
+          "왼쪽 거짓 / 오른쪽 거짓",
+          "제외"
+        ],
+        [
+          "200,3000",
+          "왼쪽 참 / 오른쪽 참",
+          "포함"
+        ],
+        [
+          "300,2000",
+          "왼쪽 거짓 / 오른쪽 거짓",
+          "제외"
+        ],
+        [
+          "COUNT",
+          "포함 행 1개",
+          "1"
+        ]
+      ]
+    },
+    "outputMoment": "WHERE를 통과한 한 행을 COUNT(*)가 셉니다.",
+    "calculation": "통과 행 {EMPNO 200} → 1",
+    "objectFlow": [],
+    "pitfalls": [
+      "조건을 왼쪽부터 단순히 계산하지 말고 `(A AND B) OR C`로 묶어야 합니다."
+    ],
+    "takeaway": "AND를 먼저 적용하면 포함되는 행은 EMPNO 200 하나뿐이어서 결과는 1입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-1-18": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "9",
+    "concept": "오버라이딩된 인스턴스 메서드의 동적 호출",
+    "rules": [
+      "Java의 오버라이딩된 인스턴스 메서드는 참조 변수형이 아니라 실제 객체형으로 선택됩니다."
+    ],
+    "steps": [
+      "변수 st의 선언형은 firstArea지만 실제로 만든 객체는 secondArea입니다.",
+      "secondArea 생성자가 부모 생성자를 호출해 x=10, y=11을 만들고, 자식 필드 bb는 3입니다.",
+      "print는 오버라이딩되었으므로 실제 객체 secondArea의 print가 호출되어 bb×bb를 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "참조",
+          "firstArea st",
+          "실제 객체 secondArea"
+        ],
+        [
+          "부모 초기화",
+          "x=10, y=11",
+          "-"
+        ],
+        [
+          "자식 필드",
+          "bb=3",
+          "-"
+        ],
+        [
+          "동적 호출",
+          "secondArea.print",
+          "3×3=9"
+        ]
+      ]
+    },
+    "outputMoment": "st.print()가 secondArea.print()로 동적 바인딩되는 순간 9가 정해집니다.",
+    "calculation": "bb × bb = 3 × 3 = 9",
+    "objectFlow": [
+      "firstArea st → secondArea 객체",
+      "호출 대상: secondArea.print()"
+    ],
+    "pitfalls": [
+      "부모의 print가 호출되어 x+y=21이 된다고 생각하지 않도록 실제 객체형을 확인합니다."
+    ],
+    "takeaway": "부모형 참조라도 실제 객체가 자식이면 오버라이딩된 자식 print가 실행되어 9입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  }
+}

@@ -1,0 +1,2631 @@
+{
+  "passed": true,
+  "examCount": 7,
+  "questionCount": 138,
+  "codeBlockCount": 70,
+  "errors": [],
+  "questions": [
+    {
+      "questionId": "2024-1-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "151",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-02",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "OSPF, Open Shortest Path First protocol",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-03",
+      "sourcePage": 3,
+      "solutionPage": 1,
+      "sourceAnswer": "제3정규형",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-04",
+      "sourcePage": 3,
+      "solutionPage": 2,
+      "sourceAnswer": "㉠, ㉡, ㉣, ㉢",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-05",
+      "sourcePage": 4,
+      "solutionPage": 2,
+      "sourceAnswer": "4",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-06",
+      "sourcePage": 5,
+      "solutionPage": 6,
+      "sourceAnswer": "Abstract Factory",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-07",
+      "sourcePage": 5,
+      "solutionPage": 6,
+      "sourceAnswer": "① 6\n② 6",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-08",
+      "sourcePage": 6,
+      "solutionPage": 7,
+      "sourceAnswer": "Seynaau",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-09",
+      "sourcePage": 6,
+      "solutionPage": 8,
+      "sourceAnswer": "① 세타 조인\n② 동등 조인\n③ 자연 조인",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-10",
+      "sourcePage": 7,
+      "solutionPage": 8,
+      "sourceAnswer": "GECA",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-11",
+      "sourcePage": 8,
+      "solutionPage": 10,
+      "sourceAnswer": "⑤, ⑥, ③, ①, ⑦, ②",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-12",
+      "sourcePage": 9,
+      "solutionPage": 12,
+      "sourceAnswer": "B\na\nb",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-13",
+      "sourcePage": 9,
+      "solutionPage": 13,
+      "sourceAnswer": "변환된 문자열 : Nd sc 1",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-14",
+      "sourcePage": 10,
+      "solutionPage": 14,
+      "sourceAnswer": "MC/DC",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-15",
+      "sourcePage": 10,
+      "solutionPage": 14,
+      "sourceAnswer": "Rootkit",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-16",
+      "sourcePage": 11,
+      "solutionPage": 15,
+      "sourceAnswer": "APT",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-17",
+      "sourcePage": 11,
+      "solutionPage": 15,
+      "sourceAnswer": "1",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-1-18",
+      "sourcePage": 12,
+      "solutionPage": 15,
+      "sourceAnswer": "9",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "S",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-02",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "NNN",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-03",
+      "sourcePage": 3,
+      "solutionPage": 3,
+      "sourceAnswer": "ab3 ca3",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-04",
+      "sourcePage": 3,
+      "solutionPage": 4,
+      "sourceAnswer": "반정규화, Denormalization, 비정규화, 역정규화",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-05",
+      "sourcePage": 4,
+      "solutionPage": 4,
+      "sourceAnswer": "-13",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-06",
+      "sourcePage": 5,
+      "solutionPage": 5,
+      "sourceAnswer": "10",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-07",
+      "sourcePage": 6,
+      "solutionPage": 7,
+      "sourceAnswer": "25, 20",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-08",
+      "sourcePage": 7,
+      "solutionPage": 9,
+      "sourceAnswer": "dcba",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-09",
+      "sourcePage": 7,
+      "solutionPage": 16,
+      "sourceAnswer": "21",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-10",
+      "sourcePage": 8,
+      "solutionPage": 17,
+      "sourceAnswer": "① VALUES\n② SELECT\n③ FROM\n④ SET",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-11",
+      "sourcePage": 9,
+      "solutionPage": 18,
+      "sourceAnswer": "① 5\n② 4",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-12",
+      "sourcePage": 9,
+      "solutionPage": 18,
+      "sourceAnswer": "IPsec, IP Security",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-13",
+      "sourcePage": 9,
+      "solutionPage": 18,
+      "sourceAnswer": "AES, Advanced Encryption Standard",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-14",
+      "sourcePage": 10,
+      "solutionPage": 18,
+      "sourceAnswer": "① 가상 회선, 가상 회선 방식, VC, Virtual Circuit\n② 데이터그램, 데이터그램 방식, Datagram",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-15",
+      "sourcePage": 10,
+      "solutionPage": 18,
+      "sourceAnswer": "㉡",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-16",
+      "sourcePage": 10,
+      "solutionPage": 18,
+      "sourceAnswer": "6.5",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-17",
+      "sourcePage": 11,
+      "solutionPage": 19,
+      "sourceAnswer": "Iterator",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-18",
+      "sourcePage": 11,
+      "solutionPage": 19,
+      "sourceAnswer": "㉢",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-19",
+      "sourcePage": 12,
+      "solutionPage": 19,
+      "sourceAnswer": "20",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-2-20",
+      "sourcePage": 12,
+      "solutionPage": 23,
+      "sourceAnswer": "A → D → C → F",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "OOAAA",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-02",
+      "sourcePage": 2,
+      "solutionPage": 2,
+      "sourceAnswer": "3",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-03",
+      "sourcePage": 3,
+      "solutionPage": 3,
+      "sourceAnswer": "1",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-04",
+      "sourcePage": 3,
+      "solutionPage": 5,
+      "sourceAnswer": "12",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-05",
+      "sourcePage": 4,
+      "solutionPage": 5,
+      "sourceAnswer": "스머프, Smurf, 스머핑, Smurfing",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-06",
+      "sourcePage": 4,
+      "solutionPage": 5,
+      "sourceAnswer": "20",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-07",
+      "sourcePage": 5,
+      "solutionPage": 6,
+      "sourceAnswer": "VPN",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-08",
+      "sourcePage": 5,
+      "solutionPage": 7,
+      "sourceAnswer": "행위, Behavioral",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-09",
+      "sourcePage": 5,
+      "solutionPage": 7,
+      "sourceAnswer": "① ㉥\n② ㉣\n③ ㉢",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-10",
+      "sourcePage": 6,
+      "solutionPage": 7,
+      "sourceAnswer": "312",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-11",
+      "sourcePage": 7,
+      "solutionPage": 13,
+      "sourceAnswer": "① 4\n② 3\n③ 1\n④ 2\n⑤ 5",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-12",
+      "sourcePage": 7,
+      "solutionPage": 13,
+      "sourceAnswer": "45",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-13",
+      "sourcePage": 8,
+      "solutionPage": 14,
+      "sourceAnswer": "① ㉡\n② ㉢\n③ ㉠",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-14",
+      "sourcePage": 9,
+      "solutionPage": 14,
+      "sourceAnswer": "52",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-15",
+      "sourcePage": 10,
+      "solutionPage": 16,
+      "sourceAnswer": "① ㉡\n② ㉣\n③ ㉢\n④ ㉠",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-16",
+      "sourcePage": 10,
+      "solutionPage": 16,
+      "sourceAnswer": "개체, Entity",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-17",
+      "sourcePage": 11,
+      "solutionPage": 16,
+      "sourceAnswer": "101",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-18",
+      "sourcePage": 12,
+      "solutionPage": 17,
+      "sourceAnswer": "B0",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-19",
+      "sourcePage": 13,
+      "solutionPage": 19,
+      "sourceAnswer": "1",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2024-3-20",
+      "sourcePage": 13,
+      "solutionPage": 21,
+      "sourceAnswer": "㉣",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "세션 하이재킹(Session Hijacking)",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-02",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "① 도메인           ② 개체      ③ 참조",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-03",
+      "sourcePage": 3,
+      "solutionPage": 1,
+      "sourceAnswer": "4\nBACDE",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-04",
+      "sourcePage": 4,
+      "solutionPage": 3,
+      "sourceAnswer": "CRC",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-05",
+      "sourcePage": 4,
+      "solutionPage": 3,
+      "sourceAnswer": "출력1출력5",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-06",
+      "sourcePage": 5,
+      "solutionPage": 4,
+      "sourceAnswer": "name         incentive\n이순신            1000",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-07",
+      "sourcePage": 5,
+      "solutionPage": 4,
+      "sourceAnswer": "① ㉤     ② ㉡     ③ ㉥",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-08",
+      "sourcePage": 6,
+      "solutionPage": 4,
+      "sourceAnswer": "스케어웨어",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-09",
+      "sourcePage": 6,
+      "solutionPage": 4,
+      "sourceAnswer": "㉠, ㉡, ㉢, ㉣, ㉤",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-10",
+      "sourcePage": 6,
+      "solutionPage": 5,
+      "sourceAnswer": "① ARP(Address Resolution Protocol)        ② RARP(Reverse Address Resolution Protocol)",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-11",
+      "sourcePage": 7,
+      "solutionPage": 5,
+      "sourceAnswer": "54",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-12",
+      "sourcePage": 8,
+      "solutionPage": 7,
+      "sourceAnswer": "13",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-13",
+      "sourcePage": 9,
+      "solutionPage": 10,
+      "sourceAnswer": "Adapter",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-14",
+      "sourcePage": 10,
+      "solutionPage": 10,
+      "sourceAnswer": "① int a = 0                  ② a < m || b[a] < x                      ③ b[a] < 0                ④ b[a] = -b[a];                 ⑤ a++;         ⑥ return 1;\n③, ④, ⑤, ②, ⑥",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-15",
+      "sourcePage": 11,
+      "solutionPage": 11,
+      "sourceAnswer": "① ㉢    ② ㉤    ③ ㉦   ④ ㉠",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-16",
+      "sourcePage": 11,
+      "solutionPage": 11,
+      "sourceAnswer": "4",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-17",
+      "sourcePage": 12,
+      "solutionPage": 15,
+      "sourceAnswer": "908",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-18",
+      "sourcePage": 13,
+      "solutionPage": 17,
+      "sourceAnswer": "20",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-19",
+      "sourcePage": 13,
+      "solutionPage": 19,
+      "sourceAnswer": "13",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-1-20",
+      "sourcePage": 14,
+      "solutionPage": 25,
+      "sourceAnswer": "35421",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "색인, Index",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-02",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "SSH",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-03",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "㉢",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-04",
+      "sourcePage": 3,
+      "solutionPage": 1,
+      "sourceAnswer": "BB",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-05",
+      "sourcePage": 3,
+      "solutionPage": 2,
+      "sourceAnswer": "3 1 2",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-06",
+      "sourcePage": 4,
+      "solutionPage": 4,
+      "sourceAnswer": "① SJF, Shortest Job First\n② SRT, Shortest Remaining Time",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-07",
+      "sourcePage": 4,
+      "solutionPage": 5,
+      "sourceAnswer": "① TTL       ② 부장    ③ 대리       ④ 과장      ⑤ 차장",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-08",
+      "sourcePage": 5,
+      "solutionPage": 5,
+      "sourceAnswer": "① 128       ② 62",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-09",
+      "sourcePage": 5,
+      "solutionPage": 5,
+      "sourceAnswer": "19",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-10",
+      "sourcePage": 6,
+      "solutionPage": 6,
+      "sourceAnswer": "3 그리고 2",
+      "reviewedAnswerOverride": "2 그리고 3",
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-11",
+      "sourcePage": 7,
+      "solutionPage": 11,
+      "sourceAnswer": "AJAX, Asynchronous JavaScript and XML",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-12",
+      "sourcePage": 7,
+      "solutionPage": 11,
+      "sourceAnswer": "Proxy",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-13",
+      "sourcePage": 7,
+      "solutionPage": 11,
+      "sourceAnswer": "SYN Flooding",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-14",
+      "sourcePage": 8,
+      "solutionPage": 12,
+      "sourceAnswer": "( 1 ) → ( 2 ) → ( 3 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 7 )\n( 1 ) → ( 2 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 1 )\n또는\n( 1 ) → ( 2 ) → ( 3 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 1 )\n( 1 ) → ( 2 ) → ( 4 ) → ( 5 ) → ( 6 ) → ( 7 )",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-15",
+      "sourcePage": 8,
+      "solutionPage": 12,
+      "sourceAnswer": "11.75",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-16",
+      "sourcePage": 9,
+      "solutionPage": 13,
+      "sourceAnswer": "5 그리고 6",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-17",
+      "sourcePage": 9,
+      "solutionPage": 14,
+      "sourceAnswer": "2",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-18",
+      "sourcePage": 10,
+      "solutionPage": 15,
+      "sourceAnswer": "5P",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-19",
+      "sourcePage": 11,
+      "solutionPage": 16,
+      "sourceAnswer": "1a3b3",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-2-20",
+      "sourcePage": 12,
+      "solutionPage": 20,
+      "sourceAnswer": "TSEB",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "패키지",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-02",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "① pwd             ② ls     ③ cd              ④ cp",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-03",
+      "sourcePage": 3,
+      "solutionPage": 1,
+      "sourceAnswer": "조건 커버리지",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-04",
+      "sourcePage": 3,
+      "solutionPage": 1,
+      "sourceAnswer": "① ㉧             ② ㉡       ③ ㉢           ④ ㉤          ⑤ ㉠",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-05",
+      "sourcePage": 4,
+      "solutionPage": 1,
+      "sourceAnswer": "C",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-06",
+      "sourcePage": 4,
+      "solutionPage": 2,
+      "sourceAnswer": "AB",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-07",
+      "sourcePage": 5,
+      "solutionPage": 3,
+      "sourceAnswer": "4",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-08",
+      "sourcePage": 5,
+      "solutionPage": 4,
+      "sourceAnswer": "oAuth",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-09",
+      "sourcePage": 6,
+      "solutionPage": 4,
+      "sourceAnswer": "OTP",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-10",
+      "sourcePage": 6,
+      "solutionPage": 4,
+      "sourceAnswer": "implements",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-11",
+      "sourcePage": 7,
+      "solutionPage": 5,
+      "sourceAnswer": "① 15        ② 5   ③10     ④ 3   ⑤ 18   ⑥ 5   ⑦ 9   ⑧ 2",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-12",
+      "sourcePage": 8,
+      "solutionPage": 6,
+      "sourceAnswer": "A\na1",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-13",
+      "sourcePage": 8,
+      "solutionPage": 7,
+      "sourceAnswer": "① MAC              ② RBAC               ③ DAC",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-14",
+      "sourcePage": 9,
+      "solutionPage": 7,
+      "sourceAnswer": "① 테스트 조건                      ② 테스트 데이터                    ③ 예상 결과",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-15",
+      "sourcePage": 9,
+      "solutionPage": 7,
+      "sourceAnswer": "① 튜플               ② 릴레이션 인스턴스                        ③ 카디널리티",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-16",
+      "sourcePage": 10,
+      "solutionPage": 7,
+      "sourceAnswer": "E",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-17",
+      "sourcePage": 10,
+      "solutionPage": 8,
+      "sourceAnswer": "0",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-18",
+      "sourcePage": 11,
+      "solutionPage": 9,
+      "sourceAnswer": "super",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-19",
+      "sourcePage": 12,
+      "solutionPage": 10,
+      "sourceAnswer": "187",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2025-3-20",
+      "sourcePage": 13,
+      "solutionPage": 13,
+      "sourceAnswer": "4",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-01",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "① Bridge     ② Observer",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-02",
+      "sourcePage": 2,
+      "solutionPage": 1,
+      "sourceAnswer": "① 운영요구사항          ② 자원요구사항         ③ 성능요구사항",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-03",
+      "sourcePage": 3,
+      "solutionPage": 1,
+      "sourceAnswer": "106.00",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-04",
+      "sourcePage": 4,
+      "solutionPage": 3,
+      "sourceAnswer": "① CONSTRAINT         ② FOREIGN      ③ TEAM_ID    ④ REFERENCES    ⑤ TEAM_ID2",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-05",
+      "sourcePage": 4,
+      "solutionPage": 3,
+      "sourceAnswer": "9A7A5A3A1A",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-06",
+      "sourcePage": 5,
+      "solutionPage": 4,
+      "sourceAnswer": "2",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-07",
+      "sourcePage": 5,
+      "solutionPage": 5,
+      "sourceAnswer": "ISMS",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-08",
+      "sourcePage": 6,
+      "solutionPage": 5,
+      "sourceAnswer": "① 192.168.10.0/23    ② 192.168.12.0/23",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-09",
+      "sourcePage": 6,
+      "solutionPage": 5,
+      "sourceAnswer": "Watering Hole",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-10",
+      "sourcePage": 6,
+      "solutionPage": 5,
+      "sourceAnswer": "① 요구 조건 분석          ② 개념적 설계       ③ 논리적 설계       ④ 물리적 설계       ⑤ 데이터베이스 구현",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-11",
+      "sourcePage": 7,
+      "solutionPage": 5,
+      "sourceAnswer": "2",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-12",
+      "sourcePage": 7,
+      "solutionPage": 6,
+      "sourceAnswer": "① ㉣        ② ㉢    ③ ㉠",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-13",
+      "sourcePage": 8,
+      "solutionPage": 6,
+      "sourceAnswer": "① 스텁, Stub\n② 드라이버, Driver",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-14",
+      "sourcePage": 8,
+      "solutionPage": 6,
+      "sourceAnswer": "심볼릭 링크, Symbolic Link",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-15",
+      "sourcePage": 9,
+      "solutionPage": 7,
+      "sourceAnswer": "20",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-16",
+      "sourcePage": 9,
+      "solutionPage": 8,
+      "sourceAnswer": "veDamuH",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-17",
+      "sourcePage": 10,
+      "solutionPage": 9,
+      "sourceAnswer": "① 정보         ② 감독       ③ 비번호       ④ 비동기 균형 모드         ⑤ 비동기 응답 모드",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-18",
+      "sourcePage": 11,
+      "solutionPage": 9,
+      "sourceAnswer": "① 200        ② 3   ③ 1",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-19",
+      "sourcePage": 11,
+      "solutionPage": 10,
+      "sourceAnswer": "1123",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    },
+    {
+      "questionId": "2026-1-20",
+      "sourcePage": 12,
+      "solutionPage": 11,
+      "sourceAnswer": "10",
+      "reviewedAnswerOverride": null,
+      "checks": {
+        "promptExact": true,
+        "answerMatchesSourceOrReviewedOverride": true,
+        "overriddenSourceAnswerRemainsAccepted": true,
+        "sourceExplanationExact": true,
+        "sourcePageExact": true,
+        "solutionPageExact": true,
+        "promptBlocksPresent": true,
+        "answerPartsPresent": true,
+        "codeFormattingValid": true,
+        "pageImageReadable": true
+      }
+    }
+  ]
+}

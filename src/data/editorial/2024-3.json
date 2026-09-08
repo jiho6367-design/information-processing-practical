@@ -1,0 +1,821 @@
+{
+  "2024-3-01": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "OOAAA",
+    "concept": "문자열 내용 비교와 배열 순회",
+    "rules": [
+      "String.equals는 내용 비교이고 `==`는 참조 비교입니다."
+    ],
+    "steps": [
+      "x[0], x[1], x[2]는 객체 생성 방식은 달라도 문자열 내용이 모두 A입니다.",
+      "equals는 참조가 아닌 문자열 내용을 비교하므로 인접한 두 비교가 모두 참입니다.",
+      "두 O를 출력한 뒤 향상된 for문으로 A를 세 번 이어 출력합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "x[0] vs x[1]",
+          "\"A\".equals(\"A\")",
+          "O"
+        ],
+        [
+          "x[1] vs x[2]",
+          "내용 A와 A",
+          "O"
+        ],
+        [
+          "배열 순회",
+          "A, A, A",
+          "AAA"
+        ],
+        [
+          "전체",
+          "OO + AAA",
+          "OOAAA"
+        ]
+      ]
+    },
+    "outputMoment": "첫 for문의 OO 뒤에 두 번째 for문의 AAA가 줄바꿈 없이 붙습니다.",
+    "calculation": "OO + AAA = OOAAA",
+    "objectFlow": [
+      "x[0], x[1] → interned \"A\"",
+      "x[2] → 새 String 객체(내용은 \"A\")"
+    ],
+    "pitfalls": [
+      "`new String(\"A\")`가 별도 객체라는 이유로 equals 결과를 거짓으로 판단하면 안 됩니다."
+    ],
+    "takeaway": "세 문자열 내용이 같으므로 비교 OO와 내용 AAA가 합쳐져 OOAAA입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-02": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "3",
+    "concept": "리스트 제자리 뒤집기와 슬라이스 합",
+    "rules": [
+      "리스트를 함수에 넘기면 같은 가변 객체를 참조합니다.",
+      "슬라이스의 step 2는 인덱스를 두 칸씩 선택합니다."
+    ],
+    "steps": [
+      "func는 앞뒤 원소를 교환하여 원본 lst 자체를 [6,5,4,3,2,1]로 뒤집습니다.",
+      "`lst[::2]`는 인덱스 0,2,4의 6,4,2이고, `lst[1::2]`는 5,3,1입니다.",
+      "두 합의 차를 계산합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "func 후",
+          "[6,5,4,3,2,1]",
+          "-"
+        ],
+        [
+          "짝수 인덱스",
+          "6+4+2",
+          "12"
+        ],
+        [
+          "홀수 인덱스",
+          "5+3+1",
+          "9"
+        ],
+        [
+          "차",
+          "12-9",
+          "3"
+        ]
+      ]
+    },
+    "outputMoment": "두 슬라이스의 sum 결과를 뺄 때 3이 됩니다.",
+    "calculation": "(6+4+2) - (5+3+1) = 3",
+    "objectFlow": [
+      "main의 lst ─→ 리스트 객체 ←─ func의 lst"
+    ],
+    "pitfalls": [
+      "func 안에서 새 리스트를 만드는 것이 아니라 lst의 요소를 직접 교환합니다."
+    ],
+    "takeaway": "뒤집힌 리스트의 짝수 인덱스 합 12에서 홀수 인덱스 합 9를 빼면 3입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-03": {
+    "status": "authored",
+    "kind": "sql",
+    "answerSummary": "1",
+    "concept": "중첩 부질의와 중복 project_id 조인",
+    "rules": [
+      "중첩 부질의는 가장 안쪽부터 결과 집합을 만들어 바깥 조건에 넣습니다."
+    ],
+    "steps": [
+      "가장 안쪽 GROUP BY에서 직원 수가 2보다 작은 project_id는 20뿐입니다.",
+      "project_id 20인 프로젝트 이름은 Beta이므로 중간 부질의 결과는 {Beta}입니다.",
+      "바깥 조인 결과 중 프로젝트 이름이 Beta인 행은 Jim과 Beta의 한 행뿐입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "GROUP BY",
+          "10→2명, 20→1명",
+          "project_id={20}"
+        ],
+        [
+          "프로젝트 조회",
+          "id 20",
+          "name={Beta}"
+        ],
+        [
+          "JOIN+WHERE",
+          "Jim ↔ Beta",
+          "1행"
+        ],
+        [
+          "COUNT",
+          "통과 1행",
+          "1"
+        ]
+      ]
+    },
+    "outputMoment": "Beta와 조인된 한 행을 COUNT(*)가 셉니다.",
+    "calculation": "{20} → {Beta} → 1행 → 1",
+    "objectFlow": [],
+    "pitfalls": [
+      "project_id 10은 project 테이블에 두 행이지만 안쪽 HAVING은 employee의 직원 수를 세는 질의입니다."
+    ],
+    "takeaway": "안쪽부터 20→Beta→한 행으로 좁혀져 결과는 1입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-04": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "12",
+    "concept": "가장 오래 참조되지 않은 페이지를 바꾸는 LRU",
+    "rules": [
+      "초기 적재도 페이지 결함이며, 적중한 페이지는 교체하지 않고 최근 사용 정보만 갱신합니다."
+    ],
+    "steps": [
+      "각 페이지 참조마다 프레임 3칸과 마지막 사용 시점을 함께 기록합니다.",
+      "페이지가 이미 있으면 최근 사용 시점만 갱신하고, 없으면 결함을 1 늘립니다.",
+      "프레임이 찬 뒤에는 마지막 사용이 가장 오래된 페이지를 교체해 전체 20개 참조를 추적합니다."
+    ],
+    "distinctions": [
+      "FIFO는 들어온 시점, LRU는 마지막으로 사용한 시점을 비교합니다."
+    ],
+    "pitfalls": [
+      "0이나 1처럼 반복 등장하는 페이지의 최근 사용 시점을 갱신하지 않으면 결함 수가 달라집니다."
+    ],
+    "takeaway": "참조열을 끝까지 LRU로 추적하면 페이지 결함은 12회입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-05": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "스머프, Smurf, 스머핑, Smurfing",
+    "concept": "브로드캐스트 응답을 피해자에게 모으는 Smurf 공격",
+    "rules": [
+      "Smurf 공격은 위조된 피해자 주소와 ICMP 브로드캐스트를 이용하는 반사·증폭 DoS입니다."
+    ],
+    "steps": [
+      "공격자가 출발지 IP를 피해자 주소로 위조한다는 점을 확인합니다.",
+      "브로드캐스트로 여러 호스트에 ICMP 요청을 보내고 모든 응답을 피해자에게 집중시키는 증폭 구조를 찾습니다."
+    ],
+    "distinctions": [
+      "SYN Flooding은 TCP 연결 대기열을 고갈시키고, Smurf는 ICMP 브로드캐스트 응답을 증폭합니다."
+    ],
+    "pitfalls": [
+      "단순히 ICMP를 많이 보낸다는 설명보다 주소 위조와 브로드캐스트 두 단서를 함께 확인합니다."
+    ],
+    "takeaway": "ICMP 브로드캐스트 응답이 피해자에게 몰리면 Smurf 공격입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-06": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "20",
+    "concept": "호출 사이에도 값을 유지하는 static 지역 변수",
+    "rules": [
+      "static 지역 변수는 최초 한 번만 초기화되고 함수 호출이 끝나도 값을 유지합니다."
+    ],
+    "steps": [
+      "main의 x와 func의 static x는 이름만 같고 서로 다른 변수입니다.",
+      "func의 x는 호출마다 초기화되지 않고 2,4,6,8로 누적됩니다.",
+      "sum은 이 네 반환값을 차례로 더합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "1회",
+          "static x=2",
+          "sum=2"
+        ],
+        [
+          "2회",
+          "static x=4",
+          "sum=6"
+        ],
+        [
+          "3회",
+          "static x=6",
+          "sum=12"
+        ],
+        [
+          "4회",
+          "static x=8",
+          "sum=20"
+        ]
+      ]
+    },
+    "outputMoment": "네 번째 호출값 8까지 sum에 더한 뒤 printf가 20을 출력합니다.",
+    "calculation": "2+4+6+8 = 20",
+    "objectFlow": [],
+    "pitfalls": [
+      "main의 x++가 func의 static x를 증가시킨다고 섞어 생각하지 않습니다."
+    ],
+    "takeaway": "func의 static x가 2씩 누적되어 반환값 합은 20입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-07": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "VPN",
+    "concept": "공중망 위에 만드는 암호화된 사설망 VPN",
+    "rules": [
+      "VPN은 Virtual Private Network의 약자로 공중망 위에 논리적인 사설 통신 경로를 만듭니다."
+    ],
+    "steps": [
+      "인터넷 같은 공중 네트워크를 사용하지만 전용 회선처럼 안전하게 이용한다는 점을 잡습니다.",
+      "IPsec·SSL로 암호화 터널을 만들고 원격지 사용자를 연결하는 기술을 VPN과 연결합니다."
+    ],
+    "distinctions": [
+      "전용선은 물리 회선을 임대하고, VPN은 기존 인터넷망에 암호화 터널을 구성합니다."
+    ],
+    "pitfalls": [
+      "IPsec과 SSL은 VPN을 구현하는 방식이며 문제에서 요구하는 상위 용어는 VPN입니다."
+    ],
+    "takeaway": "공중망을 전용선처럼 암호화해 쓰는 3글자 용어는 VPN입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-08": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "행위, Behavioral",
+    "concept": "객체 사이의 책임과 상호작용을 정하는 행위 패턴",
+    "rules": [
+      "행위 패턴은 객체·클래스 사이의 알고리즘, 책임 분배, 통신 방법을 다룹니다."
+    ],
+    "steps": [
+      "설명의 초점이 객체를 어떻게 만들거나 조립하는지가 아니라 서로 어떻게 행동하는지에 있는지 확인합니다.",
+      "Iterator·Observer·Chain of Responsibility가 속한 분류를 행위 패턴으로 연결합니다."
+    ],
+    "distinctions": [
+      "생성 패턴은 객체 생성, 구조 패턴은 클래스·객체 조합, 행위 패턴은 상호작용을 다룹니다."
+    ],
+    "pitfalls": [
+      "여러 객체를 ‘분배’한다는 말만 보고 구조 패턴으로 고르지 말고 책임 분배라는 목적을 봅니다."
+    ],
+    "takeaway": "Iterator와 Observer가 예시라면 행위(Behavioral) 패턴입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-09": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① ㉥\n② ㉣\n③ ㉢",
+    "concept": "문장·분기·조건 커버리지의 대상",
+    "rules": [
+      "문장=실행문, 분기=결정 결과, 조건=결정 안의 개별 조건식을 대상으로 합니다."
+    ],
+    "steps": [
+      "모든 구문을 한 번 이상 실행하는 기준은 문장 커버리지입니다.",
+      "전체 조건식 결과가 참과 거짓이 되게 하는 기준은 분기 커버리지입니다.",
+      "각 개별 조건식이 참과 거짓이 되게 하는 기준은 조건 커버리지입니다."
+    ],
+    "distinctions": [
+      "분기는 전체 결정의 True/False, 조건은 A&&B에서 A와 B 각각의 True/False를 봅니다."
+    ],
+    "pitfalls": [
+      "분기와 조건을 모두 ‘조건문 테스트’로 뭉뚱그리지 말고 평가 단위를 확인합니다."
+    ],
+    "takeaway": "① 문장 ㉥, ② 분기 ㉣, ③ 조건 ㉢입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-10": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "312",
+    "concept": "연결 리스트에서 인접 노드 값을 두 개씩 교환",
+    "rules": [
+      "노드의 연결(next)은 바뀌지 않고 value 필드만 서로 교환됩니다."
+    ],
+    "steps": [
+      "연결 순서는 n1(1)→n3(3)→n2(2)입니다.",
+      "func는 현재 노드와 다음 노드의 value만 교환하므로 첫 쌍 1과 3이 바뀝니다.",
+      "두 칸 이동하면 n2에 도착하고 다음 노드가 없어 반복이 끝납니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "n1→n3→n2",
+          "값 1→3→2"
+        ],
+        [
+          "첫 교환",
+          "n1.value↔n3.value",
+          "3→1→2"
+        ],
+        [
+          "두 칸 이동",
+          "node=n2",
+          "반복 종료"
+        ],
+        [
+          "출력 순회",
+          "3,1,2",
+          "312"
+        ]
+      ]
+    },
+    "outputMoment": "main이 그대로인 연결을 따라 바뀐 값 3,1,2를 연속 출력합니다.",
+    "calculation": "(1,3) 교환 + 마지막 2 유지 → 312",
+    "objectFlow": [
+      "n1(value 3) → n3(value 1) → n2(value 2)"
+    ],
+    "pitfalls": [
+      "노드 자체의 순서를 교환했다고 생각하지 말고 값 필드만 바뀌는지 확인합니다."
+    ],
+    "takeaway": "첫 두 노드의 값만 바뀌어 출력은 312입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-11": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① 4\n② 3\n③ 1\n④ 2\n⑤ 5",
+    "concept": "URL의 다섯 구성 요소",
+    "rules": [
+      "일반 구조는 `scheme://authority/path?query#fragment`입니다."
+    ],
+    "steps": [
+      "URL에서 `://` 앞은 scheme, 호스트·포트 부분은 authority로 찾습니다.",
+      "호스트 뒤 `/...`는 path, `?` 뒤는 query, `#` 뒤는 fragment로 구분합니다.",
+      "그림의 번호와 대응하면 query 4, path 3, scheme 1, authority 2, fragment 5입니다."
+    ],
+    "distinctions": [
+      "query는 서버에 전달할 매개변수이고 fragment는 받은 문서 안의 위치를 가리킵니다."
+    ],
+    "pitfalls": [
+      "물음표와 샵 뒤 부분을 서로 바꾸지 않습니다."
+    ],
+    "takeaway": "구조 순서로 대응하면 ①4, ②3, ③1, ④2, ⑤5입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-12": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "45",
+    "concept": "정확한 type 비교에 따른 분기",
+    "rules": [
+      "`type(value) == type(100)`은 정확히 int인지 비교하며 float 100.0은 int가 아닙니다."
+    ],
+    "steps": [
+      "문자열 a는 str이므로 길이 5를 반환합니다.",
+      "실수 b는 int도 str도 아니므로 else에서 20을 반환합니다.",
+      "튜플 c도 int·str이 아니므로 20을 반환합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "a=\"100.0\"",
+          "str",
+          "len=5"
+        ],
+        [
+          "b=100.0",
+          "float",
+          "20"
+        ],
+        [
+          "c=(100,200)",
+          "tuple",
+          "20"
+        ],
+        [
+          "합",
+          "5+20+20",
+          "45"
+        ]
+      ]
+    },
+    "outputMoment": "세 func 반환값을 더해 print가 출력합니다.",
+    "calculation": "5 + 20 + 20 = 45",
+    "objectFlow": [],
+    "pitfalls": [
+      "숫자 값이 100처럼 보인다는 이유로 float를 int 분기에 넣지 않습니다."
+    ],
+    "takeaway": "문자열 길이 5와 else 두 번의 20을 더해 45입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-13": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① ㉡\n② ㉢\n③ ㉠",
+    "concept": "UML 관계선의 모양 읽기",
+    "rules": [
+      "UML 관계는 선의 실선·점선 여부와 화살촉·마름모 모양으로 구분합니다."
+    ],
+    "steps": [
+      "실선으로 연결된 일반 참조 관계를 연관으로 판별합니다.",
+      "속이 빈 삼각형 화살표가 부모 쪽을 가리키면 일반화입니다.",
+      "점선 화살표로 일시적 사용을 나타내면 의존입니다."
+    ],
+    "distinctions": [
+      "일반화는 is-a 상속, 연관은 구조적 연결, 의존은 일시적 사용 관계입니다."
+    ],
+    "pitfalls": [
+      "집합·포함의 마름모와 일반화의 빈 삼각형을 구분합니다."
+    ],
+    "takeaway": "그림의 세 관계는 ① 연관 ㉡, ② 일반화 ㉢, ③ 의존 ㉠입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-14": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "52",
+    "concept": "메서드는 동적 바인딩, 필드는 참조형 기준",
+    "rules": [
+      "오버라이딩된 인스턴스 메서드는 실제 객체형으로 선택됩니다.",
+      "필드는 동적 바인딩되지 않고 참조 변수의 선언형으로 선택됩니다."
+    ],
+    "steps": [
+      "a는 B형 참조지만 실제 객체가 D이므로 a.getX()는 D의 메서드를 호출해 21입니다.",
+      "필드 접근 a.x는 오버라이딩되지 않아 선언형 B의 x=3을 읽습니다.",
+      "b는 D형이므로 b.getX()=21, b.x=7입니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "a.getX()",
+          "D.getX",
+          "7×3=21"
+        ],
+        [
+          "a.x",
+          "참조형 B의 필드",
+          "3"
+        ],
+        [
+          "b.getX()",
+          "D.getX",
+          "21"
+        ],
+        [
+          "b.x",
+          "D의 필드",
+          "7"
+        ],
+        [
+          "합",
+          "21+3+21+7",
+          "52"
+        ]
+      ]
+    },
+    "outputMoment": "네 항을 정수 덧셈으로 모두 계산할 때 52가 됩니다.",
+    "calculation": "21 + 3 + 21 + 7 = 52",
+    "objectFlow": [
+      "B a → D 객체: 메서드 D, 필드 접근 B",
+      "D b → D 객체: 메서드 D, 필드 접근 D"
+    ],
+    "pitfalls": [
+      "a.getX와 a.x를 모두 D 기준으로 보지 않아야 합니다."
+    ],
+    "takeaway": "메서드와 필드의 선택 기준이 달라 결과는 52입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-15": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "① ㉡\n② ㉣\n③ ㉢\n④ ㉠",
+    "concept": "유일성과 최소성으로 구분하는 키",
+    "rules": [
+      "후보키=유일성+최소성, 슈퍼키=유일성, 외래키=다른 기본키 참조입니다."
+    ],
+    "steps": [
+      "다른 릴레이션 기본키를 참조하면 외래키입니다.",
+      "유일성과 최소성을 모두 만족하는 키 후보는 후보키이고, 기본키가 되지 않은 후보키는 대체키입니다.",
+      "유일성은 있지만 최소성이 없으면 슈퍼키입니다."
+    ],
+    "distinctions": [
+      "기본키는 후보키 중 선택된 하나이고 대체키는 선택되지 않은 나머지 후보키입니다."
+    ],
+    "pitfalls": [
+      "문항 ②는 ‘기본키로 선택된 키’가 아니라 선택 가능한 부분집합을 묻기 때문에 후보키입니다."
+    ],
+    "takeaway": "① 외래키 ㉡, ② 후보키 ㉣, ③ 대체키 ㉢, ④ 슈퍼키 ㉠입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-16": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "개체, Entity",
+    "concept": "기본키의 NULL·중복을 금지하는 개체 무결성",
+    "rules": [
+      "개체 무결성은 각 튜플을 식별하는 기본키가 NULL 또는 중복이 되지 않도록 보장합니다."
+    ],
+    "steps": [
+      "제약 대상이 기본키인지 확인합니다.",
+      "기본키 구성 속성이 NULL도 중복도 가질 수 없다는 규칙을 개체 무결성과 연결합니다."
+    ],
+    "distinctions": [
+      "참조 무결성은 외래키가 참조 대상 기본키 값과 일치하거나 NULL이어야 한다는 규칙입니다."
+    ],
+    "pitfalls": [
+      "기본키라는 단서가 나오면 참조 무결성이 아니라 개체 무결성입니다."
+    ],
+    "takeaway": "기본키의 NULL·중복 금지는 개체(Entity) 무결성입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-17": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "101",
+    "concept": "구체 예외 catch 뒤에도 실행되는 finally",
+    "rules": [
+      "여러 catch 중 처음으로 타입이 맞는 하나만 실행되고 finally는 이어서 실행됩니다."
+    ],
+    "steps": [
+      "func가 NullPointerException을 즉시 던집니다.",
+      "첫 번째 catch가 정확히 이 예외를 잡아 sum에 1을 더합니다.",
+      "finally는 예외 처리 여부와 관계없이 실행되어 100을 더합니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "초기",
+          "sum=0",
+          "-"
+        ],
+        [
+          "예외",
+          "NullPointerException",
+          "첫 catch 선택"
+        ],
+        [
+          "catch",
+          "sum += 1",
+          "1"
+        ],
+        [
+          "finally",
+          "sum += 100",
+          "101"
+        ]
+      ]
+    },
+    "outputMoment": "finally까지 끝난 sum을 System.out.print가 출력합니다.",
+    "calculation": "0 + 1 + 100 = 101",
+    "objectFlow": [],
+    "pitfalls": [
+      "상위 타입 Exception catch도 맞지만 앞의 더 구체적인 catch에서 이미 처리됩니다."
+    ],
+    "takeaway": "구체 catch의 1과 finally의 100이 더해져 101입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-18": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "B0",
+    "concept": "제네릭 타입 소거와 오버로딩 선택",
+    "rules": [
+      "오버로딩은 컴파일 시 인수의 선언 타입으로 결정됩니다.",
+      "제네릭 T의 상한이 없으면 타입 소거 후 Object로 취급됩니다."
+    ],
+    "steps": [
+      "`new Collection<>(0)`에서 T는 Integer로 추론되고 value에는 0이 들어갑니다.",
+      "하지만 제네릭 클래스의 T는 컴파일 시 타입 소거되어 print 메서드 안 value의 호출 기준 타입이 Object가 됩니다.",
+      "오버로딩은 컴파일 시 인수의 선언 타입으로 선택되므로 print(Object)가 호출됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "생성",
+          "T=Integer, value=0",
+          "-"
+        ],
+        [
+          "타입 소거 후",
+          "value의 호출 기준 Object",
+          "-"
+        ],
+        [
+          "오버로딩 선택",
+          "Printer.print(Object)",
+          "B+0"
+        ],
+        [
+          "출력",
+          "\"B\" + 0",
+          "B0"
+        ]
+      ]
+    },
+    "outputMoment": "Printer.print(Object)가 선택되어 접두사 B와 값 0을 출력합니다.",
+    "calculation": "\"B\" + 0 = \"B0\"",
+    "objectFlow": [
+      "Collection<Integer>.value=0",
+      "호출 시 소거 타입 Object → print(Object)"
+    ],
+    "pitfalls": [
+      "실제 값이 Integer라는 이유로 print(Integer)가 선택된다고 생각하기 쉽습니다."
+    ],
+    "takeaway": "타입 소거 뒤 Object 오버로드가 선택되어 B0입니다.",
+    "verification": {
+      "method": "executed-and-cross-checked",
+      "note": "안전하게 실행해 출력값을 확인하고 손 계산 및 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-19": {
+    "status": "authored",
+    "kind": "code",
+    "answerSummary": "1",
+    "concept": "이중 포인터로 원본 배열을 직접 수정",
+    "rules": [
+      "이중 포인터를 두 번 역참조하면 p가 가리키는 원본 배열에 접근합니다."
+    ],
+    "steps": [
+      "pp는 p의 주소이고 p는 arr 첫 원소를 가리키므로 `*(*arr+i)`는 원본 배열 i번째 원소입니다.",
+      "각 원소를 `(기존값+i)%5`로 바꿉니다.",
+      "인덱스 2의 값은 `(4+2)%5=1`이 되어 num에 대입됩니다."
+    ],
+    "distinctions": [],
+    "trace": {
+      "headers": [
+        "단계",
+        "확인한 값",
+        "누적·결과"
+      ],
+      "rows": [
+        [
+          "i=0",
+          "(3+0)%5",
+          "arr[0]=3"
+        ],
+        [
+          "i=1",
+          "(1+1)%5",
+          "arr[1]=2"
+        ],
+        [
+          "i=2",
+          "(4+2)%5",
+          "arr[2]=1"
+        ],
+        [
+          "대입",
+          "num=arr[2]",
+          "1"
+        ]
+      ]
+    },
+    "outputMoment": "func 뒤 arr[2]를 num에 복사하고 출력합니다.",
+    "calculation": "(4+2) mod 5 = 1",
+    "objectFlow": [
+      "pp → p → arr[0]",
+      "*(*pp+2) ↔ arr[2]"
+    ],
+    "pitfalls": [
+      "함수 매개변수 이름 arr가 main의 배열 자체가 아니라 int**라는 점을 확인합니다."
+    ],
+    "takeaway": "원본 배열의 세 번째 값이 1로 바뀌어 출력은 1입니다.",
+    "verification": {
+      "method": "hand-traced-and-cross-checked",
+      "note": "문장을 손으로 추적해 중간 값을 계산하고 PDF 정답과 대조했습니다."
+    }
+  },
+  "2024-3-20": {
+    "status": "authored",
+    "kind": "general",
+    "answerSummary": "㉣",
+    "concept": "고정 기반 시설 없이 구성하는 Ad-hoc Network",
+    "rules": [
+      "Ad-hoc 네트워크는 고정 인프라 없이 이동 노드들이 자율적으로 망을 구성합니다."
+    ],
+    "steps": [
+      "기지국이나 유선 백본 없이 모바일 호스트만으로 임시 구성되는지 확인합니다.",
+      "각 노드가 중계 역할까지 하는 멀티 홉 라우팅 특성을 Ad-hoc Network와 연결합니다."
+    ],
+    "distinctions": [
+      "Infrastructure Network는 액세스 포인트 같은 고정 기반 시설을 사용합니다."
+    ],
+    "pitfalls": [
+      "Mesh도 다중 경로를 사용할 수 있지만 재난 현장의 임시 모바일 호스트망이라는 단서는 Ad-hoc입니다."
+    ],
+    "takeaway": "고정망 없이 모바일 호스트로 잠시 만드는 멀티 홉 망은 Ad-hoc Network ㉣입니다.",
+    "verification": {
+      "method": "source-cross-checked",
+      "note": "문제의 정의·보기와 정답을 독립적으로 연결한 뒤 PDF 정답과 대조했습니다."
+    }
+  }
+}
