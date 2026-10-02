@@ -1,0 +1,955 @@
+[
+  {
+    "id": "recent-static-state",
+    "title": "static·별칭·증가 연산: 값은 어느 칸에 남는가?",
+    "language": "C",
+    "lead": "변수 이름보다 저장 공간을 먼저 구분한다. 매번 새로 만드는 지역 변수와 계속 남는 static 변수는 서로 다른 표가 필요하다.",
+    "sources": [
+      {
+        "exam": "2023-1",
+        "number": 1,
+        "page": 2
+      },
+      {
+        "exam": "2024-1",
+        "number": 5,
+        "page": 4
+      },
+      {
+        "exam": "2024-3",
+        "number": 6,
+        "page": 4
+      },
+      {
+        "exam": "2025-1",
+        "number": 11,
+        "page": 7
+      }
+    ],
+    "steps": [
+      "함수 밖·static·일반 지역 변수에 서로 다른 칸을 만든다. 같은 이름이라고 같은 칸이 아니다.",
+      "함수를 호출할 때 일반 지역 변수는 새로 초기화한다. static 초기값은 첫 호출 때 한 번만 적용한다.",
+      "saved += local을 먼저 실행한다. return saved++는 이전 값을 반환한 뒤 저장된 값을 1 증가시킨다.",
+      "반환값을 받는 쪽의 total도 별도 갱신한다. 출력값과 호출 뒤 상태를 두 열로 나누어 검산한다."
+    ],
+    "code": "#include <stdio.h>\nint next_value(void) {\n    static int saved = 1;\n    int local = 1;\n    saved += local;\n    return saved++;\n}\nint main(void) {\n    int total = 0;\n    for (int i = 0; i < 3; ++i) {\n        int value = next_value();\n        total += value;\n        printf(\"call%d=%d total=%d\\n\", i + 1, value, total);\n    }\n    return 0;\n}",
+    "output": "call1=2 total=2\ncall2=4 total=6\ncall3=6 total=12",
+    "trace": {
+      "headers": [
+        "호출",
+        "saved 진입",
+        "local",
+        "반환값",
+        "saved 종료",
+        "total"
+      ],
+      "rows": [
+        [
+          1,
+          1,
+          1,
+          2,
+          3,
+          2
+        ],
+        [
+          2,
+          3,
+          1,
+          4,
+          5,
+          6
+        ],
+        [
+          3,
+          5,
+          1,
+          6,
+          7,
+          12
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "memory",
+      "nodes": [
+        "main의 total: 0 → 2 → 6 → 12",
+        "매 호출의 local: 항상 새 칸, 값 1",
+        "공유 saved: 1 → 3 → 5 → 7",
+        "반환값만 main으로 이동: 2, 4, 6"
+      ]
+    },
+    "pitfall": "후위 증가는 증가된 값을 출력한다는 뜻이 아니다. 같은 이름의 main 지역 변수와 함수 static 변수도 별개다.",
+    "shortcut": "호출당 변화량을 먼저 찾는다. 이 예제의 saved는 호출마다 2씩 증가하므로 반환값은 2, 4, 6이다.",
+    "quiz": {
+      "question": "static을 제거하면 세 호출의 반환값과 total은 어떻게 되는가?",
+      "answer": "각 호출에서 saved가 1로 초기화되므로 반환값은 2, 2, 2이고 마지막 total은 6이다."
+    },
+    "explanation": "C의 함수 static 지역 변수는 함수 호출이 끝나도 값을 보존한다. 하지만 이름을 사용할 수 있는 범위는 그 함수 안이다. Java의 static 필드는 클래스가 공유하는 한 칸이고, 객체별 필드는 객체마다 따로 생긴다. Java 싱글턴 문제에서는 conn1·conn2·conn3라는 이름 세 개를 세 객체로 세면 틀린다. get()이 같은 객체를 돌려주면 세 참조를 한 상자에 연결하고 count 호출 횟수만 누적한다. 증가 연산은 항상 사용된 값과 저장된 다음 값을 따로 기록하면 안전하다."
+  },
+  {
+    "id": "recent-dispatch",
+    "title": "Java 필드·메서드·static: 선택 기준을 세 줄로 분리",
+    "language": "Java",
+    "lead": "부모 타입 참조가 자식 객체를 가리킬 때 필드, 인스턴스 메서드, static 메서드의 선택 기준이 다르다.",
+    "sources": [
+      {
+        "exam": "2023-1",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2023-1",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2024-1",
+        "number": 11,
+        "page": 8
+      },
+      {
+        "exam": "2024-3",
+        "number": 14,
+        "page": 9
+      },
+      {
+        "exam": "2025-1",
+        "number": 11,
+        "page": 7
+      },
+      {
+        "exam": "2025-2",
+        "number": 18,
+        "page": 10
+      }
+    ],
+    "steps": [
+      "선언 타입 Base와 실제 생성 타입 Child를 옆에 적는다. 객체 안에는 부모 x와 자식 x가 따로 존재한다.",
+      "new Child()는 부모 생성자를 먼저 실행하므로 P 뒤에 C를 출력한다.",
+      "a.x는 선언 타입 Base의 필드 2를 선택한다. a.value()는 같은 서명이 재정의되어 실제 객체 Child의 메서드를 실행한다.",
+      "a.tag()는 static 메서드이므로 선언 타입 Base의 tag를 선택한다. 필드·메서드·static을 한 규칙으로 처리하지 않는다."
+    ],
+    "code": "class Base {\n    int x = 2;\n    Base() { System.out.print(\"P\"); }\n    int value() { return x * 2; }\n    static String tag() { return \"P\"; }\n}\nclass Child extends Base {\n    int x = 5;\n    Child() { System.out.print(\"C\"); }\n    @Override int value() { return x * 3; }\n    static String tag() { return \"C\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Base a = new Child();\n        System.out.println(\"|\" + a.x + \",\" + a.value() + \",\" + a.tag());\n    }\n}",
+    "output": "PC|2,15,P",
+    "trace": {
+      "headers": [
+        "식",
+        "선택 기준",
+        "선택 대상",
+        "값"
+      ],
+      "rows": [
+        [
+          "a.x",
+          "참조의 선언 타입",
+          "Base.x",
+          2
+        ],
+        [
+          "a.value()",
+          "실제 객체의 재정의 메서드",
+          "Child.value()",
+          15
+        ],
+        [
+          "a.tag()",
+          "선언 타입의 static 메서드",
+          "Base.tag()",
+          "P"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "memory",
+      "nodes": [
+        "a: 선언 타입 Base, 실제 객체 Child",
+        "객체의 부모 영역: Base.x = 2",
+        "객체의 자식 영역: Child.x = 5",
+        "value() 실행: Child의 구현 → Child.x를 읽음",
+        "tag() 선택: Base의 static 구현"
+      ]
+    },
+    "pitfall": "자식 객체라는 이유로 부모 필드까지 자식 필드로 바뀌지 않는다. static 메서드는 오버라이딩이 아닌 숨김이다.",
+    "shortcut": "필드는 선언 타입, 재정의된 인스턴스 메서드는 실제 객체, static은 선언 타입이라고 세 칸으로 적는다.",
+    "quiz": {
+      "question": "Child b = (Child)a;일 때 b.x, b.value(), b.tag()의 값은?",
+      "answer": "5, 15, C. 형변환으로 참조의 정적 타입이 Child가 되었지만 객체 자체를 새로 만들지는 않았다."
+    },
+    "explanation": "동명의 필드는 서로 덮어쓰는 한 변수가 아니라 객체 안의 다른 슬롯이다. 메서드 본문에서 단순히 x를 쓰면 그 본문을 선언한 클래스의 필드를 읽는다. 생성자도 주의해야 한다. 부모 생성자에서 인스턴스 메서드를 호출해도 자식이 같은 서명으로 재정의했다면 자식 메서드가 실행된다. 그 시점에는 자식의 필드 초기화와 생성자 본문이 아직 실행되기 전이어서 자식 int 필드는 0일 수 있다. 2025년 1회 11번처럼 생성자·static 누적·재정의가 섞이면 생성 순서 표와 공유 상태 표를 함께 써야 한다."
+  },
+  {
+    "id": "recent-overload",
+    "title": "Java 오버로딩 먼저, 오버라이딩 나중",
+    "language": "Java",
+    "lead": "메서드 이름이 같아도 매개변수가 다르면 다른 서명이다. 호출 위치에서 서명을 결정한 다음 실제 객체의 재정의 구현을 고른다.",
+    "sources": [
+      {
+        "exam": "2024-3",
+        "number": 18,
+        "page": 12
+      },
+      {
+        "exam": "2025-1",
+        "number": 16,
+        "page": 11
+      },
+      {
+        "exam": "2026-1",
+        "number": 6,
+        "page": 5
+      },
+      {
+        "exam": "2026-1",
+        "number": 19,
+        "page": 11
+      }
+    ],
+    "steps": [
+      "호출 표현식이 작성된 클래스와 인수의 선언 자료형을 확인한다. g 본문은 A 안에 있다.",
+      "A.g를 컴파일할 때 A에서 보이는 f는 f(Object)뿐이므로 f(\"hi\")의 서명은 f(Object)로 고정된다.",
+      "실행 시 실제 객체가 B이므로 그 서명의 재정의 구현 B.f(Object)가 실행된다.",
+      "두 번째 호출은 B 타입으로 캐스팅한 참조에서 String 인수를 사용하므로 더 구체적인 f(String)을 선택한다."
+    ],
+    "code": "class A {\n    String f(Object x) { return \"O\"; }\n    String g() { return f(\"hi\"); }\n}\nclass B extends A {\n    @Override String f(Object x) { return \"R\"; }\n    String f(String x) { return \"S\"; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        A ref = new B();\n        System.out.println(ref.g() + \" \" + ((B) ref).f(\"hi\"));\n    }\n}",
+    "output": "R S",
+    "trace": {
+      "headers": [
+        "호출",
+        "컴파일 시 선택 서명",
+        "실행 시 선택 구현",
+        "출력"
+      ],
+      "rows": [
+        [
+          "A.g 안의 f(\"hi\")",
+          "f(Object)",
+          "B.f(Object)",
+          "R"
+        ],
+        [
+          "((B)ref).f(\"hi\")",
+          "f(String)",
+          "B.f(String)",
+          "S"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "flow",
+      "nodes": [
+        "① 호출 지점에서 보이는 후보 확인",
+        "② 인수의 정적 자료형으로 서명 결정",
+        "③ 실제 객체가 그 서명을 재정의했는지 확인",
+        "④ 선택한 본문 실행"
+      ]
+    },
+    "pitfall": "실제 객체가 B라고 A.g 본문까지 다시 컴파일하여 f(String)을 고르지 않는다. 오버로딩은 실행 중의 값이 아니라 정적 자료형을 기준으로 한다.",
+    "shortcut": "호출 옆에 이름만 쓰지 말고 f(Object), f(String)처럼 서명을 써 두면 두 단계가 분리된다.",
+    "quiz": {
+      "question": "Object x = \"hi\"; new B().f(x);는 R과 S 중 무엇을 반환하는가?",
+      "answer": "R. x의 정적 타입이 Object이므로 f(Object)를 선택한다."
+    },
+    "explanation": "제네릭 문제도 같은 규칙으로 풀 수 있다. 상한 없는 T 변수를 print(value)에 전달하면 선언한 본문에서 T는 Object 수준으로 취급되므로, 실행 시 값이 Integer라고 Integer 오버로드가 자동 선택되지 않는다. T extends Number라면 그 상한까지 고려한다. String 인수를 받는 재귀 오버로드가 안에서 int를 전달한다면 첫 호출만 String 버전이고 이후에는 int 버전의 재귀식으로 바뀔 수 있다. char 두 개를 빼는 결과는 문자 자체가 아니라 정수 차이이며, 덧셈 식에서는 문자열을 만나는 지점부터 뒤의 +가 연결 연산이 된다."
+  },
+  {
+    "id": "recent-pointer-string",
+    "title": "C 포인터: 주소를 옮기는 식과 값을 바꾸는 식",
+    "language": "C",
+    "lead": "p+1은 다음 위치의 주소이고 *p+1은 현재 위치의 문자값에 1을 더한 값이다. 별표가 어느 괄호에 붙는지 먼저 읽는다.",
+    "sources": [
+      {
+        "exam": "2023-1",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2023-3",
+        "number": 3,
+        "page": 3
+      },
+      {
+        "exam": "2024-2",
+        "number": 6,
+        "page": 5
+      },
+      {
+        "exam": "2025-3",
+        "number": 5,
+        "page": 4
+      },
+      {
+        "exam": "2025-3",
+        "number": 16,
+        "page": 10
+      },
+      {
+        "exam": "2026-1",
+        "number": 15,
+        "page": 9
+      },
+      {
+        "exam": "2026-2",
+        "number": 6,
+        "page": 6
+      }
+    ],
+    "steps": [
+      "문자 배열에 0부터 인덱스를 적고 마지막에 종결 문자 \\0을 넣는다. p는 text[1]의 주소를 가리킨다.",
+      "%s는 그 주소부터 \\0 직전까지 읽는다. %c는 문자값 하나를 출력한다.",
+      "*(p+1)은 주소를 이동한 뒤 읽기, *p+1은 읽은 문자값에 더하기로 분리한다.",
+      "함수 포인터도 호출 결과의 자료형을 추적한다. go(x)는 int*를 돌려주므로 앞의 *가 그 주소의 정수 26을 읽는다."
+    ],
+    "code": "#include <stdio.h>\nint *step(int *p) { return p + 1; }\nstruct Actions { int *(*go)(int *); };\nint main(void) {\n    char text[] = \"FLOW\";\n    char *p = text + 1;\n    printf(\"%s|%c|%c\\n\", p, *(p + 1), *p + 1);\n    int x[] = {10, 26};\n    struct Actions actions = {step};\n    int value = *actions.go(x);\n    printf(\"%d/%x\\n\", value, (unsigned int)value);\n    return 0;\n}",
+    "output": "LOW|O|M\n26/1a",
+    "trace": {
+      "headers": [
+        "식",
+        "의미",
+        "출력"
+      ],
+      "rows": [
+        [
+          "p + %s",
+          "text[1]부터 문자열",
+          "LOW"
+        ],
+        [
+          "*(p+1)",
+          "text[2] 문자",
+          "O"
+        ],
+        [
+          "*p+1",
+          "L 문자 코드 + 1 (ASCII 호환)",
+          "M"
+        ],
+        [
+          "*actions.go(x)",
+          "x[1] 값",
+          26
+        ],
+        [
+          "%x로 같은 값",
+          "26을 16진수로 표기",
+          "1a"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "memory",
+      "nodes": [
+        "text[0]=F | text[1]=L ← p | text[2]=O | text[3]=W | text[4]=\\0",
+        "p + 1 → text[2] 주소",
+        "*(p + 1) → O 한 문자",
+        "*p + 1 → L 코드에 1 추가 → M",
+        "go(x) → x[1] 주소 → 역참조 → 26"
+      ]
+    },
+    "pitfall": "%s에 문자값을 전달하면 안 된다. %s는 유효한 문자열 주소, %c는 정수로 승격된 문자값이 필요하다. 포인터 배열과 이차원 배열도 같은 선언이 아니다.",
+    "shortcut": "주소 식은 화살표, 역참조 결과는 상자 안 값으로 그린다. 문자 코드 산술 예제는 ASCII 호환 환경을 기준으로 확인했다.",
+    "quiz": {
+      "question": "p = text;로 바꾸면 *(p+2), *p+2, p+2를 각각 %c, %c, %s로 출력한 결과는?",
+      "answer": "O, H, OW (ASCII 호환 문자 코드 기준). 첫 번째는 이동 후 읽기, 두 번째는 F 코드+2, 세 번째는 뒤쪽 부분 문자열이다."
+    },
+    "explanation": "배열을 함수 매개변수 int p[]로 받아도 실제 매개변수는 포인터로 조정된다. *p를 바꾸면 원본 배열 첫 원소가 바뀌지만 p라는 지역 포인터 자체를 다른 주소로 바꾸면 호출자 포인터는 바뀌지 않는다. 호출자 포인터까지 변경하려면 int**와 같은 한 단계 더 높은 주소가 필요하다. 문자열 복사에서는 문자를 옮기는 것에 더해 마지막 \\0도 기록해야 이전 긴 문자열의 뒷부분이 붙지 않는다. 함수 포인터의 int *(*go)(int *)는 int* 인수를 받아 int*를 반환하는 함수의 주소라는 순서로 읽는다."
+  },
+  {
+    "id": "recent-linked-list",
+    "title": "연결 리스트: 선언 순서와 순회 순서는 다르다",
+    "language": "C",
+    "lead": "노드 a·b·c를 적은 순서로 읽지 말고 head에서 next 화살표를 따라 읽는다. 값 교환과 링크 교환도 별도 작업이다.",
+    "sources": [
+      {
+        "exam": "2023-3",
+        "number": 4,
+        "page": 4
+      },
+      {
+        "exam": "2024-2",
+        "number": 19,
+        "page": 12
+      },
+      {
+        "exam": "2024-3",
+        "number": 10,
+        "page": 6
+      },
+      {
+        "exam": "2025-1",
+        "number": 20,
+        "page": 14
+      },
+      {
+        "exam": "2025-2",
+        "number": 5,
+        "page": 3
+      },
+      {
+        "exam": "2025-2",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2025-3",
+        "number": 19,
+        "page": 12
+      }
+    ],
+    "steps": [
+      "노드 이름은 고정된 주소의 이름으로 두고 값과 next만 표에 기록한다. 초기 연결은 a → c → b다.",
+      "첫 두 노드의 값만 교환한다. 화살표는 그대로이고 값이 8 → 2 → 5가 된다.",
+      "맨 끝 b를 분리하려면 이전 노드 c의 next를 b의 다음 주소(NULL)로 바꾼다.",
+      "b.next를 이전 head로 연결한 다음 head를 b로 바꾼다. 마지막에 새 head에서 다시 한 번 순회한다."
+    ],
+    "code": "#include <stdio.h>\ntypedef struct Node { int v; struct Node *next; } Node;\nint main(void) {\n    Node a = {2, NULL}, b = {5, NULL}, c = {8, NULL};\n    a.next = &c; c.next = &b;\n    Node *head = &a;\n    int t = head->v;\n    head->v = head->next->v;\n    head->next->v = t;\n    Node *prev = head->next;\n    Node *last = prev->next;\n    prev->next = last->next;\n    last->next = head;\n    head = last;\n    for (Node *p = head; p != NULL; p = p->next)\n        printf(\"%d%s\", p->v, p->next ? \" \" : \"\\n\");\n    return 0;\n}",
+    "output": "5 8 2",
+    "trace": {
+      "headers": [
+        "단계",
+        "주소 순서",
+        "각 노드 값",
+        "순회 값"
+      ],
+      "rows": [
+        [
+          "초기",
+          "a → c → b → NULL",
+          "a=2, b=5, c=8",
+          "2 8 5"
+        ],
+        [
+          "값 교환",
+          "a → c → b → NULL",
+          "a=8, b=5, c=2",
+          "8 2 5"
+        ],
+        [
+          "b 분리",
+          "a → c → NULL; b 별도",
+          "a=8, b=5, c=2",
+          "8 2"
+        ],
+        [
+          "앞에 연결",
+          "b → a → c → NULL",
+          "a=8, b=5, c=2",
+          "5 8 2"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "memory",
+      "nodes": [
+        "초기: head → a(2) → c(8) → b(5) → NULL",
+        "값 교환 후: head → a(8) → c(2) → b(5) → NULL",
+        "분리: c.next = NULL",
+        "재연결: b.next = a; head = b",
+        "최종: head → b(5) → a(8) → c(2) → NULL"
+      ]
+    },
+    "pitfall": "값을 바꾸는 대입은 노드 주소 순서를 바꾸지 않는다. 링크 대입은 값 자체를 바꾸지 않는다. head를 먼저 덮어쓰면 이전 시작 주소를 잃을 수 있다.",
+    "shortcut": "문제 풀이에서는 노드 주소를 a·b·c로 그대로 두고 매 next 대입마다 화살표 하나만 고친다. 끝에서 최종 순회 값을 읽는다.",
+    "quiz": {
+      "question": "최종 리스트 앞에 값 6인 새 노드를 삽입하면 출력 순서는?",
+      "answer": "6 5 8 2. 새 노드.next = 이전 head 후 head = 새 노드 순서로 연결한다."
+    },
+    "explanation": "앞 삽입을 반복하면 입력 순서가 뒤집힌다. 문자 B,E,S,T를 차례로 맨 앞에 붙이면 T,S,E,B 순서로 연결된다. 노드 이동 문제는 보통 prev·curr·head 세 주소만 필요하다. curr를 찾았으면 prev.next = curr.next로 원래 위치에서 떼고, curr.next = head로 앞쪽에 붙인 다음 head = curr로 갱신한다. 이 세 문장을 뒤섞지 않는 것이 가장 쉬운 풀이법이다. 연결 리스트를 따라 sum = sum*3 + value처럼 누적하는 문제는 화살표 순서를 확정한 뒤 별도 누적표를 만들면 된다."
+  },
+  {
+    "id": "recent-recursion",
+    "title": "재귀: 내려갈 때와 돌아올 때를 두 번 읽는다",
+    "language": "C",
+    "lead": "재귀 호출 위의 작업은 진입 순서, 호출 아래의 작업은 복귀 순서다. 각 호출의 지역 값과 하나의 공유 카운터를 분리한다.",
+    "sources": [
+      {
+        "exam": "2023-3",
+        "number": 14,
+        "page": 11
+      },
+      {
+        "exam": "2023-3",
+        "number": 15,
+        "page": 11
+      },
+      {
+        "exam": "2024-2",
+        "number": 8,
+        "page": 7
+      },
+      {
+        "exam": "2025-1",
+        "number": 18,
+        "page": 13
+      },
+      {
+        "exam": "2025-1",
+        "number": 19,
+        "page": 13
+      },
+      {
+        "exam": "2026-2",
+        "number": 17,
+        "page": 17
+      },
+      {
+        "exam": "2026-2",
+        "number": 19,
+        "page": 19
+      }
+    ],
+    "steps": [
+      "NULL이면 즉시 0을 반환한다는 기저 조건부터 적는다. 비어 있는 자식은 방문 번호를 증가시키지 않는다.",
+      "왼쪽 호출, 오른쪽 호출을 끝낸 뒤 현재 노드를 처리하므로 후위 순회다.",
+      "seen은 static 한 칸이지만 left와 right는 호출마다 따로 존재한다. 반환값을 부모 호출의 빈칸에 채운다.",
+      "출력 순서와 반환 합을 별도 검산한다. 순서는 1,3,6,10이고 합은 20이다."
+    ],
+    "code": "#include <stdio.h>\ntypedef struct N { int value; struct N *left, *right; } N;\nint walk(N *n) {\n    static int seen = 0;\n    if (n == NULL) return 0;\n    int left = walk(n->left);\n    int right = walk(n->right);\n    ++seen;\n    printf(\"%d:%d \", seen, n->value);\n    return n->value + left + right;\n}\nint main(void) {\n    N leaf = {1, NULL, NULL};\n    N left = {3, &leaf, NULL}, right = {6, NULL, NULL};\n    N root = {10, &left, &right};\n    int result = walk(&root);\n    printf(\"\\nsum=%d\\n\", result);\n    return 0;\n}",
+    "output": "1:1 2:3 3:6 4:10 \nsum=20",
+    "trace": {
+      "headers": [
+        "복귀 대상",
+        "왼쪽 반환",
+        "오른쪽 반환",
+        "seen",
+        "현재 반환"
+      ],
+      "rows": [
+        [
+          "노드 1",
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          "노드 3",
+          1,
+          0,
+          2,
+          4
+        ],
+        [
+          "노드 6",
+          0,
+          0,
+          3,
+          6
+        ],
+        [
+          "노드 10",
+          4,
+          6,
+          4,
+          20
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "tree",
+      "nodes": [
+        "root(10)의 왼쪽 → 3, 오른쪽 → 6",
+        "노드 3의 왼쪽 → 1",
+        "진입: 10 → 3 → 1 → 6",
+        "처리·복귀: 1 → 3 → 6 → 10",
+        "공유 seen: 1 → 2 → 3 → 4"
+      ]
+    },
+    "pitfall": "전역·static 카운터를 호출마다 0으로 초기화하면 틀린다. 반대로 left·right 같은 지역 값을 모든 호출이 공유한다고 그려도 틀린다.",
+    "shortcut": "트리는 출력·카운터 증가가 왼쪽/오른쪽 호출 앞·사이·뒤 중 어디인지 표시한다. 순수 수치 재귀는 같은 n의 반환값을 메모표로 재사용한다.",
+    "quiz": {
+      "question": "printf와 ++seen을 두 재귀 호출 앞에 놓으면 방문 순서는 어떻게 되는가?",
+      "answer": "10 → 3 → 1 → 6의 전위 순회가 된다. 반환 합은 20으로 유지된다."
+    },
+    "explanation": "재귀를 읽을 때 호출 스택의 한 칸에는 n, 아직 실행하지 못한 다음 문장, 왼쪽 반환값, 오른쪽 반환값이 있다고 생각하면 된다. Java의 재귀식도 기저 조건 그대로 계산해야 한다. if(n<=1) return n;이면 0뿐 아니라 -1, -2도 해당 음수로 반환한다. 무심코 모두 0으로 바꾸면 2023년 3회와 2026년 2회 같은 n-3 재귀에서 틀린다. 재귀 안에 공유 seen 배열이 있다면 진입 때 검사하는지, 재귀에서 돌아온 뒤 검사하는지에 따라 중복 제거와 출력 순서가 달라진다. 2026년 2회는 정답이 없고 복원 자료이므로 수록 코드의 의미만 근거로 삼는다."
+  },
+  {
+    "id": "recent-array-map",
+    "title": "배열 문제: 인덱스부터 계산하고 마지막에 값을 읽는다",
+    "language": "C",
+    "lead": "평탄 인덱스·행 포인터·원소 값을 한 번에 계산하려 하지 말고 주소 계산 표를 먼저 만든다.",
+    "sources": [
+      {
+        "exam": "2023-1",
+        "number": 14,
+        "page": 7
+      },
+      {
+        "exam": "2023-2",
+        "number": 1,
+        "page": 2
+      },
+      {
+        "exam": "2024-2",
+        "number": 9,
+        "page": 7
+      },
+      {
+        "exam": "2024-3",
+        "number": 19,
+        "page": 13
+      },
+      {
+        "exam": "2025-1",
+        "number": 12,
+        "page": 8
+      }
+    ],
+    "steps": [
+      "행 수와 열 수를 적는다. 행 우선 저장에서 row = index / 열 수, col = index % 열 수다.",
+      "각 입력 원소의 저장 위치를 먼저 적는다. (i+1)%6은 한 칸 회전이며 마지막 입력은 첫 칸으로 간다.",
+      "완성한 배열을 평탄 인덱스 0부터 읽어 짝수 위치는 더하고 홀수 위치는 뺀다.",
+      "rows[0]은 두 번째 행의 주소다. **rows는 그 행 첫 값, rows[0][2]는 같은 행 세 번째 값이다."
+    ],
+    "code": "#include <stdio.h>\nint main(void) {\n    int data[] = {1, 2, 3, 4, 5, 6};\n    int a[2][3] = {{0}};\n    for (int i = 0; i < 6; ++i) {\n        int j = (i + 1) % 6;\n        a[j / 3][j % 3] = data[i];\n    }\n    int sum = 0;\n    for (int i = 0; i < 6; ++i)\n        sum += a[i / 3][i % 3] * (i % 2 == 0 ? 1 : -1);\n    int *rows[] = {a[1], a[0]};\n    printf(\"%d %d %d\\n\", a[0][0], a[0][1], a[0][2]);\n    printf(\"%d %d %d\\n\", a[1][0], a[1][1], a[1][2]);\n    printf(\"sum=%d, picked=%d\\n\", sum, **rows + rows[0][2]);\n    return 0;\n}",
+    "output": "6 1 2\n3 4 5\nsum=3, picked=8",
+    "trace": {
+      "headers": [
+        "i",
+        "입력값",
+        "j",
+        "저장 위치"
+      ],
+      "rows": [
+        [
+          0,
+          1,
+          1,
+          "a[0][1]"
+        ],
+        [
+          1,
+          2,
+          2,
+          "a[0][2]"
+        ],
+        [
+          2,
+          3,
+          3,
+          "a[1][0]"
+        ],
+        [
+          3,
+          4,
+          4,
+          "a[1][1]"
+        ],
+        [
+          4,
+          5,
+          5,
+          "a[1][2]"
+        ],
+        [
+          5,
+          6,
+          0,
+          "a[0][0]"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "memory",
+      "nodes": [
+        "평탄 위치: 0 1 2 | 3 4 5",
+        "저장 후 값: 6 1 2 | 3 4 5",
+        "rows[0] → a[1] = [3,4,5]",
+        "**rows = 3; rows[0][2] = 5",
+        "교대 합: 6 − 1 + 2 − 3 + 4 − 5 = 3"
+      ]
+    },
+    "pitfall": "행·열 수가 모두 3인 원문 예제로만 외우면 /rows를 써도 잘못을 발견하지 못한다. 일반적인 행 우선 매핑의 나눗수는 열 수다.",
+    "shortcut": "출력 전에 최종 배열 그림을 한 번 완성한다. 같은 위치를 여러 번 바꾸는 문제는 마지막 대입이 이긴다.",
+    "quiz": {
+      "question": "3행 4열 배열에서 평탄 인덱스 7은 어느 위치인가?",
+      "answer": "a[1][3]. 7/4=1, 7%4=3이며 인덱스는 0부터 시작한다."
+    },
+    "explanation": "버블 정렬 빈칸은 교환이 끝난 뒤 두 칸의 값을 보존하는지 확인하면 된다. 임시 변수에 왼쪽 값을 저장하고 왼쪽에 오른쪽 값을 옮겼다면 마지막 저장 대상은 오른쪽 칸이다. 중첩 루프는 전체 실행을 무작정 적기보다 안쪽 한 회의 입력·출력 위치를 먼저 확정한다. 포인터 배열 rows는 각 원소가 행 주소를 담는 배열이다. rows 자체에 두 번 별표를 붙이면 첫 행 주소를 꺼낸 뒤 그 주소의 첫 정수를 읽는다. int**를 일반 이차원 배열 이름으로 무조건 바꾸는 것은 자료형이 달라서 안전하지 않다."
+  },
+  {
+    "id": "recent-python-alias",
+    "title": "Python 얕은 복사: 바깥 리스트만 새로 생긴다",
+    "language": "Python",
+    "lead": "m[:]는 새 바깥 리스트를 만들지만 안쪽 리스트의 주소는 그대로 복사한다. 원소를 변경하는 것과 원소 슬롯을 새 객체로 교체하는 것을 구별한다.",
+    "sources": [
+      {
+        "exam": "2024-3",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2025-3",
+        "number": 11,
+        "page": 7
+      },
+      {
+        "exam": "2026-1",
+        "number": 5,
+        "page": 4
+      },
+      {
+        "exam": "2026-1",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2026-2",
+        "number": 12,
+        "page": 12
+      }
+    ],
+    "steps": [
+      "m, alias, outer가 가리키는 바깥 리스트를 그린다. alias는 m과 완전히 같은 리스트이고 outer는 새 바깥 리스트다.",
+      "세 내부 리스트는 두 바깥 리스트가 공유한다. outer[1] += outer[0]은 기존 내부 리스트를 제자리에서 늘린다.",
+      "다음 반복은 이미 늘어난 outer[1]을 사용하므로 outer[2]도 [6,4,2]가 된다.",
+      "슬라이싱은 start 포함, stop 제외다. step이 음수이며 start를 생략하면 맨 뒤에서 시작한다."
+    ],
+    "code": "m = [[2], [4], [6]]\nalias = m\nouter = m[:]\nfor i in range(len(outer) - 1):\n    outer[i + 1] += outer[i]\nprint(m)\nprint(alias is m, outer is m, outer[0] is m[0])\nprint(sum(len(x) for x in m), [9, 8, 7, 6, 5][::-2])",
+    "output": "[[2], [4, 2], [6, 4, 2]]\nTrue False True\n6 [5, 7, 9]",
+    "trace": {
+      "headers": [
+        "단계",
+        "내부 리스트 0",
+        "내부 리스트 1",
+        "내부 리스트 2",
+        "전체 길이 합"
+      ],
+      "rows": [
+        [
+          "초기",
+          "[2]",
+          "[4]",
+          "[6]",
+          3
+        ],
+        [
+          "i=0 후",
+          "[2]",
+          "[4,2]",
+          "[6]",
+          4
+        ],
+        [
+          "i=1 후",
+          "[2]",
+          "[4,2]",
+          "[6,4,2]",
+          6
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "memory",
+      "nodes": [
+        "m와 alias → 바깥 리스트 L",
+        "outer → 새 바깥 리스트 L2",
+        "L[0]과 L2[0] → 내부 객체 [2] 공유",
+        "L[1]과 L2[1] → 내부 객체 [4,2] 공유",
+        "L[2]과 L2[2] → 내부 객체 [6,4,2] 공유"
+      ]
+    },
+    "pitfall": "얕은 복사를 깊은 복사로 착각하면 m이 그대로라고 답하게 된다. 문자열·정수의 +=와 리스트의 +=를 같은 방식으로 취급해서도 안 된다.",
+    "shortcut": "상자 두 종류를 그린다. 바깥 인덱스 슬롯과 내부 변경 가능한 리스트 객체를 구분하면 별칭 문제가 거의 해결된다.",
+    "quiz": {
+      "question": "이후 outer[0] = [99]를 실행하면 m[0]도 [99]가 되는가?",
+      "answer": "아니다. outer의 0번 슬롯을 새 리스트로 교체하므로 m[0]은 [2]이다. 반대로 outer[0].append(99)는 공유 내부 리스트를 바꾼다."
+    },
+    "explanation": "Python list의 +=는 기존 리스트를 확장하므로 같은 내부 객체를 가리키는 다른 참조에서도 변화가 보인다. outer[i+1] = outer[i+1] + outer[i]라면 새 리스트를 만들어 outer 슬롯에만 넣기 때문에 결과가 달라진다. 얕은 복사의 가장 중요한 분기다. set(dst.values())는 생성한 시점의 값들로 별도 집합을 만든다. 뒤에 dst[2]를 바꿔도 이미 만들어진 집합은 자동으로 동기화되지 않는다. 집합은 중복을 제거하고 출력 순서는 고정되지 않는다. 반면 Python 3.7 이상 dict는 삽입 순서를 보존하므로 items() 문제는 적힌 키 순서를 따라 추적한다."
+  },
+  {
+    "id": "recent-sql-null",
+    "title": "SQL NULL·외부 조인·COUNT: 먼저 결과 행을 그린다",
+    "language": "SQL",
+    "lead": "조인으로 만들어진 행 수, NULL 아닌 값 수, 집계 결과가 표시되는 행 수를 구별해야 한다.",
+    "sources": [
+      {
+        "exam": "2025-3",
+        "number": 20,
+        "page": 13
+      },
+      {
+        "exam": "2026-1",
+        "number": 18,
+        "page": 11
+      },
+      {
+        "exam": "2026-2",
+        "number": 18,
+        "page": 18
+      }
+    ],
+    "steps": [
+      "RIGHT OUTER JOIN은 오른쪽 B의 모든 행을 보존한다. B.id=1은 A의 두 행과 일치하므로 두 결과 행이 생긴다.",
+      "B.id=3,4는 일치하는 A가 없지만 남고 A 열은 NULL로 채워진다. 조인 결과는 총 4행이다.",
+      "COUNT(*)는 4행 전부, COUNT(A.v)는 NULL 아닌 값 10 한 개만 센다.",
+      "A.id IS NULL은 불일치 행 두 개를 고른다. = NULL로 비교하면 참이 되지 않는다."
+    ],
+    "code": "CREATE TABLE A(id INTEGER, v INTEGER);\nCREATE TABLE B(id INTEGER, w INTEGER);\nINSERT INTO A VALUES (1,10), (1,NULL), (2,30);\nINSERT INTO B VALUES (1,100), (3,300), (4,400);\nSELECT COUNT(*) AS rows_all, COUNT(A.v) AS values_known\nFROM A RIGHT OUTER JOIN B ON A.id = B.id;\nSELECT COUNT(*) AS unmatched\nFROM A RIGHT OUTER JOIN B ON A.id = B.id\nWHERE A.id IS NULL;",
+    "output": "rows_all|values_known\n4|1\nunmatched\n2",
+    "trace": {
+      "headers": [
+        "B.id",
+        "A.id",
+        "A.v",
+        "COUNT(*) 대상",
+        "COUNT(A.v) 대상",
+        "A.id IS NULL"
+      ],
+      "rows": [
+        [
+          1,
+          1,
+          10,
+          "포함",
+          "포함",
+          "거짓"
+        ],
+        [
+          1,
+          1,
+          "NULL",
+          "포함",
+          "제외",
+          "거짓"
+        ],
+        [
+          3,
+          "NULL",
+          "NULL",
+          "포함",
+          "제외",
+          "참"
+        ],
+        [
+          4,
+          "NULL",
+          "NULL",
+          "포함",
+          "제외",
+          "참"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "flow",
+      "nodes": [
+        "오른쪽 B의 3행 보존",
+        "id=1은 A 두 행과 매칭 → 2행",
+        "id=3·4는 A 열 NULL로 확장 → 각 1행",
+        "조인 결과 4행 → COUNT(*)=4",
+        "A.id IS NULL 필터 → 2행"
+      ]
+    },
+    "pitfall": "NULL은 0이나 빈 문자열이 아니다. COUNT(열)과 COUNT(*)를 혼동하지 말고 외부 조인 뒤 어디의 열을 IS NULL로 검사하는지 확인한다.",
+    "shortcut": "WHERE에서 참인 행만 남긴다고 적고, 마지막 COUNT 단계에서 세려는 대상에 체크 표시한다. 집계값과 표시된 튜플 수를 별도로 묻는지 읽는다.",
+    "quiz": {
+      "question": "WHERE A.id IS NULL 대신 WHERE A.v IS NULL로 바꾸면 unmatched 값은?",
+      "answer": "3. id=1의 실제 A 행 중 v가 NULL인 한 행까지 포함된다. 조인 불일치만 찾으려면 매칭 시 NULL이 아닌 키 열을 검사해야 한다."
+    },
+    "explanation": "NULL을 포함한 비교는 보통 UNKNOWN이다. UNKNOWN OR TRUE는 TRUE이고 UNKNOWN OR FALSE는 UNKNOWN이어서 WHERE에서는 탈락한다. 2025년 3회 20번 같은 OR 조건에서는 왼쪽 열이 NULL이라는 이유만으로 즉시 행을 버리면 안 된다. GROUP BY 없는 COUNT 쿼리는 조건에 맞는 행이 0개여도 0을 담은 결과 행 하나를 반환한다. COUNT(DISTINCT dept)가 1이라는 값과 결과가 1행이라는 말은 우연히 같을 수도 있지만 다른 질문이다. 이 자체 예제는 RIGHT JOIN을 지원하는 SQLite 환경에서 검증했다."
+  },
+  {
+    "id": "recent-sql-nested",
+    "title": "SQL 중첩 쿼리: 작은 표로 안쪽부터 계산",
+    "language": "SQL",
+    "lead": "비상관 서브쿼리는 한 번 계산한다. 바깥 행을 참조하는 상관 서브쿼리는 바깥 행마다 다시 계산해야 한다.",
+    "sources": [
+      {
+        "exam": "2023-1",
+        "number": 16,
+        "page": 8
+      },
+      {
+        "exam": "2024-1",
+        "number": 12,
+        "page": 9
+      },
+      {
+        "exam": "2024-3",
+        "number": 3,
+        "page": 3
+      },
+      {
+        "exam": "2026-1",
+        "number": 11,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 7,
+        "page": 7
+      }
+    ],
+    "steps": [
+      "바깥 A 행 하나를 고정하고 A.x를 숫자로 치환한다. 안쪽 A2.x < A.x가 어떤 id 집합을 만드는지 적는다.",
+      "그 id 집합에 해당하는 B.y만 모아 평균을 구한다. 첫 행은 집합이 비어 AVG가 NULL이다.",
+      "현재 x가 평균보다 큰지 판정한다. NULL과의 비교는 UNKNOWN이어서 첫 행은 제외한다.",
+      "같은 작업을 네 행에 반복한 뒤 참인 행만 센다. 마지막 COUNT 출력은 3이다."
+    ],
+    "code": "CREATE TABLE A(id INTEGER, x INTEGER);\nCREATE TABLE B(id INTEGER, y INTEGER);\nINSERT INTO A VALUES (1,10), (2,20), (3,30), (4,40);\nINSERT INTO B VALUES (1,4), (1,12), (2,20), (3,36);\nSELECT COUNT(*) AS result\nFROM A\nWHERE A.x > (\n    SELECT AVG(B.y) FROM B\n    WHERE B.id IN (\n        SELECT A2.id FROM A AS A2 WHERE A2.x < A.x\n    )\n);",
+    "output": "result\n3",
+    "trace": {
+      "headers": [
+        "바깥 행 x",
+        "안쪽 id 집합",
+        "B.y 값",
+        "AVG",
+        "x > AVG"
+      ],
+      "rows": [
+        [
+          10,
+          "{}",
+          "없음",
+          "NULL",
+          "UNKNOWN → 제외"
+        ],
+        [
+          20,
+          "{1}",
+          "4,12",
+          8,
+          "참"
+        ],
+        [
+          30,
+          "{1,2}",
+          "4,12,20",
+          12,
+          "참"
+        ],
+        [
+          40,
+          "{1,2,3}",
+          "4,12,20,36",
+          18,
+          "참"
+        ]
+      ]
+    },
+    "diagram": {
+      "kind": "flow",
+      "nodes": [
+        "현재 A 행 고정",
+        "A2.x < 현재 A.x → id 집합",
+        "B.id IN 집합 → y 목록",
+        "AVG(y) 계산",
+        "현재 x > 평균이면 통과",
+        "네 행 판정 후 COUNT(*)"
+      ]
+    },
+    "pitfall": "같은 id=1이 B에서 두 번 나온다면 평균에 두 y가 모두 포함된다. IN은 포함 여부를 검사하지만 JOIN은 모든 매칭 조합을 행으로 만든다.",
+    "shortcut": "서브쿼리를 문장으로 번역한다: 현재 행보다 작은 x를 가진 id들의 B 값 평균. 바깥 참조 A.x에 색 표시를 하면 반복 계산 여부가 보인다.",
+    "quiz": {
+      "question": "첫 행에서 AVG 대신 COUNT(*)를 사용했다면 빈 집합의 집계값은 무엇인가?",
+      "answer": "COUNT(*)는 0, AVG는 NULL이다. 따라서 x > COUNT(*) 비교라면 10 > 0으로 참이다."
+    },
+    "explanation": "GROUP BY와 HAVING 문제는 FROM/JOIN → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY 순서로 논리적 처리 단계를 읽으면 쉽다. WHERE는 개별 행, HAVING은 그룹을 걸러낸다. JOIN 키가 유일하지 않으면 결과 행이 늘어난다. 직원 두 명이 project_id=10이고 프로젝트 표에 그 id가 두 번 있으면 그 id의 조인 결과는 2×2=4행이다. 반대로 WHERE key IN (서브쿼리)는 같은 키가 안쪽에 반복되어도 바깥 행을 복제하지 않는다. COUNT가 너무 크게 나오는 문제는 계산 실수보다 이 조인 중복을 먼저 확인해야 한다. 2026년 2회 자료는 정답이 없으므로 이 예제의 SQL 실행 검증과 문제의 공식 정답 확인을 혼동하지 않는다."
+  }
+]

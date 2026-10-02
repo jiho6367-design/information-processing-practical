@@ -1,0 +1,915 @@
+[
+  {
+    "id": "pred-c-01",
+    "number": 1,
+    "title": "주소로 바꾸는 값과 값으로 전달한 인자",
+    "language": "C",
+    "difficulty": "기본",
+    "intent": "이 유형은 함수 인자가 가리키는 저장 공간과 지역 인자의 복사본을 구별하는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2021-2",
+        "number": 18,
+        "page": 9
+      },
+      {
+        "exam": "2022-2",
+        "number": 16,
+        "page": 10
+      },
+      {
+        "exam": "2026-2",
+        "number": 6,
+        "page": 6
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 세로선(|)도 출력 문자이다.",
+    "code": "#include <stdio.h>\nvoid adjust(int *p) {\n    *p += 5;\n    p++;\n    *p *= 2;\n}\nint by_value(int n) {\n    n += 100;\n    return n;\n}\nint main(void) {\n    int a[] = {3, 6, 9, 12};\n    adjust(a + 1);\n    int returned = by_value(a[0]);\n    printf(\"%d %d %d %d|%d\", a[0], a[1], a[2], a[3], returned);\n    return 0;\n}",
+    "answer": "3 11 18 12|103",
+    "steps": [
+      "adjust의 p는 a[1]을 가리킨다. a[1]에 5를 더해 11로 바꾼다.",
+      "p++ 뒤에는 a[2]를 가리키므로 a[2]만 두 배인 18이 된다.",
+      "by_value의 n은 a[0] 값 3을 복사받아 103이 되며 반환된다. a[0] 자체는 3이다.",
+      "배열 네 값과 returned를 지정한 공백·세로선으로 출력한다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "a[0]",
+        "a[1]",
+        "a[2]",
+        "a[3]",
+        "returned"
+      ],
+      "rows": [
+        [
+          "초기",
+          3,
+          6,
+          9,
+          12,
+          "아직 없음"
+        ],
+        [
+          "adjust 첫 대입",
+          3,
+          11,
+          9,
+          12,
+          "아직 없음"
+        ],
+        [
+          "p 증가 후 대입",
+          3,
+          11,
+          18,
+          12,
+          "아직 없음"
+        ],
+        [
+          "by_value 반환",
+          3,
+          11,
+          18,
+          12,
+          103
+        ]
+      ]
+    },
+    "pitfall": "p++는 배열 요소 값을 증가시키지 않는다. 인자 n의 변경과 호출자가 전달한 a[0]의 변경을 혼동하지 않는다.",
+    "variation": "int returned = by_value(a[0]);를 int returned = by_value(a[0] + 1);로 바꾸면 배열은 그대로이고 마지막 값만 104가 된다."
+  },
+  {
+    "id": "pred-c-02",
+    "number": 2,
+    "title": "문자열 포인터 배열에서 주소를 두 번 읽기",
+    "language": "C",
+    "difficulty": "응용",
+    "intent": "이 유형은 문자열의 시작 주소, 주소를 담은 배열, 이중 포인터를 단계별로 해석하는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2020-4,5",
+        "number": 10,
+        "page": 6
+      },
+      {
+        "exam": "2021-3",
+        "number": 16,
+        "page": 7
+      },
+      {
+        "exam": "2022-2",
+        "number": 15,
+        "page": 9
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 줄별로 쓰시오.",
+    "code": "#include <stdio.h>\nint main(void) {\n    const char *words[] = {\"MANGO\", \"PEACH\", \"GRAPE\"};\n    const char **p = words + 1;\n    const char *s = *(p - 1) + 2;\n    printf(\"%s:%c\\n\", s, (*p)[1]);\n    ++p;\n    printf(\"%s:%c\", *p + 1, **(p - 2));\n    return 0;\n}",
+    "answer": "NGO:E\nRAPE:M",
+    "steps": [
+      "words의 0·1·2번 슬롯에 각각 문자열 시작 주소가 들어 있다고 그린다.",
+      "처음 p는 words[1]이다. *(p-1)은 MANGO의 주소이며 2칸 이동한 s는 N부터 시작한다.",
+      "(*p)[1]은 PEACH의 인덱스 1인 E이다.",
+      "++p 뒤 p는 words[2]다. *p+1은 RAPE, **(p-2)는 MANGO의 첫 글자 M이다."
+    ],
+    "trace": {
+      "headers": [
+        "표현식",
+        "주소 또는 대상",
+        "출력"
+      ],
+      "rows": [
+        [
+          "초기 p",
+          "words[1] → PEACH",
+          "없음"
+        ],
+        [
+          "*(p-1)+2",
+          "MANGO의 인덱스 2",
+          "NGO"
+        ],
+        [
+          "(*p)[1]",
+          "PEACH의 인덱스 1",
+          "E"
+        ],
+        [
+          "++p 뒤 *p+1",
+          "GRAPE의 인덱스 1",
+          "RAPE"
+        ],
+        [
+          "**(p-2)",
+          "words[0] 주소의 첫 문자",
+          "M"
+        ]
+      ]
+    },
+    "pitfall": "p 한 칸 이동은 문자열 내부 한 글자 이동이 아니라 words 배열의 다음 주소 슬롯 이동이다. *p+1이 문자열 내부 이동이다.",
+    "variation": "s를 만드는 줄의 +2를 +1로 바꾸면 첫 줄만 ANGO:E로 바뀐다. 둘째 줄은 RAPE:M으로 유지된다."
+  },
+  {
+    "id": "pred-c-03",
+    "number": 3,
+    "title": "재귀가 끝난 뒤에도 남는 static 상태",
+    "language": "C",
+    "difficulty": "심화",
+    "intent": "이 유형은 호출별 반환값과 모든 호출이 공유하는 저장값을 분리하고, 재귀 복귀 시점의 값을 읽는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2024-3",
+        "number": 6,
+        "page": 4
+      },
+      {
+        "exam": "2022-1",
+        "number": 12,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 17,
+        "page": 17
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 모든 연산은 적힌 문장 순서대로 진행된다.",
+    "code": "#include <stdio.h>\nint run(int n) {\n    static int total = 1;\n    if (n == 0) return total;\n    total += n;\n    int child = run(n - 1);\n    return child + total;\n}\nint main(void) {\n    int a = run(2);\n    int b = run(1);\n    printf(\"%d %d\", a, b);\n    return 0;\n}",
+    "answer": "12 10",
+    "steps": [
+      "static total은 전체 호출에서 한 칸을 공유하며 처음만 1로 초기화한다.",
+      "첫 run(2)는 total을 3으로, 내부 run(1)은 4로 바꾼다. run(0)은 4를 반환한다.",
+      "내부 run(1)은 child=4에 현재 total=4를 더해 8을 반환한다. 바깥 run(2)은 8+4=12다.",
+      "두 번째 run(1)은 남아 있던 total=4를 5로 만든다. 내부 run(0)이 5를 반환해 5+5=10이다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "공유 total",
+        "child",
+        "반환값"
+      ],
+      "rows": [
+        [
+          "첫 run(2)에서 증가",
+          3,
+          "대기",
+          "대기"
+        ],
+        [
+          "내부 run(1)에서 증가",
+          4,
+          "대기",
+          "대기"
+        ],
+        [
+          "run(0) 기저",
+          4,
+          "해당 없음",
+          4
+        ],
+        [
+          "내부 run(1) 복귀",
+          4,
+          4,
+          8
+        ],
+        [
+          "바깥 run(2) 복귀",
+          4,
+          8,
+          12
+        ],
+        [
+          "두 번째 run(1)에서 증가",
+          5,
+          "대기",
+          "대기"
+        ],
+        [
+          "두 번째 내부 run(0)",
+          5,
+          "해당 없음",
+          5
+        ],
+        [
+          "두 번째 run(1) 복귀",
+          5,
+          5,
+          10
+        ]
+      ]
+    },
+    "pitfall": "첫 run(2)의 return에서 total을 진입 당시 3으로 되돌리면 틀린다. static은 재귀 프레임마다 따로 저장되지 않는다.",
+    "variation": "static을 제거해 int total = 1;로 선언하면 각 호출이 자기 total을 가져 출력은 6 3이 된다."
+  },
+  {
+    "id": "pred-c-04",
+    "number": 4,
+    "title": "단락 평가와 비트 연산의 상태 차이",
+    "language": "C",
+    "difficulty": "기본",
+    "intent": "이 유형은 논리 연산이 오른쪽 평가를 생략하는 경우와 비트 연산이 양쪽을 평가하는 경우를 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2022-1",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2021-3",
+        "number": 17,
+        "page": 8
+      },
+      {
+        "exam": "2025-3",
+        "number": 17,
+        "page": 10
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. &&와 &, ||를 구별하시오.",
+    "code": "#include <stdio.h>\nint main(void) {\n    int x = 2, y = 0;\n    int a = (x > 3) && (++y > 0);\n    int b = (x == 2) || (++y > 0);\n    int c = (x == 0) & (++y > 0);\n    int d = (6 ^ 3) & 5;\n    printf(\"%d %d %d %d %d\", a, b, c, d, y);\n    return 0;\n}",
+    "answer": "0 1 0 5 1",
+    "steps": [
+      "a의 왼쪽은 거짓이라 &&의 오른쪽 ++y는 실행하지 않는다. a=0, y=0이다.",
+      "b의 왼쪽은 참이라 ||의 오른쪽 ++y도 실행하지 않는다. b=1, y=0이다.",
+      "c의 &는 양쪽을 평가하므로 y가 1이 된다. 결과는 0 & 1=0이다.",
+      "6은 이진수 110, 3은 011이다. XOR로 101을 얻고 101과 AND하면 5다."
+    ],
+    "trace": {
+      "headers": [
+        "문장",
+        "오른쪽 증가 수행",
+        "y",
+        "저장 결과"
+      ],
+      "rows": [
+        [
+          "a 계산",
+          "아니오",
+          0,
+          0
+        ],
+        [
+          "b 계산",
+          "아니오",
+          0,
+          1
+        ],
+        [
+          "c 계산",
+          "예",
+          1,
+          0
+        ],
+        [
+          "d 계산",
+          "증가 연산 없음",
+          1,
+          5
+        ]
+      ]
+    },
+    "pitfall": "&와 &&는 다른 연산자다. 이 예시는 왼쪽이 x만 읽고 오른쪽만 y를 바꾸므로 C의 피연산자 평가 순서에 따라 답이 달라지지 않는다.",
+    "variation": "c를 계산하는 &를 &&로 바꾸면 결과 c=0은 같지만 y는 0으로 남아 출력의 마지막 값이 0이 된다."
+  },
+  {
+    "id": "pred-c-05",
+    "number": 5,
+    "title": "이차원 배열의 제자리 누적과 평탄 인덱스",
+    "language": "C",
+    "difficulty": "응용",
+    "intent": "이 유형은 이미 갱신한 배열 값을 다음 반복에서 사용하는지와 평탄 위치를 행·열로 바꾸는지를 함께 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2022-3",
+        "number": 1,
+        "page": 2
+      },
+      {
+        "exam": "2022-2",
+        "number": 16,
+        "page": 10
+      },
+      {
+        "exam": "2025-1",
+        "number": 12,
+        "page": 8
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 세 줄로 쓰시오.",
+    "code": "#include <stdio.h>\nint main(void) {\n    int a[2][3] = {{2, 4, 6}, {1, 3, 5}};\n    for (int r = 0; r < 2; r++)\n        for (int c = 1; c < 3; c++)\n            a[r][c] += a[r][c - 1];\n    int sum = 0;\n    for (int i = 0; i < 6; i++) {\n        int r = i / 3, c = i % 3;\n        if ((r + c) % 2 == 0) sum += a[r][c];\n        else sum -= a[r][c];\n    }\n    printf(\"%d %d %d\\n\", a[0][0], a[0][1], a[0][2]);\n    printf(\"%d %d %d\\n\", a[1][0], a[1][1], a[1][2]);\n    printf(\"sum=%d\", sum);\n    return 0;\n}",
+    "answer": "2 6 12\n1 4 9\nsum=2",
+    "steps": [
+      "각 행은 왼쪽부터 갱신한다. 첫 행은 [2,6,12], 둘째 행은 [1,4,9]가 된다.",
+      "평탄 인덱스 i를 3으로 나눈 몫이 행, 나머지가 열이다.",
+      "행+열이 짝수면 더하고 홀수면 뺀다. 첫 행의 부호는 +,-,+이고 둘째 행은 -,+,-다.",
+      "최종 합 2-6+12-1+4-9=2를 출력한다."
+    ],
+    "trace": {
+      "headers": [
+        "i",
+        "위치",
+        "갱신된 값",
+        "부호",
+        "sum"
+      ],
+      "rows": [
+        [
+          0,
+          "[0][0]",
+          2,
+          "+",
+          2
+        ],
+        [
+          1,
+          "[0][1]",
+          6,
+          "-",
+          -4
+        ],
+        [
+          2,
+          "[0][2]",
+          12,
+          "+",
+          8
+        ],
+        [
+          3,
+          "[1][0]",
+          1,
+          "-",
+          7
+        ],
+        [
+          4,
+          "[1][1]",
+          4,
+          "+",
+          11
+        ],
+        [
+          5,
+          "[1][2]",
+          9,
+          "-",
+          2
+        ]
+      ]
+    },
+    "pitfall": "a[0][2]는 원래 왼쪽 값 4가 아니라 갱신된 6을 더해 12가 된다. 인덱스를 행 수 2로 나누지 않는다.",
+    "variation": "안쪽 누적 반복을 for (int c = 2; c >= 1; c--)로 바꾸면 행은 [2,6,10], [1,4,8]이고 sum은 1이 된다."
+  },
+  {
+    "id": "pred-c-06",
+    "number": 6,
+    "title": "연결 리스트 노드 이동 후 값과 순회 누적",
+    "language": "C",
+    "difficulty": "응용",
+    "intent": "이 유형은 노드의 주소 연결 변경과 멤버값 변경을 별도 상태로 추적하는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2025-2",
+        "number": 5,
+        "page": 3
+      },
+      {
+        "exam": "2025-3",
+        "number": 19,
+        "page": 12
+      },
+      {
+        "exam": "2024-2",
+        "number": 19,
+        "page": 12
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 두 줄로 쓰시오.",
+    "code": "#include <stdio.h>\ntypedef struct Node { int value; struct Node *next; } Node;\nint main(void) {\n    Node a = {4, NULL}, b = {7, NULL};\n    Node c = {1, NULL}, d = {9, NULL};\n    a.next = &b; b.next = &c; c.next = &d;\n    Node *head = &a;\n    Node *moved = head->next->next;\n    head->next->next = moved->next;\n    moved->next = head;\n    head = moved;\n    head->next->value += head->value;\n    int total = 0;\n    for (Node *p = head; p != NULL; p = p->next) {\n        total = total * 2 + p->value;\n        printf(\"%d%s\", p->value, p->next ? \" \" : \"\\n\");\n    }\n    printf(\"code=%d\", total);\n    return 0;\n}",
+    "answer": "1 5 7 9\ncode=51",
+    "steps": [
+      "초기 연결은 a→b→c→d이며 moved는 c다.",
+      "b.next를 d로 바꾸어 c를 기존 위치에서 떼어낸다. c.next=a, head=c로 바꿔 c→a→b→d가 된다.",
+      "head의 다음 노드 a.value에 head의 값 1을 더해 5로 만든다.",
+      "순회값 1,5,7,9를 total=total*2+값으로 계산한다. 누적은 1→7→21→51이다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "연결 / 현재 노드",
+        "값 / total"
+      ],
+      "rows": [
+        [
+          "초기",
+          "a→b→c→d",
+          "4,7,1,9"
+        ],
+        [
+          "노드 이동 후",
+          "c→a→b→d",
+          "1,4,7,9"
+        ],
+        [
+          "멤버값 변경 후",
+          "c→a→b→d",
+          "1,5,7,9"
+        ],
+        [
+          "첫 순회",
+          "c",
+          1
+        ],
+        [
+          "둘째 순회",
+          "a",
+          7
+        ],
+        [
+          "셋째 순회",
+          "b",
+          21
+        ],
+        [
+          "넷째 순회",
+          "d",
+          51
+        ]
+      ]
+    },
+    "pitfall": "c를 맨 앞으로 옮겼다고 c.value가 바뀌지는 않는다. head->next는 이제 원래 a이며 변수 선언 순서로 순회하지 않는다.",
+    "variation": "누적식의 *2를 *3으로 바꾸면 같은 순서 1,5,7,9에서 total은 1→8→31→102가 되어 마지막 줄이 code=102다."
+  },
+  {
+    "id": "pred-c-07",
+    "number": 7,
+    "title": "두 재귀 호출 사이에 놓인 출력문",
+    "language": "C",
+    "difficulty": "심화",
+    "intent": "이 유형은 결과 수열을 암기하는 대신 호출과 복귀 사이에 출력이 발생하는 순서를 추적하는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2020-3",
+        "number": 10,
+        "page": 6
+      },
+      {
+        "exam": "2020-4,5",
+        "number": 19,
+        "page": 9
+      },
+      {
+        "exam": "2022-1",
+        "number": 12,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 17,
+        "page": 17
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 출력 문자 사이에 임의의 공백을 넣지 마시오.",
+    "code": "#include <stdio.h>\nint emit(int n) {\n    if (n <= 1) {\n        printf(\"%d\", n);\n        return n;\n    }\n    int left = emit(n - 1);\n    printf(\"A\");\n    int right = emit(n - 2);\n    printf(\"B\");\n    return left + right;\n}\nint main(void) {\n    int result = emit(3);\n    printf(\"=%d\", result);\n    return 0;\n}",
+    "answer": "1A0BA1B=2",
+    "steps": [
+      "emit(3)의 왼쪽 호출 emit(2)부터 끝까지 처리한다.",
+      "emit(2)는 emit(1)의 1, 자기 A, emit(0)의 0, 자기 B를 출력해 1A0B가 되고 1을 반환한다.",
+      "바깥 emit(3)이 A를 출력한 뒤 오른쪽 emit(1)이 1을 출력하고 1을 반환한다.",
+      "마지막 바깥 B가 붙어 1A0BA1B가 된다. 반환합은 1+1=2이며 main의 =2를 붙인다."
+    ],
+    "trace": {
+      "headers": [
+        "실행 문장",
+        "누적 출력",
+        "반환 / 대기값"
+      ],
+      "rows": [
+        [
+          "emit(2) 내부 emit(1)",
+          "1",
+          "1 반환"
+        ],
+        [
+          "emit(2)의 A",
+          "1A",
+          "left=1"
+        ],
+        [
+          "emit(2) 내부 emit(0)",
+          "1A0",
+          "0 반환"
+        ],
+        [
+          "emit(2)의 B와 복귀",
+          "1A0B",
+          "1 반환"
+        ],
+        [
+          "emit(3)의 A",
+          "1A0BA",
+          "left=1"
+        ],
+        [
+          "emit(3) 오른쪽 emit(1)",
+          "1A0BA1",
+          "1 반환"
+        ],
+        [
+          "emit(3)의 B와 복귀",
+          "1A0BA1B",
+          "2 반환"
+        ],
+        [
+          "main 출력",
+          "1A0BA1B=2",
+          "최종"
+        ]
+      ]
+    },
+    "pitfall": "두 재귀 호출의 반환값 합은 2지만 출력문은 각 호출의 실행 위치마다 발생한다. 숫자 반환값과 화면에 찍힌 문자열을 한 칸에 적지 않는다.",
+    "variation": "printf(\"A\");를 왼쪽 재귀 호출보다 앞으로 옮기면 출력은 AA10B1B=2가 된다. 반환값은 변하지 않는다."
+  },
+  {
+    "id": "pred-c-08",
+    "number": 8,
+    "title": "스택 pop 뒤 큐 enqueue의 순서",
+    "language": "C",
+    "difficulty": "기본",
+    "intent": "이 유형은 스택과 큐의 이름을 외우는 것보다 top·front·rear가 실제로 가리키는 다음 위치를 계산하는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2023-2",
+        "number": 9,
+        "page": 7
+      },
+      {
+        "exam": "2025-2",
+        "number": 10,
+        "page": 6
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 모든 배열 접근은 유효한 범위 안에서 실행된다.",
+    "code": "#include <stdio.h>\nint main(void) {\n    int stack[4], top = 0;\n    stack[top++] = 2;\n    stack[top++] = 5;\n    int first = stack[--top];\n    stack[top++] = first - 1;\n    int queue[4], front = 0, rear = 0;\n    queue[rear++] = stack[--top];\n    queue[rear++] = stack[--top];\n    int x = queue[front++];\n    queue[rear++] = x + 3;\n    printf(\"%d|\", x);\n    while (front < rear) {\n        int value = queue[front++];\n        printf(\"%d\", value);\n        if (front < rear) printf(\" \");\n    }\n    return 0;\n}",
+    "answer": "4|2 7",
+    "steps": [
+      "push한 뒤 스택 내용은 바닥부터 [2,5]이며 top=2다. --top으로 5를 pop한다.",
+      "first-1인 4를 push해 스택은 [2,4]다. 다시 pop하면 4, 다음 pop은 2다.",
+      "큐에는 [4,2]가 차례로 들어간다. front++로 4를 dequeue한 뒤 7을 끝에 넣는다.",
+      "남은 큐를 2,7 순서로 출력한다. 먼저 뺀 x=4는 세로선 앞에 출력된다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "스택 내용 / top",
+        "큐 유효 내용 / front,rear",
+        "꺼낸 값"
+      ],
+      "rows": [
+        [
+          "초기 push",
+          "[2,5] / 2",
+          "없음",
+          "없음"
+        ],
+        [
+          "pop 후 4 push",
+          "[2,4] / 2",
+          "없음",
+          5
+        ],
+        [
+          "스택 두 번 pop",
+          "[] / 0",
+          "[4,2] / 0,2",
+          "4,2"
+        ],
+        [
+          "큐 dequeue",
+          "[] / 0",
+          "[2] / 1,2",
+          4
+        ],
+        [
+          "7 enqueue",
+          "[] / 0",
+          "[2,7] / 1,3",
+          "없음"
+        ],
+        [
+          "남은 큐 순회",
+          "[] / 0",
+          "[] / 3,3",
+          "2,7"
+        ]
+      ]
+    },
+    "pitfall": "top은 이 코드에서 마지막 원소가 아니라 다음 push 위치다. stack[--top]은 먼저 top을 줄인 뒤 읽는다. 큐는 앞에서 뺀 값 뒤에 새 값이 들어간다.",
+    "variation": "queue[rear++] = x + 3;을 x + 1로 바꾸면 출력은 4|2 5가 된다."
+  },
+  {
+    "id": "pred-python-01",
+    "number": 9,
+    "title": "음수 step 슬라이싱의 제외 경계",
+    "language": "Python",
+    "difficulty": "기본",
+    "intent": "이 유형은 음수 step에서 선택 인덱스를 적고 stop 제외 규칙을 지키는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2022-2",
+        "number": 13,
+        "page": 7
+      },
+      {
+        "exam": "2024-3",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2026-1",
+        "number": 5,
+        "page": 4
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 두 줄로 쓰시오.",
+    "code": "a = list(range(1, 10))\nb = a[7:1:-2]\nc = a[::-3]\nprint(b, c)\nprint(sum(b) - sum(c), end=\"\")",
+    "answer": "[8, 6, 4] [9, 6, 3]\n0",
+    "steps": [
+      "a의 인덱스 0~8에 값 1~9를 적는다.",
+      "b는 인덱스 7,5,3을 선택한다. stop=1은 제외되어 인덱스 1을 선택하지 않는다.",
+      "c는 생략된 시작 위치가 맨 뒤이므로 인덱스 8,5,2를 선택한다.",
+      "각 리스트 합은 모두 18이므로 차는 0이다. print(b,c)는 두 리스트 사이에 공백을 하나 넣는다."
+    ],
+    "trace": {
+      "headers": [
+        "슬라이스",
+        "선택 인덱스",
+        "선택 값",
+        "합"
+      ],
+      "rows": [
+        [
+          "[7:1:-2]",
+          "7,5,3",
+          "8,6,4",
+          18
+        ],
+        [
+          "[::-3]",
+          "8,5,2",
+          "9,6,3",
+          18
+        ],
+        [
+          "합의 차",
+          "해당 없음",
+          "18-18",
+          0
+        ]
+      ]
+    },
+    "pitfall": "음수 step이라고 stop 위치를 포함하는 것은 아니다. 인덱스와 리스트 값도 1씩 차이 난다.",
+    "variation": "b의 stop을 1에서 0으로 바꾸면 인덱스 1도 선택되어 b=[8,6,4,2], 마지막 출력은 2가 된다."
+  },
+  {
+    "id": "pred-python-02",
+    "number": 10,
+    "title": "얕은 복사 뒤 +=와 + 대입의 차이",
+    "language": "Python",
+    "difficulty": "응용",
+    "intent": "이 유형은 공유하는 내부 리스트를 변경하는 연산과 새 내부 리스트로 슬롯을 교체하는 연산을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2026-1",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 세 줄로 쓰시오.",
+    "code": "m = [[1], [3], [5]]\ncopy = m[:]\ncopy[0].append(2)\ncopy[1] = copy[1] + copy[0]\ncopy[2] += copy[1]\nprint(m)\nprint(copy)\nprint(sum(map(len, m)), sum(map(len, copy)), end=\"\")",
+    "answer": "[[1, 2], [3], [5, 3, 1, 2]]\n[[1, 2], [3, 1, 2], [5, 3, 1, 2]]\n7 9",
+    "steps": [
+      "m[:]는 새 바깥 리스트를 만들지만 각 내부 리스트는 공유한다.",
+      "copy[0].append(2)는 공유하는 첫 내부 리스트를 [1,2]로 바꾼다.",
+      "copy[1]+copy[0]는 새 리스트 [3,1,2]를 만든다. copy[1]만 그 새 리스트를 가리키며 m[1]은 [3]이다.",
+      "copy[2]+=는 공유하는 세 번째 리스트를 제자리 확장해 둘 다 [5,3,1,2]를 보게 한다.",
+      "m의 길이 합은 2+1+4=7이고 copy의 길이 합은 2+3+4=9다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "m",
+        "copy"
+      ],
+      "rows": [
+        [
+          "초기",
+          "[[1],[3],[5]]",
+          "[[1],[3],[5]]"
+        ],
+        [
+          "첫 내부 리스트 append",
+          "[[1,2],[3],[5]]",
+          "[[1,2],[3],[5]]"
+        ],
+        [
+          "copy[1] 슬롯 교체",
+          "[[1,2],[3],[5]]",
+          "[[1,2],[3,1,2],[5]]"
+        ],
+        [
+          "세 번째 내부 리스트 +=",
+          "[[1,2],[3],[5,3,1,2]]",
+          "[[1,2],[3,1,2],[5,3,1,2]]"
+        ]
+      ]
+    },
+    "pitfall": "같은 + 기호가 보여도 리스트의 +=는 보통 제자리 확장이고 a=a+b는 새 리스트 대입이다. 바깥 복사가 내부 객체까지 복제하지 않는다.",
+    "variation": "copy[1] = copy[1] + copy[0]를 copy[1] += copy[0]로 바꾸면 m[1]도 [3,1,2]가 되고 길이 합은 9 9다."
+  },
+  {
+    "id": "pred-python-03",
+    "number": 11,
+    "title": "기존 dict 키를 바꾼 뒤 문자열 누적",
+    "language": "Python",
+    "difficulty": "응용",
+    "intent": "이 유형은 dict의 기존 키 갱신과 삽입 순서를 구별하며, 루프 인덱스에 따라 다른 문자를 선택하는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2021-1",
+        "number": 5,
+        "page": 3
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2026-2",
+        "number": 12,
+        "page": 12
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 쓰시오. 실행 환경은 Python 3.7 이상이다.",
+    "code": "labels = {\"AL\": \"BETA\", \"BC\": \"OMEGA\", \"DA\": \"LIMA\"}\nlabels[\"BC\"] = \"SIGMA\"\ntext = \"\"\nfor index, (key, value) in enumerate(labels.items(), start=1):\n    text += key[-1] + value[index - 1]\nprint(text, end=\"\")",
+    "answer": "LBCIAM",
+    "steps": [
+      "기존 키 BC의 값을 갱신해도 키의 삽입 위치는 바뀌지 않는다. 순서는 AL,BC,DA다.",
+      "index는 1부터 시작하므로 value에서는 0,1,2번 문자를 차례로 선택한다.",
+      "각 반복에서 AL은 L+B, BC는 C+I, DA는 A+M을 만든다.",
+      "+=는 이전 문자열 뒤에 붙이므로 LB→LBCI→LBCIAM이 된다."
+    ],
+    "trace": {
+      "headers": [
+        "index",
+        "key",
+        "갱신 후 value",
+        "추가 문자열",
+        "text"
+      ],
+      "rows": [
+        [
+          1,
+          "AL",
+          "BETA",
+          "LB",
+          "LB"
+        ],
+        [
+          2,
+          "BC",
+          "SIGMA",
+          "CI",
+          "LBCI"
+        ],
+        [
+          3,
+          "DA",
+          "LIMA",
+          "AM",
+          "LBCIAM"
+        ]
+      ]
+    },
+    "pitfall": "기존 키에 새 값을 넣었다고 BC가 마지막으로 이동하지 않는다. enumerate 시작값과 문자열의 0 기반 인덱스를 구별한다.",
+    "variation": "text +=를 text =로 바꾸면 매 반복 이전 결과를 버려 마지막 문자열 AM만 출력한다."
+  },
+  {
+    "id": "pred-python-04",
+    "number": 12,
+    "title": "집합의 스냅샷과 dict 컴프리헨션",
+    "language": "Python",
+    "difficulty": "응용",
+    "intent": "이 유형은 컴프리헨션의 중복 키 처리, 생성 시점의 집합 내용, 이후 변경의 독립성을 함께 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2020-2",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2022-3",
+        "number": 9,
+        "page": 7
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 두 줄로 쓰시오. 집합은 sorted로 정렬하여 출력한다.",
+    "code": "nums = [2, 3, 2, 5]\nd = {x: x + 1 for x in nums}\nseen = set(d.values())\nd[2] = 8\nseen.add(8)\npicked = [k for k, v in d.items() if v in seen and k % 2 == 1]\nprint(sorted(seen & set(d.values())))\nprint(picked, end=\"\")",
+    "answer": "[4, 6, 8]\n[3, 5]",
+    "steps": [
+      "d의 중복 키 2는 한 항목이며 생성 결과는 {2:3,3:4,5:6}이다.",
+      "seen은 그 시점의 값으로 만든 별도 집합 {3,4,6}이다. d[2]=8 뒤에도 기존 원소 3이 남는다.",
+      "seen.add(8) 후 교집합 대상은 현재 d의 값 {8,4,6}이어서 정렬하면 [4,6,8]이다.",
+      "picked는 값이 seen에 있고 키가 홀수인 항목만 고른다. 키 3과 5가 선택된다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "d",
+        "seen / 결과"
+      ],
+      "rows": [
+        [
+          "컴프리헨션",
+          "{2:3,3:4,5:6}",
+          "seen={3,4,6}"
+        ],
+        [
+          "d[2]=8",
+          "{2:8,3:4,5:6}",
+          "seen={3,4,6} 유지"
+        ],
+        [
+          "seen.add(8)",
+          "{2:8,3:4,5:6}",
+          "seen={3,4,6,8}"
+        ],
+        [
+          "교집합 정렬",
+          "현재 값 {8,4,6}",
+          "[4,6,8]"
+        ],
+        [
+          "홀수 키 선택",
+          "순서 2,3,5",
+          "[3,5]"
+        ]
+      ]
+    },
+    "pitfall": "set(d.values())는 dict의 값과 계속 동기화되는 뷰가 아니다. raw set 출력 순서를 예상 답으로 고정하지 않는다.",
+    "variation": "seen.add(8)을 지우면 첫 줄은 [4,6]이 된다. key=2는 원래 홀수 조건을 통과하지 못하므로 둘째 줄 [3,5]는 같다."
+  }
+]

@@ -1,0 +1,3258 @@
+[
+  {
+    "exam": "2023-1",
+    "number": 1,
+    "page": 2,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "지역 변수·인스턴스 필드·static 필드의 변화",
+    "skills": [
+      "static 공유",
+      "후위 증가",
+      "변수 범위"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 2,
+    "page": 2,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "문자열 주소와 첫 문자 출력",
+    "skills": [
+      "배열과 포인터",
+      "문자열 종결",
+      "%s와 %c"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 3,
+    "page": 3,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "두 문자열의 중첩 비교",
+    "skills": [
+      "이중 반복",
+      "중복 일치",
+      "출력 순서"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 4,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "기타",
+    "title": "비동기 웹 갱신 기술",
+    "skills": [
+      "AJAX",
+      "비동기 처리"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 5,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "연결형·비연결형 패킷 교환",
+    "skills": [
+      "가상 회선",
+      "데이터그램"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 6,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "터널링 프로토콜 판별",
+    "skills": [
+      "L2TP",
+      "PPTP",
+      "L2F"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 7,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "보안 원격 접속 프로토콜",
+    "skills": [
+      "SSH",
+      "공개키 인증",
+      "포트 22"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 8,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "웜·바이러스·트로이 목마 구별",
+    "skills": [
+      "자기복제",
+      "감염 매개",
+      "자체 전파"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 9,
+    "page": 5,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "십진수 자리로 저장한 이진수 변환",
+    "skills": [
+      "나머지",
+      "정수 나눗셈",
+      "자리 가중치"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 10,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "오류·제어 메시지 프로토콜",
+    "skills": [
+      "ICMP",
+      "ping",
+      "traceroute"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 11,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "외부에 세부 구현을 숨기는 패턴",
+    "skills": [
+      "Facade",
+      "Proxy 구별"
+    ],
+    "note": "대리자라는 표현과 시스템 단순화 설명이 혼재하므로 특징을 구별해야 함"
+  },
+  {
+    "exam": "2023-1",
+    "number": 12,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "행·인스턴스·행 수의 용어",
+    "skills": [
+      "튜플",
+      "릴레이션 인스턴스",
+      "카디널리티"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 13,
+    "page": 7,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "조건에 맞는 학생 행 삭제",
+    "skills": [
+      "DELETE",
+      "WHERE",
+      "문자열 리터럴"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 14,
+    "page": 7,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "버블 정렬 교환과 배열 길이",
+    "skills": [
+      "swap",
+      "인접 비교",
+      "반복 범위"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 15,
+    "page": 8,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "집합 원소 추가·삭제·합치기",
+    "skills": [
+      "set",
+      "add",
+      "remove",
+      "update"
+    ],
+    "note": "집합 출력 순서는 고정되지 않음; 문자열 표기는 원문 PDF를 기준으로 읽음"
+  },
+  {
+    "exam": "2023-1",
+    "number": 16,
+    "page": 8,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "그룹 평균 조건과 최소·최대 집계",
+    "skills": [
+      "GROUP BY",
+      "HAVING",
+      "AVG",
+      "MIN",
+      "MAX"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 17,
+    "page": 9,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "메서드 서명과 부모 필드",
+    "skills": [
+      "오버로딩",
+      "상속",
+      "super 필드"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 18,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "외부·개념·내부 스키마",
+    "skills": [
+      "3단계 스키마",
+      "논리 구조",
+      "물리 구조"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-1",
+    "number": 19,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "제어 흐름의 분기 커버리지",
+    "skills": [
+      "참·거짓 분기",
+      "경로 설계"
+    ],
+    "note": "문제 순서도 직접 확인: X>Y와 RESULT>0 두 분기의 참·거짓 경로를 모두 포함"
+  },
+  {
+    "exam": "2023-1",
+    "number": 20,
+    "page": 12,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "생성자 연결과 숨겨진 필드",
+    "skills": [
+      "this 생성자",
+      "부모 생성자",
+      "필드 숨김"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 1,
+    "page": 2,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "배열을 한 칸 회전해 읽는 식",
+    "skills": [
+      "인덱스",
+      "모듈러",
+      "순환"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 2,
+    "page": 3,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "금액을 단위별로 분해",
+    "skills": [
+      "몫",
+      "나머지",
+      "잔액"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 3,
+    "page": 4,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "같은 입력 버퍼를 가리키는 포인터",
+    "skills": [
+      "전역 배열",
+      "별칭",
+      "덮어쓰기"
+    ],
+    "note": "gets는 현대 C 표준에서 제거되었으므로 실습은 안전한 입력 함수로 대체"
+  },
+  {
+    "exam": "2023-2",
+    "number": 4,
+    "page": 5,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "학생 데이터 한 행 삽입",
+    "skills": [
+      "INSERT INTO",
+      "VALUES",
+      "열 순서"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 5,
+    "page": 5,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "정수 나눗셈과 switch 연속 실행",
+    "skills": [
+      "switch",
+      "break 누락",
+      "fall-through"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 6,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "개별 조건의 참·거짓 검증",
+    "skills": [
+      "조건 커버리지",
+      "분기 커버리지 구별"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 7,
+    "page": 6,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "배수 개수 누적",
+    "skills": [
+      "나머지",
+      "루프 경계",
+      "개수 세기"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 8,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "소프트웨어 변조 탐지·방지",
+    "skills": [
+      "Tamper Proofing",
+      "무결성",
+      "난독화"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 9,
+    "page": 7,
+    "section": "coding",
+    "language": "C",
+    "topic": "재귀·자료구조",
+    "title": "배열 스택의 push·pop 추적",
+    "skills": [
+      "LIFO",
+      "top 변화",
+      "전위·후위 증가"
+    ],
+    "note": "isFull의 경계값은 배열 크기와 맞지 않지만 제시된 호출은 해당 오류 경계에 도달하지 않음"
+  },
+  {
+    "exam": "2023-2",
+    "number": 10,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "데이터베이스 설계 단계",
+    "skills": [
+      "요구 분석",
+      "개념 설계",
+      "논리 설계",
+      "물리 설계",
+      "구현"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 11,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "객체 하나와 연산 분리 패턴",
+    "skills": [
+      "Singleton",
+      "Visitor"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 12,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "오류 검출·정정 코드",
+    "skills": [
+      "Hamming",
+      "검사 비트",
+      "오류 정정"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 13,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "HDLC 프레임·동작 모드",
+    "skills": [
+      "I·S·U 프레임",
+      "NRM",
+      "ABM",
+      "ARM"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 14,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "문자열 참조와 내용 비교",
+    "skills": [
+      "문자열 풀",
+      "==",
+      "equals"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 15,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "대칭키·비대칭키 분류",
+    "skills": [
+      "AES",
+      "DES",
+      "SEED",
+      "ARIA",
+      "RSA",
+      "ECC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 16,
+    "page": 12,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "고정 길이 단방향 변환",
+    "skills": [
+      "해시",
+      "SHA",
+      "무결성"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 17,
+    "page": 12,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "뷰 제거와 종속 객체 처리",
+    "skills": [
+      "DROP VIEW",
+      "CASCADE"
+    ],
+    "note": "복원 텍스트의 VEW는 VIEW의 오기; CASCADE 동작 지원은 DBMS별 차이 있음"
+  },
+  {
+    "exam": "2023-2",
+    "number": 18,
+    "page": 13,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "오름차순 정렬 비교 연산",
+    "skills": [
+      "교환",
+      "비교 방향",
+      "반복 범위"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 19,
+    "page": 14,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "문자열 부분 추출 후 연결",
+    "skills": [
+      "슬라이싱",
+      "종료 인덱스 제외",
+      "문자열 연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-2",
+    "number": 20,
+    "page": 14,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "통합 테스트의 대체 모듈",
+    "skills": [
+      "하향식 스텁",
+      "상향식 드라이버"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 1,
+    "page": 2,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "super 호출 안에서 다시 선택되는 메서드",
+    "skills": [
+      "오버라이딩",
+      "동적 바인딩",
+      "출력 순서"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 2,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "외부 서비스 접근 권한 위임",
+    "skills": [
+      "OAuth",
+      "인증·인가 구별"
+    ],
+    "note": "문제는 인증이라는 표현을 쓰지만 OAuth의 핵심은 권한 위임"
+  },
+  {
+    "exam": "2023-3",
+    "number": 3,
+    "page": 3,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "문자 주소 이동과 문자값 산술",
+    "skills": [
+      "포인터 덧셈",
+      "역참조",
+      "%s",
+      "%c"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 4,
+    "page": 4,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "구조체 포인터로 멤버 접근",
+    "skills": [
+      "구조체",
+      "주소 연결",
+      "화살표 연산자"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 5,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "리눅스 파일 권한의 8진수 표현",
+    "skills": [
+      "chmod",
+      "rwx",
+      "4·2·1"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 6,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "관련 요소를 묶는 UML 모델",
+    "skills": [
+      "패키지 다이어그램",
+      "의존 관계"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 7,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "입력 영역별 대표값 테스트",
+    "skills": [
+      "동등 분할",
+      "경계값 구별"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 8,
+    "page": 7,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "합집합의 중복 제거와 정렬",
+    "skills": [
+      "UNION",
+      "ORDER BY DESC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 9,
+    "page": 8,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "약수 합으로 완전수 판정",
+    "skills": [
+      "중첩 반복",
+      "약수",
+      "누적"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 10,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "사설 주소를 외부 주소로 변환",
+    "skills": [
+      "NAT",
+      "IP 마스커레이드"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 11,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "고정 길이 셀 전송 방식",
+    "skills": [
+      "ATM",
+      "53바이트",
+      "셀"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 12,
+    "page": 9,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "static 메서드의 인스턴스 접근 오류",
+    "skills": [
+      "static 문맥",
+      "객체 필드",
+      "컴파일 오류"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 13,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "등급·역할·소유자 기반 접근 통제",
+    "skills": [
+      "MAC",
+      "RBAC",
+      "DAC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 14,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "재귀·자료구조",
+    "title": "재정의된 재귀식과 음수 기저값",
+    "skills": [
+      "재귀",
+      "동적 바인딩",
+      "n 이하 조건"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 15,
+    "page": 11,
+    "section": "coding",
+    "language": "C",
+    "topic": "재귀·자료구조",
+    "title": "팩토리얼 재귀 결과",
+    "skills": [
+      "기저 조건",
+      "호출 스택",
+      "반환 누적"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 16,
+    "page": 12,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "입력 문자열 분리",
+    "skills": [
+      "split",
+      "언패킹",
+      "문자열"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 17,
+    "page": 13,
+    "section": "theory",
+    "language": "",
+    "topic": "기타",
+    "title": "클라우드 서비스 관리 범위",
+    "skills": [
+      "IaaS",
+      "PaaS",
+      "SaaS"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 18,
+    "page": 14,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "거리 벡터 라우팅",
+    "skills": [
+      "RIP",
+      "Bellman-Ford",
+      "홉 수"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 19,
+    "page": 14,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "관계 대수 연산의 기호와 역할",
+    "skills": [
+      "선택",
+      "투영",
+      "조인",
+      "나눗셈"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2023-3",
+    "number": 20,
+    "page": 15,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "외래키가 보장해야 할 무결성",
+    "skills": [
+      "참조 무결성",
+      "부모 행 존재"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 1,
+    "page": 2,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "삼항식의 진릿값과 비트 이동",
+    "skills": [
+      "조건식",
+      "0의 거짓",
+      "왼쪽 시프트"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 2,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "링크 상태 최단 경로 프로토콜",
+    "skills": [
+      "OSPF",
+      "Dijkstra"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 3,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "이행적 종속 제거를 위한 릴레이션 분해",
+    "skills": [
+      "주문번호→고객번호→주소",
+      "이행적 함수 종속",
+      "제3정규형"
+    ],
+    "note": "문제 그림 직접 확인: 주문·고객 테이블로 분리하며 고객번호와 주소의 종속성을 분리"
+  },
+  {
+    "exam": "2024-1",
+    "number": 4,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "응집도 강도 비교",
+    "skills": [
+      "기능적",
+      "교환적",
+      "시간적",
+      "우연적"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 5,
+    "page": 4,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "싱글턴 참조들이 공유하는 상태",
+    "skills": [
+      "static 인스턴스",
+      "동일 객체",
+      "count"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 6,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "관련 객체 제품군을 만드는 패턴",
+    "skills": [
+      "Abstract Factory",
+      "Kit"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 7,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "LRU·LFU 페이지 교체 추적",
+    "skills": [
+      "페이지 부재",
+      "최근 사용",
+      "사용 빈도"
+    ],
+    "note": "LFU 동률 처리 규칙이 필요한 일반 사례와 구별"
+  },
+  {
+    "exam": "2024-1",
+    "number": 8,
+    "page": 6,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "각 문자열의 문자 하나 누적",
+    "skills": [
+      "리스트 순회",
+      "문자 인덱스",
+      "연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 9,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "조건·동등·자연 조인 구별",
+    "skills": [
+      "세타 조인",
+      "동등 조인",
+      "자연 조인"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 10,
+    "page": 7,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "문자열 반전 후 격자 인덱스 읽기",
+    "skills": [
+      "교환",
+      "양끝 포인터",
+      "출력 인덱스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 11,
+    "page": 8,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "생성자 순서와 메서드 서명",
+    "skills": [
+      "super 생성자",
+      "오버로딩",
+      "실행 순서"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 12,
+    "page": 9,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "IN 서브쿼리의 포함 여부",
+    "skills": [
+      "내부 SELECT",
+      "WHERE",
+      "집합 포함"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 13,
+    "page": 9,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "문자 종류별 순환 변환",
+    "skills": [
+      "isupper",
+      "islower",
+      "isdigit",
+      "모듈러"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 14,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "독립 조건 영향의 커버리지",
+    "skills": [
+      "MC/DC",
+      "개별 조건",
+      "결정 결과"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 15,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "침입 흔적과 프로그램을 감추는 도구",
+    "skills": [
+      "Rootkit",
+      "은폐",
+      "권한"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 16,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "장기간 표적 침투 단계",
+    "skills": [
+      "APT",
+      "침투·검색·수집·유출"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 17,
+    "page": 11,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "AND·OR 조건과 행 개수",
+    "skills": [
+      "연산 우선순위",
+      "COUNT(*)"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-1",
+    "number": 18,
+    "page": 12,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "부모 타입 참조로 재정의 메서드 호출",
+    "skills": [
+      "오버라이딩",
+      "동적 바인딩"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 1,
+    "page": 2,
+    "section": "coding",
+    "language": "Java",
+    "topic": "포인터·문자열",
+    "title": "구분자로 나눈 문자열의 인덱스",
+    "skills": [
+      "split",
+      "문자열 배열",
+      "0 시작 인덱스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 2,
+    "page": 2,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "배열 내용과 참조 동일성 구별",
+    "skills": [
+      "==",
+      "배열 객체",
+      "참조"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 3,
+    "page": 3,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "부분 문자열 발생 횟수",
+    "skills": [
+      "슬라이싱",
+      "중첩 일치",
+      "문자열"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 4,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "성능을 위한 모델 중복·통합",
+    "skills": [
+      "반정규화",
+      "정합성",
+      "성능"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 5,
+    "page": 4,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "값 전달과 switch fall-through",
+    "skills": [
+      "매개변수 복사",
+      "break",
+      "일반 라벨"
+    ],
+    "note": "deafult:는 default 키워드의 오기처럼 보이지만 C의 일반 라벨로도 해석 가능; 현재 진입 경로에서는 실행됨"
+  },
+  {
+    "exam": "2024-2",
+    "number": 6,
+    "page": 5,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "포인터를 이용한 문자열 복사",
+    "skills": [
+      "원본·대상 주소",
+      "종결 문자",
+      "인덱스 합"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 7,
+    "page": 6,
+    "section": "coding",
+    "language": "Java",
+    "topic": "반복·배열",
+    "title": "짝수·홀수 조건 누적",
+    "skills": [
+      "나머지",
+      "논리 연산",
+      "인터페이스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 8,
+    "page": 7,
+    "section": "coding",
+    "language": "Java",
+    "topic": "재귀·자료구조",
+    "title": "재귀 복귀 시 방문 문자 처리",
+    "skills": [
+      "호출·복귀 순서",
+      "공유 배열",
+      "중복 제거"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 9,
+    "page": 7,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "이차원 배열과 포인터 배열",
+    "skills": [
+      "행 주소",
+      "이중 역참조",
+      "인덱스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 10,
+    "page": 8,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "삽입·조회·수정 기본 구문",
+    "skills": [
+      "VALUES",
+      "INSERT SELECT",
+      "FROM",
+      "SET"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 11,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "행 수와 열 수 계산",
+    "skills": [
+      "카디널리티",
+      "디그리"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 12,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "IP 계층 보안 구성",
+    "skills": [
+      "IPsec",
+      "AH",
+      "ESP",
+      "IKE"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 13,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "블록 대칭키 알고리즘 특징",
+    "skills": [
+      "AES",
+      "128비트 블록",
+      "키 길이"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 14,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "논리 경로 고정 여부 구별",
+    "skills": [
+      "가상 회선",
+      "데이터그램"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 15,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "앞 활동의 출력을 뒤 활동에 전달",
+    "skills": [
+      "순차적 응집도",
+      "입출력 연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 16,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "SRT의 평균 대기시간",
+    "skills": [
+      "선점",
+      "남은 시간",
+      "완료 시각"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 17,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "내부 표현을 숨기는 순회 패턴",
+    "skills": [
+      "Iterator",
+      "순차 접근"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 18,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "처리 흐름 제어 신호의 결합",
+    "skills": [
+      "제어 결합도",
+      "권리 전도"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 19,
+    "page": 12,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "연결 리스트의 다음 노드 접근",
+    "skills": [
+      "head",
+      "next",
+      "화살표 연산자"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-2",
+    "number": 20,
+    "page": 12,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "RIP의 최소 홉 경로",
+    "skills": [
+      "홉 수",
+      "라우팅",
+      "가중치와 구별"
+    ],
+    "note": "문제 그림 직접 확인: RIP의 최소 홉 경로는 A→D→C→F; 링크 비용 합 최소 경로와 구별"
+  },
+  {
+    "exam": "2024-3",
+    "number": 1,
+    "page": 2,
+    "section": "coding",
+    "language": "Java",
+    "topic": "반복·배열",
+    "title": "문자열 내용 비교 후 배열 순회",
+    "skills": [
+      "equals",
+      "향상된 for",
+      "출력 연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 2,
+    "page": 2,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "리스트 반전과 짝수·홀수 위치 합",
+    "skills": [
+      "음수 인덱스",
+      "동시 대입",
+      "슬라이싱"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 3,
+    "page": 3,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "그룹 조건을 거친 다단계 조인",
+    "skills": [
+      "GROUP BY",
+      "HAVING",
+      "서브쿼리",
+      "조인 중복"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 4,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "LRU 페이지 부재 횟수",
+    "skills": [
+      "페이지 교체",
+      "최근 참조",
+      "상태표"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 5,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "위조 주소·브로드캐스트 반사 공격",
+    "skills": [
+      "Smurf",
+      "ICMP",
+      "증폭"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 6,
+    "page": 4,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "호출을 넘어 유지되는 static 지역 변수",
+    "skills": [
+      "정적 저장 기간",
+      "동명 변수",
+      "누적"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 7,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "공중망 위의 암호화 사설 연결",
+    "skills": [
+      "VPN",
+      "IPsec",
+      "SSL"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 8,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "객체 상호작용을 정의하는 패턴 분류",
+    "skills": [
+      "행위 패턴",
+      "Iterator",
+      "Observer"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 9,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "문장·분기·조건 커버리지 구별",
+    "skills": [
+      "구문 실행",
+      "전체 조건",
+      "개별 조건"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 10,
+    "page": 6,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "연결 순서를 따라 인접 노드 값 교환",
+    "skills": [
+      "링크 순서",
+      "값 교환",
+      "두 칸 이동"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 11,
+    "page": 7,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "URL 구조의 구성 요소",
+    "skills": [
+      "scheme",
+      "authority",
+      "path",
+      "query",
+      "fragment"
+    ],
+    "note": "문제 그림 직접 확인: scheme→authority→path→query→fragment 순서"
+  },
+  {
+    "exam": "2024-3",
+    "number": 12,
+    "page": 7,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "자료형에 따라 다른 함수 결과",
+    "skills": [
+      "type",
+      "str",
+      "int",
+      "float",
+      "tuple"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 13,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "UML 부분·전체·상속·사용 관계 구별",
+    "skills": [
+      "집합 관계",
+      "일반화",
+      "의존"
+    ],
+    "note": "문제 그림 직접 확인: 차와 구성 부품, 차와 하위 차종, 텔레비전과 리모콘 관계"
+  },
+  {
+    "exam": "2024-3",
+    "number": 14,
+    "page": 9,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "필드 숨김과 메서드 재정의의 차이",
+    "skills": [
+      "선언 타입",
+      "실제 객체",
+      "동적 바인딩"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 15,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "키의 유일성·최소성",
+    "skills": [
+      "후보키",
+      "슈퍼키",
+      "대체키",
+      "외래키"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 16,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "기본키의 NULL·중복 제한",
+    "skills": [
+      "개체 무결성"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 17,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "예외 선택과 finally의 실행",
+    "skills": [
+      "NullPointerException",
+      "catch 순서",
+      "finally"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 18,
+    "page": 12,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "제네릭 타입의 오버로드 선택",
+    "skills": [
+      "타입 변수",
+      "Object 상한",
+      "정적 타입"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 19,
+    "page": 13,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "이중 포인터가 가리키는 배열 수정",
+    "skills": [
+      "int**",
+      "역참조",
+      "배열 원소",
+      "모듈러"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2024-3",
+    "number": 20,
+    "page": 13,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "고정 인프라 없이 구성한 이동망",
+    "skills": [
+      "Ad-hoc",
+      "멀티 홉"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 1,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "인증 이후 연결 상태 탈취",
+    "skills": [
+      "세션 하이재킹",
+      "TCP 시퀀스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 2,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "도메인·개체·참조 무결성 비교",
+    "skills": [
+      "속성 값",
+      "기본키",
+      "외래키"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 3,
+    "page": 3,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "문자 배열 삽입과 오른쪽 이동",
+    "skills": [
+      "삽입 위치",
+      "임시 변수",
+      "문자 산술"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 4,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "다항식 기반 오류 검출",
+    "skills": [
+      "CRC",
+      "FCS",
+      "HDLC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 5,
+    "page": 4,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "정수 0 나눗셈의 예외 처리",
+    "skills": [
+      "ArithmeticException",
+      "catch",
+      "finally"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 6,
+    "page": 5,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "동등 조인과 인센티브 조건",
+    "skills": [
+      "JOIN",
+      "WHERE",
+      "일치 행"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 7,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "내부 접근·구조 전달·전역 공유 결합",
+    "skills": [
+      "내용 결합도",
+      "스탬프 결합도",
+      "공통 결합도"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 8,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "거짓 경고로 구매를 유도하는 악성코드",
+    "skills": [
+      "Scareware",
+      "사회공학"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 9,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "서브넷 마스크와 동일 네트워크 범위",
+    "skills": [
+      "/22",
+      "블록 크기",
+      "네트워크 주소"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 10,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "IP·MAC 주소 변환 프로토콜",
+    "skills": [
+      "ARP",
+      "RARP"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 11,
+    "page": 7,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "부모 생성자 중 재정의 메서드 실행",
+    "skills": [
+      "생성 순서",
+      "필드 숨김",
+      "static 누적",
+      "오버라이딩"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 12,
+    "page": 8,
+    "section": "coding",
+    "language": "C",
+    "topic": "반복·배열",
+    "title": "평탄 인덱스를 행·열로 매핑",
+    "skills": [
+      "몫·나머지",
+      "이차원 배열",
+      "부호 교대"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 13,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "호환되지 않는 인터페이스 변환",
+    "skills": [
+      "Adapter",
+      "재사용"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 14,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "코드의 제어 흐름과 문장 커버리지",
+    "skills": [
+      "while",
+      "분기",
+      "문장 경로"
+    ],
+    "note": "원문 while의 OR는 배열 경계를 보장하지 않으므로 일반 실습 코드에서는 조건 범위를 검토해야 함"
+  },
+  {
+    "exam": "2025-1",
+    "number": 15,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "속성 수·행 수·외래키·도메인",
+    "skills": [
+      "Degree",
+      "Cardinality",
+      "Foreign",
+      "Domain"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 16,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "재귀·자료구조",
+    "title": "오버로드 전환 뒤 재귀식 계산",
+    "skills": [
+      "문자열·정수 오버로드",
+      "기저 조건",
+      "재귀"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 17,
+    "page": 12,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "구조체 점수에 비트 마스크 적용",
+    "skills": [
+      "16진수",
+      "AND",
+      "구조체 배열"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 18,
+    "page": 13,
+    "section": "coding",
+    "language": "Java",
+    "topic": "재귀·자료구조",
+    "title": "분할 구간의 최댓값 재귀",
+    "skills": [
+      "중앙 인덱스",
+      "기저 조건",
+      "Math.max"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 19,
+    "page": 13,
+    "section": "coding",
+    "language": "Python",
+    "topic": "재귀·자료구조",
+    "title": "배열로 만든 이진 트리의 깊이 합",
+    "skills": [
+      "부모 인덱스",
+      "트리",
+      "재귀",
+      "홀수 깊이"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-1",
+    "number": 20,
+    "page": 14,
+    "section": "coding",
+    "language": "C",
+    "topic": "재귀·자료구조",
+    "title": "연결 리스트 노드를 맨 앞으로 이동",
+    "skills": [
+      "head",
+      "prev·curr",
+      "노드 분리",
+      "재연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 1,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "값·주소 쌍을 쓰는 파일 조직",
+    "skills": [
+      "인덱스 파일",
+      "순차",
+      "해싱"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 2,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "암호화 원격 접속과 키 인증",
+    "skills": [
+      "SSH",
+      "포트 22"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 3,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "릴레이션의 열을 의미하는 단위",
+    "skills": [
+      "Attribute",
+      "속성"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 4,
+    "page": 3,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "배열 원소 변경과 지역 참조 재대입",
+    "skills": [
+      "값 전달",
+      "공유 배열",
+      "String 불변성"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 5,
+    "page": 3,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "노드 링크 재배치와 시작점",
+    "skills": [
+      "head",
+      "연결 순서",
+      "포인터 대입"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 6,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "최단 작업·최단 남은 시간 구별",
+    "skills": [
+      "SJF",
+      "SRT",
+      "선점",
+      "기아"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 7,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "관계 대수 투영 결과",
+    "skills": [
+      "열 선택",
+      "중복 제거"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 8,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "서브넷 주소와 호스트 수",
+    "skills": [
+      "/26",
+      "블록 크기",
+      "2의 거듭제곱"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 9,
+    "page": 5,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "람다의 예외와 반환값",
+    "skills": [
+      "함수형 인터페이스",
+      "catch",
+      "람다"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 10,
+    "page": 6,
+    "section": "coding",
+    "language": "C",
+    "topic": "재귀·자료구조",
+    "title": "원형 큐의 enqueue·dequeue",
+    "skills": [
+      "FIFO",
+      "front",
+      "rear",
+      "모듈러"
+    ],
+    "note": "printf 인수의 두 deq 호출 순서는 C 표준상 미지정이므로 두 출력 순서를 하나로 단정할 수 없음"
+  },
+  {
+    "exam": "2025-2",
+    "number": 11,
+    "page": 7,
+    "section": "theory",
+    "language": "",
+    "topic": "기타",
+    "title": "전체 새로고침 없는 비동기 갱신",
+    "skills": [
+      "AJAX",
+      "부분 갱신"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 12,
+    "page": 7,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "시스템 단순화와 외부 창구 패턴",
+    "skills": [
+      "Facade",
+      "Proxy 구별"
+    ],
+    "note": "대리자와 단순화 설명이 섞인 복원 지문"
+  },
+  {
+    "exam": "2025-2",
+    "number": 13,
+    "page": 7,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "TCP 연결 대기를 소진하는 공격",
+    "skills": [
+      "SYN Flooding",
+      "3-way handshake"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 14,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "분기 커버리지 경로 작성",
+    "skills": [
+      "분기 참·거짓",
+      "제어 흐름"
+    ],
+    "note": "문제 순서도 직접 확인: X>Y와 RESULT>0 두 분기의 참·거짓 경로를 모두 포함"
+  },
+  {
+    "exam": "2025-2",
+    "number": 15,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "라운드 로빈 평균 대기시간",
+    "skills": [
+      "시간 할당량",
+      "준비 큐",
+      "완료 시각"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 16,
+    "page": 9,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "구조체 배열 원소를 통째로 복사",
+    "skills": [
+      "이중 포인터",
+      "구조체 대입",
+      "배열"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 17,
+    "page": 9,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "딕셔너리와 집합이 생성된 시점",
+    "skills": [
+      "컴프리헨션",
+      "values",
+      "집합 교집합"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 18,
+    "page": 10,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "인스턴스 메서드와 static 메서드 선택",
+    "skills": [
+      "동적 바인딩",
+      "메서드 숨김",
+      "오버로딩"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 19,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "객체 배열 참조 교환과 필드 변경",
+    "skills": [
+      "별칭",
+      "객체 정체성",
+      "참조 배열"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-2",
+    "number": 20,
+    "page": 12,
+    "section": "coding",
+    "language": "C",
+    "topic": "재귀·자료구조",
+    "title": "앞 삽입 연결 리스트로 문자열 뒤집기",
+    "skills": [
+      "LIFO",
+      "head 삽입",
+      "메모리 해제"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 1,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "UML 요소를 묶는 모델",
+    "skills": [
+      "패키지 다이어그램",
+      "의존 관계"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 2,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "UNIX 기본 작업 명령",
+    "skills": [
+      "pwd",
+      "ls",
+      "cd",
+      "cp"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 3,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "조건식 각각의 결과 보장",
+    "skills": [
+      "조건 커버리지"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 4,
+    "page": 3,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "검출·정정·재전송 방식 구별",
+    "skills": [
+      "Hamming",
+      "FEC",
+      "BEC",
+      "Parity",
+      "CRC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 5,
+    "page": 4,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "구조체 안의 문자열 주소 이동",
+    "skills": [
+      "구조체 포인터",
+      "%s",
+      "주소 덧셈"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 6,
+    "page": 4,
+    "section": "coding",
+    "language": "Java",
+    "topic": "연산·상태",
+    "title": "enum 배열 인덱스와 이름·코드",
+    "skills": [
+      "values",
+      "name",
+      "문자열 길이"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 7,
+    "page": 5,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "교차 조인 후 패턴 일치 개수",
+    "skills": [
+      "CROSS JOIN",
+      "LIKE",
+      "COUNT(*)"
+    ],
+    "note": "LIKE 대소문자 비교는 DBMS와 collation 설정에 따라 달라질 수 있음"
+  },
+  {
+    "exam": "2025-3",
+    "number": 8,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "비밀번호를 직접 주지 않는 권한 위임",
+    "skills": [
+      "OAuth",
+      "인가"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 9,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "재사용하지 않는 인증 비밀번호",
+    "skills": [
+      "OTP",
+      "일회용",
+      "해시"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 10,
+    "page": 6,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "인터페이스 구현 키워드",
+    "skills": [
+      "implements",
+      "상속과 구현"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 11,
+    "page": 7,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "중첩 리스트의 합·길이를 사전에 저장",
+    "skills": [
+      "enumerate",
+      "sum",
+      "len",
+      "tuple",
+      "dict"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 12,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "관계 대수 나눗셈 결과",
+    "skills": [
+      "모든 조건 만족",
+      "Division"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 13,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "접근 권한 결정 주체 구별",
+    "skills": [
+      "MAC",
+      "RBAC",
+      "DAC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 14,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "테스트 케이스의 구성 요소",
+    "skills": [
+      "초기 조건",
+      "테스트 데이터",
+      "예상 결과"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 15,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "행·실제 데이터·행 개수",
+    "skills": [
+      "튜플",
+      "인스턴스",
+      "카디널리티"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 16,
+    "page": 10,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "문자열 길이와 끝에서 두 번째 문자",
+    "skills": [
+      "널 종결",
+      "0 시작 인덱스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 17,
+    "page": 10,
+    "section": "coding",
+    "language": "C",
+    "topic": "연산·상태",
+    "title": "산술·비트·논리·삼항식 우선순위",
+    "skills": [
+      "%",
+      "시프트",
+      "AND",
+      "단락 평가",
+      "삼항식"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 18,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "부모 생성자 호출 구문",
+    "skills": [
+      "super",
+      "생성자",
+      "직사각형·정사각형"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2025-3",
+    "number": 19,
+    "page": 12,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "연결 리스트 순회와 누적값 XOR",
+    "skills": [
+      "연결 순서",
+      "반복 누적",
+      "비트 XOR"
+    ],
+    "note": "printf의 %u에는 unsigned int를 대응시키는 자체 예제를 사용"
+  },
+  {
+    "exam": "2025-3",
+    "number": 20,
+    "page": 13,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "NULL과 OR 조건을 거친 열 개수",
+    "skills": [
+      "3값 논리",
+      "IN",
+      "COUNT(열)"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 1,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "구현 분리와 상태 통지 패턴",
+    "skills": [
+      "Bridge",
+      "Observer"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 2,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "비기능 요구사항 분류",
+    "skills": [
+      "운영",
+      "자원",
+      "성능"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 3,
+    "page": 3,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "배열 표기와 포인터 표기의 평균",
+    "skills": [
+      "p[i]와 *(p+i)",
+      "실수 변환",
+      "출력 서식"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 4,
+    "page": 4,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "이름 있는 외래키 제약 구문",
+    "skills": [
+      "CONSTRAINT",
+      "FOREIGN KEY",
+      "REFERENCES"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 5,
+    "page": 4,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "역방향 두 칸 슬라이싱과 출력 구분자",
+    "skills": [
+      "range",
+      "음수 step",
+      "end"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 6,
+    "page": 5,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "부모 메서드 본문의 오버로드 선택",
+    "skills": [
+      "정적 서명",
+      "오버라이딩",
+      "Object·String"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 7,
+    "page": 5,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "조직의 정보보호 관리 체계",
+    "skills": [
+      "ISMS",
+      "정책",
+      "위험 관리"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 8,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "/23 네트워크 주소 두 개 계산",
+    "skills": [
+      "CIDR",
+      "AND",
+      "블록 크기"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 9,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "자주 방문하는 사이트를 감염시키는 공격",
+    "skills": [
+      "Watering Hole",
+      "표적 공격"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 10,
+    "page": 6,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "DB 구축 순서",
+    "skills": [
+      "요구 분석",
+      "개념·논리·물리 설계",
+      "구현"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 11,
+    "page": 7,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "조인 후 평균보다 큰 부서 예산",
+    "skills": [
+      "평균 서브쿼리",
+      "JOIN",
+      "COUNT(*)"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 12,
+    "page": 7,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "응집도 지문 구별",
+    "skills": [
+      "절차적",
+      "교환적",
+      "기능적"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 13,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "하향식·상향식 통합 보조 모듈",
+    "skills": [
+      "스텁",
+      "드라이버"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 14,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "심볼릭 링크와 임시 파일 경쟁",
+    "skills": [
+      "심볼릭 링크",
+      "레이스 컨디션"
+    ],
+    "note": "원문 방어 설명의 사전 검사만으로 모든 TOCTOU를 해결할 수 있는 것은 아님"
+  },
+  {
+    "exam": "2026-1",
+    "number": 15,
+    "page": 9,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "구조체 함수 포인터와 다음 원소",
+    "skills": [
+      "함수 포인터",
+      "주소 반환",
+      "역참조",
+      "16진 출력"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 16,
+    "page": 9,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "입력 분리·합치기·역순·문자 필터",
+    "skills": [
+      "split",
+      "join",
+      "슬라이싱",
+      "조건식"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 17,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "HDLC 정보·감독·비번호 프레임",
+    "skills": [
+      "I·S·U",
+      "NRM",
+      "ABM",
+      "ARM"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 18,
+    "page": 11,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "DISTINCT 값 개수와 결과 행 수",
+    "skills": [
+      "SELECT",
+      "DISTINCT",
+      "COUNT(DISTINCT)"
+    ],
+    "note": "집계 결과값과 결과 튜플 수를 구별"
+  },
+  {
+    "exam": "2026-1",
+    "number": 19,
+    "page": 11,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "인수 자료형별 오버로드와 연결 연산",
+    "skills": [
+      "char 산술",
+      "int 합",
+      "String 연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-1",
+    "number": 20,
+    "page": 12,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "얕은 복사한 중첩 리스트의 공유 변경",
+    "skills": [
+      "슬라이스 복사",
+      "별칭",
+      "리스트 +=",
+      "길이 누적"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 1,
+    "page": 1,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "문자열 여러 구간의 결합",
+    "skills": [
+      "슬라이싱",
+      "인덱스",
+      "문자열 연결"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 2,
+    "page": 2,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "다른 모듈 내부를 직접 변경하는 결합",
+    "skills": [
+      "내용 결합도",
+      "낮은 결합도"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 3,
+    "page": 3,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "부모 생성자와 super 출력",
+    "skills": [
+      "super",
+      "오버라이딩",
+      "생성자"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 4,
+    "page": 4,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "라우터 인터페이스의 할당 가능한 주소",
+    "skills": [
+      "서브넷",
+      "호스트 주소",
+      "네트워크 주소"
+    ],
+    "note": "그림 없이 보기에서 각 서브넷의 유효 호스트는 추론 가능; ②·④·⑤ 번호 매칭은 연결 관계 가정을 명시한 조건부 추론; 정답 미포함"
+  },
+  {
+    "exam": "2026-2",
+    "number": 5,
+    "page": 5,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "문자 시작 패턴과 내림차순",
+    "skills": [
+      "LIKE",
+      "%",
+      "ORDER BY DESC"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 6,
+    "page": 6,
+    "section": "coding",
+    "language": "C",
+    "topic": "포인터·문자열",
+    "title": "주소 전달·값 전달·배열 전달 차이",
+    "skills": [
+      "역참조",
+      "매개변수 복사",
+      "포인터 산술"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 7,
+    "page": 7,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "현재 행과 연관된 다중 서브쿼리",
+    "skills": [
+      "상관 서브쿼리",
+      "AVG",
+      "NULL",
+      "COUNT(*)"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 8,
+    "page": 8,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "링크 상태 내부 라우팅 판별",
+    "skills": [
+      "OSPF",
+      "Dijkstra"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 9,
+    "page": 9,
+    "section": "theory",
+    "language": "",
+    "topic": "보안",
+    "title": "무결성 검증과 단방향 함수",
+    "skills": [
+      "해시",
+      "고정 변환"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 10,
+    "page": 10,
+    "section": "theory",
+    "language": "",
+    "topic": "운영체제",
+    "title": "SRT 선점과 평균 대기시간",
+    "skills": [
+      "남은 시간",
+      "완료 시각",
+      "대기시간"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 11,
+    "page": 11,
+    "section": "theory",
+    "language": "",
+    "topic": "데이터베이스",
+    "title": "표의 정규형 판단에 필요한 정보",
+    "skills": [
+      "함수 종속",
+      "후보키",
+      "정규화"
+    ],
+    "note": "표만으로 후보키·함수 종속이 확정되지는 않음; 정규형은 관계 의미와 종속성 가정을 명시하여 조건부 추론; 정답 미포함"
+  },
+  {
+    "exam": "2026-2",
+    "number": 12,
+    "page": 12,
+    "section": "coding",
+    "language": "Python",
+    "topic": "Python 컬렉션",
+    "title": "사전 순서와 키·값 문자열 추출",
+    "skills": [
+      "items",
+      "삽입 순서",
+      "음수 인덱스"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 13,
+    "page": 13,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "도메인 허용값 제약 키워드",
+    "skills": [
+      "CHECK",
+      "IN",
+      "도메인 무결성"
+    ],
+    "note": "CREATE DOMAIN은 DBMS별 지원 차이가 있음"
+  },
+  {
+    "exam": "2026-2",
+    "number": 14,
+    "page": 14,
+    "section": "theory",
+    "language": "",
+    "topic": "네트워크",
+    "title": "주어진 서브넷 범위의 프리픽스",
+    "skills": [
+      "블록 크기",
+      "호스트 비트",
+      "서브넷"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 15,
+    "page": 15,
+    "section": "coding",
+    "language": "Java",
+    "topic": "객체·상속",
+    "title": "private·protected 필드와 재정의",
+    "skills": [
+      "접근 제한",
+      "생성자",
+      "오버라이딩"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 16,
+    "page": 16,
+    "section": "theory",
+    "language": "",
+    "topic": "테스트",
+    "title": "등급 구간별 대표값 검증",
+    "skills": [
+      "동등 분할",
+      "명세 기반"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 17,
+    "page": 17,
+    "section": "coding",
+    "language": "C",
+    "topic": "재귀·자료구조",
+    "title": "트리 후위 순회의 방문 카운터",
+    "skills": [
+      "왼쪽·오른쪽·현재",
+      "전역 카운터",
+      "재귀"
+    ],
+    "note": "정답 미포함; 사용자 확인대로 제시된 텍스트를 정확한 근거로 삼고 후위 순회를 직접 계산"
+  },
+  {
+    "exam": "2026-2",
+    "number": 18,
+    "page": 18,
+    "section": "sql",
+    "language": "SQL",
+    "topic": "SQL",
+    "title": "오른쪽 외부 조인의 불일치 행",
+    "skills": [
+      "RIGHT OUTER JOIN",
+      "NULL 확장",
+      "COUNT(*)"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 19,
+    "page": 19,
+    "section": "coding",
+    "language": "Java",
+    "topic": "재귀·자료구조",
+    "title": "음수 인수까지 포함한 재귀 기저값",
+    "skills": [
+      "재귀 트리",
+      "n<=1",
+      "메모 표"
+    ],
+    "note": ""
+  },
+  {
+    "exam": "2026-2",
+    "number": 20,
+    "page": 20,
+    "section": "theory",
+    "language": "",
+    "topic": "소프트웨어 설계",
+    "title": "관련 제품군을 함께 생성하는 패턴",
+    "skills": [
+      "Abstract Factory",
+      "Kit"
+    ],
+    "note": ""
+  }
+]

@@ -1,0 +1,187 @@
+[
+  {
+    "id": "early-control-state",
+    "status": "pass",
+    "runtime": "C",
+    "output": "8\n12 6"
+  },
+  {
+    "id": "early-pointer-string",
+    "status": "pass",
+    "runtime": "C",
+    "output": "RLD|R|X\n6 9 3"
+  },
+  {
+    "id": "early-struct-pointer",
+    "status": "pass",
+    "runtime": "C",
+    "output": "15 3 2\n15 2"
+  },
+  {
+    "id": "early-java-dispatch",
+    "status": "pass",
+    "runtime": "Java",
+    "output": "4\n4\n12"
+  },
+  {
+    "id": "early-java-reference",
+    "status": "pass",
+    "runtime": "Java",
+    "output": "6 6\n6 9"
+  },
+  {
+    "id": "early-recursive-return",
+    "status": "pass",
+    "runtime": "C",
+    "output": "24 1"
+  },
+  {
+    "id": "early-grid-boundary",
+    "status": "pass",
+    "runtime": "C",
+    "output": "2 2 1\n2 2 1\n1 1 1"
+  },
+  {
+    "id": "early-python-collections",
+    "status": "pass",
+    "runtime": "Python",
+    "output": "[[2, 4, 8], [6]]\n[3, 5, 9]\n[4, 6]\nYH"
+  },
+  {
+    "id": "recent-static-state",
+    "status": "pass",
+    "runtime": "C",
+    "output": "call1=2 total=2\ncall2=4 total=6\ncall3=6 total=12"
+  },
+  {
+    "id": "recent-dispatch",
+    "status": "pass",
+    "runtime": "Java",
+    "output": "PC|2,15,P"
+  },
+  {
+    "id": "recent-overload",
+    "status": "pass",
+    "runtime": "Java",
+    "output": "R S"
+  },
+  {
+    "id": "recent-pointer-string",
+    "status": "pass",
+    "runtime": "C",
+    "output": "LOW|O|M\n26/1a"
+  },
+  {
+    "id": "recent-linked-list",
+    "status": "pass",
+    "runtime": "C",
+    "output": "5 8 2"
+  },
+  {
+    "id": "recent-recursion",
+    "status": "pass",
+    "runtime": "C",
+    "output": "1:1 2:3 3:6 4:10 \nsum=20"
+  },
+  {
+    "id": "recent-array-map",
+    "status": "pass",
+    "runtime": "C",
+    "output": "6 1 2\n3 4 5\nsum=3, picked=8"
+  },
+  {
+    "id": "recent-python-alias",
+    "status": "pass",
+    "runtime": "Python",
+    "output": "[[2], [4, 2], [6, 4, 2]]\nTrue False True\n6 [5, 7, 9]"
+  },
+  {
+    "id": "recent-sql-null",
+    "status": "pass",
+    "runtime": "SQLite 3.53.1",
+    "output": "rows_all|values_known\n4|1\nunmatched\n2"
+  },
+  {
+    "id": "recent-sql-nested",
+    "status": "pass",
+    "runtime": "SQLite 3.53.1",
+    "output": "result\n3"
+  },
+  {
+    "id": "case-python-2026",
+    "status": "pass",
+    "runtime": "Python",
+    "output": "_THIISING"
+  },
+  {
+    "id": "case-java-2026",
+    "status": "pass",
+    "runtime": "Java",
+    "output": "509"
+  },
+  {
+    "id": "case-right-join-2026",
+    "status": "pass",
+    "runtime": "SQLite 3.53.1",
+    "rows": [
+      [
+        2
+      ]
+    ]
+  },
+  {
+    "id": "lab-pointer-exact",
+    "status": "pass",
+    "runtime": "C",
+    "output": "1. 50\n2. 50\n3. 2\n4. 8"
+  },
+  {
+    "id": "lab-postorder-exact",
+    "status": "pass",
+    "runtime": "C",
+    "output": "12"
+  },
+  {
+    "id": "case-recursion-exact",
+    "status": "pass",
+    "runtime": "Java",
+    "output": "1"
+  },
+  {
+    "id": "case-dictionary-exact",
+    "status": "pass",
+    "runtime": "Python",
+    "output": "CNNLRPYT"
+  },
+  {
+    "id": "case-correlated-exact",
+    "status": "pass",
+    "runtime": "SQLite 3.53.1",
+    "rows": [
+      [
+        3
+      ]
+    ]
+  },
+  {
+    "id": "case-right-join-exact",
+    "status": "pass",
+    "runtime": "SQLite 3.53.1",
+    "rows": [
+      [
+        2
+      ]
+    ]
+  },
+  {
+    "id": "srt-exact",
+    "status": "pass",
+    "waiting": [
+      9,
+      0,
+      15,
+      2
+    ],
+    "mean": 6.5
+  }
+]

@@ -1,0 +1,2515 @@
+[
+  {
+    "id": "pred-c-01",
+    "number": 1,
+    "title": "주소로 바꾸는 값과 값으로 전달한 인자",
+    "language": "C",
+    "difficulty": "기본",
+    "intent": "이 유형은 함수 인자가 가리키는 저장 공간과 지역 인자의 복사본을 구별하는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2021-2",
+        "number": 18,
+        "page": 9
+      },
+      {
+        "exam": "2022-2",
+        "number": 16,
+        "page": 10
+      },
+      {
+        "exam": "2026-2",
+        "number": 6,
+        "page": 6
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 세로선(|)도 출력 문자이다.",
+    "code": "#include <stdio.h>\nvoid adjust(int *p) {\n    *p += 5;\n    p++;\n    *p *= 2;\n}\nint by_value(int n) {\n    n += 100;\n    return n;\n}\nint main(void) {\n    int a[] = {3, 6, 9, 12};\n    adjust(a + 1);\n    int returned = by_value(a[0]);\n    printf(\"%d %d %d %d|%d\", a[0], a[1], a[2], a[3], returned);\n    return 0;\n}",
+    "answer": "3 11 18 12|103",
+    "steps": [
+      "adjust의 p는 a[1]을 가리킨다. a[1]에 5를 더해 11로 바꾼다.",
+      "p++ 뒤에는 a[2]를 가리키므로 a[2]만 두 배인 18이 된다.",
+      "by_value의 n은 a[0] 값 3을 복사받아 103이 되며 반환된다. a[0] 자체는 3이다.",
+      "배열 네 값과 returned를 지정한 공백·세로선으로 출력한다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "a[0]",
+        "a[1]",
+        "a[2]",
+        "a[3]",
+        "returned"
+      ],
+      "rows": [
+        [
+          "초기",
+          3,
+          6,
+          9,
+          12,
+          "아직 없음"
+        ],
+        [
+          "adjust 첫 대입",
+          3,
+          11,
+          9,
+          12,
+          "아직 없음"
+        ],
+        [
+          "p 증가 후 대입",
+          3,
+          11,
+          18,
+          12,
+          "아직 없음"
+        ],
+        [
+          "by_value 반환",
+          3,
+          11,
+          18,
+          12,
+          103
+        ]
+      ]
+    },
+    "pitfall": "p++는 배열 요소 값을 증가시키지 않는다. 인자 n의 변경과 호출자가 전달한 a[0]의 변경을 혼동하지 않는다.",
+    "variation": "int returned = by_value(a[0]);를 int returned = by_value(a[0] + 1);로 바꾸면 배열은 그대로이고 마지막 값만 104가 된다."
+  },
+  {
+    "id": "pred-c-02",
+    "number": 2,
+    "title": "문자열 포인터 배열에서 주소를 두 번 읽기",
+    "language": "C",
+    "difficulty": "응용",
+    "intent": "이 유형은 문자열의 시작 주소, 주소를 담은 배열, 이중 포인터를 단계별로 해석하는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2020-4,5",
+        "number": 10,
+        "page": 6
+      },
+      {
+        "exam": "2021-3",
+        "number": 16,
+        "page": 7
+      },
+      {
+        "exam": "2022-2",
+        "number": 15,
+        "page": 9
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 줄별로 쓰시오.",
+    "code": "#include <stdio.h>\nint main(void) {\n    const char *words[] = {\"MANGO\", \"PEACH\", \"GRAPE\"};\n    const char **p = words + 1;\n    const char *s = *(p - 1) + 2;\n    printf(\"%s:%c\\n\", s, (*p)[1]);\n    ++p;\n    printf(\"%s:%c\", *p + 1, **(p - 2));\n    return 0;\n}",
+    "answer": "NGO:E\nRAPE:M",
+    "steps": [
+      "words의 0·1·2번 슬롯에 각각 문자열 시작 주소가 들어 있다고 그린다.",
+      "처음 p는 words[1]이다. *(p-1)은 MANGO의 주소이며 2칸 이동한 s는 N부터 시작한다.",
+      "(*p)[1]은 PEACH의 인덱스 1인 E이다.",
+      "++p 뒤 p는 words[2]다. *p+1은 RAPE, **(p-2)는 MANGO의 첫 글자 M이다."
+    ],
+    "trace": {
+      "headers": [
+        "표현식",
+        "주소 또는 대상",
+        "출력"
+      ],
+      "rows": [
+        [
+          "초기 p",
+          "words[1] → PEACH",
+          "없음"
+        ],
+        [
+          "*(p-1)+2",
+          "MANGO의 인덱스 2",
+          "NGO"
+        ],
+        [
+          "(*p)[1]",
+          "PEACH의 인덱스 1",
+          "E"
+        ],
+        [
+          "++p 뒤 *p+1",
+          "GRAPE의 인덱스 1",
+          "RAPE"
+        ],
+        [
+          "**(p-2)",
+          "words[0] 주소의 첫 문자",
+          "M"
+        ]
+      ]
+    },
+    "pitfall": "p 한 칸 이동은 문자열 내부 한 글자 이동이 아니라 words 배열의 다음 주소 슬롯 이동이다. *p+1이 문자열 내부 이동이다.",
+    "variation": "s를 만드는 줄의 +2를 +1로 바꾸면 첫 줄만 ANGO:E로 바뀐다. 둘째 줄은 RAPE:M으로 유지된다."
+  },
+  {
+    "id": "pred-c-03",
+    "number": 3,
+    "title": "재귀가 끝난 뒤에도 남는 static 상태",
+    "language": "C",
+    "difficulty": "심화",
+    "intent": "이 유형은 호출별 반환값과 모든 호출이 공유하는 저장값을 분리하고, 재귀 복귀 시점의 값을 읽는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2024-3",
+        "number": 6,
+        "page": 4
+      },
+      {
+        "exam": "2022-1",
+        "number": 12,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 17,
+        "page": 17
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 모든 연산은 적힌 문장 순서대로 진행된다.",
+    "code": "#include <stdio.h>\nint run(int n) {\n    static int total = 1;\n    if (n == 0) return total;\n    total += n;\n    int child = run(n - 1);\n    return child + total;\n}\nint main(void) {\n    int a = run(2);\n    int b = run(1);\n    printf(\"%d %d\", a, b);\n    return 0;\n}",
+    "answer": "12 10",
+    "steps": [
+      "static total은 전체 호출에서 한 칸을 공유하며 처음만 1로 초기화한다.",
+      "첫 run(2)는 total을 3으로, 내부 run(1)은 4로 바꾼다. run(0)은 4를 반환한다.",
+      "내부 run(1)은 child=4에 현재 total=4를 더해 8을 반환한다. 바깥 run(2)은 8+4=12다.",
+      "두 번째 run(1)은 남아 있던 total=4를 5로 만든다. 내부 run(0)이 5를 반환해 5+5=10이다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "공유 total",
+        "child",
+        "반환값"
+      ],
+      "rows": [
+        [
+          "첫 run(2)에서 증가",
+          3,
+          "대기",
+          "대기"
+        ],
+        [
+          "내부 run(1)에서 증가",
+          4,
+          "대기",
+          "대기"
+        ],
+        [
+          "run(0) 기저",
+          4,
+          "해당 없음",
+          4
+        ],
+        [
+          "내부 run(1) 복귀",
+          4,
+          4,
+          8
+        ],
+        [
+          "바깥 run(2) 복귀",
+          4,
+          8,
+          12
+        ],
+        [
+          "두 번째 run(1)에서 증가",
+          5,
+          "대기",
+          "대기"
+        ],
+        [
+          "두 번째 내부 run(0)",
+          5,
+          "해당 없음",
+          5
+        ],
+        [
+          "두 번째 run(1) 복귀",
+          5,
+          5,
+          10
+        ]
+      ]
+    },
+    "pitfall": "첫 run(2)의 return에서 total을 진입 당시 3으로 되돌리면 틀린다. static은 재귀 프레임마다 따로 저장되지 않는다.",
+    "variation": "static을 제거해 int total = 1;로 선언하면 각 호출이 자기 total을 가져 출력은 6 3이 된다."
+  },
+  {
+    "id": "pred-c-04",
+    "number": 4,
+    "title": "단락 평가와 비트 연산의 상태 차이",
+    "language": "C",
+    "difficulty": "기본",
+    "intent": "이 유형은 논리 연산이 오른쪽 평가를 생략하는 경우와 비트 연산이 양쪽을 평가하는 경우를 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2022-1",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2021-3",
+        "number": 17,
+        "page": 8
+      },
+      {
+        "exam": "2025-3",
+        "number": 17,
+        "page": 10
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. &&와 &, ||를 구별하시오.",
+    "code": "#include <stdio.h>\nint main(void) {\n    int x = 2, y = 0;\n    int a = (x > 3) && (++y > 0);\n    int b = (x == 2) || (++y > 0);\n    int c = (x == 0) & (++y > 0);\n    int d = (6 ^ 3) & 5;\n    printf(\"%d %d %d %d %d\", a, b, c, d, y);\n    return 0;\n}",
+    "answer": "0 1 0 5 1",
+    "steps": [
+      "a의 왼쪽은 거짓이라 &&의 오른쪽 ++y는 실행하지 않는다. a=0, y=0이다.",
+      "b의 왼쪽은 참이라 ||의 오른쪽 ++y도 실행하지 않는다. b=1, y=0이다.",
+      "c의 &는 양쪽을 평가하므로 y가 1이 된다. 결과는 0 & 1=0이다.",
+      "6은 이진수 110, 3은 011이다. XOR로 101을 얻고 101과 AND하면 5다."
+    ],
+    "trace": {
+      "headers": [
+        "문장",
+        "오른쪽 증가 수행",
+        "y",
+        "저장 결과"
+      ],
+      "rows": [
+        [
+          "a 계산",
+          "아니오",
+          0,
+          0
+        ],
+        [
+          "b 계산",
+          "아니오",
+          0,
+          1
+        ],
+        [
+          "c 계산",
+          "예",
+          1,
+          0
+        ],
+        [
+          "d 계산",
+          "증가 연산 없음",
+          1,
+          5
+        ]
+      ]
+    },
+    "pitfall": "&와 &&는 다른 연산자다. 이 예시는 왼쪽이 x만 읽고 오른쪽만 y를 바꾸므로 C의 피연산자 평가 순서에 따라 답이 달라지지 않는다.",
+    "variation": "c를 계산하는 &를 &&로 바꾸면 결과 c=0은 같지만 y는 0으로 남아 출력의 마지막 값이 0이 된다."
+  },
+  {
+    "id": "pred-c-05",
+    "number": 5,
+    "title": "이차원 배열의 제자리 누적과 평탄 인덱스",
+    "language": "C",
+    "difficulty": "응용",
+    "intent": "이 유형은 이미 갱신한 배열 값을 다음 반복에서 사용하는지와 평탄 위치를 행·열로 바꾸는지를 함께 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2022-3",
+        "number": 1,
+        "page": 2
+      },
+      {
+        "exam": "2022-2",
+        "number": 16,
+        "page": 10
+      },
+      {
+        "exam": "2025-1",
+        "number": 12,
+        "page": 8
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 세 줄로 쓰시오.",
+    "code": "#include <stdio.h>\nint main(void) {\n    int a[2][3] = {{2, 4, 6}, {1, 3, 5}};\n    for (int r = 0; r < 2; r++)\n        for (int c = 1; c < 3; c++)\n            a[r][c] += a[r][c - 1];\n    int sum = 0;\n    for (int i = 0; i < 6; i++) {\n        int r = i / 3, c = i % 3;\n        if ((r + c) % 2 == 0) sum += a[r][c];\n        else sum -= a[r][c];\n    }\n    printf(\"%d %d %d\\n\", a[0][0], a[0][1], a[0][2]);\n    printf(\"%d %d %d\\n\", a[1][0], a[1][1], a[1][2]);\n    printf(\"sum=%d\", sum);\n    return 0;\n}",
+    "answer": "2 6 12\n1 4 9\nsum=2",
+    "steps": [
+      "각 행은 왼쪽부터 갱신한다. 첫 행은 [2,6,12], 둘째 행은 [1,4,9]가 된다.",
+      "평탄 인덱스 i를 3으로 나눈 몫이 행, 나머지가 열이다.",
+      "행+열이 짝수면 더하고 홀수면 뺀다. 첫 행의 부호는 +,-,+이고 둘째 행은 -,+,-다.",
+      "최종 합 2-6+12-1+4-9=2를 출력한다."
+    ],
+    "trace": {
+      "headers": [
+        "i",
+        "위치",
+        "갱신된 값",
+        "부호",
+        "sum"
+      ],
+      "rows": [
+        [
+          0,
+          "[0][0]",
+          2,
+          "+",
+          2
+        ],
+        [
+          1,
+          "[0][1]",
+          6,
+          "-",
+          -4
+        ],
+        [
+          2,
+          "[0][2]",
+          12,
+          "+",
+          8
+        ],
+        [
+          3,
+          "[1][0]",
+          1,
+          "-",
+          7
+        ],
+        [
+          4,
+          "[1][1]",
+          4,
+          "+",
+          11
+        ],
+        [
+          5,
+          "[1][2]",
+          9,
+          "-",
+          2
+        ]
+      ]
+    },
+    "pitfall": "a[0][2]는 원래 왼쪽 값 4가 아니라 갱신된 6을 더해 12가 된다. 인덱스를 행 수 2로 나누지 않는다.",
+    "variation": "안쪽 누적 반복을 for (int c = 2; c >= 1; c--)로 바꾸면 행은 [2,6,10], [1,4,8]이고 sum은 1이 된다."
+  },
+  {
+    "id": "pred-c-06",
+    "number": 6,
+    "title": "연결 리스트 노드 이동 후 값과 순회 누적",
+    "language": "C",
+    "difficulty": "응용",
+    "intent": "이 유형은 노드의 주소 연결 변경과 멤버값 변경을 별도 상태로 추적하는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2025-2",
+        "number": 5,
+        "page": 3
+      },
+      {
+        "exam": "2025-3",
+        "number": 19,
+        "page": 12
+      },
+      {
+        "exam": "2024-2",
+        "number": 19,
+        "page": 12
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 두 줄로 쓰시오.",
+    "code": "#include <stdio.h>\ntypedef struct Node { int value; struct Node *next; } Node;\nint main(void) {\n    Node a = {4, NULL}, b = {7, NULL};\n    Node c = {1, NULL}, d = {9, NULL};\n    a.next = &b; b.next = &c; c.next = &d;\n    Node *head = &a;\n    Node *moved = head->next->next;\n    head->next->next = moved->next;\n    moved->next = head;\n    head = moved;\n    head->next->value += head->value;\n    int total = 0;\n    for (Node *p = head; p != NULL; p = p->next) {\n        total = total * 2 + p->value;\n        printf(\"%d%s\", p->value, p->next ? \" \" : \"\\n\");\n    }\n    printf(\"code=%d\", total);\n    return 0;\n}",
+    "answer": "1 5 7 9\ncode=51",
+    "steps": [
+      "초기 연결은 a→b→c→d이며 moved는 c다.",
+      "b.next를 d로 바꾸어 c를 기존 위치에서 떼어낸다. c.next=a, head=c로 바꿔 c→a→b→d가 된다.",
+      "head의 다음 노드 a.value에 head의 값 1을 더해 5로 만든다.",
+      "순회값 1,5,7,9를 total=total*2+값으로 계산한다. 누적은 1→7→21→51이다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "연결 / 현재 노드",
+        "값 / total"
+      ],
+      "rows": [
+        [
+          "초기",
+          "a→b→c→d",
+          "4,7,1,9"
+        ],
+        [
+          "노드 이동 후",
+          "c→a→b→d",
+          "1,4,7,9"
+        ],
+        [
+          "멤버값 변경 후",
+          "c→a→b→d",
+          "1,5,7,9"
+        ],
+        [
+          "첫 순회",
+          "c",
+          1
+        ],
+        [
+          "둘째 순회",
+          "a",
+          7
+        ],
+        [
+          "셋째 순회",
+          "b",
+          21
+        ],
+        [
+          "넷째 순회",
+          "d",
+          51
+        ]
+      ]
+    },
+    "pitfall": "c를 맨 앞으로 옮겼다고 c.value가 바뀌지는 않는다. head->next는 이제 원래 a이며 변수 선언 순서로 순회하지 않는다.",
+    "variation": "누적식의 *2를 *3으로 바꾸면 같은 순서 1,5,7,9에서 total은 1→8→31→102가 되어 마지막 줄이 code=102다."
+  },
+  {
+    "id": "pred-c-07",
+    "number": 7,
+    "title": "두 재귀 호출 사이에 놓인 출력문",
+    "language": "C",
+    "difficulty": "심화",
+    "intent": "이 유형은 결과 수열을 암기하는 대신 호출과 복귀 사이에 출력이 발생하는 순서를 추적하는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2020-3",
+        "number": 10,
+        "page": 6
+      },
+      {
+        "exam": "2020-4,5",
+        "number": 19,
+        "page": 9
+      },
+      {
+        "exam": "2022-1",
+        "number": 12,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 17,
+        "page": 17
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 출력 문자 사이에 임의의 공백을 넣지 마시오.",
+    "code": "#include <stdio.h>\nint emit(int n) {\n    if (n <= 1) {\n        printf(\"%d\", n);\n        return n;\n    }\n    int left = emit(n - 1);\n    printf(\"A\");\n    int right = emit(n - 2);\n    printf(\"B\");\n    return left + right;\n}\nint main(void) {\n    int result = emit(3);\n    printf(\"=%d\", result);\n    return 0;\n}",
+    "answer": "1A0BA1B=2",
+    "steps": [
+      "emit(3)의 왼쪽 호출 emit(2)부터 끝까지 처리한다.",
+      "emit(2)는 emit(1)의 1, 자기 A, emit(0)의 0, 자기 B를 출력해 1A0B가 되고 1을 반환한다.",
+      "바깥 emit(3)이 A를 출력한 뒤 오른쪽 emit(1)이 1을 출력하고 1을 반환한다.",
+      "마지막 바깥 B가 붙어 1A0BA1B가 된다. 반환합은 1+1=2이며 main의 =2를 붙인다."
+    ],
+    "trace": {
+      "headers": [
+        "실행 문장",
+        "누적 출력",
+        "반환 / 대기값"
+      ],
+      "rows": [
+        [
+          "emit(2) 내부 emit(1)",
+          "1",
+          "1 반환"
+        ],
+        [
+          "emit(2)의 A",
+          "1A",
+          "left=1"
+        ],
+        [
+          "emit(2) 내부 emit(0)",
+          "1A0",
+          "0 반환"
+        ],
+        [
+          "emit(2)의 B와 복귀",
+          "1A0B",
+          "1 반환"
+        ],
+        [
+          "emit(3)의 A",
+          "1A0BA",
+          "left=1"
+        ],
+        [
+          "emit(3) 오른쪽 emit(1)",
+          "1A0BA1",
+          "1 반환"
+        ],
+        [
+          "emit(3)의 B와 복귀",
+          "1A0BA1B",
+          "2 반환"
+        ],
+        [
+          "main 출력",
+          "1A0BA1B=2",
+          "최종"
+        ]
+      ]
+    },
+    "pitfall": "두 재귀 호출의 반환값 합은 2지만 출력문은 각 호출의 실행 위치마다 발생한다. 숫자 반환값과 화면에 찍힌 문자열을 한 칸에 적지 않는다.",
+    "variation": "printf(\"A\");를 왼쪽 재귀 호출보다 앞으로 옮기면 출력은 AA10B1B=2가 된다. 반환값은 변하지 않는다."
+  },
+  {
+    "id": "pred-c-08",
+    "number": 8,
+    "title": "스택 pop 뒤 큐 enqueue의 순서",
+    "language": "C",
+    "difficulty": "기본",
+    "intent": "이 유형은 스택과 큐의 이름을 외우는 것보다 top·front·rear가 실제로 가리키는 다음 위치를 계산하는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2023-2",
+        "number": 9,
+        "page": 7
+      },
+      {
+        "exam": "2025-2",
+        "number": 10,
+        "page": 6
+      }
+    ],
+    "prompt": "다음 C 코드의 출력 결과를 쓰시오. 모든 배열 접근은 유효한 범위 안에서 실행된다.",
+    "code": "#include <stdio.h>\nint main(void) {\n    int stack[4], top = 0;\n    stack[top++] = 2;\n    stack[top++] = 5;\n    int first = stack[--top];\n    stack[top++] = first - 1;\n    int queue[4], front = 0, rear = 0;\n    queue[rear++] = stack[--top];\n    queue[rear++] = stack[--top];\n    int x = queue[front++];\n    queue[rear++] = x + 3;\n    printf(\"%d|\", x);\n    while (front < rear) {\n        int value = queue[front++];\n        printf(\"%d\", value);\n        if (front < rear) printf(\" \");\n    }\n    return 0;\n}",
+    "answer": "4|2 7",
+    "steps": [
+      "push한 뒤 스택 내용은 바닥부터 [2,5]이며 top=2다. --top으로 5를 pop한다.",
+      "first-1인 4를 push해 스택은 [2,4]다. 다시 pop하면 4, 다음 pop은 2다.",
+      "큐에는 [4,2]가 차례로 들어간다. front++로 4를 dequeue한 뒤 7을 끝에 넣는다.",
+      "남은 큐를 2,7 순서로 출력한다. 먼저 뺀 x=4는 세로선 앞에 출력된다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "스택 내용 / top",
+        "큐 유효 내용 / front,rear",
+        "꺼낸 값"
+      ],
+      "rows": [
+        [
+          "초기 push",
+          "[2,5] / 2",
+          "없음",
+          "없음"
+        ],
+        [
+          "pop 후 4 push",
+          "[2,4] / 2",
+          "없음",
+          5
+        ],
+        [
+          "스택 두 번 pop",
+          "[] / 0",
+          "[4,2] / 0,2",
+          "4,2"
+        ],
+        [
+          "큐 dequeue",
+          "[] / 0",
+          "[2] / 1,2",
+          4
+        ],
+        [
+          "7 enqueue",
+          "[] / 0",
+          "[2,7] / 1,3",
+          "없음"
+        ],
+        [
+          "남은 큐 순회",
+          "[] / 0",
+          "[] / 3,3",
+          "2,7"
+        ]
+      ]
+    },
+    "pitfall": "top은 이 코드에서 마지막 원소가 아니라 다음 push 위치다. stack[--top]은 먼저 top을 줄인 뒤 읽는다. 큐는 앞에서 뺀 값 뒤에 새 값이 들어간다.",
+    "variation": "queue[rear++] = x + 3;을 x + 1로 바꾸면 출력은 4|2 5가 된다."
+  },
+  {
+    "id": "pred-java-01",
+    "number": 9,
+    "title": "동명의 필드와 재정의 메서드",
+    "language": "Java",
+    "difficulty": "응용",
+    "intent": "필드를 읽을 때의 선언 타입과 인스턴스 메서드를 실행할 때의 실제 객체 타입을 구분하는 능력을 점검한다. 반복 출제 개념을 조합한 자체 연습문항이다.",
+    "basis": [
+      {
+        "exam": "2024-3",
+        "number": 14,
+        "page": 9
+      },
+      {
+        "exam": "2025-2",
+        "number": 18,
+        "page": 10
+      },
+      {
+        "exam": "2026-2",
+        "number": 15,
+        "page": 15
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "class Parent {\n    int x = 4;\n    int read() { return x + 1; }\n}\nclass Child extends Parent {\n    int x = 9;\n    @Override int read() { return x * 2; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        Child c = (Child)p;\n        System.out.print(p.x + \":\" + p.read() + \":\" + c.x);\n    }\n}",
+    "answer": "4:18:9",
+    "steps": [
+      "객체 안에 Parent.x=4와 Child.x=9라는 두 필드가 존재한다.",
+      "p의 선언 타입이 Parent이므로 p.x는 4다.",
+      "read()는 같은 서명으로 재정의되었다. 실제 객체 Child의 read()가 Child.x=9를 읽어 18을 반환한다.",
+      "c는 같은 객체를 Child 타입으로 참조한다. c.x=9이며 새 객체를 생성한 것은 아니다."
+    ],
+    "trace": {
+      "headers": [
+        "식",
+        "선택 기준",
+        "값"
+      ],
+      "rows": [
+        [
+          "p.x",
+          "Parent 선언 타입",
+          4
+        ],
+        [
+          "p.read()",
+          "Child 실제 객체",
+          18
+        ],
+        [
+          "c.x",
+          "Child 선언 타입",
+          9
+        ]
+      ]
+    },
+    "pitfall": "필드도 동적 바인딩된다고 생각하면 첫 값을 9로 잘못 답하게 된다.",
+    "variation": "Child의 read() 메서드를 삭제하면 부모의 구현이 Parent.x를 읽으므로 출력은 4:5:9가 된다."
+  },
+  {
+    "id": "pred-java-02",
+    "number": 10,
+    "title": "생성자 실행 순서와 다른 메서드 서명",
+    "language": "Java",
+    "difficulty": "응용",
+    "intent": "부모 생성자의 실행 시점, 필드 숨김, 오버로딩을 한 흐름에서 읽는 능력을 점검한다. 최근 생성자·super 문항에서 파생한 자체 문제다.",
+    "basis": [
+      {
+        "exam": "2023-1",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2024-1",
+        "number": 11,
+        "page": 8
+      },
+      {
+        "exam": "2025-3",
+        "number": 18,
+        "page": 11
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오. 생성자가 출력하는 문자도 포함하시오.",
+    "code": "class Base {\n    int x;\n    Base(int x) {\n        this.x = x;\n        System.out.print(\"P\" + x);\n    }\n    int value() { return x + 2; }\n}\nclass Child extends Base {\n    int x;\n    Child(int v) {\n        super(v + 1);\n        this.x = v;\n        System.out.print(\"C\" + x);\n    }\n    int value(int add) { return super.value() + add; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Child c = new Child(4);\n        Base p = c;\n        System.out.print(\"|\" + p.value() + \":\" + c.value(3));\n    }\n}",
+    "answer": "P5C4|7:10",
+    "steps": [
+      "new Child(4)는 super(5)를 먼저 실행한다. Base.x=5가 되고 P5를 출력한다.",
+      "부모 생성자가 끝난 뒤 Child.x=4를 대입하여 C4를 출력한다.",
+      "Child.value(int)는 인수가 없는 Base.value()를 재정의하지 않는다. p.value()는 5+2=7이다.",
+      "c.value(3)는 super.value()의 7에 3을 더해 10이다."
+    ],
+    "trace": {
+      "headers": [
+        "실행",
+        "Base.x",
+        "Child.x",
+        "출력·반환"
+      ],
+      "rows": [
+        [
+          "super(5)",
+          5,
+          0,
+          "P5"
+        ],
+        [
+          "Child 생성자 본문",
+          5,
+          4,
+          "C4"
+        ],
+        [
+          "p.value()",
+          5,
+          4,
+          7
+        ],
+        [
+          "c.value(3)",
+          5,
+          4,
+          10
+        ]
+      ]
+    },
+    "pitfall": "이름 value가 같아도 매개변수가 다르면 재정의가 아니라 오버로딩이다.",
+    "variation": "Child에 int value() { return x * 2; }를 추가하면 출력은 P5C4|8:10이다. p.value()는 재정의 구현을 실행하지만 super.value()는 여전히 부모 구현을 실행한다."
+  },
+  {
+    "id": "pred-java-03",
+    "number": 11,
+    "title": "음수 기저값과 누적 재귀 호출 수",
+    "language": "Java",
+    "difficulty": "심화",
+    "intent": "기저 조건에 음수가 포함된다는 점과 반환값·공유 호출 횟수가 별개라는 점을 점검한다. 재귀식 문항과 static 상태 문항을 결합한 자체 변형이다.",
+    "basis": [
+      {
+        "exam": "2023-3",
+        "number": 14,
+        "page": 11
+      },
+      {
+        "exam": "2024-2",
+        "number": 8,
+        "page": 7
+      },
+      {
+        "exam": "2024-3",
+        "number": 6,
+        "page": 4
+      },
+      {
+        "exam": "2026-2",
+        "number": 19,
+        "page": 19
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오. calls는 두 함수 호출 사이에 초기화하지 않는다.",
+    "code": "public class Main {\n    static int calls = 0;\n    static int calc(int n) {\n        ++calls;\n        if (n <= 1) return n;\n        int a = calc(n - 2);\n        int b = calc(n - 3);\n        return a + b;\n    }\n    public static void main(String[] args) {\n        int first = calc(5);\n        int second = calc(4);\n        System.out.print(first + \":\" + second + \":\" + calls);\n    }\n}",
+    "answer": "0:0:12",
+    "steps": [
+      "n<=1이면 n을 그대로 반환한다. 따라서 calc(-1)=-1, calc(0)=0, calc(1)=1이다.",
+      "calc(2)=calc(0)+calc(-1)=-1이며 함수 호출은 자기 자신을 포함해 3번이다.",
+      "calc(3)=1, calc(4)=calc(2)+calc(1)=0, calc(5)=calc(3)+calc(2)=0이다.",
+      "calc(5)의 호출 수는 1+3+3=7, calc(4)는 1+3+1=5다. calls는 공유되므로 최종 12다."
+    ],
+    "trace": {
+      "headers": [
+        "n",
+        "calc(n)",
+        "자신 포함 호출 수"
+      ],
+      "rows": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          -1,
+          3
+        ],
+        [
+          3,
+          1,
+          3
+        ],
+        [
+          4,
+          0,
+          5
+        ],
+        [
+          5,
+          0,
+          7
+        ]
+      ]
+    },
+    "pitfall": "n<=1을 n==0 또는 0 반환으로 바꾸어 계산하면 음수 기저값을 놓친다. 결과가 0이어도 호출 횟수가 0인 것은 아니다.",
+    "variation": "기저 조건의 return n을 return 1로 바꾸면 calc(5)=4, calc(4)=3이고 호출 구조는 그대로여서 출력은 4:3:12다."
+  },
+  {
+    "id": "pred-java-04",
+    "number": 12,
+    "title": "문자열 상수·새 객체·별칭 비교",
+    "language": "Java",
+    "difficulty": "기본",
+    "intent": "String 참조의 동일성과 내용의 동일성을 구분하는 능력을 점검한다. 명시적 new와 상수 연결을 사용하여 실행 결과를 확정한 자체 문제다.",
+    "basis": [
+      {
+        "exam": "2023-2",
+        "number": 14,
+        "page": 11
+      },
+      {
+        "exam": "2024-2",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2024-3",
+        "number": 1,
+        "page": 2
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"AB\";\n        String b = \"A\" + \"B\";\n        String c = new String(b);\n        String d = c;\n        System.out.print((a == b) + \":\" + (b == c) + \":\"\n            + (c == d) + \":\" + a.equals(c));\n    }\n}",
+    "answer": "true:false:true:true",
+    "steps": [
+      "\"A\"+\"B\"는 컴파일 시간 문자열 상수이므로 b와 a는 같은 문자열 풀의 \"AB\"를 참조한다.",
+      "new String(b)는 내용이 같아도 별도 객체를 생성하므로 b==c는 false다.",
+      "d=c는 객체를 복제하지 않고 같은 참조를 대입한다. c==d는 true다.",
+      "equals는 내용 \"AB\"가 같은지 확인하므로 a.equals(c)는 true다."
+    ],
+    "trace": {
+      "headers": [
+        "비교",
+        "확인 대상",
+        "결과"
+      ],
+      "rows": [
+        [
+          "a == b",
+          "상수 풀의 같은 객체",
+          "true"
+        ],
+        [
+          "b == c",
+          "상수 객체와 new 객체",
+          "false"
+        ],
+        [
+          "c == d",
+          "별칭의 같은 객체",
+          "true"
+        ],
+        [
+          "a.equals(c)",
+          "문자열 내용",
+          "true"
+        ]
+      ]
+    },
+    "pitfall": "문자열이 눈으로 같다고 ==도 true가 되는 것은 아니다. d=c와 new String(c)의 차이를 놓치지 않는다.",
+    "variation": "String d = new String(c);로 바꾸면 c==d가 false로 바뀌어 출력은 true:false:false:true다."
+  },
+  {
+    "id": "pred-java-05",
+    "number": 13,
+    "title": "return 값을 정한 뒤 실행되는 finally",
+    "language": "Java",
+    "difficulty": "응용",
+    "intent": "예외가 발생하는 지점, catch에서 정한 반환값, finally가 변경하는 공유 배열을 함께 추적하는 능력을 점검한다.",
+    "basis": [
+      {
+        "exam": "2024-3",
+        "number": 17,
+        "page": 11
+      },
+      {
+        "exam": "2025-1",
+        "number": 5,
+        "page": 4
+      },
+      {
+        "exam": "2025-2",
+        "number": 4,
+        "page": 3
+      },
+      {
+        "exam": "2025-2",
+        "number": 9,
+        "page": 5
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "public class Main {\n    static int run(int[] a) {\n        int result = 1;\n        try {\n            result = a[2] / a[0];\n            return result + 2;\n        } catch (ArithmeticException e) {\n            result = 4;\n            return result + 3;\n        } finally {\n            a[1] += result;\n            result = 9;\n        }\n    }\n    public static void main(String[] args) {\n        int[] a = {0, 2, 8};\n        int r = run(a);\n        System.out.print(r + \":\" + a[1]);\n    }\n}",
+    "answer": "7:6",
+    "steps": [
+      "8/0에서 ArithmeticException이 발생하여 try의 result 대입과 return은 완료되지 않는다.",
+      "catch에서 result=4가 되고 return 식의 값 4+3=7을 계산한다.",
+      "메서드가 돌아가기 전에 finally가 실행되어 공유 배열 a[1]을 2+4=6으로 바꾼다.",
+      "finally의 지역 result=9 대입은 이미 계산한 반환값 7을 바꾸지 않는다. finally에 새 return이나 예외는 없으므로 7이 반환된다."
+    ],
+    "trace": {
+      "headers": [
+        "실행 단계",
+        "result",
+        "a[1]",
+        "반환값"
+      ],
+      "rows": [
+        [
+          "진입",
+          1,
+          2,
+          "미정"
+        ],
+        [
+          "8/0 예외",
+          1,
+          2,
+          "미정"
+        ],
+        [
+          "catch 대입·return 식 계산",
+          4,
+          2,
+          7
+        ],
+        [
+          "finally 배열 변경",
+          4,
+          6,
+          7
+        ],
+        [
+          "finally 지역 대입",
+          9,
+          6,
+          7
+        ]
+      ]
+    },
+    "pitfall": "finally가 실행된다는 사실과 finally 안의 지역 변수 대입이 반환값을 다시 계산한다는 주장을 혼동하면 안 된다.",
+    "variation": "배열을 {2,2,8}로 바꾸면 예외 없이 result=4, try 반환값=6, finally 뒤 a[1]=6이므로 출력은 6:6이다."
+  },
+  {
+    "id": "pred-java-06",
+    "number": 14,
+    "title": "정수 나눗셈과 단락 평가의 상태 변화",
+    "language": "Java",
+    "difficulty": "기본",
+    "intent": "논리식의 진릿값뿐 아니라 실행되지 않은 증가 연산을 구분하는 능력을 점검한다. 기존 증가·나머지·조건식 유형의 자체 변형이다.",
+    "basis": [
+      {
+        "exam": "2023-1",
+        "number": 1,
+        "page": 2
+      },
+      {
+        "exam": "2024-2",
+        "number": 7,
+        "page": 6
+      },
+      {
+        "exam": "2025-3",
+        "number": 17,
+        "page": 10
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 2, y = 0, z = 11;\n        boolean ok = (z / 4 == 2) && (++x > 2) || (y++ > 0);\n        int r = ok ? z / 3 : z / 2;\n        System.out.print(x + \":\" + y + \":\" + r);\n    }\n}",
+    "answer": "3:0:3",
+    "steps": [
+      "int 나눗셈 11/4는 2이므로 첫 조건은 true다.",
+      "&&의 왼쪽이 true라서 ++x를 실행한다. x=3이고 3>2는 true다.",
+      "&&가 ||보다 먼저 묶인다. 왼쪽 묶음이 true이므로 오른쪽 y++는 실행하지 않아 y=0이다.",
+      "ok가 true이므로 r=11/3=3이다."
+    ],
+    "trace": {
+      "headers": [
+        "식",
+        "평가 여부",
+        "값·상태"
+      ],
+      "rows": [
+        [
+          "z / 4 == 2",
+          "실행",
+          "true"
+        ],
+        [
+          "++x > 2",
+          "실행",
+          "x=3, true"
+        ],
+        [
+          "y++ > 0",
+          "단락으로 생략",
+          "y=0"
+        ],
+        [
+          "ok ? z/3 : z/2",
+          "앞 가지 선택",
+          "r=3"
+        ]
+      ]
+    },
+    "pitfall": "단락 평가로 식을 건너뛰면 그 안의 증가 연산도 건너뛴다. 정수 나눗셈 결과에 소수 부분을 남겨서는 안 된다.",
+    "variation": "z=7로 바꾸면 첫 조건이 false여서 ++x는 생략된다. y++는 0을 비교한 뒤 y=1이 되고 ok=false이므로 출력은 2:1:3이다."
+  },
+  {
+    "id": "pred-python-01",
+    "number": 15,
+    "title": "음수 step 슬라이싱의 제외 경계",
+    "language": "Python",
+    "difficulty": "기본",
+    "intent": "이 유형은 음수 step에서 선택 인덱스를 적고 stop 제외 규칙을 지키는 능력을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2022-2",
+        "number": 13,
+        "page": 7
+      },
+      {
+        "exam": "2024-3",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2026-1",
+        "number": 5,
+        "page": 4
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 두 줄로 쓰시오.",
+    "code": "a = list(range(1, 10))\nb = a[7:1:-2]\nc = a[::-3]\nprint(b, c)\nprint(sum(b) - sum(c), end=\"\")",
+    "answer": "[8, 6, 4] [9, 6, 3]\n0",
+    "steps": [
+      "a의 인덱스 0~8에 값 1~9를 적는다.",
+      "b는 인덱스 7,5,3을 선택한다. stop=1은 제외되어 인덱스 1을 선택하지 않는다.",
+      "c는 생략된 시작 위치가 맨 뒤이므로 인덱스 8,5,2를 선택한다.",
+      "각 리스트 합은 모두 18이므로 차는 0이다. print(b,c)는 두 리스트 사이에 공백을 하나 넣는다."
+    ],
+    "trace": {
+      "headers": [
+        "슬라이스",
+        "선택 인덱스",
+        "선택 값",
+        "합"
+      ],
+      "rows": [
+        [
+          "[7:1:-2]",
+          "7,5,3",
+          "8,6,4",
+          18
+        ],
+        [
+          "[::-3]",
+          "8,5,2",
+          "9,6,3",
+          18
+        ],
+        [
+          "합의 차",
+          "해당 없음",
+          "18-18",
+          0
+        ]
+      ]
+    },
+    "pitfall": "음수 step이라고 stop 위치를 포함하는 것은 아니다. 인덱스와 리스트 값도 1씩 차이 난다.",
+    "variation": "b의 stop을 1에서 0으로 바꾸면 인덱스 1도 선택되어 b=[8,6,4,2], 마지막 출력은 2가 된다."
+  },
+  {
+    "id": "pred-python-02",
+    "number": 16,
+    "title": "얕은 복사 뒤 +=와 + 대입의 차이",
+    "language": "Python",
+    "difficulty": "응용",
+    "intent": "이 유형은 공유하는 내부 리스트를 변경하는 연산과 새 내부 리스트로 슬롯을 교체하는 연산을 구별하기 좋다.",
+    "basis": [
+      {
+        "exam": "2026-1",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 세 줄로 쓰시오.",
+    "code": "m = [[1], [3], [5]]\ncopy = m[:]\ncopy[0].append(2)\ncopy[1] = copy[1] + copy[0]\ncopy[2] += copy[1]\nprint(m)\nprint(copy)\nprint(sum(map(len, m)), sum(map(len, copy)), end=\"\")",
+    "answer": "[[1, 2], [3], [5, 3, 1, 2]]\n[[1, 2], [3, 1, 2], [5, 3, 1, 2]]\n7 9",
+    "steps": [
+      "m[:]는 새 바깥 리스트를 만들지만 각 내부 리스트는 공유한다.",
+      "copy[0].append(2)는 공유하는 첫 내부 리스트를 [1,2]로 바꾼다.",
+      "copy[1]+copy[0]는 새 리스트 [3,1,2]를 만든다. copy[1]만 그 새 리스트를 가리키며 m[1]은 [3]이다.",
+      "copy[2]+=는 공유하는 세 번째 리스트를 제자리 확장해 둘 다 [5,3,1,2]를 보게 한다.",
+      "m의 길이 합은 2+1+4=7이고 copy의 길이 합은 2+3+4=9다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "m",
+        "copy"
+      ],
+      "rows": [
+        [
+          "초기",
+          "[[1],[3],[5]]",
+          "[[1],[3],[5]]"
+        ],
+        [
+          "첫 내부 리스트 append",
+          "[[1,2],[3],[5]]",
+          "[[1,2],[3],[5]]"
+        ],
+        [
+          "copy[1] 슬롯 교체",
+          "[[1,2],[3],[5]]",
+          "[[1,2],[3,1,2],[5]]"
+        ],
+        [
+          "세 번째 내부 리스트 +=",
+          "[[1,2],[3],[5,3,1,2]]",
+          "[[1,2],[3,1,2],[5,3,1,2]]"
+        ]
+      ]
+    },
+    "pitfall": "같은 + 기호가 보여도 리스트의 +=는 보통 제자리 확장이고 a=a+b는 새 리스트 대입이다. 바깥 복사가 내부 객체까지 복제하지 않는다.",
+    "variation": "copy[1] = copy[1] + copy[0]를 copy[1] += copy[0]로 바꾸면 m[1]도 [3,1,2]가 되고 길이 합은 9 9다."
+  },
+  {
+    "id": "pred-python-03",
+    "number": 17,
+    "title": "기존 dict 키를 바꾼 뒤 문자열 누적",
+    "language": "Python",
+    "difficulty": "응용",
+    "intent": "이 유형은 dict의 기존 키 갱신과 삽입 순서를 구별하며, 루프 인덱스에 따라 다른 문자를 선택하는 능력을 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2021-1",
+        "number": 5,
+        "page": 3
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2026-2",
+        "number": 12,
+        "page": 12
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 쓰시오. 실행 환경은 Python 3.7 이상이다.",
+    "code": "labels = {\"AL\": \"BETA\", \"BC\": \"OMEGA\", \"DA\": \"LIMA\"}\nlabels[\"BC\"] = \"SIGMA\"\ntext = \"\"\nfor index, (key, value) in enumerate(labels.items(), start=1):\n    text += key[-1] + value[index - 1]\nprint(text, end=\"\")",
+    "answer": "LBCIAM",
+    "steps": [
+      "기존 키 BC의 값을 갱신해도 키의 삽입 위치는 바뀌지 않는다. 순서는 AL,BC,DA다.",
+      "index는 1부터 시작하므로 value에서는 0,1,2번 문자를 차례로 선택한다.",
+      "각 반복에서 AL은 L+B, BC는 C+I, DA는 A+M을 만든다.",
+      "+=는 이전 문자열 뒤에 붙이므로 LB→LBCI→LBCIAM이 된다."
+    ],
+    "trace": {
+      "headers": [
+        "index",
+        "key",
+        "갱신 후 value",
+        "추가 문자열",
+        "text"
+      ],
+      "rows": [
+        [
+          1,
+          "AL",
+          "BETA",
+          "LB",
+          "LB"
+        ],
+        [
+          2,
+          "BC",
+          "SIGMA",
+          "CI",
+          "LBCI"
+        ],
+        [
+          3,
+          "DA",
+          "LIMA",
+          "AM",
+          "LBCIAM"
+        ]
+      ]
+    },
+    "pitfall": "기존 키에 새 값을 넣었다고 BC가 마지막으로 이동하지 않는다. enumerate 시작값과 문자열의 0 기반 인덱스를 구별한다.",
+    "variation": "text +=를 text =로 바꾸면 매 반복 이전 결과를 버려 마지막 문자열 AM만 출력한다."
+  },
+  {
+    "id": "pred-python-04",
+    "number": 18,
+    "title": "집합의 스냅샷과 dict 컴프리헨션",
+    "language": "Python",
+    "difficulty": "응용",
+    "intent": "이 유형은 컴프리헨션의 중복 키 처리, 생성 시점의 집합 내용, 이후 변경의 독립성을 함께 확인하기 좋다.",
+    "basis": [
+      {
+        "exam": "2020-2",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2025-2",
+        "number": 17,
+        "page": 9
+      },
+      {
+        "exam": "2022-3",
+        "number": 9,
+        "page": 7
+      }
+    ],
+    "prompt": "다음 Python 코드의 출력 결과를 두 줄로 쓰시오. 집합은 sorted로 정렬하여 출력한다.",
+    "code": "nums = [2, 3, 2, 5]\nd = {x: x + 1 for x in nums}\nseen = set(d.values())\nd[2] = 8\nseen.add(8)\npicked = [k for k, v in d.items() if v in seen and k % 2 == 1]\nprint(sorted(seen & set(d.values())))\nprint(picked, end=\"\")",
+    "answer": "[4, 6, 8]\n[3, 5]",
+    "steps": [
+      "d의 중복 키 2는 한 항목이며 생성 결과는 {2:3,3:4,5:6}이다.",
+      "seen은 그 시점의 값으로 만든 별도 집합 {3,4,6}이다. d[2]=8 뒤에도 기존 원소 3이 남는다.",
+      "seen.add(8) 후 교집합 대상은 현재 d의 값 {8,4,6}이어서 정렬하면 [4,6,8]이다.",
+      "picked는 값이 seen에 있고 키가 홀수인 항목만 고른다. 키 3과 5가 선택된다."
+    ],
+    "trace": {
+      "headers": [
+        "단계",
+        "d",
+        "seen / 결과"
+      ],
+      "rows": [
+        [
+          "컴프리헨션",
+          "{2:3,3:4,5:6}",
+          "seen={3,4,6}"
+        ],
+        [
+          "d[2]=8",
+          "{2:8,3:4,5:6}",
+          "seen={3,4,6} 유지"
+        ],
+        [
+          "seen.add(8)",
+          "{2:8,3:4,5:6}",
+          "seen={3,4,6,8}"
+        ],
+        [
+          "교집합 정렬",
+          "현재 값 {8,4,6}",
+          "[4,6,8]"
+        ],
+        [
+          "홀수 키 선택",
+          "순서 2,3,5",
+          "[3,5]"
+        ]
+      ]
+    },
+    "pitfall": "set(d.values())는 dict의 값과 계속 동기화되는 뷰가 아니다. raw set 출력 순서를 예상 답으로 고정하지 않는다.",
+    "variation": "seen.add(8)을 지우면 첫 줄은 [4,6]이 된다. key=2는 원래 홀수 조건을 통과하지 못하므로 둘째 줄 [3,5]는 같다."
+  },
+  {
+    "id": "pred-sql-01",
+    "number": 19,
+    "title": "상관 평균과 빈 집합의 NULL",
+    "language": "SQL",
+    "difficulty": "심화",
+    "intent": "바깥 행에 따라 달라지는 서브쿼리, 중복 행의 평균 기여, NULL 제외와 빈 집합을 구별하는 능력을 점검한다.",
+    "basis": [
+      {
+        "exam": "2024-1",
+        "number": 12,
+        "page": 9
+      },
+      {
+        "exam": "2026-1",
+        "number": 11,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 7,
+        "page": 7
+      }
+    ],
+    "prompt": "준비 구문을 실행한 뒤 마지막 SELECT가 반환하는 결과를 쓰시오. 표의 헤더도 표시하시오. NULL은 값이 없음을 의미한다.",
+    "code": "CREATE TABLE Credits(id INTEGER, points INTEGER);\nCREATE TABLE Charges(id INTEGER, fee INTEGER);\nINSERT INTO Credits VALUES (1,12),(2,24),(3,36),(4,48),(5,60);\nINSERT INTO Charges VALUES (1,NULL),(1,6),(1,18),(2,30),(4,210),(9,100);\nSELECT COUNT(*) AS result\nFROM Credits AS current\nWHERE current.points > (\n    SELECT AVG(fee) FROM Charges\n    WHERE Charges.id IN (\n        SELECT prior.id FROM Credits AS prior\n        WHERE prior.points < current.points\n    )\n);",
+    "answer": "result\n3",
+    "steps": [
+      "현재 Credits 행을 하나 고정하고 prior.points < current.points를 만족하는 id 집합을 구한다.",
+      "그 id의 Charges.fee를 모은다. AVG는 NULL을 제외하지만 중복 id의 서로 다른 행은 각각 포함한다.",
+      "points=12는 대상 행이 없어 AVG=NULL이며 비교 결과 UNKNOWN으로 제외된다.",
+      "points=24,36,48은 각각 평균 12,18,18보다 크므로 통과한다. points=60은 평균 66보다 작아 제외된다.",
+      "통과한 세 행을 COUNT(*)로 센다."
+    ],
+    "trace": {
+      "headers": [
+        "현재 points",
+        "prior id 집합",
+        "평균 대상 fee",
+        "AVG",
+        "통과"
+      ],
+      "rows": [
+        [
+          12,
+          "{}",
+          "없음",
+          "NULL",
+          "아니오"
+        ],
+        [
+          24,
+          "{1}",
+          "6,18 (NULL 제외)",
+          12,
+          "예"
+        ],
+        [
+          36,
+          "{1,2}",
+          "6,18,30",
+          18,
+          "예"
+        ],
+        [
+          48,
+          "{1,2,3}",
+          "6,18,30",
+          18,
+          "예"
+        ],
+        [
+          60,
+          "{1,2,3,4}",
+          "6,18,30,210",
+          66,
+          "아니오"
+        ]
+      ]
+    },
+    "pitfall": "안쪽 평균을 한 번만 계산하여 모든 바깥 행에 적용하면 틀린다. AVG(NULL)이 0이라고 가정해도 첫 행 판정이 틀린다.",
+    "variation": "AVG(fee)를 COALESCE(AVG(fee),0)으로 바꾸면 빈 집합의 평균을 0으로 대체한다. 첫 행도 통과하여 result는 4가 된다."
+  },
+  {
+    "id": "pred-sql-02",
+    "number": 20,
+    "title": "외부 조인 중복과 그룹별 NULL 개수",
+    "language": "SQL",
+    "difficulty": "응용",
+    "intent": "외부 조인이 보존한 행과 일치 키의 중복으로 늘어난 행을 그린 뒤 COUNT·SUM·HAVING을 적용하는 능력을 점검한다.",
+    "basis": [
+      {
+        "exam": "2023-1",
+        "number": 16,
+        "page": 8
+      },
+      {
+        "exam": "2024-3",
+        "number": 3,
+        "page": 3
+      },
+      {
+        "exam": "2025-3",
+        "number": 20,
+        "page": 13
+      },
+      {
+        "exam": "2026-2",
+        "number": 18,
+        "page": 18
+      }
+    ],
+    "prompt": "준비 구문을 실행한 뒤 마지막 SELECT가 반환하는 결과를 쓰시오. 헤더를 포함하여 ORDER BY 순서대로 표시하시오.",
+    "code": "CREATE TABLE Members(id INTEGER, grp TEXT);\nCREATE TABLE Scores(mid INTEGER, points INTEGER);\nINSERT INTO Members VALUES (1,'A'),(2,'A'),(3,'B'),(4,'B'),(5,'C');\nINSERT INTO Scores VALUES (1,70),(1,NULL),(2,90),(5,100),(9,20);\nSELECT m.grp,\n       COUNT(*) AS rows_all,\n       COUNT(s.points) AS scored,\n       COALESCE(SUM(s.points),0) AS total\nFROM Members AS m LEFT JOIN Scores AS s ON m.id = s.mid\nGROUP BY m.grp\nHAVING COUNT(*) > COUNT(s.points)\nORDER BY m.grp;",
+    "answer": "grp|rows_all|scored|total\nA|3|2|160\nB|2|0|0",
+    "steps": [
+      "LEFT JOIN은 모든 Members 행을 보존한다. id=1은 Scores의 두 행과 일치하여 결과 두 행을 만든다.",
+      "A 그룹은 조인 뒤 3행이며 points가 NULL 아닌 값은 70·90 두 개다. 합은 160이다.",
+      "B 그룹 회원 둘은 일치 점수가 없어 각각 NULL로 확장된다. 2행, 알려진 점수 0개, SUM=NULL이므로 COALESCE가 0으로 바꾼다.",
+      "C 그룹은 한 행에 점수 100이 있어 COUNT(*)=COUNT(points)=1이다.",
+      "HAVING에서 A의 3>2, B의 2>0만 참이다. C를 제외하고 A,B 순서로 출력한다."
+    ],
+    "trace": {
+      "headers": [
+        "그룹",
+        "원래 회원 수",
+        "조인 후 행 수",
+        "NULL 아닌 points 수",
+        "SUM(points)",
+        "HAVING"
+      ],
+      "rows": [
+        [
+          "A",
+          2,
+          3,
+          2,
+          160,
+          "통과"
+        ],
+        [
+          "B",
+          2,
+          2,
+          0,
+          "NULL",
+          "통과"
+        ],
+        [
+          "C",
+          1,
+          1,
+          1,
+          100,
+          "제외"
+        ]
+      ]
+    },
+    "pitfall": "COUNT(*)는 원래 회원 수가 아니라 조인 결과 행 수다. 점수가 NULL인 실제 매칭 행과 조인에 실패한 행을 같은 원인으로 설명해서는 안 된다.",
+    "variation": "HAVING의 COUNT(s.points)를 COUNT(s.mid)로 바꾸면 A는 점수 NULL인 행도 mid=1이므로 3>3이 거짓이 된다. B만 남아 결과는 B|2|0|0 한 행이다."
+  },
+  {
+    "id": "pred-network-01",
+    "number": 21,
+    "title": "/26: 네트워크·브로드캐스트·호스트 범위를 한 번에",
+    "language": "네트워크",
+    "difficulty": "입문",
+    "intent": "기출의 마지막 옥텟 서브네팅을 바꾼 독립 예상 연습이다. 실제 차회 출제를 확정한 문제가 아니다.",
+    "basis": [
+      {
+        "exam": "2022-2",
+        "number": 9,
+        "page": 6
+      },
+      {
+        "exam": "2025-2",
+        "number": 8,
+        "page": 5
+      }
+    ],
+    "prompt": "IPv4 호스트의 IP가 203.0.113.174이고 서브넷 마스크가 255.255.255.192다. ① CIDR 프리픽스 ② 네트워크 주소 ③ 브로드캐스트 주소 ④ 사용 가능한 첫·마지막 호스트 주소 ⑤ 일반적인 사용 가능 호스트 수를 구하시오. 네트워크·브로드캐스트 주소를 호스트에 할당하지 않는 일반 IPv4 서브넷을 가정한다.",
+    "answer": "① /26\n② 203.0.113.128\n③ 203.0.113.191\n④ 203.0.113.129 ~ 203.0.113.190\n⑤ 62",
+    "steps": [
+      "255는 1비트가 8개다. 192=11000000이므로 마지막 옥텟의 1비트는 2개. 프리픽스는 8+8+8+2=26이다.",
+      "변하는 마지막 옥텟의 블록 크기=256−192=64. 블록 시작점은 0·64·128·192다.",
+      "174가 들어 있는 블록은 128~191. 계산으로는 floor(174/64)×64=2×64=128이다.",
+      "시작점 .128이 네트워크, 다음 시작점 .192 직전인 .191이 브로드캐스트다.",
+      "호스트는 네트워크+1부터 브로드캐스트−1까지이므로 .129~.190이다. 호스트 비트 32−26=6, 개수 2^6−2=62다."
+    ],
+    "trace": {
+      "headers": [
+        "검사",
+        "계산",
+        "결과"
+      ],
+      "rows": [
+        [
+          "프리픽스",
+          "8+8+8+2",
+          "/26"
+        ],
+        [
+          "블록 크기",
+          "256−192",
+          "64"
+        ],
+        [
+          "시작점",
+          "floor(174/64)×64",
+          "128"
+        ],
+        [
+          "끝점",
+          "128+64−1",
+          "191"
+        ],
+        [
+          "호스트 수",
+          "64−2",
+          "62"
+        ]
+      ]
+    },
+    "pitfall": "174를 반올림하지 않는다. 포함된 블록의 시작점을 찾으므로 내림(floor)을 쓴다. .128과 .191은 주소 범위에 포함되지만 일반 호스트에 할당하지 않는다.",
+    "variation": "IP만 203.0.113.201로 바꾸면 블록은 .192~.255가 된다. 네트워크 .192, 브로드캐스트 .255, 호스트 .193~.254, 개수 62다.",
+    "diagram": {
+      "nodes": [
+        "0~63",
+        "64~127",
+        "128~191: 174 포함",
+        "192~255",
+        "128 네트워크 | 129~190 호스트 | 191 브로드캐스트"
+      ],
+      "edges": [
+        [
+          0,
+          1,
+          "64씩 증가"
+        ],
+        [
+          1,
+          2,
+          "64씩 증가"
+        ],
+        [
+          2,
+          3,
+          "64씩 증가"
+        ],
+        [
+          2,
+          4,
+          "선택한 블록 확대"
+        ]
+      ]
+    },
+    "verification": {
+      "type": "subnet",
+      "ip": "203.0.113.174",
+      "prefix": 26,
+      "expected": {
+        "network": "203.0.113.128",
+        "broadcast": "203.0.113.191",
+        "hosts": 62,
+        "first": "203.0.113.129",
+        "last": "203.0.113.190"
+      }
+    }
+  },
+  {
+    "id": "pred-network-02",
+    "number": 22,
+    "title": "/22: 세 번째 옥텟에서 바뀌는 블록",
+    "language": "네트워크",
+    "difficulty": "기초",
+    "intent": "기출의 세 번째 옥텟 범위 계산을 직접 연습하는 독립 문제다. /24처럼 끝자리만 보지 않는 것을 목표로 한다.",
+    "basis": [
+      {
+        "exam": "2025-1",
+        "number": 9,
+        "page": 6
+      },
+      {
+        "exam": "2026-1",
+        "number": 8,
+        "page": 6
+      }
+    ],
+    "prompt": "호스트 172.18.78.45의 서브넷 마스크는 255.255.252.0이다. ① 프리픽스 ② 네트워크 주소 ③ 브로드캐스트 주소 ④ 일반적인 사용 가능 호스트 수 ⑤ 첫·마지막 호스트 주소를 구하시오.",
+    "answer": "① /22\n② 172.18.76.0\n③ 172.18.79.255\n④ 1022\n⑤ 172.18.76.1 ~ 172.18.79.254",
+    "steps": [
+      "252=11111100이므로 1비트 6개. 마스크 앞 두 옥텟의 16비트와 합쳐 /22다.",
+      "세 번째 옥텟의 블록 크기=256−252=4다. 네 번째 옥텟 전체 0~255가 각 세 번째 옥텟에 함께 포함된다.",
+      "floor(78/4)×4=19×4=76. 세 번째 옥텟의 범위는 76~79다.",
+      "네트워크는 172.18.76.0, 브로드캐스트는 마지막 세 번째 옥텟과 마지막 네 번째 옥텟을 붙인 172.18.79.255다.",
+      "호스트 비트는 32−22=10. 주소 2^10=1024개 중 양 끝 2개를 빼면 1022개다. 첫 주소는 172.18.76.1, 마지막은 172.18.79.254다."
+    ],
+    "trace": {
+      "headers": [
+        "항목",
+        "계산·범위",
+        "결론"
+      ],
+      "rows": [
+        [
+          "프리픽스",
+          "8+8+6+0",
+          "/22"
+        ],
+        [
+          "블록 크기",
+          "256−252",
+          "세 번째 옥텟 4"
+        ],
+        [
+          "블록 시작",
+          "floor(78/4)×4",
+          "76"
+        ],
+        [
+          "전체 주소 범위",
+          "76.0 ~ 79.255",
+          "4×256=1024개"
+        ],
+        [
+          "유효 호스트",
+          "전체−2",
+          "1022개"
+        ]
+      ]
+    },
+    "pitfall": "브로드캐스트를 172.18.78.255로 쓰지 않는다. /22는 세 번째 옥텟 네 개를 포함하므로 이 블록의 끝은 79.255다.",
+    "variation": "IP를 172.18.80.45로 바꾸면 바로 다음 블록인 네트워크 172.18.80.0/22, 브로드캐스트 172.18.83.255가 된다.",
+    "diagram": {
+      "nodes": [
+        "76.0~76.255",
+        "77.0~77.255",
+        "78.0~78.255: 호스트 위치",
+        "79.0~79.255",
+        "76.0 네트워크 → 79.255 브로드캐스트"
+      ],
+      "edges": [
+        [
+          0,
+          1,
+          "256주소"
+        ],
+        [
+          1,
+          2,
+          "256주소"
+        ],
+        [
+          2,
+          3,
+          "256주소"
+        ],
+        [
+          0,
+          4,
+          "시작"
+        ],
+        [
+          3,
+          4,
+          "끝"
+        ]
+      ]
+    },
+    "verification": {
+      "type": "subnet",
+      "ip": "172.18.78.45",
+      "prefix": 22,
+      "expected": {
+        "network": "172.18.76.0",
+        "broadcast": "172.18.79.255",
+        "hosts": 1022,
+        "first": "172.18.76.1",
+        "last": "172.18.79.254"
+      }
+    }
+  },
+  {
+    "id": "pred-network-03",
+    "number": 23,
+    "title": "범위에서 프리픽스 역산: /27을 반으로",
+    "language": "네트워크",
+    "difficulty": "기초",
+    "intent": "2026-2의 분할 범위→프리픽스 유형을 새 주소로 바꾼 계산 연습이다.",
+    "basis": [
+      {
+        "exam": "2026-2",
+        "number": 14,
+        "page": 14
+      },
+      {
+        "exam": "2022-3",
+        "number": 5,
+        "page": 4
+      }
+    ],
+    "prompt": "192.168.40.64/27을 같은 크기의 두 서브넷으로 나눴다. 첫 번째는 192.168.40.64~192.168.40.79, 두 번째는 192.168.40.80~192.168.40.95다. 192.168.40.70이 속한 새 서브넷의 ① 프리픽스 길이 ② 마스크 ③ 네트워크 주소 ④ 브로드캐스트 주소 ⑤ 일반 호스트 수를 구하시오.",
+    "answer": "① 28\n② 255.255.255.240\n③ 192.168.40.64\n④ 192.168.40.79\n⑤ 14",
+    "steps": [
+      "포함된 주소 수는 끝−시작+1. 79−64+1=16개다. +1을 빠뜨리면 15개로 잘못 센다.",
+      "16=2^4이므로 호스트 비트가 4개다. 새 프리픽스=32−4=28이다.",
+      "마지막 옥텟 마스크는 11110000=240. 앞 세 옥텟은 255이므로 255.255.255.240이다.",
+      "70은 64~79에 속한다. 네트워크는 .64, 브로드캐스트는 .79, 유효 범위는 .65~.78이다.",
+      "유효 호스트 수는 16−2=14다. 원래 /27을 두 개로 나눴으므로 네트워크 비트가 하나 늘어 /28이라는 방법으로도 검산한다."
+    ],
+    "trace": {
+      "headers": [
+        "항목",
+        "계산",
+        "결과"
+      ],
+      "rows": [
+        [
+          "주소 수",
+          "79−64+1",
+          "16"
+        ],
+        [
+          "호스트 비트",
+          "16=2^4",
+          "4"
+        ],
+        [
+          "새 프리픽스",
+          "32−4",
+          "28"
+        ],
+        [
+          "마스크 끝자리",
+          "256−16",
+          "240"
+        ],
+        [
+          "유효 호스트 수",
+          "16−2",
+          "14"
+        ]
+      ]
+    },
+    "pitfall": "문제에 처음 나온 /27을 그대로 답하지 않는다. 질문은 원래 네트워크가 아니라 분할 후 새 서브넷의 프리픽스를 묻는다.",
+    "variation": "같은 /27을 네 개의 동일 크기 서브넷으로 나누면 32/4=8개 주소, 호스트 비트 3개, 새 프리픽스 /29, 일반 호스트 수 6개다.",
+    "verification": {
+      "type": "subnet",
+      "ip": "192.168.40.70",
+      "prefix": 28,
+      "expected": {
+        "network": "192.168.40.64",
+        "broadcast": "192.168.40.79",
+        "hosts": 14,
+        "first": "192.168.40.65",
+        "last": "192.168.40.78"
+      },
+      "original_prefix": 27
+    }
+  },
+  {
+    "id": "pred-network-04",
+    "number": 24,
+    "title": "FLSM: 최소 6개 서브넷을 만들려면",
+    "language": "네트워크",
+    "difficulty": "중급",
+    "intent": "기출의 동일 크기 서브넷 분할을 3개에서 6개로 바꾼 독립 변형이다. 필요한 수와 실제 생성 가능한 수를 구별한다.",
+    "basis": [
+      {
+        "exam": "2022-3",
+        "number": 5,
+        "page": 4
+      },
+      {
+        "exam": "2022-2",
+        "number": 9,
+        "page": 6
+      }
+    ],
+    "prompt": "192.168.50.0/24를 FLSM으로 최소 6개의 같은 크기 서브넷으로 나누려 한다. 각 서브넷의 크기를 최대화한다. 서브넷은 네트워크 주소가 작은 순서로 1번부터 센다. ① 새 프리픽스 ② 실제 생성되는 서브넷 수 ③ 5번째 서브넷의 네트워크 주소 ④ 5번째 브로드캐스트 주소 ⑤ 각 서브넷의 일반 호스트 수를 구하시오.",
+    "answer": "① /27\n② 8\n③ 192.168.50.128\n④ 192.168.50.159\n⑤ 30",
+    "steps": [
+      "빌릴 비트 b에 대해 2^b≥6을 만족해야 한다. 2^2=4는 부족, 2^3=8은 충분하다. 크기를 최대화하므로 가장 작은 b=3을 선택한다.",
+      "새 프리픽스는 /24+3=/27. 마스크는 255.255.255.224, 마지막 옥텟의 블록 크기는 256−224=32다.",
+      "시작점은 0·32·64·96·128·160·192·224다. 총 8개이며 이 중 최소 6개를 사용할 수 있다.",
+      "5번째 시작점은 (5−1)×32=128. 브로드캐스트는 128+32−1=159다.",
+      "호스트는 .129~.158, 개수 32−2=30이다. 6으로 256을 나눠 임의의 42주소짜리 서브넷을 만드는 방식은 CIDR 비트 분할이 아니다."
+    ],
+    "trace": {
+      "headers": [
+        "순번",
+        "네트워크 끝자리",
+        "브로드캐스트 끝자리"
+      ],
+      "rows": [
+        [
+          "1",
+          "0",
+          "31"
+        ],
+        [
+          "2",
+          "32",
+          "63"
+        ],
+        [
+          "3",
+          "64",
+          "95"
+        ],
+        [
+          "4",
+          "96",
+          "127"
+        ],
+        [
+          "5",
+          "128",
+          "159"
+        ],
+        [
+          "6",
+          "160",
+          "191"
+        ],
+        [
+          "7",
+          "192",
+          "223"
+        ],
+        [
+          "8",
+          "224",
+          "255"
+        ]
+      ]
+    },
+    "pitfall": "동일한 CIDR 크기로 분할할 때 생성 개수는 2의 거듭제곱이다. '최소 6개 필요'와 '정확히 6개 생성'을 혼동하지 않는다. 5번째 주소는 5×32가 아니라 (5−1)×32다.",
+    "variation": "최소 3개면 b=2, /26, 4개 생성이다. 최소 9개면 b=4, /28, 16개 생성이다.",
+    "verification": {
+      "type": "subnets",
+      "base": "192.168.50.0/24",
+      "new_prefix": 27,
+      "minimum_subnets": 6,
+      "expected_count": 8,
+      "selected_ordinal": 5,
+      "items": [
+        {
+          "type": "subnet",
+          "ip": "192.168.50.0",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.0",
+            "broadcast": "192.168.50.31",
+            "hosts": 30,
+            "first": "192.168.50.1",
+            "last": "192.168.50.30"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.32",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.32",
+            "broadcast": "192.168.50.63",
+            "hosts": 30,
+            "first": "192.168.50.33",
+            "last": "192.168.50.62"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.64",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.64",
+            "broadcast": "192.168.50.95",
+            "hosts": 30,
+            "first": "192.168.50.65",
+            "last": "192.168.50.94"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.96",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.96",
+            "broadcast": "192.168.50.127",
+            "hosts": 30,
+            "first": "192.168.50.97",
+            "last": "192.168.50.126"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.128",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.128",
+            "broadcast": "192.168.50.159",
+            "hosts": 30,
+            "first": "192.168.50.129",
+            "last": "192.168.50.158"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.160",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.160",
+            "broadcast": "192.168.50.191",
+            "hosts": 30,
+            "first": "192.168.50.161",
+            "last": "192.168.50.190"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.192",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.192",
+            "broadcast": "192.168.50.223",
+            "hosts": 30,
+            "first": "192.168.50.193",
+            "last": "192.168.50.222"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.50.224",
+          "prefix": 27,
+          "expected": {
+            "network": "192.168.50.224",
+            "broadcast": "192.168.50.255",
+            "hosts": 30,
+            "first": "192.168.50.225",
+            "last": "192.168.50.254"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "pred-network-05",
+    "number": 25,
+    "title": "라우터 인터페이스: 같은 LAN의 유효 IP 고르기",
+    "language": "네트워크",
+    "difficulty": "중급",
+    "intent": "그림이 필요한 기출 유형을 명확한 새 연결도로 만든 독립 연습이다. 원본의 누락된 그림을 그대로 재현했다고 주장하지 않는다.",
+    "basis": [
+      {
+        "exam": "2026-2",
+        "number": 4,
+        "page": 4
+      },
+      {
+        "exam": "2025-1",
+        "number": 9,
+        "page": 6
+      },
+      {
+        "exam": "2026-1",
+        "number": 8,
+        "page": 6
+      }
+    ],
+    "prompt": "라우터 R의 포트 ②는 LAN A의 ①(192.168.21.40/24)에, 포트 ④는 LAN B의 ③(10.7.19.60/22)에, 포트 ⑤는 LAN C의 ⑥(192.168.22.200/24)에 직접 연결된다. 각 포트에는 연결된 단말과 같은 서브넷의 서로 다른 유효 호스트 IP를 할당한다. 다음 후보에서 ②·④·⑤에 각각 할당할 주소를 고르시오. 후보: 192.168.22.0, 10.7.17.90, 192.168.21.255, 192.168.21.77, 10.7.16.0, 192.168.22.244, 10.7.19.255, 192.168.21.0, 192.168.22.255. 네트워크·브로드캐스트 주소는 할당하지 않는다.",
+    "answer": "② 192.168.21.77\n④ 10.7.17.90\n⑤ 192.168.22.244",
+    "steps": [
+      "먼저 그림의 연결을 따라 포트②→LAN A, 포트④→LAN B, 포트⑤→LAN C를 매칭한다. 번호 자체의 순서로 추측하지 않는다.",
+      "A의 /24는 192.168.21.0~192.168.21.255. 양 끝을 제외하면 후보 중 192.168.21.77이 남는다.",
+      "B의 /22는 세 번째 옥텟의 마스크 252, 블록 크기 4. floor(19/4)×4=16이므로 전체 범위는 10.7.16.0~10.7.19.255다.",
+      "B의 양 끝 10.7.16.0과 10.7.19.255를 제외하면 10.7.17.90이 유효하다. 같은 /22에 속하므로 세 번째 옥텟이 19와 달라도 가능하다.",
+      "C의 /24는 192.168.22.0~192.168.22.255. 유효 후보는 192.168.22.244다. 최종 답을 포트 번호 순서대로 적는다."
+    ],
+    "trace": {
+      "headers": [
+        "포트·LAN",
+        "네트워크",
+        "브로드캐스트",
+        "선택한 유효 IP"
+      ],
+      "rows": [
+        [
+          "②·A",
+          "192.168.21.0",
+          "192.168.21.255",
+          "192.168.21.77"
+        ],
+        [
+          "④·B",
+          "10.7.16.0",
+          "10.7.19.255",
+          "10.7.17.90"
+        ],
+        [
+          "⑤·C",
+          "192.168.22.0",
+          "192.168.22.255",
+          "192.168.22.244"
+        ]
+      ]
+    },
+    "pitfall": "/22에서 세 번째 옥텟이 단말과 똑같아야 한다고 생각하면 10.7.17.90을 놓친다. 같은 서브넷이면서 양 끝 주소가 아니어야 한다는 두 조건을 모두 검사한다.",
+    "variation": "포트②와 포트⑤의 연결 LAN을 바꾸면 선택값도 서로 바뀐다. 서브넷 계산 결과가 같아도 도식의 연결이 바뀌면 번호별 정답은 달라진다.",
+    "diagram": {
+      "nodes": [
+        "LAN A: ① 192.168.21.40/24",
+        "포트 ②",
+        "라우터 R",
+        "포트 ④",
+        "LAN B: ③ 10.7.19.60/22",
+        "포트 ⑤",
+        "LAN C: ⑥ 192.168.22.200/24"
+      ],
+      "edges": [
+        [
+          0,
+          1,
+          "같은 LAN A"
+        ],
+        [
+          1,
+          2,
+          "R의 인터페이스"
+        ],
+        [
+          2,
+          3,
+          "R의 인터페이스"
+        ],
+        [
+          3,
+          4,
+          "같은 LAN B"
+        ],
+        [
+          2,
+          5,
+          "R의 인터페이스"
+        ],
+        [
+          5,
+          6,
+          "같은 LAN C"
+        ]
+      ]
+    },
+    "verification": {
+      "type": "subnets",
+      "port_to_subnet": {
+        "2": 0,
+        "4": 1,
+        "5": 2
+      },
+      "candidates": [
+        "192.168.22.0",
+        "10.7.17.90",
+        "192.168.21.255",
+        "192.168.21.77",
+        "10.7.16.0",
+        "192.168.22.244",
+        "10.7.19.255",
+        "192.168.21.0",
+        "192.168.22.255"
+      ],
+      "expected_assignment": {
+        "2": "192.168.21.77",
+        "4": "10.7.17.90",
+        "5": "192.168.22.244"
+      },
+      "items": [
+        {
+          "type": "subnet",
+          "ip": "192.168.21.40",
+          "prefix": 24,
+          "expected": {
+            "network": "192.168.21.0",
+            "broadcast": "192.168.21.255",
+            "hosts": 254,
+            "first": "192.168.21.1",
+            "last": "192.168.21.254"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "10.7.19.60",
+          "prefix": 22,
+          "expected": {
+            "network": "10.7.16.0",
+            "broadcast": "10.7.19.255",
+            "hosts": 1022,
+            "first": "10.7.16.1",
+            "last": "10.7.19.254"
+          }
+        },
+        {
+          "type": "subnet",
+          "ip": "192.168.22.200",
+          "prefix": 24,
+          "expected": {
+            "network": "192.168.22.0",
+            "broadcast": "192.168.22.255",
+            "hosts": 254,
+            "first": "192.168.22.1",
+            "last": "192.168.22.254"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "pred-network-06",
+    "number": 26,
+    "title": "RIP와 OSPF: 적은 홉과 적은 비용은 다르다",
+    "language": "네트워크",
+    "difficulty": "중급",
+    "intent": "RIP 경로 선택과 OSPF의 링크 비용을 비교하는 기출 근거의 독립 계산 연습이다. 새로운 그림의 모든 링크를 명시한다.",
+    "basis": [
+      {
+        "exam": "2024-2",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2024-1",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2026-2",
+        "number": 8,
+        "page": 8
+      }
+    ],
+    "prompt": "라우터 A·B·C·D·E·F를 잇는 양방향 링크는 다음 여섯 개뿐이다. A-B 비용7, B-F 비용8, A-C 비용1, C-D 비용1, D-E 비용1, E-F 비용1. 한 링크 통과를 1홉으로 센다. OSPF는 주어진 링크 비용의 합을 사용한다. A에서 F까지 ① RIP가 선택할 경로와 홉 수 ② OSPF가 선택할 경로와 비용 합을 구하시오. 최적 경로 동률은 없다.",
+    "answer": "① RIP: A → B → F, 2홉\n② OSPF: A → C → D → E → F, 비용 4",
+    "steps": [
+      "가능한 두 단순 경로를 먼저 적는다. 짧은 연결은 A-B-F, 긴 연결은 A-C-D-E-F다.",
+      "RIP 기준은 홉 수. 첫 경로는 링크 2개라 2홉, 두 번째는 링크 4개라 4홉이다.",
+      "따라서 RIP는 A-B-F를 선택한다. 선 위의 7과 8을 홉 수로 더하지 않는다.",
+      "OSPF 예의 기준은 링크 비용 합. A-B-F는 7+8=15, A-C-D-E-F는 1+1+1+1=4다.",
+      "따라서 OSPF는 비용4의 A-C-D-E-F를 선택한다. 경로 선택 기준을 먼저 정해야 같은 그림을 두 방식으로 풀 수 있다."
+    ],
+    "trace": {
+      "headers": [
+        "경로",
+        "홉 수",
+        "비용 합",
+        "선택"
+      ],
+      "rows": [
+        [
+          "A-B-F",
+          "2",
+          "15",
+          "RIP"
+        ],
+        [
+          "A-C-D-E-F",
+          "4",
+          "4",
+          "OSPF"
+        ]
+      ]
+    },
+    "pitfall": "'최단'이라는 말만 보고 가장 적은 선 수를 두 프로토콜 모두에 적용하지 않는다. RIP는 홉, OSPF 예는 비용이며 두 값은 다를 수 있다.",
+    "variation": "A-B 비용을 1, B-F 비용을 1로 바꾸면 A-B-F의 비용도2가 되어 두 방식 모두 A-B-F를 선택한다. 홉 수는 비용을 바꿔도 변하지 않는다.",
+    "diagram": {
+      "nodes": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "edges": [
+        [
+          0,
+          1,
+          "비용7"
+        ],
+        [
+          1,
+          5,
+          "비용8"
+        ],
+        [
+          0,
+          2,
+          "비용1"
+        ],
+        [
+          2,
+          3,
+          "비용1"
+        ],
+        [
+          3,
+          4,
+          "비용1"
+        ],
+        [
+          4,
+          5,
+          "비용1"
+        ]
+      ]
+    },
+    "verification": {
+      "type": "routes",
+      "nodes": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "edges": [
+        [
+          "A",
+          "B",
+          7
+        ],
+        [
+          "B",
+          "F",
+          8
+        ],
+        [
+          "A",
+          "C",
+          1
+        ],
+        [
+          "C",
+          "D",
+          1
+        ],
+        [
+          "D",
+          "E",
+          1
+        ],
+        [
+          "E",
+          "F",
+          1
+        ]
+      ],
+      "bidirectional": true,
+      "start": "A",
+      "end": "F",
+      "expected_hops": 2,
+      "expected_cost": 4,
+      "expected_hops_path": [
+        "A",
+        "B",
+        "F"
+      ],
+      "expected_cost_path": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    }
+  },
+  {
+    "id": "pred-network-07",
+    "number": 27,
+    "title": "보강: 끝자리가 255여도 항상 브로드캐스트는 아니다",
+    "language": "네트워크",
+    "difficulty": "보강",
+    "intent": "같은 서브넷의 호스트를 고르는 기출 유형에서 흔한 오개념을 집중 연습하는 독립 문제다.",
+    "basis": [
+      {
+        "exam": "2025-1",
+        "number": 9,
+        "page": 6
+      },
+      {
+        "exam": "2026-1",
+        "number": 8,
+        "page": 6
+      }
+    ],
+    "prompt": "기준 호스트는 192.168.11.20이며 마스크는 255.255.254.0이다. 같은 서브넷의 다른 장치에 일반 호스트 IP로 할당할 수 있는 후보를 모두 고르시오. A:192.168.10.1, B:192.168.11.254, C:192.168.12.1, D:192.168.10.0, E:192.168.11.255, F:192.168.10.255. 기준 호스트와 주소가 같은 후보는 없다.",
+    "answer": "A, B, F\n192.168.10.1, 192.168.11.254, 192.168.10.255",
+    "steps": [
+      "254=11111110이므로 /23이다. 세 번째 옥텟 블록 크기=256−254=2다.",
+      "floor(11/2)×2=10이므로 네트워크는 192.168.10.0, 브로드캐스트는 192.168.11.255다.",
+      "유효 호스트는 192.168.10.1~192.168.11.254다. 두 개의 세 번째 옥텟 구간을 한 블록으로 본다.",
+      "A·B는 범위 안의 유효 호스트. C는 다음 블록이라 제외, D는 네트워크, E는 브로드캐스트라 제외한다.",
+      "F의 .10.255는 전체 블록의 끝인 .11.255가 아니다. 호스트 비트 전체가 1이 아니므로 일반 호스트로 사용할 수 있다. 최종 선택은 A·B·F다."
+    ],
+    "trace": {
+      "headers": [
+        "후보",
+        "같은 블록?",
+        "양 끝 제외?",
+        "판정"
+      ],
+      "rows": [
+        [
+          "A 10.1",
+          "예",
+          "통과",
+          "선택"
+        ],
+        [
+          "B 11.254",
+          "예",
+          "통과",
+          "선택"
+        ],
+        [
+          "C 12.1",
+          "아니오",
+          "해당 없음",
+          "제외"
+        ],
+        [
+          "D 10.0",
+          "예",
+          "네트워크",
+          "제외"
+        ],
+        [
+          "E 11.255",
+          "예",
+          "브로드캐스트",
+          "제외"
+        ],
+        [
+          "F 10.255",
+          "예",
+          "통과",
+          "선택"
+        ]
+      ]
+    },
+    "pitfall": "마지막 숫자만 보고 .0은 무조건 네트워크, .255는 무조건 브로드캐스트라고 외우지 않는다. 양 끝 판정은 해당 마스크가 정한 전체 호스트 비트로 해야 한다.",
+    "variation": "마스크를 /24로 바꾸면 블록은 192.168.11.0~192.168.11.255다. 원래 후보 중 B만 같은 서브넷의 유효 호스트로 남는다.",
+    "verification": {
+      "type": "subnet",
+      "ip": "192.168.11.20",
+      "prefix": 23,
+      "expected": {
+        "network": "192.168.10.0",
+        "broadcast": "192.168.11.255",
+        "hosts": 510,
+        "first": "192.168.10.1",
+        "last": "192.168.11.254"
+      },
+      "candidates": [
+        {
+          "label": "A",
+          "ip": "192.168.10.1"
+        },
+        {
+          "label": "B",
+          "ip": "192.168.11.254"
+        },
+        {
+          "label": "C",
+          "ip": "192.168.12.1"
+        },
+        {
+          "label": "D",
+          "ip": "192.168.10.0"
+        },
+        {
+          "label": "E",
+          "ip": "192.168.11.255"
+        },
+        {
+          "label": "F",
+          "ip": "192.168.10.255"
+        }
+      ],
+      "expected_selected": [
+        "A",
+        "B",
+        "F"
+      ]
+    }
+  },
+  {
+    "id": "pred-network-08",
+    "number": 28,
+    "title": "응용 확장: 호스트 70개를 수용하는 최소 크기",
+    "language": "네트워크",
+    "difficulty": "응용",
+    "intent": "기출의 호스트 수 계산·동일 크기 분할을 역으로 적용한 확장 연습이다. 역산 요구 자체가 업로드 자료에서 별도로 출제됐다고 단정하지 않는다.",
+    "basis": [
+      {
+        "exam": "2022-2",
+        "number": 9,
+        "page": 6
+      },
+      {
+        "exam": "2025-2",
+        "number": 8,
+        "page": 5
+      },
+      {
+        "exam": "2022-3",
+        "number": 5,
+        "page": 4
+      }
+    ],
+    "prompt": "192.168.80.0/24 안에서 장치 70개를 모두 수용할 수 있는 가장 작은 일반 IPv4 서브넷 크기를 선택한다. 네트워크·브로드캐스트 주소는 호스트에 할당하지 않는다. ① 최대 가능한 프리픽스 길이 ② 마스크 ③ 서브넷 하나의 사용 가능 호스트 수 ④ 이 크기로 /24를 나눌 때 생기는 서브넷 수 ⑤ 첫 번째 서브넷의 네트워크·브로드캐스트를 구하시오.",
+    "answer": "① 25\n② 255.255.255.128\n③ 126\n④ 2\n⑤ 192.168.80.0 / 192.168.80.127",
+    "steps": [
+      "필요한 호스트 비트 h는 2^h−2≥70을 만족해야 한다. 6비트면 64−2=62라 부족하다.",
+      "7비트면 128−2=126이므로 충분하다. 가장 작은 크기를 원하므로 h=7을 선택한다.",
+      "프리픽스는 32−7=25. 마지막 옥텟 마스크는 10000000=128이다.",
+      "블록 크기=256−128=128주소. /24의 256주소를 128주소씩 나누므로 두 개의 /25 서브넷이 생긴다.",
+      "첫 블록은 .0~.127, 둘째는 .128~.255다. 첫 블록의 네트워크 .0, 브로드캐스트 .127, 호스트 .1~.126으로 검산한다."
+    ],
+    "trace": {
+      "headers": [
+        "후보",
+        "주소 수",
+        "일반 호스트 수",
+        "70개 수용"
+      ],
+      "rows": [
+        [
+          "/26, h=6",
+          "64",
+          "62",
+          "부족"
+        ],
+        [
+          "/25, h=7",
+          "128",
+          "126",
+          "충분·최소 크기"
+        ],
+        [
+          "/24, h=8",
+          "256",
+          "254",
+          "충분하지만 더 큼"
+        ]
+      ]
+    },
+    "pitfall": "70이 64보다 조금 크다고 /26을 선택하지 않는다. 호스트 수는 주소 수에서 양 끝 두 개를 뺀 값이다. 프리픽스가 클수록 네트워크 크기는 작아진다는 방향도 확인한다.",
+    "variation": "장치가 60개면 /26의 62개로 충분하다. 63개면 /26은 부족하여 /25가 필요하다. 이 두 값을 비교하면 2주소 제외의 의미가 분명해진다.",
+    "verification": {
+      "type": "subnet",
+      "ip": "192.168.80.0",
+      "prefix": 25,
+      "expected": {
+        "network": "192.168.80.0",
+        "broadcast": "192.168.80.127",
+        "hosts": 126,
+        "first": "192.168.80.1",
+        "last": "192.168.80.126"
+      },
+      "required_hosts": 70,
+      "base_prefix": 24,
+      "expected_subnet_count": 2
+    }
+  }
+]

@@ -1,0 +1,589 @@
+[
+  {
+    "id": "pred-java-01",
+    "number": 1,
+    "title": "동명의 필드와 재정의 메서드",
+    "language": "Java",
+    "difficulty": "응용",
+    "intent": "필드를 읽을 때의 선언 타입과 인스턴스 메서드를 실행할 때의 실제 객체 타입을 구분하는 능력을 점검한다. 반복 출제 개념을 조합한 자체 연습문항이다.",
+    "basis": [
+      {
+        "exam": "2024-3",
+        "number": 14,
+        "page": 9
+      },
+      {
+        "exam": "2025-2",
+        "number": 18,
+        "page": 10
+      },
+      {
+        "exam": "2026-2",
+        "number": 15,
+        "page": 15
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "class Parent {\n    int x = 4;\n    int read() { return x + 1; }\n}\nclass Child extends Parent {\n    int x = 9;\n    @Override int read() { return x * 2; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        Child c = (Child)p;\n        System.out.print(p.x + \":\" + p.read() + \":\" + c.x);\n    }\n}",
+    "answer": "4:18:9",
+    "steps": [
+      "객체 안에 Parent.x=4와 Child.x=9라는 두 필드가 존재한다.",
+      "p의 선언 타입이 Parent이므로 p.x는 4다.",
+      "read()는 같은 서명으로 재정의되었다. 실제 객체 Child의 read()가 Child.x=9를 읽어 18을 반환한다.",
+      "c는 같은 객체를 Child 타입으로 참조한다. c.x=9이며 새 객체를 생성한 것은 아니다."
+    ],
+    "trace": {
+      "headers": [
+        "식",
+        "선택 기준",
+        "값"
+      ],
+      "rows": [
+        [
+          "p.x",
+          "Parent 선언 타입",
+          4
+        ],
+        [
+          "p.read()",
+          "Child 실제 객체",
+          18
+        ],
+        [
+          "c.x",
+          "Child 선언 타입",
+          9
+        ]
+      ]
+    },
+    "pitfall": "필드도 동적 바인딩된다고 생각하면 첫 값을 9로 잘못 답하게 된다.",
+    "variation": "Child의 read() 메서드를 삭제하면 부모의 구현이 Parent.x를 읽으므로 출력은 4:5:9가 된다."
+  },
+  {
+    "id": "pred-java-02",
+    "number": 2,
+    "title": "생성자 실행 순서와 다른 메서드 서명",
+    "language": "Java",
+    "difficulty": "응용",
+    "intent": "부모 생성자의 실행 시점, 필드 숨김, 오버로딩을 한 흐름에서 읽는 능력을 점검한다. 최근 생성자·super 문항에서 파생한 자체 문제다.",
+    "basis": [
+      {
+        "exam": "2023-1",
+        "number": 20,
+        "page": 12
+      },
+      {
+        "exam": "2024-1",
+        "number": 11,
+        "page": 8
+      },
+      {
+        "exam": "2025-3",
+        "number": 18,
+        "page": 11
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오. 생성자가 출력하는 문자도 포함하시오.",
+    "code": "class Base {\n    int x;\n    Base(int x) {\n        this.x = x;\n        System.out.print(\"P\" + x);\n    }\n    int value() { return x + 2; }\n}\nclass Child extends Base {\n    int x;\n    Child(int v) {\n        super(v + 1);\n        this.x = v;\n        System.out.print(\"C\" + x);\n    }\n    int value(int add) { return super.value() + add; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Child c = new Child(4);\n        Base p = c;\n        System.out.print(\"|\" + p.value() + \":\" + c.value(3));\n    }\n}",
+    "answer": "P5C4|7:10",
+    "steps": [
+      "new Child(4)는 super(5)를 먼저 실행한다. Base.x=5가 되고 P5를 출력한다.",
+      "부모 생성자가 끝난 뒤 Child.x=4를 대입하여 C4를 출력한다.",
+      "Child.value(int)는 인수가 없는 Base.value()를 재정의하지 않는다. p.value()는 5+2=7이다.",
+      "c.value(3)는 super.value()의 7에 3을 더해 10이다."
+    ],
+    "trace": {
+      "headers": [
+        "실행",
+        "Base.x",
+        "Child.x",
+        "출력·반환"
+      ],
+      "rows": [
+        [
+          "super(5)",
+          5,
+          0,
+          "P5"
+        ],
+        [
+          "Child 생성자 본문",
+          5,
+          4,
+          "C4"
+        ],
+        [
+          "p.value()",
+          5,
+          4,
+          7
+        ],
+        [
+          "c.value(3)",
+          5,
+          4,
+          10
+        ]
+      ]
+    },
+    "pitfall": "이름 value가 같아도 매개변수가 다르면 재정의가 아니라 오버로딩이다.",
+    "variation": "Child에 int value() { return x * 2; }를 추가하면 출력은 P5C4|8:10이다. p.value()는 재정의 구현을 실행하지만 super.value()는 여전히 부모 구현을 실행한다."
+  },
+  {
+    "id": "pred-java-03",
+    "number": 3,
+    "title": "음수 기저값과 누적 재귀 호출 수",
+    "language": "Java",
+    "difficulty": "심화",
+    "intent": "기저 조건에 음수가 포함된다는 점과 반환값·공유 호출 횟수가 별개라는 점을 점검한다. 재귀식 문항과 static 상태 문항을 결합한 자체 변형이다.",
+    "basis": [
+      {
+        "exam": "2023-3",
+        "number": 14,
+        "page": 11
+      },
+      {
+        "exam": "2024-2",
+        "number": 8,
+        "page": 7
+      },
+      {
+        "exam": "2024-3",
+        "number": 6,
+        "page": 4
+      },
+      {
+        "exam": "2026-2",
+        "number": 19,
+        "page": 19
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오. calls는 두 함수 호출 사이에 초기화하지 않는다.",
+    "code": "public class Main {\n    static int calls = 0;\n    static int calc(int n) {\n        ++calls;\n        if (n <= 1) return n;\n        int a = calc(n - 2);\n        int b = calc(n - 3);\n        return a + b;\n    }\n    public static void main(String[] args) {\n        int first = calc(5);\n        int second = calc(4);\n        System.out.print(first + \":\" + second + \":\" + calls);\n    }\n}",
+    "answer": "0:0:12",
+    "steps": [
+      "n<=1이면 n을 그대로 반환한다. 따라서 calc(-1)=-1, calc(0)=0, calc(1)=1이다.",
+      "calc(2)=calc(0)+calc(-1)=-1이며 함수 호출은 자기 자신을 포함해 3번이다.",
+      "calc(3)=1, calc(4)=calc(2)+calc(1)=0, calc(5)=calc(3)+calc(2)=0이다.",
+      "calc(5)의 호출 수는 1+3+3=7, calc(4)는 1+3+1=5다. calls는 공유되므로 최종 12다."
+    ],
+    "trace": {
+      "headers": [
+        "n",
+        "calc(n)",
+        "자신 포함 호출 수"
+      ],
+      "rows": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          -1,
+          3
+        ],
+        [
+          3,
+          1,
+          3
+        ],
+        [
+          4,
+          0,
+          5
+        ],
+        [
+          5,
+          0,
+          7
+        ]
+      ]
+    },
+    "pitfall": "n<=1을 n==0 또는 0 반환으로 바꾸어 계산하면 음수 기저값을 놓친다. 결과가 0이어도 호출 횟수가 0인 것은 아니다.",
+    "variation": "기저 조건의 return n을 return 1로 바꾸면 calc(5)=4, calc(4)=3이고 호출 구조는 그대로여서 출력은 4:3:12다."
+  },
+  {
+    "id": "pred-java-04",
+    "number": 4,
+    "title": "문자열 상수·새 객체·별칭 비교",
+    "language": "Java",
+    "difficulty": "기본",
+    "intent": "String 참조의 동일성과 내용의 동일성을 구분하는 능력을 점검한다. 명시적 new와 상수 연결을 사용하여 실행 결과를 확정한 자체 문제다.",
+    "basis": [
+      {
+        "exam": "2023-2",
+        "number": 14,
+        "page": 11
+      },
+      {
+        "exam": "2024-2",
+        "number": 2,
+        "page": 2
+      },
+      {
+        "exam": "2024-3",
+        "number": 1,
+        "page": 2
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"AB\";\n        String b = \"A\" + \"B\";\n        String c = new String(b);\n        String d = c;\n        System.out.print((a == b) + \":\" + (b == c) + \":\"\n            + (c == d) + \":\" + a.equals(c));\n    }\n}",
+    "answer": "true:false:true:true",
+    "steps": [
+      "\"A\"+\"B\"는 컴파일 시간 문자열 상수이므로 b와 a는 같은 문자열 풀의 \"AB\"를 참조한다.",
+      "new String(b)는 내용이 같아도 별도 객체를 생성하므로 b==c는 false다.",
+      "d=c는 객체를 복제하지 않고 같은 참조를 대입한다. c==d는 true다.",
+      "equals는 내용 \"AB\"가 같은지 확인하므로 a.equals(c)는 true다."
+    ],
+    "trace": {
+      "headers": [
+        "비교",
+        "확인 대상",
+        "결과"
+      ],
+      "rows": [
+        [
+          "a == b",
+          "상수 풀의 같은 객체",
+          "true"
+        ],
+        [
+          "b == c",
+          "상수 객체와 new 객체",
+          "false"
+        ],
+        [
+          "c == d",
+          "별칭의 같은 객체",
+          "true"
+        ],
+        [
+          "a.equals(c)",
+          "문자열 내용",
+          "true"
+        ]
+      ]
+    },
+    "pitfall": "문자열이 눈으로 같다고 ==도 true가 되는 것은 아니다. d=c와 new String(c)의 차이를 놓치지 않는다.",
+    "variation": "String d = new String(c);로 바꾸면 c==d가 false로 바뀌어 출력은 true:false:false:true다."
+  },
+  {
+    "id": "pred-java-05",
+    "number": 5,
+    "title": "return 값을 정한 뒤 실행되는 finally",
+    "language": "Java",
+    "difficulty": "응용",
+    "intent": "예외가 발생하는 지점, catch에서 정한 반환값, finally가 변경하는 공유 배열을 함께 추적하는 능력을 점검한다.",
+    "basis": [
+      {
+        "exam": "2024-3",
+        "number": 17,
+        "page": 11
+      },
+      {
+        "exam": "2025-1",
+        "number": 5,
+        "page": 4
+      },
+      {
+        "exam": "2025-2",
+        "number": 4,
+        "page": 3
+      },
+      {
+        "exam": "2025-2",
+        "number": 9,
+        "page": 5
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "public class Main {\n    static int run(int[] a) {\n        int result = 1;\n        try {\n            result = a[2] / a[0];\n            return result + 2;\n        } catch (ArithmeticException e) {\n            result = 4;\n            return result + 3;\n        } finally {\n            a[1] += result;\n            result = 9;\n        }\n    }\n    public static void main(String[] args) {\n        int[] a = {0, 2, 8};\n        int r = run(a);\n        System.out.print(r + \":\" + a[1]);\n    }\n}",
+    "answer": "7:6",
+    "steps": [
+      "8/0에서 ArithmeticException이 발생하여 try의 result 대입과 return은 완료되지 않는다.",
+      "catch에서 result=4가 되고 return 식의 값 4+3=7을 계산한다.",
+      "메서드가 돌아가기 전에 finally가 실행되어 공유 배열 a[1]을 2+4=6으로 바꾼다.",
+      "finally의 지역 result=9 대입은 이미 계산한 반환값 7을 바꾸지 않는다. finally에 새 return이나 예외는 없으므로 7이 반환된다."
+    ],
+    "trace": {
+      "headers": [
+        "실행 단계",
+        "result",
+        "a[1]",
+        "반환값"
+      ],
+      "rows": [
+        [
+          "진입",
+          1,
+          2,
+          "미정"
+        ],
+        [
+          "8/0 예외",
+          1,
+          2,
+          "미정"
+        ],
+        [
+          "catch 대입·return 식 계산",
+          4,
+          2,
+          7
+        ],
+        [
+          "finally 배열 변경",
+          4,
+          6,
+          7
+        ],
+        [
+          "finally 지역 대입",
+          9,
+          6,
+          7
+        ]
+      ]
+    },
+    "pitfall": "finally가 실행된다는 사실과 finally 안의 지역 변수 대입이 반환값을 다시 계산한다는 주장을 혼동하면 안 된다.",
+    "variation": "배열을 {2,2,8}로 바꾸면 예외 없이 result=4, try 반환값=6, finally 뒤 a[1]=6이므로 출력은 6:6이다."
+  },
+  {
+    "id": "pred-java-06",
+    "number": 6,
+    "title": "정수 나눗셈과 단락 평가의 상태 변화",
+    "language": "Java",
+    "difficulty": "기본",
+    "intent": "논리식의 진릿값뿐 아니라 실행되지 않은 증가 연산을 구분하는 능력을 점검한다. 기존 증가·나머지·조건식 유형의 자체 변형이다.",
+    "basis": [
+      {
+        "exam": "2023-1",
+        "number": 1,
+        "page": 2
+      },
+      {
+        "exam": "2024-2",
+        "number": 7,
+        "page": 6
+      },
+      {
+        "exam": "2025-3",
+        "number": 17,
+        "page": 10
+      }
+    ],
+    "prompt": "다음 Java 프로그램의 표준 출력 결과를 쓰시오.",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 2, y = 0, z = 11;\n        boolean ok = (z / 4 == 2) && (++x > 2) || (y++ > 0);\n        int r = ok ? z / 3 : z / 2;\n        System.out.print(x + \":\" + y + \":\" + r);\n    }\n}",
+    "answer": "3:0:3",
+    "steps": [
+      "int 나눗셈 11/4는 2이므로 첫 조건은 true다.",
+      "&&의 왼쪽이 true라서 ++x를 실행한다. x=3이고 3>2는 true다.",
+      "&&가 ||보다 먼저 묶인다. 왼쪽 묶음이 true이므로 오른쪽 y++는 실행하지 않아 y=0이다.",
+      "ok가 true이므로 r=11/3=3이다."
+    ],
+    "trace": {
+      "headers": [
+        "식",
+        "평가 여부",
+        "값·상태"
+      ],
+      "rows": [
+        [
+          "z / 4 == 2",
+          "실행",
+          "true"
+        ],
+        [
+          "++x > 2",
+          "실행",
+          "x=3, true"
+        ],
+        [
+          "y++ > 0",
+          "단락으로 생략",
+          "y=0"
+        ],
+        [
+          "ok ? z/3 : z/2",
+          "앞 가지 선택",
+          "r=3"
+        ]
+      ]
+    },
+    "pitfall": "단락 평가로 식을 건너뛰면 그 안의 증가 연산도 건너뛴다. 정수 나눗셈 결과에 소수 부분을 남겨서는 안 된다.",
+    "variation": "z=7로 바꾸면 첫 조건이 false여서 ++x는 생략된다. y++는 0을 비교한 뒤 y=1이 되고 ok=false이므로 출력은 2:1:3이다."
+  },
+  {
+    "id": "pred-sql-01",
+    "number": 7,
+    "title": "상관 평균과 빈 집합의 NULL",
+    "language": "SQL",
+    "difficulty": "심화",
+    "intent": "바깥 행에 따라 달라지는 서브쿼리, 중복 행의 평균 기여, NULL 제외와 빈 집합을 구별하는 능력을 점검한다.",
+    "basis": [
+      {
+        "exam": "2024-1",
+        "number": 12,
+        "page": 9
+      },
+      {
+        "exam": "2026-1",
+        "number": 11,
+        "page": 7
+      },
+      {
+        "exam": "2026-2",
+        "number": 7,
+        "page": 7
+      }
+    ],
+    "prompt": "준비 구문을 실행한 뒤 마지막 SELECT가 반환하는 결과를 쓰시오. 표의 헤더도 표시하시오. NULL은 값이 없음을 의미한다.",
+    "code": "CREATE TABLE Credits(id INTEGER, points INTEGER);\nCREATE TABLE Charges(id INTEGER, fee INTEGER);\nINSERT INTO Credits VALUES (1,12),(2,24),(3,36),(4,48),(5,60);\nINSERT INTO Charges VALUES (1,NULL),(1,6),(1,18),(2,30),(4,210),(9,100);\nSELECT COUNT(*) AS result\nFROM Credits AS current\nWHERE current.points > (\n    SELECT AVG(fee) FROM Charges\n    WHERE Charges.id IN (\n        SELECT prior.id FROM Credits AS prior\n        WHERE prior.points < current.points\n    )\n);",
+    "answer": "result\n3",
+    "steps": [
+      "현재 Credits 행을 하나 고정하고 prior.points < current.points를 만족하는 id 집합을 구한다.",
+      "그 id의 Charges.fee를 모은다. AVG는 NULL을 제외하지만 중복 id의 서로 다른 행은 각각 포함한다.",
+      "points=12는 대상 행이 없어 AVG=NULL이며 비교 결과 UNKNOWN으로 제외된다.",
+      "points=24,36,48은 각각 평균 12,18,18보다 크므로 통과한다. points=60은 평균 66보다 작아 제외된다.",
+      "통과한 세 행을 COUNT(*)로 센다."
+    ],
+    "trace": {
+      "headers": [
+        "현재 points",
+        "prior id 집합",
+        "평균 대상 fee",
+        "AVG",
+        "통과"
+      ],
+      "rows": [
+        [
+          12,
+          "{}",
+          "없음",
+          "NULL",
+          "아니오"
+        ],
+        [
+          24,
+          "{1}",
+          "6,18 (NULL 제외)",
+          12,
+          "예"
+        ],
+        [
+          36,
+          "{1,2}",
+          "6,18,30",
+          18,
+          "예"
+        ],
+        [
+          48,
+          "{1,2,3}",
+          "6,18,30",
+          18,
+          "예"
+        ],
+        [
+          60,
+          "{1,2,3,4}",
+          "6,18,30,210",
+          66,
+          "아니오"
+        ]
+      ]
+    },
+    "pitfall": "안쪽 평균을 한 번만 계산하여 모든 바깥 행에 적용하면 틀린다. AVG(NULL)이 0이라고 가정해도 첫 행 판정이 틀린다.",
+    "variation": "AVG(fee)를 COALESCE(AVG(fee),0)으로 바꾸면 빈 집합의 평균을 0으로 대체한다. 첫 행도 통과하여 result는 4가 된다."
+  },
+  {
+    "id": "pred-sql-02",
+    "number": 8,
+    "title": "외부 조인 중복과 그룹별 NULL 개수",
+    "language": "SQL",
+    "difficulty": "응용",
+    "intent": "외부 조인이 보존한 행과 일치 키의 중복으로 늘어난 행을 그린 뒤 COUNT·SUM·HAVING을 적용하는 능력을 점검한다.",
+    "basis": [
+      {
+        "exam": "2023-1",
+        "number": 16,
+        "page": 8
+      },
+      {
+        "exam": "2024-3",
+        "number": 3,
+        "page": 3
+      },
+      {
+        "exam": "2025-3",
+        "number": 20,
+        "page": 13
+      },
+      {
+        "exam": "2026-2",
+        "number": 18,
+        "page": 18
+      }
+    ],
+    "prompt": "준비 구문을 실행한 뒤 마지막 SELECT가 반환하는 결과를 쓰시오. 헤더를 포함하여 ORDER BY 순서대로 표시하시오.",
+    "code": "CREATE TABLE Members(id INTEGER, grp TEXT);\nCREATE TABLE Scores(mid INTEGER, points INTEGER);\nINSERT INTO Members VALUES (1,'A'),(2,'A'),(3,'B'),(4,'B'),(5,'C');\nINSERT INTO Scores VALUES (1,70),(1,NULL),(2,90),(5,100),(9,20);\nSELECT m.grp,\n       COUNT(*) AS rows_all,\n       COUNT(s.points) AS scored,\n       COALESCE(SUM(s.points),0) AS total\nFROM Members AS m LEFT JOIN Scores AS s ON m.id = s.mid\nGROUP BY m.grp\nHAVING COUNT(*) > COUNT(s.points)\nORDER BY m.grp;",
+    "answer": "grp|rows_all|scored|total\nA|3|2|160\nB|2|0|0",
+    "steps": [
+      "LEFT JOIN은 모든 Members 행을 보존한다. id=1은 Scores의 두 행과 일치하여 결과 두 행을 만든다.",
+      "A 그룹은 조인 뒤 3행이며 points가 NULL 아닌 값은 70·90 두 개다. 합은 160이다.",
+      "B 그룹 회원 둘은 일치 점수가 없어 각각 NULL로 확장된다. 2행, 알려진 점수 0개, SUM=NULL이므로 COALESCE가 0으로 바꾼다.",
+      "C 그룹은 한 행에 점수 100이 있어 COUNT(*)=COUNT(points)=1이다.",
+      "HAVING에서 A의 3>2, B의 2>0만 참이다. C를 제외하고 A,B 순서로 출력한다."
+    ],
+    "trace": {
+      "headers": [
+        "그룹",
+        "원래 회원 수",
+        "조인 후 행 수",
+        "NULL 아닌 points 수",
+        "SUM(points)",
+        "HAVING"
+      ],
+      "rows": [
+        [
+          "A",
+          2,
+          3,
+          2,
+          160,
+          "통과"
+        ],
+        [
+          "B",
+          2,
+          2,
+          0,
+          "NULL",
+          "통과"
+        ],
+        [
+          "C",
+          1,
+          1,
+          1,
+          100,
+          "제외"
+        ]
+      ]
+    },
+    "pitfall": "COUNT(*)는 원래 회원 수가 아니라 조인 결과 행 수다. 점수가 NULL인 실제 매칭 행과 조인에 실패한 행을 같은 원인으로 설명해서는 안 된다.",
+    "variation": "HAVING의 COUNT(s.points)를 COUNT(s.mid)로 바꾸면 A는 점수 NULL인 행도 mid=1이므로 3>3이 거짓이 된다. B만 남아 결과는 B|2|0|0 한 행이다."
+  }
+]
