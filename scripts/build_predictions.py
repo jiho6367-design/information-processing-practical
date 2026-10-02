@@ -30,7 +30,7 @@ def graph(diagram):
             angle=2*math.pi*i/len(nodes)-math.pi/2
             positions.append((340+250*math.cos(angle),210+145*math.sin(angle)))
         view='0 0 680 420'
-    parts=['<div class="svg-board"><svg viewBox="'+view+'" role="img" aria-label="문제에서 주어진 네트워크 연결도">']
+    parts=['<div class="svg-board"><svg data-long="'+str(long_labels).lower()+'" viewBox="'+view+'" role="img" aria-label="문제에서 주어진 네트워크 연결도">']
     for edge in edges:
         a,b=edge[:2];label=edge[2] if len(edge)>2 else ''
         if isinstance(a,str):a=nodes.index(a)
@@ -86,11 +86,11 @@ def main():
     for x in intents:
         intentcards.append('<article class="panel"><h3>'+esc(x['title'])+'</h3><p>'+esc(x['claim'])+'</p><p><strong>관찰 근거</strong> '+esc(x['evidence'])+'</p><p><strong>예상 변형</strong> '+esc(x['expected_variation'])+'</p><div class="tip"><strong>준비 방법</strong><p>'+esc(x['study_action'])+'</p></div><footer class="sources">'+''.join(source(s) for s in x['sources'])+'</footer></article>')
     styles=re.search(r'<style>([\s\S]*?)</style>',(OUT/'guide.template.html').read_text(encoding='utf-8'))[1]
-    template=(OUT/'predictions.template.html').read_text(encoding='utf-8')
+    template=(OUT/'predictions.template.html').read_text(encoding='utf-8-sig')
     rep={'STYLE':styles,'INTENT':''.join(intentcards),'TOTAL':len(parts),'NETWORK_COUNT':sum(q['language']=='네트워크' for q in parts)}
     for lang,key in [('C','C'),('Java','JAVA'),('Python','PYTHON'),('SQL','SQL'),('네트워크','NETWORK')]:rep[key+'_QUESTIONS']=''.join(groups[lang])
     for k,v in rep.items():template=template.replace('__'+k+'__',str(v))
-    (OUT/'predictions.html').write_text(template,encoding='utf-8')
+    (OUT/'predictions.html').write_text(template.rstrip()+'\n',encoding='utf-8')
     (DATA/'predictions.json').write_text(json.dumps(parts,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'questions':len(parts),'network':rep['NETWORK_COUNT'],'bytes':len(template.encode())},ensure_ascii=False))
 
