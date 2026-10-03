@@ -1,0 +1,147 @@
+<div class="normalization-guide" data-norm-guide>
+  <div class="norm-intro">
+    <p class="norm-eyebrow">조건을 외운 다음에는, 이 순서로 표를 봅니다</p>
+    <h3>어느 값을 따로 보관해야 할까?</h3>
+    <p><strong>릴레이션은 표</strong>입니다. <strong>후보키는 한 행을 고르는 최소 열 조합</strong>입니다.</p>
+    <div class="norm-road"><span>한 칸에 여러 값?</span><b>→</b><span>키 일부만으로 결정?</span><b>→</b><span>다른 값을 거쳐 결정?</span></div>
+    <p class="norm-small">색은 열의 연결을 표시합니다. 같은 색의 열을 함께 새 표로 옮기는 과정을 보세요.</p>
+    <p class="norm-table-hint">좁은 화면에서는 표를 좌우로 밀어 마지막 열까지 보세요.</p>
+  </div>
+
+  <div class="norm-navigation" hidden>
+    <div class="norm-tabs" role="tablist" aria-label="정규화 단계">
+      <button type="button" id="norm-tab-1nf" role="tab" aria-controls="norm-panel-1nf" aria-selected="true" data-norm-tab="1nf">① 1NF <small>한 칸에 한 값</small></button>
+      <button type="button" id="norm-tab-2nf" role="tab" aria-controls="norm-panel-2nf" aria-selected="false" tabindex="-1" data-norm-tab="2nf">② 2NF <small>키 일부를 분리</small></button>
+      <button type="button" id="norm-tab-3nf" role="tab" aria-controls="norm-panel-3nf" aria-selected="false" tabindex="-1" data-norm-tab="3nf">③ 3NF <small>중간 정보를 분리</small></button>
+      <button type="button" id="norm-tab-bcnf" role="tab" aria-controls="norm-panel-bcnf" aria-selected="false" tabindex="-1" data-norm-tab="bcnf">④ BCNF <small>3NF와 비교</small></button>
+      <button type="button" id="norm-tab-4nf" role="tab" aria-controls="norm-panel-4nf" aria-selected="false" tabindex="-1" data-norm-tab="4nf">⑤ 4NF <small>독립된 목록</small></button>
+      <button type="button" id="norm-tab-5nf" role="tab" aria-controls="norm-panel-5nf" aria-selected="false" tabindex="-1" data-norm-tab="5nf">⑥ 5NF <small>세 관계로 복원</small></button>
+    </div>
+    <button class="norm-show-all" type="button" data-norm-all aria-pressed="false">전체 과정을 한 번에 보기</button>
+  </div>
+
+  <div class="norm-panel" id="norm-panel-1nf" data-norm-panel="1nf" role="tabpanel" aria-labelledby="norm-tab-1nf" tabindex="0">
+    <div class="norm-panel-heading"><span class="norm-stage">1NF</span><h4>한 칸에 담은 여러 수강을, 한 행씩 꺼냅니다</h4></div>
+    <div class="norm-relation">
+      <h5>분리 전 · 아직 1NF 아님</h5>
+      <div class="table-scroll"><table><thead><tr><th scope="col">학번</th><th scope="col">학생이름</th><th scope="col">수강정보 <span class="norm-badge">한 칸에 2개</span></th></tr></thead><tbody>
+        <tr><td>S1</td><td data-norm-name="related">민수</td><td class="norm-warn"><span class="norm-packed">DB / T1 / <span data-norm-phone="related">1111</span> / 90점</span><span class="norm-packed">Java / T2 / 2222 / 80점</span></td></tr>
+        <tr><td>S2</td><td>지연</td><td class="norm-warn"><span class="norm-packed">DB / T1 / <span data-norm-phone="related">1111</span> / 85점</span><span class="norm-packed">Python / T1 / <span data-norm-phone="related">1111</span> / 95점</span></td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="norm-split-arrow"><span>↓</span> 수강 한 건을 한 행으로 · 각 정보를 각각의 칸으로</div>
+    <div class="norm-relation">
+      <h5>분리 후 · 1NF <small>이 수강표를 다음 단계에서도 사용합니다</small></h5>
+      <div class="table-scroll"><table data-norm-relation="enrollment-1nf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key">과목</th><th scope="col">학생이름</th><th scope="col">강사번호</th><th scope="col">강사전화</th><th scope="col">성적</th></tr></thead><tbody>
+        <tr><td>S1</td><td>DB</td><td data-norm-name="related">민수</td><td>T1</td><td data-norm-phone="related">1111</td><td>90</td></tr>
+        <tr><td>S1</td><td>Java</td><td data-norm-name="related">민수</td><td>T2</td><td>2222</td><td>80</td></tr>
+        <tr><td>S2</td><td>DB</td><td>지연</td><td>T1</td><td data-norm-phone="related">1111</td><td>85</td></tr>
+        <tr><td>S2</td><td>Python</td><td>지연</td><td>T1</td><td data-norm-phone="related">1111</td><td>95</td></tr>
+      </tbody></table></div>
+      <p class="norm-small"><span class="norm-key-label">밑줄 열 = 키</span> 이 예제의 키는 <strong>{학번, 과목}</strong>입니다. 한 학생은 같은 과목을 한 번 수강한다고 정했습니다.</p>
+    </div>
+    <div class="norm-verdict"><strong>지금은 1NF입니다.</strong><span>한 칸에 한 값이 되었지만, 이름과 강사 정보는 아직 반복됩니다. 2NF에서 그 이유를 찾습니다.</span></div>
+    <button class="norm-continue" type="button" data-norm-go="2nf">같은 표로 2NF 확인하기 →</button>
+  </div>
+
+  <div class="norm-panel" id="norm-panel-2nf" data-norm-panel="2nf" role="tabpanel" aria-labelledby="norm-tab-2nf" tabindex="0">
+    <div class="norm-panel-heading"><span class="norm-stage">2NF</span><h4>학번만으로 아는 정보는, 수강표에서 꺼냅니다</h4></div>
+    <div class="norm-rules"><strong>이 예제에서 정한 규칙</strong><span>학생당 이름 하나 · 과목당 강사 한 명 · 강사당 전화 하나 · 학생·과목당 성적 하나</span></div>
+    <div class="norm-key-check"><div><span>학번 S1만 고르면</span><strong>DB와 Java, 2행</strong><small>수강 한 건을 고르지 못함</small></div><div><span>과목 DB만 고르면</span><strong>S1과 S2, 2행</strong><small>수강 한 건을 고르지 못함</small></div><div class="norm-good"><span>S1 + DB를 고르면</span><strong>90점인 1행</strong><small>둘을 합쳐야 한 수강을 고름</small></div></div>
+    <div class="norm-focus-buttons" aria-label="어떤 열이 함께 정해지는지 표시" hidden><button type="button" data-norm-focus="all" aria-pressed="true">전체 연결</button><button type="button" data-norm-focus="student" aria-pressed="false">학번만 보면?</button><button type="button" data-norm-focus="course" aria-pressed="false">과목만 보면?</button><button type="button" data-norm-focus="grade" aria-pressed="false">둘 다 필요하면?</button></div>
+    <div class="norm-relation norm-colored" data-norm-focus-table data-focus="all">
+      <h5>분리 전 · 1NF <small>같은 색의 열끼리 연결됩니다</small></h5>
+      <div class="table-scroll"><table data-norm-relation="enrollment-before-2nf"><thead><tr><th scope="col" class="norm-key" data-family="student">학번</th><th scope="col" class="norm-key" data-family="course">과목</th><th scope="col" data-family="student">학생이름</th><th scope="col" data-family="course">강사번호</th><th scope="col" data-family="course">강사전화</th><th scope="col" data-family="grade">성적</th></tr></thead><tbody>
+        <tr><td data-family="student">S1</td><td data-family="course">DB</td><td data-family="student" data-norm-name="before">민수</td><td data-family="course">T1</td><td data-family="course" data-norm-phone="related">1111</td><td data-family="grade">90</td></tr>
+        <tr><td data-family="student">S1</td><td data-family="course">Java</td><td data-family="student" data-norm-name="before">민수</td><td data-family="course">T2</td><td data-family="course">2222</td><td data-family="grade">80</td></tr>
+        <tr><td data-family="student">S2</td><td data-family="course">DB</td><td data-family="student">지연</td><td data-family="course">T1</td><td data-family="course" data-norm-phone="related">1111</td><td data-family="grade">85</td></tr>
+        <tr><td data-family="student">S2</td><td data-family="course">Python</td><td data-family="student">지연</td><td data-family="course">T1</td><td data-family="course" data-norm-phone="related">1111</td><td data-family="grade">95</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="norm-dependencies">
+      <div class="norm-dependency norm-student"><span><b>학번</b><small>S1만 알아도</small></span><i aria-hidden="true">→</i><span><b>학생이름</b><small><span data-norm-name="related">민수</span>로 정해짐</small></span><em>키의 일부로 결정</em></div>
+      <div class="norm-dependency norm-course"><span><b>과목</b><small>DB만 알아도</small></span><i aria-hidden="true">→</i><span><b>강사번호·전화</b><small>T1·<span data-norm-phone="related">1111</span>로 정해짐</small></span><em>키의 일부로 결정</em></div>
+      <div class="norm-dependency norm-grade"><span><b>학번 + 과목</b><small>S1 + DB가 있어야</small></span><i aria-hidden="true">→</i><span><b>성적</b><small>90점으로 정해짐</small></span><em>전체 키가 필요</em></div>
+    </div>
+    <div class="norm-split-arrow"><span>↓</span> 학번 정보 / 과목 정보 / 수강 한 건의 정보로 분리</div>
+    <div class="norm-grid norm-three">
+      <div class="norm-relation norm-student"><h5>학생</h5><div class="table-scroll"><table data-norm-relation="student-2nf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col">학생이름</th></tr></thead><tbody><tr><td>S1</td><td data-norm-name="after">민수</td></tr><tr><td>S2</td><td>지연</td></tr></tbody></table></div><p class="norm-small">이름은 학생당 한 번만 저장</p></div>
+      <div class="norm-relation norm-course"><h5>과목</h5><div class="table-scroll"><table data-norm-relation="course-2nf"><thead><tr><th scope="col" class="norm-key">과목</th><th scope="col">강사번호</th><th scope="col">강사전화</th></tr></thead><tbody><tr><td>DB</td><td>T1</td><td data-norm-phone="related">1111</td></tr><tr><td>Java</td><td>T2</td><td>2222</td></tr><tr><td>Python</td><td>T1</td><td data-norm-phone="related">1111</td></tr></tbody></table></div><p class="norm-small">전화 중복은 3NF에서 해결</p></div>
+      <div class="norm-relation norm-grade"><h5>수강</h5><div class="table-scroll"><table data-norm-relation="enrollment-2nf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key">과목</th><th scope="col">성적</th></tr></thead><tbody><tr><td>S1</td><td>DB</td><td>90</td></tr><tr><td>S1</td><td>Java</td><td>80</td></tr><tr><td>S2</td><td>DB</td><td>85</td></tr><tr><td>S2</td><td>Python</td><td>95</td></tr></tbody></table></div><p class="norm-small">성적에는 학번과 과목이 필요</p></div>
+    </div>
+    <div class="norm-experiment" hidden data-norm-experiment><button type="button" data-norm-rename>민수의 이름을 준호로 바꿔 보기</button><output data-norm-rename-result aria-live="polite">위 표의 2칸과 아래 학생표의 1칸을 비교해 보세요.</output></div>
+    <div class="norm-verdict"><strong>키 일부에만 딸린 정보를 분리 → 2NF</strong><span>이것이 <b>부분 함수적 종속 제거</b>입니다. 분리 전 수강표의 답을 물으면 <b>1NF</b>, 이 분리 작업의 목표를 물으면 <b>2NF</b>입니다.</span></div>
+    <button class="norm-continue" type="button" data-norm-go="3nf">과목표에 남은 중복, 3NF로 보기 →</button>
+  </div>
+
+  <div class="norm-panel" id="norm-panel-3nf" data-norm-panel="3nf" role="tabpanel" aria-labelledby="norm-tab-3nf" tabindex="0">
+    <div class="norm-panel-heading"><span class="norm-stage">3NF</span><h4>강사의 전화는, 과목표에 반복해서 적지 않습니다</h4></div>
+    <div class="norm-chain"><span class="norm-course"><b>과목 DB</b><small>이 표의 키</small></span><i aria-hidden="true">→</i><span class="norm-instructor"><b>강사 T1</b><small>중간 정보</small></span><i aria-hidden="true">→</i><span class="norm-instructor"><b>전화 <span data-norm-phone="related">1111</span></b><small>강사에 딸린 정보</small></span></div>
+    <div class="norm-grid">
+      <div class="norm-relation"><h5>분리 전 과목표 · 2NF</h5><div class="table-scroll"><table data-norm-relation="course-before-3nf"><thead><tr><th scope="col" class="norm-key">과목</th><th scope="col">강사번호</th><th scope="col">강사전화</th></tr></thead><tbody><tr><td>DB</td><td class="norm-instructor">T1</td><td class="norm-instructor" data-norm-phone="before">1111</td></tr><tr><td>Java</td><td>T2</td><td>2222</td></tr><tr><td>Python</td><td class="norm-instructor">T1</td><td class="norm-instructor" data-norm-phone="before">1111</td></tr></tbody></table></div></div>
+      <div class="norm-observation"><strong>전화번호를 고르는 데<br>과목까지 알 필요가 있나요?</strong><p><b>T1만 알아도 <span data-norm-phone="related">1111</span></b>입니다.</p><p>과목표의 키는 <b>과목</b>인데, 전화는 키가 아닌 <b>강사번호</b>에 딸려 있습니다.</p></div>
+    </div>
+    <div class="norm-split-arrow"><span>↓</span> 강사번호 + 강사전화만 새 강사표로 옮기기</div>
+    <div class="norm-grid">
+      <div class="norm-relation norm-course"><h5>과목 · 3NF <small>학생·수강표는 2NF 단계 그대로</small></h5><div class="table-scroll"><table data-norm-relation="course-3nf"><thead><tr><th scope="col" class="norm-key">과목</th><th scope="col">강사번호</th></tr></thead><tbody><tr><td>DB</td><td>T1</td></tr><tr><td>Java</td><td>T2</td></tr><tr><td>Python</td><td>T1</td></tr></tbody></table></div></div>
+      <div class="norm-relation norm-instructor"><h5>강사 · 3NF</h5><div class="table-scroll"><table data-norm-relation="instructor-3nf"><thead><tr><th scope="col" class="norm-key">강사번호</th><th scope="col">강사전화</th></tr></thead><tbody><tr><td>T1</td><td data-norm-phone="after">1111</td></tr><tr><td>T2</td><td>2222</td></tr></tbody></table></div><p class="norm-small">T1 전화는 한 번만 저장</p></div>
+    </div>
+    <div class="norm-experiment" hidden data-norm-experiment><button type="button" data-norm-change-phone>T1의 전화를 9999로 바꿔 보기</button><output data-norm-phone-result aria-live="polite">분리 전 2칸과 분리 후 1칸을 비교해 보세요.</output></div>
+    <div class="norm-verdict"><strong>키 → 중간 정보 → 다른 정보, 중간에서 분리 → 3NF</strong><span><b>과목 → 강사번호 → 강사전화</b>가 이 예제의 <b>이행 함수적 종속</b>입니다. 강사표에서는 강사번호가 키가 되므로 전화가 자기 표의 키에 바로 딸립니다.</span></div>
+    <details class="norm-note"><summary>값이 반복되면 모두 잘못된 표인가요?</summary><p>아닙니다. 과목표에 T1이 두 번 있어도 괜찮습니다. 두 과목의 담당 강사가 같다는 연결 정보입니다. <strong>T1의 전화 자체를 여러 번 저장하는 중복</strong>을 없앤 것입니다.</p></details>
+    <button class="norm-continue" type="button" data-norm-go="bcnf">3NF인데 BCNF는 아닌 경우 보기 →</button>
+  </div>
+
+  <div class="norm-panel" id="norm-panel-bcnf" data-norm-panel="bcnf" role="tabpanel" aria-labelledby="norm-tab-bcnf" tabindex="0">
+    <div class="norm-panel-heading"><span class="norm-stage">BCNF</span><h4>키에 들어가는 열이라도, 혼자 다른 값을 정하면 확인합니다</h4></div>
+    <div class="norm-rules"><strong>새 예제의 규칙 · 앞 수강표와 다릅니다</strong><span>강사 한 명은 과목 하나만 담당 · 같은 과목에 여러 강사 가능 · 학생은 같은 과목에 강사 한 명만 배정</span></div>
+    <div class="norm-relation"><h5>강사 배정표</h5><div class="table-scroll"><table data-norm-relation="assignment-before-bcnf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key norm-course">과목</th><th scope="col" class="norm-key norm-instructor">강사번호</th></tr></thead><tbody><tr><td>S1</td><td class="norm-course">DB</td><td class="norm-instructor">T1</td></tr><tr><td>S2</td><td class="norm-course">DB</td><td class="norm-instructor">T1</td></tr><tr><td>S3</td><td>DB</td><td>T3</td></tr><tr><td>S1</td><td>Java</td><td>T2</td></tr></tbody></table></div><p class="norm-small">여기서 밑줄은 <strong>어느 후보키에든 포함되는 열</strong>입니다. 세 열을 모두 묶어야 하는 것은 아닙니다.</p></div>
+    <div class="norm-grid norm-key-options"><div><small>후보키 ①</small><strong>학번 + 과목</strong><span>S1 + DB → T1 한 명</span></div><div><small>후보키 ②</small><strong>학번 + 강사번호</strong><span>S1 + T1 → DB 한 과목</span></div></div>
+    <div class="norm-chain"><span class="norm-instructor"><b>강사번호 T1</b><small>어떤 학생인지는 못 고름</small></span><i aria-hidden="true">→</i><span class="norm-course"><b>과목 DB</b><small>과목 하나는 고를 수 있음</small></span></div>
+    <div class="norm-grid norm-compare"><div class="norm-good"><h5>3NF는 만족</h5><p><strong>과목은 후보키 ①에 포함된 열</strong>입니다. 3NF는 오른쪽 값이 후보키에 포함된 열이면 이 관계를 허용합니다.</p></div><div class="norm-warn"><h5>BCNF는 불만족</h5><p><strong>T1만으로는 한 행을 못 고릅니다.</strong> S1과 S2 두 행이 남는데, T1이 과목을 정합니다. BCNF는 이 예외를 허용하지 않습니다.</p></div></div>
+    <div class="norm-split-arrow"><span>↓</span> 강사번호 → 과목을 분리 · 강사번호가 자기 표의 키가 되게</div>
+    <div class="norm-grid">
+      <div class="norm-relation norm-instructor"><h5>강사 담당 · BCNF</h5><div class="table-scroll"><table data-norm-relation="instructor-bcnf"><thead><tr><th scope="col" class="norm-key">강사번호</th><th scope="col">과목</th></tr></thead><tbody><tr><td>T1</td><td>DB</td></tr><tr><td>T3</td><td>DB</td></tr><tr><td>T2</td><td>Java</td></tr></tbody></table></div></div>
+      <div class="norm-relation"><h5>학생 배정 · BCNF</h5><div class="table-scroll"><table data-norm-relation="assignment-bcnf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key">강사번호</th></tr></thead><tbody><tr><td>S1</td><td>T1</td></tr><tr><td>S2</td><td>T1</td></tr><tr><td>S3</td><td>T3</td></tr><tr><td>S1</td><td>T2</td></tr></tbody></table></div></div>
+    </div>
+    <div class="norm-verdict"><strong>분리 전의 가장 높은 정규형은 3NF입니다.</strong><span><b>강사번호 → 과목</b>의 왼쪽인 강사번호가 원래 표의 한 행을 식별하지 못하므로 BCNF는 아닙니다.</span></div>
+    <details class="norm-note"><summary>시험 용어로 연결하면?</summary><div class="table-scroll"><table><thead><tr><th scope="col">쉬운 말</th><th scope="col">시험 용어</th><th scope="col">이 예제</th></tr></thead><tbody><tr><td>다른 값을 정하는 왼쪽 열</td><td>결정자</td><td>강사번호 → 과목의 강사번호</td></tr><tr><td>한 행을 고를 수 있는 열 조합</td><td>슈퍼키</td><td>{학번,과목}, {학번,강사번호}와 이들을 포함하는 조합</td></tr><tr><td>어느 후보키에든 포함된 열</td><td>주요 속성</td><td>학번·과목·강사번호 모두</td></tr><tr><td>BCNF의 조건</td><td>모든 비자명 함수적 종속의 결정자가 슈퍼키</td><td>T1은 여러 학생 행을 가리키므로 위반</td></tr></tbody></table></div><p>표를 나눈 뒤에도 <b>학생·과목당 강사 한 명</b> 규칙을 지키려면 두 표를 함께 확인해야 합니다.</p></details>
+    <button class="norm-continue" type="button" data-norm-go="4nf">값이 여러 개씩 독립적인 4NF 보기 →</button>
+  </div>
+
+  <div class="norm-panel" id="norm-panel-4nf" data-norm-panel="4nf" role="tabpanel" aria-labelledby="norm-tab-4nf" tabindex="0">
+    <div class="norm-panel-heading"><span class="norm-stage">4NF</span><h4>취미 목록과 언어 목록이 서로 독립이면 따로 저장합니다</h4></div>
+    <div class="norm-rules"><strong>이 예제의 규칙</strong><span>취미와 언어는 서로 관계없음 · 같은 학생의 취미와 언어는 모든 조합을 저장</span></div>
+    <div class="norm-product"><div class="norm-student"><small>S1의 취미</small><strong>축구 · 독서<span data-norm-extra-hobby hidden> · 수영</span></strong></div><b>×</b><div class="norm-course"><small>S1의 언어</small><strong>영어 · 일본어</strong></div><b>=</b><div><small>분리 전 필요한 행</small><strong data-norm-product-count>2 × 2 = 4행</strong></div></div>
+    <div class="norm-relation"><h5>분리 전 · BCNF지만 4NF 아님</h5><div class="table-scroll"><table data-norm-relation="profile-before-4nf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key norm-student">취미</th><th scope="col" class="norm-key norm-course">언어</th></tr></thead><tbody><tr><td>S1</td><td class="norm-student">축구</td><td class="norm-course">영어</td></tr><tr><td>S1</td><td class="norm-student">축구</td><td class="norm-course">일본어</td></tr><tr><td>S1</td><td class="norm-student">독서</td><td class="norm-course">영어</td></tr><tr><td>S1</td><td class="norm-student">독서</td><td class="norm-course">일본어</td></tr><tr data-norm-extra-hobby hidden><td>S1</td><td class="norm-student norm-changed">수영</td><td class="norm-course">영어</td></tr><tr data-norm-extra-hobby hidden><td>S1</td><td class="norm-student norm-changed">수영</td><td class="norm-course">일본어</td></tr></tbody></table></div><p class="norm-small">같은 취미가 언어 수만큼 반복됩니다. 학생마다 모든 조합을 저장하는 규칙 때문에 생긴 중복입니다.</p></div>
+    <div class="norm-split-arrow"><span>↓</span> 학생의 취미 목록 / 학생의 언어 목록으로 분리</div>
+    <div class="norm-grid"><div class="norm-relation norm-student"><h5>학생 취미 · 4NF</h5><div class="table-scroll"><table data-norm-relation="hobby-4nf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key">취미</th></tr></thead><tbody><tr><td>S1</td><td>축구</td></tr><tr><td>S1</td><td>독서</td></tr><tr data-norm-extra-hobby hidden><td>S1</td><td class="norm-changed">수영</td></tr></tbody></table></div></div><div class="norm-relation norm-course"><h5>학생 언어 · 4NF</h5><div class="table-scroll"><table data-norm-relation="language-4nf"><thead><tr><th scope="col" class="norm-key">학번</th><th scope="col" class="norm-key">언어</th></tr></thead><tbody><tr><td>S1</td><td>영어</td></tr><tr><td>S1</td><td>일본어</td></tr></tbody></table></div></div></div>
+    <div class="norm-experiment" hidden data-norm-experiment><button type="button" data-norm-add-hobby>취미 수영을 추가해 보기</button><output data-norm-hobby-result aria-live="polite">취미 하나를 더 저장할 때, 어느 표에 몇 행이 늘어날까요?</output></div>
+    <div class="norm-verdict"><strong>서로 독립된 여러 값의 목록을 분리 → 4NF</strong><span>시험에서는 <b>다치 종속 제거</b>라고 부릅니다. <b>학번 ↠ 취미</b>: 같은 학생의 취미 목록이 언어와 독립적으로 정해진다는 뜻입니다.</span></div>
+    <p class="norm-important">취미·언어가 여러 개라는 사실만으로 나누면 안 됩니다. <strong>둘이 독립적이고 모든 조합이 허용된다는 조건</strong>을 먼저 확인하세요.</p>
+    <button class="norm-continue" type="button" data-norm-go="5nf">세 관계를 모두 확인하는 5NF 보기 →</button>
+  </div>
+
+  <div class="norm-panel" id="norm-panel-5nf" data-norm-panel="5nf" role="tabpanel" aria-labelledby="norm-tab-5nf" tabindex="0">
+    <div class="norm-panel-heading"><span class="norm-stage">5NF</span><h4>세 표의 관계를 모두 맞추면, 원래 납품표가 복원됩니다</h4></div>
+    <div class="norm-rules"><strong>이 예제의 규칙 · 세 조건이 모두 맞으면 납품 가능</strong><span>① 공급사가 부품을 취급함　② 공급사가 현장과 거래함　③ 현장에서 그 부품을 사용함</span></div>
+    <div class="norm-relation"><h5>분리 전 납품표 · 4NF지만 5NF 아님</h5><div class="table-scroll"><table data-norm-relation="delivery-before-5nf"><thead><tr><th scope="col" class="norm-key">공급사</th><th scope="col" class="norm-key">부품</th><th scope="col" class="norm-key">현장</th></tr></thead><tbody><tr><td>S1</td><td>P1</td><td>J1</td></tr><tr><td>S1</td><td>P2</td><td>J1</td></tr><tr><td>S2</td><td>P1</td><td>J1</td></tr><tr><td>S1</td><td>P1</td><td>J2</td></tr></tbody></table></div></div>
+    <div class="norm-split-arrow"><span>↓</span> 공급사·부품 / 공급사·현장 / 부품·현장, 세 관계로 분리</div>
+    <div class="norm-grid norm-three"><div class="norm-relation norm-student"><h5>① 부품 취급</h5><div class="table-scroll"><table data-norm-relation="supplier-part-5nf"><thead><tr><th scope="col" class="norm-key">공급사</th><th scope="col" class="norm-key">부품</th></tr></thead><tbody><tr><td>S1</td><td>P1</td></tr><tr><td>S1</td><td>P2</td></tr><tr><td>S2</td><td>P1</td></tr></tbody></table></div></div><div class="norm-relation norm-course"><h5>② 현장 거래</h5><div class="table-scroll"><table data-norm-relation="supplier-project-5nf"><thead><tr><th scope="col" class="norm-key">공급사</th><th scope="col" class="norm-key">현장</th></tr></thead><tbody><tr><td>S1</td><td>J1</td></tr><tr><td>S1</td><td>J2</td></tr><tr><td>S2</td><td>J1</td></tr></tbody></table></div></div><div class="norm-relation norm-instructor"><h5>③ 현장의 부품</h5><div class="table-scroll"><table data-norm-relation="part-project-5nf"><thead><tr><th scope="col" class="norm-key">부품</th><th scope="col" class="norm-key">현장</th></tr></thead><tbody><tr><td>P1</td><td>J1</td></tr><tr><td>P2</td><td>J1</td></tr><tr><td>P1</td><td>J2</td></tr></tbody></table></div></div></div>
+    <div class="norm-join-lab" data-norm-join-lab hidden>
+      <h5>어떤 납품 행이 만들어지는지 직접 고르기</h5>
+      <div class="norm-join-selectors"><label>공급사 <select data-norm-join="supplier"><option>S1</option><option>S2</option></select></label><label>부품 <select data-norm-join="part"><option>P1</option><option>P2</option></select></label><label>현장 <select data-norm-join="project"><option>J1</option><option selected>J2</option></select></label></div>
+      <div class="norm-join-checks"><div data-norm-join-check="sp"></div><div data-norm-join-check="sj"></div><div data-norm-join-check="pj"></div></div><output data-norm-join-result aria-live="polite"></output>
+    </div>
+    <div class="norm-grid norm-compare"><div class="norm-good"><h5>S1 · P1 · J2는 복원됨</h5><p>① S1·P1 있음<br>② S1·J2 있음<br>③ P1·J2 있음<br><strong>세 관계가 모두 있음 → 원래 납품표의 행</strong></p></div><div class="norm-warn"><h5>S1 · P2 · J2는 만들면 안 됨</h5><p>① S1·P2 있음<br>② S1·J2 있음<br>③ <strong>P2·J2 없음</strong><br>세 번째 관계를 빼면 없는 행을 만들게 됩니다.</p></div></div>
+    <div class="norm-verdict"><strong>세 관계를 나누고, 모두 연결해서 원래 행만 복원 → 5NF</strong><span>이 예제는 <b>조인 종속</b>에 따른 분리입니다. <b>세 표로 나누었다는 개수</b>로 5NF를 판단하는 것이 아닙니다.</span></div>
+    <details class="norm-note"><summary>4NF와 5NF의 구별 포인트</summary><p>4NF 예제는 <b>한 학생의 두 목록이 독립</b>이라 모든 조합이 나왔습니다. 여기서는 <b>공급사·부품·현장의 세 관계를 함께 확인</b>해야 합니다. 공급사만 같다고 부품과 현장을 모두 조합하면 틀립니다.</p><p>5NF의 정확한 조건은 <b>모든 비자명 조인 종속이 후보키로부터 따라오는 것</b>입니다. 이 납품표의 키는 세 열 전체이며, 위의 세 관계로 복원되는 규칙은 키 조건만으로 따라오지 않아 분리가 필요합니다.</p></details>
+  </div>
+
+  <details class="norm-review"><summary>실제 문제에서 답을 고르는 순서</summary><p><strong>표에 있는 현재 단계</strong>를 묻는지, <strong>분리 작업의 목표 단계</strong>를 묻는지 먼저 구별하세요.</p><div class="table-scroll"><table><thead><tr><th scope="col">문제에서 찾은 것</th><th scope="col">이 예제의 분리 전</th><th scope="col">이 관계를 없애는 목표</th></tr></thead><tbody><tr><td>한 칸에 여러 수강정보</td><td>1NF 아님</td><td><b>1NF</b> · 한 칸에 한 값</td></tr><tr><td>{학번,과목} 중 학번만으로 이름 결정</td><td>1NF</td><td><b>2NF</b> · 부분 종속 제거</td></tr><tr><td>과목 → 강사번호 → 전화</td><td>2NF</td><td><b>3NF</b> · 이행 종속 제거</td></tr><tr><td>강사번호가 과목은 정하지만, 한 행은 못 고름</td><td>3NF</td><td><b>BCNF</b> · 결정자가 한 행을 식별하게</td></tr><tr><td>취미·언어가 독립이라 모든 조합을 반복 저장</td><td>BCNF</td><td><b>4NF</b> · 다치 종속 제거</td></tr><tr><td>납품을 세 관계로 나눠 원래 행만 정확히 복원</td><td>4NF</td><td><b>5NF</b> · 조인 종속에 따른 분리</td></tr></tbody></table></div><p class="norm-small">위의 분리 전 단계는 <b>이 예제에 주어진 규칙</b>으로 판정한 결과입니다. 반복된 값만 보고 규칙을 만들어 내지 말고, 문제에 주어진 조건과 화살표를 먼저 사용하세요.</p></details>
+
+  <details class="norm-practice"><summary>적용 연습 ① · 상품 이름은 어느 정보인가?</summary><div class="norm-rules"><strong>조건</strong><span>후보키 {주문번호,상품번호} · 상품번호 → 상품명 · {주문번호,상품번호} → 수량</span></div><div class="table-scroll"><table><thead><tr><th scope="col" class="norm-key">주문번호</th><th scope="col" class="norm-key">상품번호</th><th scope="col">상품명</th><th scope="col">수량</th></tr></thead><tbody><tr><td>O1</td><td>P1</td><td>키보드</td><td>2</td></tr><tr><td>O1</td><td>P2</td><td>마우스</td><td>1</td></tr><tr><td>O2</td><td>P1</td><td>키보드</td><td>3</td></tr></tbody></table></div><p><strong>분리 전 표가 만족하는 가장 높은 정규형은?</strong></p><div class="norm-answers" data-norm-quiz><button type="button" data-norm-answer="wrong" aria-pressed="false">2NF</button><button type="button" data-norm-answer="right" aria-pressed="false">1NF</button><button type="button" data-norm-answer="wrong" aria-pressed="false">3NF</button><output data-norm-feedback aria-live="polite" data-explanation="현재는 1NF입니다. 상품명은 키의 일부인 상품번호만으로 정해집니다. 상품(상품번호,상품명)과 주문상세(주문번호,상품번호,수량)로 나누는 작업의 목표는 2NF입니다."></output></div><details class="norm-note"><summary>답과 분리한 표 보기</summary><p><b>현재 1NF → 분리 목표 2NF</b></p><div class="norm-grid"><div class="norm-relation norm-course"><h5>상품</h5><div class="table-scroll"><table><thead><tr><th scope="col" class="norm-key">상품번호</th><th scope="col">상품명</th></tr></thead><tbody><tr><td>P1</td><td>키보드</td></tr><tr><td>P2</td><td>마우스</td></tr></tbody></table></div></div><div class="norm-relation"><h5>주문상세</h5><div class="table-scroll"><table><thead><tr><th scope="col" class="norm-key">주문번호</th><th scope="col" class="norm-key">상품번호</th><th scope="col">수량</th></tr></thead><tbody><tr><td>O1</td><td>P1</td><td>2</td></tr><tr><td>O1</td><td>P2</td><td>1</td></tr><tr><td>O2</td><td>P1</td><td>3</td></tr></tbody></table></div></div></div></details></details>
+  <details class="norm-practice"><summary>적용 연습 ② · 키가 열 하나이면 3NF일까?</summary><div class="norm-rules"><strong>조건</strong><span>후보키 {사번} · 사번 → 부서번호 · 부서번호 → 부서명</span></div><div class="table-scroll"><table><thead><tr><th scope="col" class="norm-key">사번</th><th scope="col">부서번호</th><th scope="col">부서명</th></tr></thead><tbody><tr><td>E1</td><td>D1</td><td>개발부</td></tr><tr><td>E2</td><td>D1</td><td>개발부</td></tr><tr><td>E3</td><td>D2</td><td>영업부</td></tr></tbody></table></div><p><strong>현재 표가 만족하는 가장 높은 정규형은?</strong></p><div class="norm-answers" data-norm-quiz><button type="button" data-norm-answer="wrong" aria-pressed="false">1NF</button><button type="button" data-norm-answer="wrong" aria-pressed="false">3NF</button><button type="button" data-norm-answer="right" aria-pressed="false">2NF</button><output data-norm-feedback aria-live="polite" data-explanation="현재는 2NF입니다. 후보키가 사번 하나라 키의 일부에 딸린 정보가 없습니다. 하지만 사번 → 부서번호 → 부서명으로 다른 값을 거칩니다. 부서(부서번호,부서명)를 따로 만드는 목표는 3NF입니다."></output></div><details class="norm-note"><summary>답과 분리한 표 보기</summary><p><b>현재 2NF → 분리 목표 3NF</b></p><div class="norm-grid"><div class="norm-relation"><h5>사원</h5><div class="table-scroll"><table><thead><tr><th scope="col" class="norm-key">사번</th><th scope="col">부서번호</th></tr></thead><tbody><tr><td>E1</td><td>D1</td></tr><tr><td>E2</td><td>D1</td></tr><tr><td>E3</td><td>D2</td></tr></tbody></table></div></div><div class="norm-relation norm-instructor"><h5>부서</h5><div class="table-scroll"><table><thead><tr><th scope="col" class="norm-key">부서번호</th><th scope="col">부서명</th></tr></thead><tbody><tr><td>D1</td><td>개발부</td></tr><tr><td>D2</td><td>영업부</td></tr></tbody></table></div></div></div></details></details>
+  <details class="norm-practice"><summary>적용 연습 ③ · 강사가 과목을 정하면 BCNF일까?</summary><div class="norm-rules"><strong>조건</strong><span>후보키 {학번,과목}, {학번,강사번호} · 강사번호 → 과목 · {학번,과목} → 강사번호</span></div><div class="table-scroll"><table><thead><tr><th scope="col">학번</th><th scope="col">과목</th><th scope="col">강사번호</th></tr></thead><tbody><tr><td>S1</td><td>DB</td><td>T1</td></tr><tr><td>S2</td><td>DB</td><td>T1</td></tr><tr><td>S1</td><td>Java</td><td>T2</td></tr></tbody></table></div><p><strong>현재 표가 만족하는 가장 높은 정규형은?</strong></p><div class="norm-answers" data-norm-quiz><button type="button" data-norm-answer="right" aria-pressed="false">3NF</button><button type="button" data-norm-answer="wrong" aria-pressed="false">BCNF</button><button type="button" data-norm-answer="wrong" aria-pressed="false">4NF</button><output data-norm-feedback aria-live="polite" data-explanation="현재는 3NF입니다. 과목은 후보키에 포함되어 3NF의 예외가 허용됩니다. 강사번호 T1만으로 S1과 S2 중 한 행을 고르지 못하므로 BCNF는 아닙니다. 강사(강사번호,과목)와 배정(학번,강사번호)으로 나누는 목표가 BCNF입니다."></output></div><details class="norm-note"><summary>답 보기</summary><p><b>현재 3NF → 분리 목표 BCNF</b>. 과목이 후보키에 들어가는 열이라는 점과, 강사번호만으로는 한 행을 식별하지 못한다는 점을 함께 봅니다.</p></details></details>
+  <details class="norm-reference"><summary>개념 확인 자료</summary><p>표의 데이터와 연습문제는 직접 구성했습니다. 정규형 조건은 <a href="https://www.cs.ucf.edu/courses/cop4710/spr2013/chapter%2019%20-%20normalization.pdf" target="_blank" rel="noopener">UCF 데이터베이스 강의</a>, <a href="https://research.ibm.com/publications/multivalued-dependencies-and-a-new-normal-form-for-relational-databases" target="_blank" rel="noopener">Fagin의 4NF 연구</a>, <a href="https://research.ibm.com/publications/normal-forms-and-relational-database-operators" target="_blank" rel="noopener">Fagin의 5NF 연구</a>로 확인했습니다.</p></details>
+</div>

@@ -442,8 +442,9 @@
   },
   {
     "id": "th-normalization",
-    "title": "정규화는 무엇에 딸린 정보인지 찾기",
-    "lead": "키의 일부에 딸린 정보와 다른 정보를 거쳐 따라오는 정보를 나눕니다.",
+    "title": "정규화 · 실제 표를 나누며 1NF부터 5NF까지 구별하기",
+    "lead": "색으로 연결된 열을 보고, 분리 전과 분리 후의 표를 직접 비교합니다.",
+    "visual_file": "normalization.html",
     "start_table": {
       "headers": [
         "먼저 볼 곳",

@@ -18,6 +18,8 @@
 
 각 단원은 실제 값이 채워진 시작표 → 코드 → 줄별 값 변화표 → 빠른 풀이표 순서로 읽습니다. `data/*-easy.json`에서 쉬운 제목·설명·풀이표를 수정하며, 코드·정답·출제 근거는 기존 `*-lessons.json`을 사용합니다. 단원 아래의 출제 근거 하이퍼링크는 유지합니다.
 
+정규화 단원은 `normalization.html`의 실제 릴레이션과 분리 그림을 사용합니다. `normalization.css`와 `normalization.js`에서 색 표시·단계 전환·이름 및 전화 변경 체험을 수정합니다. 세 파일은 빌드 시 `index.html`에 포함되므로 HTML 하나만 열어도 작동합니다. 단계 버튼으로 1NF·2NF·3NF·BCNF·4NF·5NF를 비교하거나 전체 과정을 펼쳐 볼 수 있습니다.
+
 개념 검색·언어 필터 → 원하는 개념 펼치기 → 코드와 표를 손으로 추적 → 실행 결과·셀프 체크 확인 → 복습 체크 순서로 사용하세요. 실행 표의 `한 단계씩 보기`는 검증한 표를 단계적으로 보여주며 C·Java 코드를 브라우저에서 실행하지는 않습니다. 포인터·후위 순회 도식에는 별도 단계 버튼이 있습니다.
 
 복습 체크는 `localStorage`에 저장합니다. 저장이 차단된 브라우저에서도 읽기는 가능합니다. 인쇄 버튼은 모든 개념을 펼친 뒤 인쇄 대화상자를 열고 완료 후 기존 보기로 복원합니다.
@@ -29,6 +31,7 @@ Python에 PyMuPDF가 필요하며 실행 검증에는 GCC, JDK가 필요합니�
 ```powershell
 python scripts/extract_study_sources.py
 python scripts/build_exam_guide.py
+python scripts/verify_normalization.py
 python scripts/verify_exam_guide.py
 python scripts/build_predictions.py
 python scripts/verify_predictions.py
