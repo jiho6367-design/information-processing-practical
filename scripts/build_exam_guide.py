@@ -19,6 +19,21 @@ def read(name):
 def table(headers, rows, cls=''):
     return '<div class="table-scroll"><table class="'+cls+'"><thead><tr>'+''.join('<th scope="col">'+esc(v)+'</th>' for v in headers)+'</tr></thead><tbody>'+''.join('<tr>'+''.join('<td>'+esc(v)+'</td>' for v in row)+'</tr>' for row in rows)+'</tbody></table></div>'
 
+def plain_words(value):
+    replacements={'동적 디스패치':'실제 객체에 맞는 함수 선택','디스패치':'함수 선택',
+                  '시그니처':'함수 이름·받는 값의 종류','기저값':'멈출 때 돌려주는 값',
+                  '단락 평가':'뒤 조건을 건너뛰는 계산','미매칭':'짝이 없는',
+                  '역참조':'주소가 가리키는 값 읽기','인스턴스 필드':'객체에 저장된 값',
+                  '메서드':'함수','일반 지역 변수':'함수 안의 일반 변수','지역 변수':'함수 안의 변수'}
+    text=str(value)
+    for old,new in replacements.items(): text=text.replace(old,new)
+    return text
+
+def learning_table(value,kind):
+    headers=['먼저 볼 곳','예제에서 적은 값','보는 이유'] if kind=='start-table' else ['상황','바로 할 일','예제에 적용']
+    assert len(value['headers'])==3 and all(len(row)==3 for row in value['rows'])
+    return table(headers,[[plain_words(cell) for cell in row] for row in value['rows']],kind)
+
 def main():
     inventory = read('early-inventory.json') + read('recent-inventory.json')
     inventory.sort(key=lambda q: (q['exam'],q['number']))
@@ -47,9 +62,14 @@ def main():
         remote = 'https://github.com/jiho6367-design/information-processing-practical/blob/main/pdf/'+quote(filename)+'#page='+str(s['page'])
         return f'<span class="source-pair"><a href="{path}" target="_blank" rel="noopener">{esc(title)}</a><a class="remote" href="{remote}" target="_blank" rel="noopener" aria-label="{esc(title)} 깃허브 원문">↗</a></span>'
     lessons = read('early-lessons.json') + read('recent-lessons.json') + read('root-lessons.json') + read('theory-lessons.json')
+    easier=read('early-easy.json')+read('recent-easy.json')+read('root-easy.json')+read('theory-easy.json')
+    easy_by_id={item['id']:item for item in easier}
+    assert len(easy_by_id)==len(easier)==len(lessons)
+    assert set(easy_by_id)=={lesson['id'] for lesson in lessons}
     sections = {'coding':[], 'sql':[], 'theory':[]}
     all_ids = set()
     for i,l in enumerate(lessons):
+        view=easy_by_id[l['id']]
         assert l['id'] not in all_ids, l['id']
         all_ids.add(l['id'])
         lang = l.get('language','이론')
@@ -57,29 +77,25 @@ def main():
         for s in l['sources']:
             assert (s['exam'],s['number']) in seen, s
             assert next(q['page'] for q in inventory if q['exam']==s['exam'] and q['number']==s['number']) == s['page'], s
-        body = '<p class="lesson-explanation">'+esc(l.get('explanation',''))+'</p>'
-        body += '<h4>이 순서로 풀기</h4><ol class="steps">'+''.join('<li>'+esc(v)+'</li>' for v in l['steps'])+'</ol>'
+        body = '<div class="lesson-start"><h4>시작할 때 보는 표</h4>'+learning_table(view['start_table'],'start-table')+'</div>'
         if l.get('code'):
-            body += '<div class="code-head"><span>'+esc(lang)+' · '+esc(l.get('example_label','학습 예제'))+'</span><button class="copy" type="button">코드 복사</button></div><pre><code>'+esc(l['code'])+'</code></pre>'
-        if l.get('diagram'):
-            nodes = l['diagram'].get('nodes',[])
-            kind = l['diagram'].get('kind','flow')
-            body += '<div class="flow" data-kind="'+esc(kind)+'" aria-label="개념 관계">'+''.join('<div class="flow-node">'+esc(n)+'</div>' for n in nodes)+'</div>'
+            body += '<div class="code-head"><span>'+esc(lang)+' 예제</span><button class="copy" type="button">코드 복사</button></div><pre><code>'+esc(l['code'])+'</code></pre>'
         if l.get('trace'):
-            t=l['trace']
-            body+='<h4>직접 추적하기</h4><div class="trace" data-step="0">'+table(t['headers'],t['rows'],'trace-table')+'<div class="trace-controls"><button class="trace-next" type="button">한 단계씩 보기</button><button class="trace-all" type="button">전체 보기</button><output aria-live="polite">전체 단계 표시</output></div></div>'
+            t=view.get('trace',l['trace'])
+            body+='<h4>이 줄을 실행하면 이렇게 바뀝니다</h4><div class="trace" data-step="0">'+table([plain_words(v) for v in t['headers']],[[plain_words(v) for v in row] for row in t['rows']],'trace-table')+'<div class="trace-controls"><button class="trace-next" type="button">한 줄씩 보기</button><button class="trace-all" type="button">전체 보기</button><output aria-live="polite">전체 단계 표시</output></div></div>'
         if l.get('rows'):
-            body += table(l['rows']['headers'],l['rows']['rows'])
+            rows=view.get('rows',l['rows'])
+            body += '<details class="extra-table"><summary>다른 예시·비교표 보기</summary>'+table([plain_words(v) for v in rows['headers']],[[plain_words(v) for v in row] for row in rows['rows']])+'</details>'
         if l.get('output'):
-            body += '<details class="answer"><summary>예제 실행 결과 확인</summary><pre>'+esc(l['output'])+'</pre></details>'
-        body += '<div class="tip"><strong>빠르게 푸는 요령</strong><p>'+esc(l['shortcut'])+'</p></div><div class="pitfall"><strong>자주 틀리는 지점</strong><p>'+esc(l['pitfall'])+'</p></div>'
-        if l.get('quiz'):
-            body += '<details class="quiz"><summary>셀프 체크 · '+esc(l['quiz']['question'])+'</summary><p>'+esc(l['quiz']['answer'])+'</p></details>'
+            body += '<details class="answer"><summary>정답 보기</summary><pre>'+esc(l['output'])+'</pre></details>'
+        body += '<div class="lesson-shortcut"><h4>빠르게 푸는 표</h4>'+learning_table(view['shortcut_table'],'shortcut-table')+'</div><div class="pitfall"><strong>이것만 주의</strong><p>'+esc(plain_words(view['pitfall']))+'</p></div>'
+        if view.get('quiz'):
+            body += '<details class="quiz"><summary>확인 문제 · '+esc(plain_words(view['quiz']['question']))+'</summary><p>'+esc(plain_words(view['quiz']['answer']))+'</p></details>'
         body += '<footer class="sources"><span>출제 근거</span>'+''.join(source(s) for s in l['sources'])+'</footer>'
-        search = ' '.join([l['title'],l['lead'],lang,l.get('topic',''),l.get('explanation',''),
+        search = ' '.join([view['title'],view['lead'],l['title'],l['lead'],lang,l.get('topic',''),l.get('explanation',''),
                            *l['steps'],l['pitfall'],l['shortcut'],l.get('code',''),
                            ' '.join(s['exam'] for s in l['sources'])])
-        card = f'<details class="lesson" id="{esc(l["id"])}" data-language="{esc(lang)}" data-search="{esc(search)}"><summary><span class="lang">{esc(lang)}</span><span><strong>{esc(l["title"])}</strong><span class="lead">{esc(l["lead"])}</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="lesson-body"><label class="complete"><input type="checkbox" data-complete="{esc(l["id"])}"> 이 개념을 직접 설명할 수 있음</label>{body}</div></details>'
+        card = f'<details class="lesson" id="{esc(l["id"])}" data-language="{esc(lang)}" data-search="{esc(search)}"><summary><span class="lang">{esc(lang)}</span><span><strong>{esc(plain_words(view["title"]))}</strong><span class="lead">{esc(plain_words(view["lead"]))}</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="lesson-body"><label class="complete"><input type="checkbox" data-complete="{esc(l["id"])}"> 이해했음</label>{body}</div></details>'
         sections[category].append(card)
     yearbars=[]
     for year,c in sorted(byyear.items()):
