@@ -87,7 +87,8 @@ def main():
     intent_html=render_intents(intents,examples,source,parts)
     styles=re.search(r'<style>([\s\S]*?)</style>',(OUT/'guide.template.html').read_text(encoding='utf-8'))[1]
     template=(OUT/'predictions.template.html').read_text(encoding='utf-8-sig')
-    rep={'STYLE':styles,'INTENT':intent_html,'TOTAL':len(parts),'NETWORK_COUNT':sum(q['language']=='네트워크' for q in parts)}
+    rep={'STYLE':styles,'INTENT':intent_html,'TOTAL':len(parts),'NETWORK_COUNT':sum(q['language']=='네트워크' for q in parts),
+         'SCROLL_NAV':(OUT/'scroll-navigation.js').read_text(encoding='utf-8')}
     for lang,key in [('C','C'),('Java','JAVA'),('Python','PYTHON'),('SQL','SQL'),('네트워크','NETWORK')]:rep[key+'_QUESTIONS']=''.join(groups[lang])
     for k,v in rep.items():template=template.replace('__'+k+'__',str(v))
     (OUT/'predictions.html').write_text(template.rstrip()+'\n',encoding='utf-8')

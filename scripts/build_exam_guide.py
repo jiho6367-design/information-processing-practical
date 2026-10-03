@@ -102,7 +102,8 @@ def main():
                   'YEAR_BARS':''.join(yearbars),'CODING_RANK':table(['유형','문항 수','복습 방법'],codingrows),
                   'THEORY_RANK':table(['분야','문항 수','복습 방법'],theoryrows),
                   'CODING_LESSONS':''.join(sections['coding']),'SQL_LESSONS':''.join(sections['sql']),
-                  'THEORY_LESSONS':''.join(sections['theory']),'INVENTORY':''.join(qrows),'TREND':trend}
+                  'THEORY_LESSONS':''.join(sections['theory']),'INVENTORY':''.join(qrows),'TREND':trend,
+                  'SCROLL_NAV':(OUT/'scroll-navigation.js').read_text(encoding='utf-8')}
     for k,v in replacements.items(): template=template.replace('__'+k+'__',str(v))
     (OUT/'index.html').write_text(template.rstrip()+'\n',encoding='utf-8')
     print(json.dumps({'questions':len(inventory),'counts':dict(counts),'lessons':len(lessons),'html_bytes':len(template.encode())},ensure_ascii=False))
