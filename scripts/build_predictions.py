@@ -5,6 +5,7 @@ import json
 import re
 from urllib.parse import quote
 from build_exam_guide import table
+from prediction_intent import render_intents
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'study-materials/exam-guide'
@@ -82,12 +83,11 @@ def main():
         search=' '.join([q['title'],q['language'],q['difficulty'],q['intent'],q['prompt']])
         groups[q['language']].append(f'<article class="question" id="{esc(q["id"])}" data-language="{esc(q["language"])}" data-search="{esc(search)}" data-expected="{esc(q["answer"])}">{title}{body}</article>')
     intents=json.loads((DATA/'examiner-intent.json').read_text(encoding='utf-8'))
-    intentcards=[]
-    for x in intents:
-        intentcards.append('<article class="panel"><h3>'+esc(x['title'])+'</h3><p>'+esc(x['claim'])+'</p><p><strong>관찰 근거</strong> '+esc(x['evidence'])+'</p><p><strong>예상 변형</strong> '+esc(x['expected_variation'])+'</p><div class="tip"><strong>준비 방법</strong><p>'+esc(x['study_action'])+'</p></div><footer class="sources">'+''.join(source(s) for s in x['sources'])+'</footer></article>')
+    examples=json.loads((DATA/'intent-examples.json').read_text(encoding='utf-8'))
+    intent_html=render_intents(intents,examples,source,parts)
     styles=re.search(r'<style>([\s\S]*?)</style>',(OUT/'guide.template.html').read_text(encoding='utf-8'))[1]
     template=(OUT/'predictions.template.html').read_text(encoding='utf-8-sig')
-    rep={'STYLE':styles,'INTENT':''.join(intentcards),'TOTAL':len(parts),'NETWORK_COUNT':sum(q['language']=='네트워크' for q in parts)}
+    rep={'STYLE':styles,'INTENT':intent_html,'TOTAL':len(parts),'NETWORK_COUNT':sum(q['language']=='네트워크' for q in parts)}
     for lang,key in [('C','C'),('Java','JAVA'),('Python','PYTHON'),('SQL','SQL'),('네트워크','NETWORK')]:rep[key+'_QUESTIONS']=''.join(groups[lang])
     for k,v in rep.items():template=template.replace('__'+k+'__',str(v))
     (OUT/'predictions.html').write_text(template.rstrip()+'\n',encoding='utf-8')
