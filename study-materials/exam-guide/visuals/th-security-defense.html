@@ -1,0 +1,34 @@
+<div class="theory-visual" data-theory-visual="th-security-defense">
+  <p class="tv-lead">로그인에 성공해도, 맡은 역할에 권한이 있어야 자료를 볼 수 있습니다.</p>
+  <h4 class="tv-heading">급여 조회: 본인 확인 → 역할 확인 → 허용 또는 거절</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 1040 345" role="img" aria-label="로그인한 Mina와 Jun이 급여 조회를 요청한다. Mina는 급여 담당 역할이 있어 허용되고 Jun은 영업 역할이어서 거절되며 두 결과는 각각 기록된다">
+      <defs><marker id="th-security-defense-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#355d89"/></marker></defs>
+      <g font-family="sans-serif" font-size="17" fill="#24364c">
+        <text x="18" y="28">① 인증: 누구인가?</text><text x="417" y="28" text-anchor="middle">② 인가: 무엇을 할 수 있나?</text><text x="915" y="28" text-anchor="middle">③ 사용 기록</text>
+        <rect x="18" y="68" width="188" height="84" rx="10" fill="#e9f1fb" stroke="#547daf"/><text x="112" y="100" text-anchor="middle">Mina: 본인 확인 성공</text><text x="112" y="129" text-anchor="middle">급여 조회 요청</text>
+        <rect x="18" y="216" width="188" height="84" rx="10" fill="#e9f1fb" stroke="#547daf"/><text x="112" y="248" text-anchor="middle">Jun: 본인 확인 성공</text><text x="112" y="277" text-anchor="middle">급여 조회 요청</text>
+        <rect x="295" y="65" width="245" height="92" rx="10" fill="#edf8ef" stroke="#44895c"/><text x="417" y="99" text-anchor="middle">역할 = 급여 담당자</text><text x="417" y="131" text-anchor="middle">급여 조회 권한 있음</text>
+        <rect x="295" y="213" width="245" height="92" rx="10" fill="#fff6df" stroke="#b79035"/><text x="417" y="247" text-anchor="middle">역할 = 영업 담당자</text><text x="417" y="279" text-anchor="middle">급여 조회 권한 없음</text>
+        <rect x="617" y="82" width="147" height="59" rx="10" fill="#edf8ef" stroke="#44895c"/><text x="690" y="118" text-anchor="middle">허용: 자료 조회</text>
+        <rect x="617" y="230" width="147" height="59" rx="10" fill="#fff0ed" stroke="#c35d53"/><text x="690" y="266" text-anchor="middle">거절: 조회 불가</text>
+        <rect x="836" y="72" width="185" height="81" rx="10" fill="#f3eefb" stroke="#8770af"/><text x="928" y="104" text-anchor="middle">Mina / 급여 조회</text><text x="928" y="132" text-anchor="middle">결과: 허용</text>
+        <rect x="836" y="220" width="185" height="81" rx="10" fill="#f3eefb" stroke="#8770af"/><text x="928" y="252" text-anchor="middle">Jun / 급여 조회</text><text x="928" y="280" text-anchor="middle">결과: 거절</text>
+        <path d="M206 111 H284" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-defense-arrow)"/>
+        <path d="M540 111 H606" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-defense-arrow)"/>
+        <path d="M764 111 H825" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-defense-arrow)"/>
+        <path d="M206 259 H284" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-defense-arrow)"/>
+        <path d="M540 259 H606" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-defense-arrow)"/>
+        <path d="M764 259 H825" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-defense-arrow)"/>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-scroll-hint">그림을 좌우로 밀어 전체를 보세요.</p>
+  <p class="tv-note">두 사람 모두 인증에 성공했습니다. 허용 여부가 갈리는 곳은 <strong>역할의 권한을 확인하는 인가 단계</strong>입니다. 이 예에서는 허용·거절 결과를 모두 기록합니다.</p>
+  <table class="tv-table"><thead><tr><th>권한을 정하는 기준</th><th>급여 파일에 적용한 예</th><th>이름</th></tr></thead><tbody><tr><td>파일 소유자가 정함</td><td>소유자가 Mina에게 읽기 허용</td><td>DAC</td></tr><tr><td>보안 등급·중앙 정책</td><td>파일 등급과 사용자 등급을 정책에 따라 비교</td><td>MAC</td></tr><tr><td>업무 역할</td><td>급여 담당자 역할에 조회 권한 부여</td><td>RBAC</td></tr></tbody></table>
+  <h4 class="tv-heading">무엇을 지키려는가?</h4>
+  <table class="tv-table"><thead><tr><th>급여 자료에서 생긴 일</th><th>지켜야 할 것</th></tr></thead><tbody><tr><td>다른 직원의 급여가 새어나감</td><td>기밀성: 허용된 사람만 내용을 봄</td></tr><tr><td>급여 100이 몰래 900으로 바뀜</td><td>무결성: 허가 없이 내용이 바뀌지 않음</td></tr><tr><td>급여 지급일에 시스템을 쓸 수 없음</td><td>가용성: 필요할 때 정상 이용</td></tr></tbody></table>
+  <details><summary>로그인·통신·관리 용어 한 번에 구별하기</summary><table class="tv-table"><thead><tr><th>용어</th><th>실제로 하는 일</th></tr></thead><tbody><tr><td>AAA</td><td>Authentication: 본인 확인 / Authorization: 권한 확인 / Accounting: 사용 기록</td></tr><tr><td>SSO / OTP</td><td>한 번 로그인해 여러 서비스를 이용 / 한 번만 쓰는 비밀번호로 본인 확인</td></tr><tr><td>OAuth</td><td>인쇄 앱에 사진 접근 권한만 맡김. 사진 계정의 비밀번호를 앱에 주지 않음. 중심은 <strong>권한 위임</strong>입니다.</td></tr><tr><td>OIDC</td><td>OAuth 2.0 위에 로그인한 사람의 신원을 확인하는 기능을 더한 규약</td></tr><tr><td>VPN</td><td>공중망 위에서 사설망처럼 연결하는 터널. 실제 보호는 사용 프로토콜·설정에 따릅니다.</td></tr><tr><td>IPsec / SSH</td><td>IP 패킷 보호(AH·ESP·IKE 관련) / 안전한 원격 로그인. VPN과 함께 쓰일 수 있지만 같은 뜻은 아닙니다.</td></tr><tr><td>SIEM / ISMS</td><td>여러 장비의 보안 로그를 모아 분석 / 조직의 정책·위험·보호 대책을 관리하는 체계</td></tr></tbody></table></details>
+  <p class="tv-result">누구인가 = 인증, 허용할까 = 인가, 무엇을 했나 = 기록으로 나누세요.</p>
+  <details class="tv-panel"><summary>확인: 직무가 바뀌자 급여 담당자 역할을 회수했습니다. 어떤 접근통제인가요?</summary><p><strong>RBAC.</strong> 권한이 업무 역할에 묶여 있습니다.</p></details>
+</div>

@@ -1,0 +1,62 @@
+<div class="theory-visual" data-theory-visual="th-interface-formats">
+  <p class="tv-lead">값을 적는 모양, 메시지를 보내는 규칙, 화면을 바꾸는 동작을 나누어 봅니다.</p>
+  <h4 class="tv-heading">JSON과 XML: Mina의 같은 정보를 다르게 적기</h4>
+  <div class="tv-grid">
+    <div class="tv-panel tv-blue"><p class="tv-label">JSON: 이름과 값</p><pre><code>{"id":7,"name":"Mina"}</code></pre><p class="tv-note">객체는 <code>{ }</code>, 이름·문자열은 큰따옴표입니다.</p></div>
+    <div class="tv-panel tv-green"><p class="tv-label">XML: 태그로 만든 구조</p><pre><code>&lt;student id="7"&gt;
+  &lt;name&gt;Mina&lt;/name&gt;
+&lt;/student&gt;</code></pre><p class="tv-note">name은 student 안에 있습니다. 시작·끝 태그로 범위를 만듭니다.</p></div>
+  </div>
+  <table class="tv-table"><thead><tr><th>JSON 값의 종류</th><th>실제 예</th></tr></thead><tbody><tr><td>숫자·문자열</td><td><code>"id":7, "name":"Mina"</code></td></tr><tr><td>불리언·배열·빈 값</td><td><code>"active":true, "scores":[82,91], "memo":null</code></td></tr></tbody></table>
+  <p class="tv-note">JSON의 <code>true</code>·<code>null</code>은 소문자로 쓰고 따옴표로 감싸지 않습니다. 작은따옴표 문자열·주석·마지막 쉼표도 엄격한 JSON에는 넣지 않습니다.</p>
+  <h4 class="tv-heading">AJAX: 재고 숫자만 8 → 5로 바꾸기</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 1000 430" role="img" aria-label="브라우저의 컵 상품 재고 8 화면에서 서버에 비동기 GET 요청을 보내 JSON stock 5 응답을 받고 상품 제목은 유지한 채 재고 영역만 5로 갱신하는 AJAX 예">
+      <defs><marker id="th-interface-formats-ajax-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#355d89"/></marker></defs>
+      <g font-family="sans-serif" font-size="17" fill="#24364c">
+        <text x="155" y="30" text-anchor="middle">브라우저</text><text x="861" y="30" text-anchor="middle">서버</text>
+        <rect x="20" y="50" width="280" height="132" rx="11" fill="#f7f9fc" stroke="#9aaac0"/><text x="42" y="80">상품: 컵</text><rect x="42" y="96" width="236" height="58" rx="8" fill="#fff6df" stroke="#b79035"/><text x="160" y="132" text-anchor="middle">재고 8개</text>
+        <rect x="750" y="55" width="223" height="190" rx="11" fill="#e9f1fb" stroke="#547daf"/><text x="861" y="91" text-anchor="middle">상품 7 재고 조회</text><text x="861" y="145" text-anchor="middle">현재 재고 = 5</text><text x="861" y="208" text-anchor="middle">JSON 응답</text>
+        <path d="M300 114 H739" stroke="#355d89" stroke-width="3" marker-end="url(#th-interface-formats-ajax-arrow)"/><text x="522" y="96" text-anchor="middle">① 비동기 GET /api/stock/7</text>
+        <path d="M750 224 H335 V276 H161 V295" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-interface-formats-ajax-arrow)"/><text x="536" y="210" text-anchor="middle">② 응답: {"stock":5}</text>
+        <rect x="20" y="306" width="280" height="112" rx="11" fill="#f7f9fc" stroke="#9aaac0"/><text x="42" y="335">상품: 컵</text><rect x="42" y="347" width="236" height="54" rx="8" fill="#edf8ef" stroke="#44895c"/><text x="160" y="381" text-anchor="middle">재고 5개</text>
+        <text x="407" y="333">③ 재고 영역만 갱신</text><text x="407" y="367">상품 제목은 그대로, 전체 새로고침 없음</text><text x="407" y="401">응답 데이터는 XML 대신 JSON이어도 됨</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-note">보낸 요청은 재고 조회이고, 받은 값은 <code>{"stock":5}</code>입니다. 응답을 기다린 뒤 재고 영역만 바꾸는 동작이 AJAX이며, JSON은 그 값의 표현 형식입니다.</p>
+  <h4 class="tv-heading">SOAP: 메시지 바깥 봉투와 안쪽 본문</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 940 285" role="img" aria-label="SOAP Envelope 안에 선택적인 Header와 필수 Body가 있고 Body에는 상품 7의 재고를 묻는 GetStock 메시지가 들어 있는 포함 관계">
+      <g font-family="sans-serif" font-size="17" fill="#24364c">
+        <rect x="20" y="15" width="900" height="253" rx="12" fill="#e9f1fb" stroke="#547daf" stroke-width="2"/><text x="42" y="46">Envelope: 메시지 전체를 감싸는 봉투</text>
+        <rect x="60" y="64" width="820" height="61" rx="9" fill="#fff6df" stroke="#b79035" stroke-dasharray="7 5"/><text x="83" y="101">Header: 추가 처리 정보 (선택, 없을 수도 있음)</text>
+        <rect x="60" y="145" width="820" height="98" rx="9" fill="#edf8ef" stroke="#44895c"/><text x="83" y="176">Body: 실제 내용 (필수)</text><text x="83" y="215" font-family="monospace" font-size="17">GetStock → id = 7</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-note">SOAP은 XML로 구조화된 메시지를 주고받는 규칙입니다. Envelope 안에는 Body가 반드시 있고, Header는 필요할 때만 넣습니다.</p>
+  <table class="tv-table"><thead><tr><th>묻는 역할</th><th>답</th><th>재고 조회에 대입</th></tr></thead><tbody><tr><td>메시지 구조·교환 규칙</td><td>SOAP</td><td>Envelope 안 Body로 조회 내용 전달</td></tr><tr><td>서비스가 제공하는 작업 설명</td><td>WSDL</td><td>재고 조회 작업·입력·출력 등 기술</td></tr><tr><td>서비스 등록·검색</td><td>UDDI</td><td>필요한 서비스를 찾을 수 있게 등록</td></tr></tbody></table>
+  <h4 class="tv-heading">EAI: 주문·재고·결제 앱을 어디에서 연결할까?</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 1050 305" role="img" aria-label="Point-to-Point는 주문 재고 결제 앱을 각각 직접 연결한다. Hub-and-Spoke는 세 앱을 중앙 허브에 연결한다. Message Bus는 세 앱을 공통 버스에 연결한다">
+      <g font-family="sans-serif" font-size="17" fill="#24364c" stroke-width="2">
+        <rect x="8" y="12" width="330" height="280" rx="10" fill="#f7f9fc" stroke="#c3cfdd"/><text x="173" y="43" text-anchor="middle">Point-to-Point: 개별 연결</text>
+        <path d="M90 118 L250 118 M90 118 L173 233 M250 118 L173 233" fill="none" stroke="#426da1" stroke-width="3"/>
+        <circle cx="90" cy="118" r="35" fill="#e9f1fb" stroke="#547daf"/><text x="90" y="124" text-anchor="middle">주문</text><circle cx="250" cy="118" r="35" fill="#e9f1fb" stroke="#547daf"/><text x="250" y="124" text-anchor="middle">재고</text><circle cx="173" cy="233" r="35" fill="#e9f1fb" stroke="#547daf"/><text x="173" y="239" text-anchor="middle">결제</text>
+        <rect x="358" y="12" width="330" height="280" rx="10" fill="#f7f9fc" stroke="#c3cfdd"/><text x="523" y="43" text-anchor="middle">Hub-and-Spoke: 중앙 허브</text>
+        <path d="M426 108 L523 165 M620 108 L523 165 M523 243 V165" fill="none" stroke="#44895c" stroke-width="3"/>
+        <circle cx="426" cy="108" r="33" fill="#edf8ef" stroke="#44895c"/><text x="426" y="114" text-anchor="middle">주문</text><circle cx="620" cy="108" r="33" fill="#edf8ef" stroke="#44895c"/><text x="620" y="114" text-anchor="middle">재고</text><circle cx="523" cy="243" r="33" fill="#edf8ef" stroke="#44895c"/><text x="523" y="249" text-anchor="middle">결제</text><rect x="484" y="139" width="78" height="50" rx="8" fill="#fff6df" stroke="#b79035"/><text x="523" y="169" text-anchor="middle">허브</text>
+        <rect x="708" y="12" width="330" height="280" rx="10" fill="#f7f9fc" stroke="#c3cfdd"/><text x="873" y="43" text-anchor="middle">Message Bus: 공통 버스</text>
+        <path d="M777 135 V211 M873 135 V211 M969 135 V211" fill="none" stroke="#8770af" stroke-width="3"/>
+        <rect x="735" y="207" width="276" height="48" rx="8" fill="#f3eefb" stroke="#8770af"/><text x="873" y="238" text-anchor="middle">공통 메시지 버스</text>
+        <circle cx="777" cy="103" r="33" fill="#f3eefb" stroke="#8770af"/><text x="777" y="109" text-anchor="middle">주문</text><circle cx="873" cy="103" r="33" fill="#f3eefb" stroke="#8770af"/><text x="873" y="109" text-anchor="middle">재고</text><circle cx="969" cy="103" r="33" fill="#f3eefb" stroke="#8770af"/><text x="969" y="109" text-anchor="middle">결제</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-scroll-hint">그림을 좌우로 밀어 전체를 보세요.</p>
+  <p class="tv-note">선은 앱 사이의 연결을 나타냅니다. 직접 잇는지, 가운데 허브를 거치는지, 공통 버스에 붙는지가 다릅니다. 이 구조를 섞으면 Hybrid입니다.</p>
+  <details><summary>프로세스 통신·화면·REST도 구별하기</summary><table class="tv-table"><thead><tr><th>용어</th><th>무엇을 다루나?</th></tr></thead><tbody><tr><td>EAI / IPC</td><td>기업 애플리케이션 연계 / 프로세스 간 통신. IPC 수단에는 Pipe·Shared Memory·Message Queue·Socket이 있습니다.</td></tr><tr><td>UI / UX</td><td>사람이 시스템과 상호작용하는 화면·수단 / 그 과정에서 느끼는 감정·생각·전체 경험</td></tr><tr><td>UI 설계 원칙</td><td>직관성: 쉽게 알아봄 / 유효성: 목적을 이룸 / 학습성: 쉽게 배움 / 유연성: 다양한 사용 상황에 대응</td></tr><tr><td>REST</td><td>자원을 중심으로 서비스를 구성하는 아키텍처 스타일. JSON·XML처럼 값을 적는 파일 형식은 아닙니다.</td></tr><tr><td>인터페이스 문서</td><td>입력 형식·출력 형식·오류·호출 규칙을 함께 맞춤</td></tr></tbody></table></details>
+  <p class="tv-result">JSON·XML은 값의 모양, SOAP은 메시지 규칙, WSDL은 설명, UDDI는 등록·검색, AJAX는 화면 동작입니다.</p>
+  <details class="tv-panel"><summary>확인: {"enabled":True}는 JSON인가요? Envelope·Body가 있는 메시지 규칙은?</summary><p><code>True</code>를 소문자 <code>true</code>로 고쳐야 합니다. Envelope·Body는 <strong>SOAP</strong>의 식별 단서입니다.</p></details>
+</div>

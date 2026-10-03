@@ -1,0 +1,108 @@
+<div class="theory-visual" data-theory-visual="th-design-patterns">
+  <p class="tv-kicker">디자인 패턴</p>
+  <h3 class="tv-heading">누가 누구를 만들고, 연결하고, 알리는가?</h3>
+  <p class="tv-lead">상자 이름보다 <strong>화살표가 하는 일</strong>을 보세요.</p>
+  <div class="tv-grid">
+    <section class="tv-panel tv-blue">
+      <h4>Observer: 한 곳의 변경을 여러 곳에 알림</h4>
+      <figure class="tv-figure">
+        <svg viewBox="0 0 640 265" role="img" aria-label="주문 상태가 바뀌면 구독한 주문 화면과 배송 알림에 각각 변경 알림을 보내는 옵서버 구조" font-family="sans-serif" font-size="20">
+          <defs><marker id="th-design-patterns-observer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#385f88"/></marker></defs>
+          <rect x="30" y="85" width="220" height="100" rx="12" fill="#eef5ff" stroke="#385f88" stroke-width="2"/>
+          <text x="140" y="123" text-anchor="middle" fill="#20384f">주문 상태</text><text x="140" y="157" text-anchor="middle" fill="#20384f">배송 완료로 변경</text>
+          <path d="M250 135 H330 M330 65 V205 M330 65 H410 M330 205 H410" fill="none" stroke="#385f88" stroke-width="2.5"/>
+          <path d="M330 65 H410" fill="none" stroke="#385f88" stroke-width="2.5" marker-end="url(#th-design-patterns-observer-arrow)"/>
+          <path d="M330 205 H410" fill="none" stroke="#385f88" stroke-width="2.5" marker-end="url(#th-design-patterns-observer-arrow)"/>
+          <text x="370" y="47" text-anchor="middle" fill="#385f88">알림</text><text x="370" y="189" text-anchor="middle" fill="#385f88">알림</text>
+          <rect x="410" y="25" width="200" height="80" rx="10" fill="#fff" stroke="#385f88" stroke-width="2"/>
+          <text x="510" y="57" text-anchor="middle" fill="#20384f">주문 화면</text><text x="510" y="87" text-anchor="middle" fill="#20384f">완료 표시</text>
+          <rect x="410" y="165" width="200" height="80" rx="10" fill="#fff" stroke="#385f88" stroke-width="2"/>
+          <text x="510" y="197" text-anchor="middle" fill="#20384f">배송 알림</text><text x="510" y="227" text-anchor="middle" fill="#20384f">완료 소식 전달</text>
+        </svg>
+      </figure>
+      <p class="tv-result"><strong>하나 → 여러 구독자</strong>가 단서입니다. 상속 관계를 뜻하지 않습니다.</p>
+    </section>
+    <section class="tv-panel tv-gold">
+      <h4>Adapter: 안 맞는 호출을 맞춰 연결</h4>
+      <figure class="tv-figure">
+        <svg viewBox="0 0 640 265" role="img" aria-label="사용자가 요구하는 send 호출을 어댑터가 기존 도구의 write 호출로 바꾸어 연결하는 구조" font-family="sans-serif" font-size="20">
+          <defs><marker id="th-design-patterns-adapter-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#9c6a13"/></marker></defs>
+          <rect x="20" y="90" width="160" height="90" rx="10" fill="#fff8e7" stroke="#9c6a13" stroke-width="2"/>
+          <text x="100" y="124" text-anchor="middle" fill="#604411">사용자</text><text x="100" y="156" text-anchor="middle" fill="#604411">send() 요청</text>
+          <path d="M180 135 H250" fill="none" stroke="#9c6a13" stroke-width="2.5" marker-end="url(#th-design-patterns-adapter-arrow)"/>
+          <rect x="250" y="70" width="160" height="130" rx="10" fill="#fff" stroke="#9c6a13" stroke-width="2"/>
+          <text x="330" y="105" text-anchor="middle" fill="#604411">Adapter</text><text x="330" y="140" text-anchor="middle" fill="#604411">send → write</text><text x="330" y="175" text-anchor="middle" fill="#604411">호출을 변환</text>
+          <path d="M410 135 H460" fill="none" stroke="#9c6a13" stroke-width="2.5" marker-end="url(#th-design-patterns-adapter-arrow)"/>
+          <rect x="460" y="90" width="160" height="90" rx="10" fill="#fff8e7" stroke="#9c6a13" stroke-width="2"/>
+          <text x="540" y="124" text-anchor="middle" fill="#604411">기존 도구</text><text x="540" y="156" text-anchor="middle" fill="#604411">write()</text>
+        </svg>
+      </figure>
+      <p class="tv-result">사용자는 <strong>send()</strong>를 그대로 쓰고, 어댑터가 <strong>write()</strong>를 호출합니다.</p>
+    </section>
+    <section class="tv-panel tv-purple">
+      <h4>Bridge: 기능과 구현을 따로 늘림</h4>
+      <figure class="tv-figure">
+        <svg viewBox="0 0 640 310" role="img" aria-label="도형 기능이 렌더러에 그리기를 맡기며, 원과 사각형의 기능 축과 Windows와 macOS의 구현 축을 독립적으로 확장하는 브리지 구조" font-family="sans-serif" font-size="20">
+          <defs><marker id="th-design-patterns-bridge-delegate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#80619a"/></marker></defs>
+          <rect x="70" y="35" width="210" height="80" rx="8" fill="#f6effc" stroke="#80619a" stroke-width="2"/>
+          <text x="175" y="68" text-anchor="middle" fill="#52376b">도형 기능</text><text x="175" y="97" text-anchor="middle" fill="#52376b">그리기를 요청</text>
+          <path d="M280 76 H380" fill="none" stroke="#80619a" stroke-width="2.5" marker-end="url(#th-design-patterns-bridge-delegate)"/>
+          <text x="330" y="56" text-anchor="middle" fill="#52376b">위임</text>
+          <rect x="380" y="35" width="210" height="80" rx="8" fill="#f6effc" stroke="#80619a" stroke-width="2"/>
+          <text x="485" y="68" text-anchor="middle" fill="#52376b">렌더러</text><text x="485" y="97" text-anchor="middle" fill="#52376b">구현 규칙</text>
+          <path d="M100 210 V168 H175 V139 M265 210 V168 H175" fill="none" stroke="#52376b" stroke-width="2"/>
+          <polygon points="175,115 155,139 195,139" fill="#fff" stroke="#52376b" stroke-width="2"/>
+          <path d="M410 210 V168 H485 V139 M575 210 V168 H485" fill="none" stroke="#52376b" stroke-width="2" stroke-dasharray="7 5"/>
+          <polygon points="485,115 465,139 505,139" fill="#fff" stroke="#52376b" stroke-width="2"/>
+          <rect x="40" y="210" width="120" height="55" rx="6" fill="#fff" stroke="#80619a" stroke-width="2"/>
+          <text x="100" y="245" text-anchor="middle" fill="#52376b">원</text>
+          <rect x="205" y="210" width="120" height="55" rx="6" fill="#fff" stroke="#80619a" stroke-width="2"/>
+          <text x="265" y="245" text-anchor="middle" fill="#52376b">사각형</text>
+          <rect x="355" y="210" width="110" height="55" rx="6" fill="#fff" stroke="#80619a" stroke-width="2"/>
+          <text x="410" y="245" text-anchor="middle" fill="#52376b">Windows</text>
+          <rect x="520" y="210" width="110" height="55" rx="6" fill="#fff" stroke="#80619a" stroke-width="2"/>
+          <text x="575" y="245" text-anchor="middle" fill="#52376b">macOS</text>
+          <text x="175" y="297" text-anchor="middle" fill="#52376b">기능 쪽 확장</text><text x="485" y="297" text-anchor="middle" fill="#52376b">구현 쪽 확장</text>
+        </svg>
+      </figure>
+      <p class="tv-result">원·사각형과 Windows·macOS를 <strong>두 축</strong>으로 나눕니다. Adapter의 호환성 변환과 구별하세요.</p>
+    </section>
+    <section class="tv-panel tv-green">
+      <h4>Abstract Factory: 제품군을 함께 교체</h4>
+      <figure class="tv-figure">
+        <svg viewBox="0 0 640 330" role="img" aria-label="Windows Factory는 Windows 버튼과 체크박스를, macOS Factory는 macOS 버튼과 체크박스를 함께 생성하며 팩토리를 바꾸면 제품군이 교체되는 구조" font-family="sans-serif" font-size="20">
+          <defs><marker id="th-design-patterns-factory-create" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#347a58"/></marker></defs>
+          <path d="M320 15 V315" stroke="#a3b7ae" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <rect x="30" y="35" width="260" height="75" rx="10" fill="#edf9f2" stroke="#347a58" stroke-width="2"/>
+          <text x="160" y="66" text-anchor="middle" fill="#20593e">Windows Factory</text><text x="160" y="95" text-anchor="middle" fill="#20593e">제품군 생성</text>
+          <path d="M160 110 V170 M90 170 H230" fill="none" stroke="#347a58" stroke-width="2.5"/>
+          <path d="M90 170 V240" fill="none" stroke="#347a58" stroke-width="2.5" marker-end="url(#th-design-patterns-factory-create)"/>
+          <path d="M230 170 V240" fill="none" stroke="#347a58" stroke-width="2.5" marker-end="url(#th-design-patterns-factory-create)"/>
+          <text x="90" y="214" text-anchor="middle" fill="#20593e">버튼 생성</text><text x="230" y="214" text-anchor="middle" fill="#20593e">체크 생성</text>
+          <rect x="35" y="240" width="110" height="60" rx="7" fill="#fff" stroke="#347a58" stroke-width="2"/>
+          <text x="90" y="277" text-anchor="middle" fill="#20593e">Win 버튼</text>
+          <rect x="175" y="240" width="110" height="60" rx="7" fill="#fff" stroke="#347a58" stroke-width="2"/>
+          <text x="230" y="277" text-anchor="middle" fill="#20593e">Win 체크</text>
+          <rect x="350" y="35" width="260" height="75" rx="10" fill="#edf9f2" stroke="#347a58" stroke-width="2"/>
+          <text x="480" y="66" text-anchor="middle" fill="#20593e">macOS Factory</text><text x="480" y="95" text-anchor="middle" fill="#20593e">제품군 생성</text>
+          <path d="M480 110 V170 M410 170 H550" fill="none" stroke="#347a58" stroke-width="2.5"/>
+          <path d="M410 170 V240" fill="none" stroke="#347a58" stroke-width="2.5" marker-end="url(#th-design-patterns-factory-create)"/>
+          <path d="M550 170 V240" fill="none" stroke="#347a58" stroke-width="2.5" marker-end="url(#th-design-patterns-factory-create)"/>
+          <text x="410" y="214" text-anchor="middle" fill="#20593e">버튼 생성</text><text x="550" y="214" text-anchor="middle" fill="#20593e">체크 생성</text>
+          <rect x="355" y="240" width="110" height="60" rx="7" fill="#fff" stroke="#347a58" stroke-width="2"/>
+          <text x="410" y="277" text-anchor="middle" fill="#20593e">Mac 버튼</text>
+          <rect x="495" y="240" width="110" height="60" rx="7" fill="#fff" stroke="#347a58" stroke-width="2"/>
+          <text x="550" y="277" text-anchor="middle" fill="#20593e">Mac 체크</text>
+        </svg>
+      </figure>
+      <p class="tv-result">생성 담당을 바꾸면 <strong>버튼·체크박스의 스타일이 함께</strong> 바뀝니다.</p>
+    </section>
+  </div>
+  <table class="tv-table"><thead><tr><th>Factory를 구별할 때</th><th>단서</th></tr></thead><tbody><tr><td>Factory Method</td><td>어떤 객체를 만들지는 <strong>자식 클래스가 정함</strong></td></tr><tr><td>Abstract Factory</td><td>관련된 <strong>제품군</strong>을 생성·교체. Kit라는 말도 단서</td></tr></tbody></table>
+  <details><summary>나머지 패턴은 한 줄로 구별</summary>
+    <table class="tv-table"><thead><tr><th>패턴</th><th>역할</th></tr></thead><tbody>
+      <tr><td>Iterator</td><td>내부 구조를 숨기고 차례로 접근</td></tr><tr><td>Visitor</td><td>자료 구조와 연산을 분리해 연산 추가</td></tr><tr><td>Singleton</td><td>정해진 범위에서 인스턴스 한 개 제공</td></tr><tr><td>Facade</td><td>복잡한 하위 기능에 간단한 진입점 제공</td></tr><tr><td>Proxy</td><td>다른 객체의 접근을 대신 처리</td></tr><tr><td>Decorator</td><td>같은 인터페이스로 감싸 기능 추가</td></tr><tr><td>Composite</td><td>단일 객체와 객체 묶음을 같은 방식으로 다룸</td></tr>
+    </tbody></table>
+    <p class="tv-note">Factory·Singleton은 생성, Adapter·Bridge 등은 구조, Observer·Iterator·Visitor는 행위 패턴입니다. Singleton의 동시성 안전성은 구현에 달려 있습니다.</p>
+  </details>
+</div>

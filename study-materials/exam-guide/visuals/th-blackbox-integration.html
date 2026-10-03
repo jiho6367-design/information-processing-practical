@@ -1,0 +1,66 @@
+<div class="theory-visual" data-theory-visual="th-blackbox-integration">
+  <p class="tv-kicker">동치 분할 · 경계값 · 스텁 · 드라이버</p>
+  <h3 class="tv-heading">입력은 경계에서, 호출은 방향으로 확인</h3>
+  <p class="tv-lead">이 예제의 정상 입력은 <strong>정수 나이 18~65</strong>입니다.</p>
+  <section class="tv-panel">
+    <h4>경계값 분석: 18과 65의 바로 안팎</h4>
+    <figure class="tv-figure">
+      <svg viewBox="0 0 640 260" role="img" aria-label="나이 정상 범위 18부터65의 양 끝 확대.17은 비정상,18과19는 정상,64와65는 정상,66은 비정상인 경계값 위치" font-family="sans-serif" font-size="20">
+        <text x="160" y="35" text-anchor="middle" fill="#20384f">최솟값 18 주변 확대</text><text x="480" y="35" text-anchor="middle" fill="#20384f">최댓값 65 주변 확대</text>
+        <rect x="160" y="105" width="130" height="70" rx="7" fill="#edf9f2"/>
+        <rect x="350" y="105" width="130" height="70" rx="7" fill="#edf9f2"/>
+        <text x="225" y="90" text-anchor="middle" fill="#20593e">정상 쪽</text><text x="415" y="90" text-anchor="middle" fill="#20593e">정상 쪽</text>
+        <path d="M30 145 H290 M350 145 H610" stroke="#455a74" stroke-width="2.5" fill="none"/>
+        <path d="M160 100 V183 M480 100 V183" stroke="#347a58" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+        <circle cx="80" cy="145" r="9" fill="#b86f56"/><circle cx="160" cy="145" r="9" fill="#347a58"/><circle cx="240" cy="145" r="9" fill="#347a58"/>
+        <circle cx="400" cy="145" r="9" fill="#347a58"/><circle cx="480" cy="145" r="9" fill="#347a58"/><circle cx="560" cy="145" r="9" fill="#b86f56"/>
+        <text x="80" y="205" text-anchor="middle" fill="#914c36">17</text><text x="160" y="205" text-anchor="middle" fill="#20593e">18</text><text x="240" y="205" text-anchor="middle" fill="#20593e">19</text>
+        <text x="400" y="205" text-anchor="middle" fill="#20593e">64</text><text x="480" y="205" text-anchor="middle" fill="#20593e">65</text><text x="560" y="205" text-anchor="middle" fill="#914c36">66</text>
+        <text x="80" y="239" text-anchor="middle" fill="#914c36">비정상</text><text x="160" y="239" text-anchor="middle" fill="#20593e">정상</text><text x="240" y="239" text-anchor="middle" fill="#20593e">정상</text>
+        <text x="400" y="239" text-anchor="middle" fill="#20593e">정상</text><text x="480" y="239" text-anchor="middle" fill="#20593e">정상</text><text x="560" y="239" text-anchor="middle" fill="#914c36">비정상</text>
+      </svg>
+    </figure>
+    <p class="tv-note">18과 65를 포함하므로 둘 다 정상입니다. 한 칸 안·밖인 <strong>17·18·19 / 64·65·66</strong>을 넣어 확인합니다.</p>
+  </section>
+  <section class="tv-panel tv-blue">
+    <h4>동치 분할: 같은 결과 구간에서 대표값 하나씩</h4>
+    <table class="tv-table"><thead><tr><th>구간</th><th>대표 입력</th><th>기대 결과</th></tr></thead><tbody><tr><td>18 미만</td><td><strong>10</strong></td><td>비정상</td></tr><tr><td>18~65</td><td><strong>40</strong></td><td>정상</td></tr><tr><td>65 초과</td><td><strong>70</strong></td><td>비정상</td></tr></tbody></table>
+    <p class="tv-result"><strong>10·40·70 = 구간 대표값</strong><br><strong>17·18·19·64·65·66 = 경계 주변값</strong></p>
+  </section>
+  <section class="tv-panel">
+    <h4>통합 테스트: 누가 누구를 부르는가?</h4>
+    <figure class="tv-figure">
+      <svg viewBox="0 0 640 340" role="img" aria-label="하향식은 실제 상위 화면이 가짜 하위 저장 모듈인 스텁을 호출한다. 상향식은 가짜 상위 화면인 드라이버가 실제 하위 저장 모듈을 호출한다" font-family="sans-serif" font-size="20">
+        <defs><marker id="th-blackbox-integration-call-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#455a74"/></marker></defs>
+        <text x="30" y="30" fill="#385f88">하향식 · 아래가 아직 없음</text>
+        <rect x="30" y="55" width="210" height="85" rx="10" fill="#eef5ff" stroke="#385f88" stroke-width="2"/>
+        <text x="135" y="88" text-anchor="middle" fill="#20384f">실제 화면</text><text x="135" y="120" text-anchor="middle" fill="#20384f">상위 · 완성</text>
+        <path d="M240 97 H400" fill="none" stroke="#455a74" stroke-width="2.5" marker-end="url(#th-blackbox-integration-call-arrow)"/>
+        <text x="320" y="80" text-anchor="middle" fill="#455a74">호출</text>
+        <rect x="400" y="55" width="210" height="85" rx="10" fill="#fff8e7" stroke="#9c6a13" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="505" y="88" text-anchor="middle" fill="#604411">가짜 저장</text><text x="505" y="120" text-anchor="middle" fill="#604411">스텁 · 하위</text>
+        <text x="320" y="168" text-anchor="middle" fill="#604411">스텁은 호출받는 아래쪽을 대신합니다.</text>
+        <text x="30" y="205" fill="#20593e">상향식 · 위가 아직 없음</text>
+        <rect x="30" y="225" width="210" height="85" rx="10" fill="#fff8e7" stroke="#9c6a13" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="135" y="258" text-anchor="middle" fill="#604411">가짜 화면</text><text x="135" y="290" text-anchor="middle" fill="#604411">드라이버 · 상위</text>
+        <path d="M240 267 H400" fill="none" stroke="#455a74" stroke-width="2.5" marker-end="url(#th-blackbox-integration-call-arrow)"/>
+        <text x="320" y="250" text-anchor="middle" fill="#455a74">호출</text>
+        <rect x="400" y="225" width="210" height="85" rx="10" fill="#edf9f2" stroke="#347a58" stroke-width="2"/>
+        <text x="505" y="258" text-anchor="middle" fill="#20593e">실제 저장</text><text x="505" y="290" text-anchor="middle" fill="#20593e">하위 · 완성</text>
+        <text x="320" y="336" text-anchor="middle" fill="#20593e">드라이버는 호출하는 위쪽을 대신합니다.</text>
+      </svg>
+    </figure>
+    <p class="tv-result">화살표는 항상 <strong>상위 호출자 → 하위 모듈</strong>입니다. 점선 테두리는 대신 만든 가짜 모듈입니다.</p>
+  </section>
+  <details><summary>테스트 용어 더 보기</summary>
+    <table class="tv-table"><thead><tr><th>종류</th><th>확인하는 것</th></tr></thead><tbody>
+      <tr><td>단위 / 통합 / 시스템 / 인수</td><td>모듈 내부 / 모듈 사이 / 전체 시스템 / 사용자 요구의 수용</td></tr>
+      <tr><td>회귀 테스트</td><td>바꾼 코드가 기존 기능을 망가뜨리지 않았는지 다시 검사</td></tr>
+      <tr><td>정적 / 동적 테스트</td><td>실행하지 않고 검토 / 실행하여 결과 관찰</td></tr>
+      <tr><td>알파 / 베타</td><td>개발 장소의 통제된 환경 / 사용 환경의 선정 사용자</td></tr>
+      <tr><td>사전 조건 / 입력 / 기대 결과</td><td>로그인 화면 열림 / 계정·비밀번호 / 로그인 성공 여부</td></tr>
+      <tr><td>원인-결과 그래프</td><td>입력 조건과 출력 결과의 논리 관계를 연결</td></tr>
+      <tr><td>살충제 패러독스</td><td>같은 테스트만 반복하면 새로운 결함을 놓칠 수 있음</td></tr>
+    </tbody></table>
+  </details>
+</div>

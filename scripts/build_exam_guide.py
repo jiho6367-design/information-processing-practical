@@ -93,7 +93,7 @@ def main():
             body += '<details class="quiz"><summary>확인 문제 · '+esc(plain_words(view['quiz']['question']))+'</summary><p>'+esc(plain_words(view['quiz']['answer']))+'</p></details>'
         if view.get('visual_file'):
             visual_path = (OUT / view['visual_file']).resolve()
-            assert visual_path.parent == OUT.resolve() and visual_path.suffix == '.html'
+            assert visual_path.parent in {OUT.resolve(), (OUT/'visuals').resolve()} and visual_path.suffix == '.html'
             body = visual_path.read_text(encoding='utf-8')
         body += '<footer class="sources"><span>출제 근거</span>'+''.join(source(s) for s in l['sources'])+'</footer>'
         search = ' '.join([view['title'],view['lead'],l['title'],l['lead'],lang,l.get('topic',''),l.get('explanation',''),
@@ -125,7 +125,8 @@ def main():
                   'THEORY_LESSONS':''.join(sections['theory']),'INVENTORY':''.join(qrows),'TREND':trend,
                   'SCROLL_NAV':(OUT/'scroll-navigation.js').read_text(encoding='utf-8'),
                   'NORMALIZATION_CSS':(OUT/'normalization.css').read_text(encoding='utf-8'),
-                  'NORMALIZATION_JS':(OUT/'normalization.js').read_text(encoding='utf-8')}
+                  'NORMALIZATION_JS':(OUT/'normalization.js').read_text(encoding='utf-8'),
+                  'THEORY_VISUALS_CSS':(OUT/'theory-visuals.css').read_text(encoding='utf-8')}
     for k,v in replacements.items(): template=template.replace('__'+k+'__',str(v))
     (OUT/'index.html').write_text(template.rstrip()+'\n',encoding='utf-8')
     print(json.dumps({'questions':len(inventory),'counts':dict(counts),'lessons':len(lessons),'html_bytes':len(template.encode())},ensure_ascii=False))

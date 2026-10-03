@@ -1,0 +1,52 @@
+<div class="theory-visual" data-theory-visual="th-network-protocols">
+  <p class="tv-lead">RIP는 지나가는 홉 수를, 이 OSPF 예제는 선에 적힌 비용의 합을 비교합니다.</p>
+  <h4 class="tv-heading">같은 길 지도에서 서로 다른 경로 고르기</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 1000 385" role="img" aria-label="A에서 D로 가는 두 경로. A B D는 두 홉이고 각 비용 10으로 총 20이다. A C E D는 세 홉이고 각 비용 1로 총 3이다. RIP는 위 경로, 주어진 비용의 OSPF는 아래 경로를 고른다">
+      <defs><marker id="th-network-protocols-rip-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#426da1"/></marker><marker id="th-network-protocols-ospf-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#44895c"/></marker></defs>
+      <g font-family="sans-serif" font-size="18" fill="#24364c">
+        <text x="500" y="27" text-anchor="middle">선 위 숫자 = 이 예에서 주어진 OSPF 비용</text>
+        <path d="M126 177 L451 84" fill="none" stroke="#426da1" stroke-width="4" marker-end="url(#th-network-protocols-rip-arrow)"/>
+        <path d="M516 88 L872 179" fill="none" stroke="#426da1" stroke-width="4" marker-end="url(#th-network-protocols-rip-arrow)"/>
+        <path d="M124 215 L316 296" fill="none" stroke="#44895c" stroke-width="4" marker-end="url(#th-network-protocols-ospf-arrow)"/>
+        <path d="M383 307 H605" fill="none" stroke="#44895c" stroke-width="4" marker-end="url(#th-network-protocols-ospf-arrow)"/>
+        <path d="M674 299 L878 218" fill="none" stroke="#44895c" stroke-width="4" marker-end="url(#th-network-protocols-ospf-arrow)"/>
+        <text x="278" y="117" text-anchor="middle" fill="#426da1">10</text><text x="708" y="119" text-anchor="middle" fill="#426da1">10</text>
+        <text x="226" y="277" text-anchor="middle" fill="#44895c">1</text><text x="493" y="290" text-anchor="middle" fill="#44895c">1</text><text x="776" y="277" text-anchor="middle" fill="#44895c">1</text>
+        <circle cx="92" cy="196" r="37" fill="#f2f5fa" stroke="#546c88" stroke-width="2"/><text x="92" y="203" text-anchor="middle" font-size="22">A</text>
+        <circle cx="482" cy="75" r="35" fill="#e9f1fb" stroke="#426da1" stroke-width="2"/><text x="482" y="83" text-anchor="middle" font-size="22">B</text>
+        <circle cx="920" cy="196" r="37" fill="#f2f5fa" stroke="#546c88" stroke-width="2"/><text x="920" y="203" text-anchor="middle" font-size="22">D</text>
+        <circle cx="350" cy="307" r="35" fill="#edf8ef" stroke="#44895c" stroke-width="2"/><text x="350" y="315" text-anchor="middle" font-size="22">C</text>
+        <circle cx="640" cy="307" r="35" fill="#edf8ef" stroke="#44895c" stroke-width="2"/><text x="640" y="315" text-anchor="middle" font-size="22">E</text>
+        <text x="491" y="161" text-anchor="middle" fill="#426da1">위: 2홉 / 10 + 10 = 20</text><text x="491" y="252" text-anchor="middle" fill="#44895c">아래: 3홉 / 1 + 1 + 1 = 3</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-note">A→B→D는 선을 2개 지나므로 2홉입니다. A→C→E→D는 3홉이지만 비용 합은 3으로 더 작습니다.</p>
+  <table class="tv-table"><thead><tr><th>비교 기준</th><th>고르는 길</th><th>함께 기억할 말</th></tr></thead><tbody><tr><td>RIP: 홉 수 2 &lt; 3</td><td>A→B→D</td><td>거리 벡터 · Bellman-Ford</td></tr><tr><td>OSPF: 비용 3 &lt; 20</td><td>A→C→E→D</td><td>링크 상태 · Dijkstra</td></tr></tbody></table>
+  <h4 class="tv-heading">ARP: 같은 LAN에서 IP 주소에 맞는 MAC 주소 찾기</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 1040 355" role="img" aria-label="192.168.1.10이 LAN에 192.168.1.20의 MAC 주소를 묻는다. 192.168.1.20만 자신의 MAC 02:00:00:00:00:20을 답하고 요청자의 주소 표에 그 대응이 저장된다">
+      <defs><marker id="th-network-protocols-arp-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#355d89"/></marker></defs>
+      <g font-family="sans-serif" font-size="17" fill="#24364c">
+        <rect x="20" y="108" width="206" height="75" rx="10" fill="#e9f1fb" stroke="#547daf"/><text x="123" y="138" text-anchor="middle">요청하는 PC</text><text x="123" y="165" text-anchor="middle">192.168.1.10</text>
+        <rect x="344" y="105" width="271" height="81" rx="10" fill="#fff6df" stroke="#b79035"/><text x="479" y="136" text-anchor="middle">① LAN 전체에 질문</text><text x="479" y="164" text-anchor="middle">“192.168.1.20은 누구?”</text>
+        <rect x="741" y="24" width="274" height="103" rx="10" fill="#edf8ef" stroke="#44895c"/><text x="878" y="55" text-anchor="middle">192.168.1.20: “저예요”</text><text x="878" y="83" text-anchor="middle">MAC 주소</text><text x="878" y="111" text-anchor="middle" font-family="monospace" font-size="16">02:00:00:00:00:20</text>
+        <rect x="741" y="165" width="274" height="69" rx="10" fill="#f2f5fa" stroke="#9daabb"/><text x="878" y="193" text-anchor="middle">192.168.1.30</text><text x="878" y="220" text-anchor="middle">내 IP가 아님: 응답하지 않음</text>
+        <path d="M226 146 H333" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-network-protocols-arp-arrow)"/>
+        <path d="M615 129 L730 80" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-network-protocols-arp-arrow)"/>
+        <path d="M615 160 L730 194" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-network-protocols-arp-arrow)"/>
+        <path d="M1015 80 H1028 V276 H123 V195" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-network-protocols-arp-arrow)"/>
+        <rect x="305" y="256" width="373" height="41" rx="7" fill="#fff"/><text x="491" y="283" text-anchor="middle">② 해당 PC가 요청자에게 MAC 주소 응답</text>
+        <text x="520" y="335" text-anchor="middle">저장할 대응: 192.168.1.20 → 02:00:00:00:00:20</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-scroll-hint">그림을 좌우로 밀어 전체를 보세요.</p>
+  <p class="tv-note">ARP는 이미 아는 IP에서 MAC을 찾습니다. 질문은 LAN 전체로 보내고, 이 예에서는 해당 IP를 가진 PC가 응답합니다. 반대 방향인 MAC→IP는 RARP입니다.</p>
+  <details><summary>계층·라우팅 범위·오류제어 용어 더 보기</summary><table class="tv-table"><thead><tr><th>묶음</th><th>짧게 구별하기</th></tr></thead><tbody><tr><td>물리 / 데이터 링크</td><td>비트·전기적 신호 / 인접 장치 사이 프레임·MAC·오류 검출</td></tr><tr><td>네트워크 / 전송</td><td>IP 패킷·라우팅 / 포트·종단 간 전달</td></tr><tr><td>ICMP</td><td>네트워크 상태·오류를 알리는 제어 메시지. TCP처럼 신뢰성 있는 데이터 전송을 보장하는 대신 쓰지는 않습니다.</td></tr><tr><td>IGP / EGP / BGP</td><td>AS(한 관리 영역) 안 / AS 사이 프로토콜 범주 또는 예전 프로토콜 이름 / AS 사이의 경로 벡터 프로토콜</td></tr><tr><td>FEC / BEC·ARQ</td><td>수신자가 오류를 고침 / 오류를 찾은 뒤 재전송 요청</td></tr><tr><td>패리티 / CRC</td><td>1의 개수의 홀짝 검사 / 다항식 나눗셈의 나머지로 오류 검출</td></tr><tr><td>HDLC I / S / U</td><td>정보 전달 / 흐름·오류 제어를 감독 / 연결 관리 등 비번호 기능. HDLC는 데이터 링크의 비트 지향 프로토콜입니다.</td></tr><tr><td>프로토콜의 기본 요소</td><td>구문: 형식 / 의미: 정보·제어의 뜻 / 타이밍: 교환 순서·시점</td></tr></tbody></table><p class="tv-note">흐름 제어·오류 검출·오류 정정은 서로 다른 일입니다. 오류를 얼마나 고칠 수 있는지는 코드 종류·구성에 따라 달라집니다.</p></details>
+  <h4 class="tv-heading">패리티는 두 비트가 바뀌어도 놓칠 수 있음</h4>
+  <table class="tv-table"><thead><tr><th>짝수 패리티 예</th><th>데이터 4비트</th><th>패리티 비트</th><th>전체 1의 개수</th></tr></thead><tbody><tr><td>보낸 값</td><td><code>1010</code></td><td><code>0</code></td><td>2개: 짝수</td></tr><tr><td>앞의 두 비트가 바뀜</td><td><code>0110</code></td><td><code>0</code></td><td>2개: 여전히 짝수 → 놓침</td></tr></tbody></table>
+  <p class="tv-result">라우팅은 먼저 “홉인가, 비용인가”를 정하세요. 오류 검출과 오류 정정도 따로 봅니다.</p>
+  <details class="tv-panel"><summary>확인: X는 2홉·비용 15, Y는 3홉·비용 6입니다. RIP와 이 비용의 OSPF는?</summary><p><strong>RIP는 X, OSPF는 Y.</strong> 작은 홉 수와 작은 비용 합을 각각 고릅니다.</p></details>
+</div>

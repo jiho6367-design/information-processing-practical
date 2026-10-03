@@ -1,0 +1,50 @@
+<div class="theory-visual" data-theory-visual="th-security-attacks">
+  <p class="tv-lead">무엇을 속였는지, 응답이 어디로 가는지 따라가면 공격 이름이 보입니다.</p>
+  <h4 class="tv-heading">SYN Flooding: 연결을 끝내지 않고 대기만 늘리기</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 940 310" role="img" aria-label="공격자가 SYN을 보내고 서버의 SYN ACK를 받은 뒤 마지막 ACK를 보내지 않아 연결이 대기 상태에 남는 과정">
+      <defs><marker id="th-security-attacks-syn-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#355d89"/></marker></defs>
+      <g font-family="sans-serif" font-size="17" fill="#24364c">
+        <rect x="60" y="15" width="200" height="48" rx="10" fill="#fff0ed" stroke="#c35d53"/><text x="160" y="45" text-anchor="middle">공격자</text>
+        <rect x="650" y="15" width="220" height="48" rx="10" fill="#e9f1fb" stroke="#547daf"/><text x="760" y="45" text-anchor="middle">서버</text>
+        <path d="M160 65 V280 M760 65 V280" stroke="#a2b1c3" stroke-width="2" stroke-dasharray="5 5"/>
+        <path d="M170 100 H746" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-syn-arrow)"/><text x="460" y="91" text-anchor="middle">① SYN: 새 연결을 요청</text>
+        <path d="M748 164 H176" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-syn-arrow)"/><text x="460" y="154" text-anchor="middle">② SYN + ACK: 서버는 마지막 확인을 기다림</text>
+        <path d="M170 225 H746" stroke="#c35d53" stroke-width="2" stroke-dasharray="7 6"/><path d="M446 213 L470 237 M470 213 L446 237" stroke="#b43c39" stroke-width="4"/><text x="460" y="212" text-anchor="middle" fill="#ad3632">③ 마지막 ACK가 오지 않음</text>
+        <rect x="622" y="250" width="276" height="43" rx="8" fill="#fff6df" stroke="#b79035"/><text x="760" y="278" text-anchor="middle">미완성 연결이 대기 자원을 차지</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-note">정상 연결은 ③까지 끝납니다. 서로 다른 새 연결 요청을 계속 보내고 ③을 끝내지 않으면, 서버에 미완성 연결이 쌓입니다.</p>
+  <table class="tv-table"><thead><tr><th>새 요청</th><th>완료한 연결</th><th>아직 대기 중인 연결</th></tr></thead><tbody><tr><td>1건</td><td>0건</td><td>1건</td></tr><tr><td>2건</td><td>0건</td><td>2건</td></tr><tr><td>3건</td><td>0건</td><td>3건</td></tr></tbody></table>
+  <p class="tv-note">표는 대기 항목이 아직 만료되지 않은 짧은 구간의 예입니다. 계속 누적되어 자원이 부족해지는 것이 핵심입니다.</p>
+  <h4 class="tv-heading">Smurf: 남의 주소로 요청하고, 여러 응답을 피해자에게 보내기</h4>
+  <div class="tv-figure">
+    <svg viewBox="0 0 1040 360" role="img" aria-label="피해자 IP로 출발지를 위조한 ICMP 요청 한 개가 브로드캐스트로 세 호스트에 전달되고 세 응답이 피해자에게 향하는 Smurf 공격 예">
+      <defs><marker id="th-security-attacks-smurf-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#355d89"/></marker></defs>
+      <g font-family="sans-serif" font-size="17" fill="#24364c">
+        <text x="26" y="30" fill="#ad3632">위조한 출발지 = 피해자 IP 198.51.100.10</text>
+        <rect x="25" y="153" width="150" height="55" rx="9" fill="#fff0ed" stroke="#c35d53"/><text x="100" y="187" text-anchor="middle">공격자</text>
+        <rect x="300" y="139" width="245" height="83" rx="9" fill="#fff6df" stroke="#b79035"/><text x="422" y="171" text-anchor="middle">브로드캐스트 요청</text><text x="422" y="199" text-anchor="middle">192.0.2.255 (/24)</text>
+        <rect x="655" y="66" width="132" height="46" rx="8" fill="#e9f1fb" stroke="#547daf"/><text x="721" y="95" text-anchor="middle">호스트 1</text>
+        <rect x="655" y="158" width="132" height="46" rx="8" fill="#e9f1fb" stroke="#547daf"/><text x="721" y="187" text-anchor="middle">호스트 2</text>
+        <rect x="655" y="250" width="132" height="46" rx="8" fill="#e9f1fb" stroke="#547daf"/><text x="721" y="279" text-anchor="middle">호스트 3</text>
+        <rect x="877" y="145" width="145" height="73" rx="9" fill="#fff0ed" stroke="#c35d53"/><text x="949" y="173" text-anchor="middle">피해자</text><text x="949" y="201" text-anchor="middle">응답 3개 수신</text>
+        <path d="M175 181 H290" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <path d="M545 171 L646 89" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <path d="M545 181 H646" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <path d="M545 192 L646 273" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <path d="M787 89 L868 163" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <path d="M787 181 H868" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <path d="M787 273 L868 199" fill="none" stroke="#355d89" stroke-width="3" marker-end="url(#th-security-attacks-smurf-arrow)"/>
+        <text x="233" y="156" text-anchor="middle">ICMP 1개</text><text x="819" y="328" text-anchor="middle">답장은 위조된 출발지로 향함</text>
+      </g>
+    </svg>
+  </div>
+  <p class="tv-scroll-hint">그림을 좌우로 밀어 전체를 보세요.</p>
+  <p class="tv-note">이 예에서 응답하는 장치는 3대이므로 요청 1개가 응답 3개로 늘어납니다. 피해자는 요청을 보내지 않았는데 응답을 받습니다.</p>
+  <table class="tv-table"><thead><tr><th>지문에서 찾을 값·과정</th><th>답</th></tr></thead><tbody><tr><td>출발지 IP·포트 = 목적지 IP·포트</td><td>LAND</td></tr><tr><td>피해자 출발지 위조 + ICMP 브로드캐스트 + 여러 응답</td><td>Smurf</td></tr><tr><td>SYN을 반복하고 마지막 ACK는 끝내지 않음</td><td>SYN Flooding</td></tr><tr><td>같은 LAN에서 IP→MAC 대응을 속임</td><td>ARP Spoofing</td></tr></tbody></table>
+  <details><summary>나머지 공격 용어도 구별하기</summary><table class="tv-table"><thead><tr><th>용어</th><th>짧은 상황 예</th></tr></thead><tbody><tr><td>Sniffing / Spoofing / Session Hijacking</td><td>통신을 엿듣기 / 주소·신원을 속이기 / 이미 로그인한 세션을 가로채기. 한 공격에 함께 쓰일 수 있습니다.</td></tr><tr><td>Watering Hole / Phishing / 사회공학</td><td>자주 가는 사이트를 미리 감염 / 미끼 메시지·가짜 화면으로 속임 / 사람의 신뢰를 이용해 속임</td></tr><tr><td>Rootkit / APT</td><td>침입 흔적을 숨기는 도구 모음 / 특정 대상을 오래 노리는 공격 활동</td></tr><tr><td>Worm / Virus / Trojan</td><td>스스로 전파 / 다른 파일 등에 붙어 복제 / 정상 프로그램처럼 위장. Trojan에 자기 복제는 필수 조건이 아닙니다.</td></tr><tr><td>Scareware / Ransomware</td><td>가짜 위험 경고로 구매 유도 / 자료를 잠그거나 암호화하고 돈을 요구</td></tr></tbody></table></details>
+  <p class="tv-result">IP 위조는 공격의 수단일 수 있습니다. 마지막에 어떤 과정으로 피해를 만드는지까지 보세요.</p>
+  <details class="tv-panel"><summary>확인: 피해자 IP로 ICMP 브로드캐스트 요청을 보내 여러 응답을 몰리게 하면?</summary><p><strong>Smurf.</strong> 여러 장치의 응답이 늘어나는 과정이 결정적인 단서입니다.</p></details>
+</div>

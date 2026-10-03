@@ -1,0 +1,62 @@
+<div class="theory-visual" data-theory-visual="th-cohesion-coupling">
+  <p class="tv-kicker">응집도 · 결합도</p>
+  <h3 class="tv-heading">큰 상자의 안을 볼까, 상자 사이를 볼까?</h3>
+  <p class="tv-lead">모듈 <strong>안의 연결</strong>은 응집도, 모듈 <strong>사이에 넘기는 것</strong>은 결합도입니다.</p>
+  <div class="tv-grid">
+    <section class="tv-panel tv-blue">
+      <h4>안: 앞 결과를 다음 작업에 사용</h4>
+      <figure class="tv-figure">
+        <svg viewBox="0 0 640 240" role="img" aria-label="하나의 모듈 안에서 고객 목록 정제의 출력이 고객 목록 집계의 입력으로 연결되는 순차적 응집도" font-family="sans-serif" font-size="20">
+          <defs><marker id="th-cohesion-coupling-inside-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#385f88"/></marker></defs>
+          <rect x="20" y="20" width="600" height="200" rx="16" fill="#eef5ff" stroke="#385f88" stroke-width="2"/>
+          <text x="45" y="58" fill="#20384f">하나의 모듈</text>
+          <rect x="50" y="95" width="190" height="85" rx="10" fill="#fff" stroke="#385f88" stroke-width="2"/>
+          <text x="145" y="130" text-anchor="middle" fill="#20384f">고객 목록</text><text x="145" y="159" text-anchor="middle" fill="#20384f">정제</text>
+          <path d="M240 143 H400" stroke="#385f88" stroke-width="3" fill="none" marker-end="url(#th-cohesion-coupling-inside-arrow)"/>
+          <text x="320" y="105" text-anchor="middle" fill="#385f88">정제된</text><text x="320" y="129" text-anchor="middle" fill="#385f88">고객 목록</text>
+          <rect x="400" y="95" width="190" height="85" rx="10" fill="#fff" stroke="#385f88" stroke-width="2"/>
+          <text x="495" y="130" text-anchor="middle" fill="#20384f">고객 목록</text><text x="495" y="159" text-anchor="middle" fill="#20384f">집계</text>
+        </svg>
+      </figure>
+      <p class="tv-result">출력 → 다음 입력 = <strong>순차적 응집도</strong></p>
+      <p class="tv-note">두 작업이 같은 큰 상자 안에 있습니다. 순서뿐 아니라 <strong>자료가 이어지는지</strong> 보세요.</p>
+    </section>
+    <section class="tv-panel tv-gold">
+      <h4>밖: 다른 모듈에 삭제를 지시</h4>
+      <figure class="tv-figure">
+        <svg viewBox="0 0 640 240" role="img" aria-label="서로 별개인 화면 모듈이 처리 모듈에 mode 삭제를 전달하여 처리 방법을 지시하는 제어 결합도" font-family="sans-serif" font-size="20">
+          <defs><marker id="th-cohesion-coupling-between-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#9c6a13"/></marker></defs>
+          <rect x="20" y="75" width="200" height="100" rx="12" fill="#fff8e7" stroke="#9c6a13" stroke-width="2"/>
+          <text x="120" y="120" text-anchor="middle" fill="#604411">화면 모듈</text><text x="120" y="151" text-anchor="middle" fill="#604411">삭제 선택</text>
+          <path d="M220 125 H420" stroke="#9c6a13" stroke-width="3" fill="none" marker-end="url(#th-cohesion-coupling-between-arrow)"/>
+          <text x="320" y="80" text-anchor="middle" fill="#604411">mode = '삭제'</text><text x="320" y="105" text-anchor="middle" fill="#604411">처리 방법을 전달</text>
+          <rect x="420" y="75" width="200" height="100" rx="12" fill="#fff8e7" stroke="#9c6a13" stroke-width="2"/>
+          <text x="520" y="120" text-anchor="middle" fill="#604411">처리 모듈</text><text x="520" y="151" text-anchor="middle" fill="#604411">삭제 실행</text>
+        </svg>
+      </figure>
+      <p class="tv-result">처리 방법을 지시 = <strong>제어 결합도</strong></p>
+      <p class="tv-note">화살표가 모듈 경계를 넘습니다. 숫자 같은 처리 자료인지, <strong>처리 방법을 정하는 선택값</strong>인지 보세요.</p>
+    </section>
+  </div>
+  <section class="tv-panel">
+    <h4>비슷한 말은 이 차이만 확인</h4>
+    <table class="tv-table"><thead><tr><th>실제 연결</th><th>선택할 말</th><th>보는 곳</th></tr></thead><tbody>
+      <tr><td>정제 결과를 집계의 입력으로 사용</td><td>순차적 응집도</td><td>앞 출력 → 뒤 입력</td></tr>
+      <tr><td>같은 고객 자료로 서로 다른 보고서 작성</td><td>교환적 응집도</td><td>같은 자료를 함께 사용</td></tr>
+      <tr><td>자료 연결 없이 정해진 순서대로 작업</td><td>절차적 응집도</td><td>실행 순서만 있음</td></tr>
+      <tr><td><code>sum(x, y)</code>에 필요한 숫자만 전달</td><td>자료 결합도</td><td>필요값만 전달</td></tr>
+      <tr><td>고객 레코드 전체 전달</td><td>스탬프 결합도</td><td>자료 구조를 통째로 전달</td></tr>
+    </tbody></table>
+  </section>
+  <p class="tv-note"><strong>목표:</strong> 모듈 안은 한 기능으로 잘 묶고(높은 응집도), 밖에 대한 의존은 줄입니다(낮은 결합도).</p>
+  <details><summary>용어와 순서 더 보기</summary>
+    <table class="tv-table"><thead><tr><th>구분</th><th>높음 → 낮음</th></tr></thead><tbody><tr><td>응집도</td><td>기능적 → 순차적 → 교환적 → 절차적 → 시간적 → 논리적 → 우연적</td></tr><tr><td>결합도</td><td>내용 → 공통 → 외부 → 제어 → 스탬프 → 자료</td></tr></tbody></table>
+    <table class="tv-table"><thead><tr><th>말</th><th>짧은 뜻</th></tr></thead><tbody>
+      <tr><td>기능적 / 시간적 응집도</td><td>한 기능만 수행 / 같은 시점의 작업을 묶음</td></tr>
+      <tr><td>논리적 / 우연적 응집도</td><td>비슷한 종류의 작업을 묶음 / 뚜렷한 관계 없이 묶음</td></tr>
+      <tr><td>공통 / 내용 결합도</td><td>전역 자료 공유 / 다른 모듈 내부를 직접 참조·수정</td></tr>
+      <tr><td>외부 결합도</td><td>외부에서 정한 규약·형식·장치에 함께 의존</td></tr>
+      <tr><td>팬인 / 팬아웃</td><td>들어오는 호출 / 나가는 호출. A·B가 F를 호출하면 F의 팬인=2</td></tr>
+    </tbody></table>
+  </details>
+</div>
