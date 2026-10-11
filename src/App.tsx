@@ -147,6 +147,15 @@ function HomePage({
         <span>{data.notice}</span>
       </div>
 
+      <section className="resume-card">
+        <div>
+          <span className="eyebrow">오답률 TOP10 집중 학습</span>
+          <h2>개념부터 기출, 응용 문제까지</h2>
+          <p>보내주신 10문항을 모았습니다. 답칸을 나눠 풀고 정답·풀이를 비교하세요.</p>
+        </div>
+        <a className="button primary" href="/top10.html">TOP10 학습실 열기 →</a>
+      </section>
+
       {resumableSession && examById.has(resumableSession.examId) && (
         <section className="resume-card">
           <div>
