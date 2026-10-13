@@ -26,6 +26,7 @@ npm run dev
 
 - `오답률 TOP10 집중 학습`에서 개념 10개 → 기출·재구성 10문항 → 응용 10문항을 학습합니다.
 - [TOP10 학습실](study-materials/top10.html)은 별도 설치 없이 파일을 직접 열어도 사용할 수 있습니다.
+- Windows에서는 [top10.cmd](study-materials/top10.cmd)를 더블클릭하면 로컬 학습실이 Microsoft Edge에서 열립니다. 기존 교재와 같은 소프트웨어 렌더링 프로필을 사용하며 서버 실행·추가 설치가 필요 없습니다. CMD 파일과 `top10.html`을 같은 폴더에 두세요.
 - 답칸별 입력, 정답·풀이 펼치기, 전체 채점, 부분 정답과 풀이 열람 표시, 자동 저장을 지원합니다.
 - 목록 번호와 보관 PDF 번호가 다른 문항 및 잘린 설명을 재구성한 문항은 화면에 출처·범위를 표시했습니다. 오답률은 사용자가 제공한 수치이며 마지막 수치는 미제공입니다.
 - 재생성: `python scripts/build_top10.py` · 코드 실행 검증: `python scripts/verify_top10.py` (C·Java·Python 실행 도구 필요).
